@@ -19,6 +19,14 @@ def configure_smu(session, source_mode, output_function, voltage_level=None, cur
     if current_limit is not None:
         session.current_limit = current_limit
 
+def smu_common_mode(SMU_COMMON):
+    with nidcpower.Session(resource_name=SMU_COMMON) as session_SMU_COMMON:
+        session_SMU_COMMON = nidcpower.SourceMode.SINGLE_POINT
+        session_SMU_COMMON.output_function = nidcpower.OutputFunction.DC_VOLTAGE
+        session_SMU_COMMON.current_limit_autorange = True
+        session_SMU_COMMON.initiate()
+        session_SMU_COMMON.voltage_level = 0
+
 def IV_Sweep_Single(VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltage_max_VAR1,
              num_points_VAR2, voltage_min_VAR2, voltage_max_VAR2, voltage_CONST, current_limit_VAR1,current_limit_VAR2, current_limit_CONST,
              VAR1_PLC, VAR2_PLC, CONST_PLC):
@@ -437,13 +445,16 @@ def IV_Sweep_Double(VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltag
 
 def choose_sweep_mode(sweep_mode, VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltage_max_VAR1,
                       num_points_VAR2, voltage_min_VAR2, voltage_max_VAR2, voltage_CONST, current_limit_VAR1, current_limit_VAR2, current_limit_CONST,
-                      VAR1_PLC, VAR2_PLC, CONST_PLC):
+                      VAR1_PLC, VAR2_PLC, CONST_PLC, SMU_COMMON):
     if sweep_mode == 'single':
+        smu_common_mode(SMU_COMMON)
         IV_Sweep_Single(VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltage_max_VAR1,
                                  num_points_VAR2, voltage_min_VAR2, voltage_max_VAR2, voltage_CONST, current_limit_VAR1, current_limit_VAR2,
                                  current_limit_CONST,
                                  VAR1_PLC, VAR2_PLC, CONST_PLC)
+
     elif sweep_mode == 'double':
+        smu_common_mode(SMU_COMMON)
         IV_Sweep_Double(VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltage_max_VAR1,
                                  num_points_VAR2, voltage_min_VAR2, voltage_max_VAR2, voltage_CONST, current_limit_VAR1, current_limit_VAR2,
                                  current_limit_CONST,
