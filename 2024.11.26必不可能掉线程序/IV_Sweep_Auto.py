@@ -8,8 +8,7 @@
 import nidcpower
 import time
 import csv
-import tkinter as tk
-from tkinter import simpledialog
+
 
 def configure_smu(session, source_mode, output_function, voltage_level=None, current_limit=None):
     session.source_mode = source_mode
