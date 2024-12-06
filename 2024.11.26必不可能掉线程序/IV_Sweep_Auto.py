@@ -39,11 +39,11 @@ def smu_common_mode(smu_common_list):
 
 def IV_Sweep_Single(VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltage_max_VAR1,
              num_points_VAR2, voltage_min_VAR2, voltage_max_VAR2, voltage_CONST, current_limit_VAR1,current_limit_VAR2, current_limit_CONST,
-             VAR1_PLC, VAR2_PLC, CONST_PLC):
+             VAR1_PLC, VAR2_PLC, CONST_PLC, file_name,file_path):
     # 添加CSV扩展名
-    output_file = 'wdtnwjwl'
+    output_file = file_name
     output_file += '.csv'
-    output_path = 'C:/Users/Administrator/Desktop/Yi.Wei_Data/'  # .csv文件存储路径
+    output_path = file_path  # .csv文件存储路径
     if VAR2 is not None:
         # 创建VAR2测量的会话并设置参数
         with nidcpower.Session(resource_name=VAR2) as session_VAR2:
@@ -225,6 +225,7 @@ def IV_Sweep_Single(VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltag
                     # 设置VAR1.PLC
                     session_VAR1.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
                     session_VAR1.aperture_time = VAR1_PLC
+                    session_VAR1.initiate()
                     # 计算VAR1步进电压
                     voltage_step_VAR1 = round((voltage_max_VAR1 - voltage_min_VAR1) / (num_points_VAR1 - 1), 8)
                     # 打印表头
@@ -248,11 +249,11 @@ def IV_Sweep_Single(VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltag
 
 def IV_Sweep_Double(VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltage_max_VAR1,
                     num_points_VAR2, voltage_min_VAR2, voltage_max_VAR2, voltage_CONST, current_limit_VAR1,current_limit_VAR2,
-                    current_limit_CONST, VAR1_PLC, VAR2_PLC, CONST_PLC):
+                    current_limit_CONST, VAR1_PLC, VAR2_PLC, CONST_PLC, file_name, file_path):
     # 添加CSV扩展名
-    output_file = 'wdtnwjwl'
+    output_file = file_name
     output_file += '.csv'
-    output_path = 'C:/Users/Administrator/Desktop/Yi.Wei_Data/'  # .csv文件存储路径
+    output_path = file_path  # .csv文件存储路径
     if VAR2 is not None:
         # 创建VAR2测量的会话并设置参数
         with nidcpower.Session(resource_name=VAR2) as session_VAR2:
@@ -491,12 +492,13 @@ def IV_Sweep_Double(VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltag
                 # 设置VAR1.PLC
                 session_VAR1.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
                 session_VAR1.aperture_time = VAR1_PLC
+                session_VAR1.initiate()
                 # 计算VAR1步进电压
                 voltage_step_VAR1 = round((voltage_max_VAR1 - voltage_min_VAR1) / (num_points_VAR1 - 1), 8)
                 # 打印表头
                 print('{:<10} {:<15} {:<15} {:<15} '.format('Direction', 'Step', 'V_VAR1', 'I_VAR1'))
 
-                # 扫描VAR1：逐步设置VAR1电压并测量VAR1的电流
+                # 正向扫描VAR1：逐步设置VAR1电压并测量VAR1的电流
                 for i in range(num_points_VAR1):
                     voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                     session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
@@ -511,8 +513,8 @@ def IV_Sweep_Double(VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltag
                     print('{:<10} {:<15} {:<15.15f} {:<15.15f}'.format('Forward', i + 1,
                                                                        voltage_value_VAR1, current_value_VAR1, ))
 
-                    # 反向扫描VAR1
-                    for i in range(num_points_VAR1 - 1, -1, -1):
+                # 反向扫描VAR1
+                for i in range(num_points_VAR1 - 1, -1, -1):
                         voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                         session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                         time.sleep(0.001)  # 暂停0.001秒，等待稳定
@@ -530,20 +532,20 @@ def IV_Sweep_Double(VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltag
 
 def choose_sweep_mode(sweep_mode, VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltage_max_VAR1,
                       num_points_VAR2, voltage_min_VAR2, voltage_max_VAR2, voltage_CONST, current_limit_VAR1, current_limit_VAR2, current_limit_CONST,
-                      VAR1_PLC, VAR2_PLC, CONST_PLC, smu_common_list):
+                      VAR1_PLC, VAR2_PLC, CONST_PLC, smu_common_list,file_name, file_path):
     if sweep_mode == 'single':
         smu_common_mode(smu_common_list)
         IV_Sweep_Single(VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltage_max_VAR1,
                                  num_points_VAR2, voltage_min_VAR2, voltage_max_VAR2, voltage_CONST, current_limit_VAR1, current_limit_VAR2,
                                  current_limit_CONST,
-                                 VAR1_PLC, VAR2_PLC, CONST_PLC)
+                                 VAR1_PLC, VAR2_PLC, CONST_PLC, file_name, file_path )
 
     elif sweep_mode == 'double':
         smu_common_mode(smu_common_list)
         IV_Sweep_Double(VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltage_max_VAR1,
                                  num_points_VAR2, voltage_min_VAR2, voltage_max_VAR2, voltage_CONST, current_limit_VAR1, current_limit_VAR2,
                                  current_limit_CONST,
-                                 VAR1_PLC, VAR2_PLC, CONST_PLC)
+                                 VAR1_PLC, VAR2_PLC, CONST_PLC, file_name, file_path)
     else:
         print("无效的扫描模式选择。")
 
