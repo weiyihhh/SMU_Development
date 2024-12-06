@@ -21,12 +21,12 @@ def main():
     VAR1 = smu0
     VAR2 = smu1
     CONST = smu2
-    SMU_COMMON = smu3
+    smu_common_list = ['smu3']
 
     voltage_min_VAR1 = -1
     voltage_max_VAR1 = 4
     num_points_VAR1 = 101
-    current_limit_VAR1 = 0.10  # 单位为A
+    current_limit_VAR1 = 0.1  # 单位为A
 
 
     voltage_min_VAR2 = 0.5
@@ -50,7 +50,7 @@ def main():
                                             voltage_max_VAR1,
                                             num_points_VAR2, voltage_min_VAR2, voltage_max_VAR2, voltage_CONST,
                                             current_limit_VAR1,
-                                            current_limit_VAR2, current_limit_CONST, VAR1_PLC, VAR2_PLC, CONST_PLC, SMU_COMMON)
+                                            current_limit_VAR2, current_limit_CONST, VAR1_PLC, VAR2_PLC, CONST_PLC, smu_common_list)
             break
         except nidcpower.Error as e:
             print(f"Error happening: {e}")

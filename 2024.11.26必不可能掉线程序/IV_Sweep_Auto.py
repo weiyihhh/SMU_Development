@@ -18,13 +18,24 @@ def configure_smu(session, source_mode, output_function, voltage_level=None, cur
     if current_limit is not None:
         session.current_limit = current_limit
 
-def smu_common_mode(SMU_COMMON):
+"""def smu_common_mode(SMU_COMMON):
     with nidcpower.Session(resource_name=SMU_COMMON) as session_SMU_COMMON:
         session_SMU_COMMON = nidcpower.SourceMode.SINGLE_POINT
         session_SMU_COMMON.output_function = nidcpower.OutputFunction.DC_VOLTAGE
         session_SMU_COMMON.current_limit_autorange = True
-        session_SMU_COMMON.initiate()
-        session_SMU_COMMON.voltage_level = 0
+        session_SMU_COMMON.voltage_level = 0"""
+
+def smu_common_mode(smu_common_list):
+    for smu_resource in smu_common_list:
+        try:
+            with nidcpower.Session(resource_name=smu_resource) as session:
+                session.source_mode = nidcpower.SourceMode.SINGLE_POINT
+                session.output_function = nidcpower.OutputFunction.DC_VOLTAGE
+                session.current_limit_autorange = True
+                session.voltage_level = 0
+                print(f"Successfully configured SMU-COMMON: {smu_resource}")
+        except Exception as e:
+            print(f"Failed to configure SMU-COMMON: {smu_resource}. Error: {e}")
 
 def IV_Sweep_Single(VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltage_max_VAR1,
              num_points_VAR2, voltage_min_VAR2, voltage_max_VAR2, voltage_CONST, current_limit_VAR1,current_limit_VAR2, current_limit_CONST,
@@ -33,167 +44,86 @@ def IV_Sweep_Single(VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltag
     output_file = 'wdtnwjwl'
     output_file += '.csv'
     output_path = 'C:/Users/Administrator/Desktop/Yi.Wei_Data/'  # .csv文件存储路径
+    if VAR2 is not None:
+        # 创建VAR2测量的会话并设置参数
+        with nidcpower.Session(resource_name=VAR2) as session_VAR2:
+            session_VAR2.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
+            session_VAR2.output_function = nidcpower.OutputFunction.DC_VOLTAGE  # 设置为直流电压输出
+            session_VAR2.current_limit = current_limit_VAR2  # 设置VAR2端的电流限制
+            session_VAR2.current_limit_autorange = True
 
-    # 创建VAR2测量的会话并设置参数
-    with nidcpower.Session(resource_name=VAR2) as session_VAR2:
-        session_VAR2.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
-        session_VAR2.output_function = nidcpower.OutputFunction.DC_VOLTAGE  # 设置为直流电压输出
-        session_VAR2.current_limit = current_limit_VAR2  # 设置VAR2端的电流限制
-        session_VAR2.current_limit_autorange = True
+            # 设置VAR2.PLC
+            session_VAR2.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
+            session_VAR2.aperture_time = VAR2_PLC
 
-        # 设置VAR2.PLC
-        session_VAR2.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
-        session_VAR2.aperture_time = VAR2_PLC
+            # 增添if语句，当VAR2设置max=min时，执行一次single测量
+            if voltage_max_VAR2 == voltage_min_VAR2:
+                session_VAR2.initiate()
 
-        # 增添if语句，当VAR2设置max=min时，执行一次single测量
-        if voltage_max_VAR2 == voltage_min_VAR2:
-            session_VAR2.initiate()
+                with open(output_path + output_file, 'w', newline='') as csvfile:
+                    csv_writer = csv.writer(csvfile)
+                    csv_writer.writerow(['Step', 'V_VAR1', 'V_VAR2', 'V_CONST', 'I_VAR1', 'I_VAR2', 'I_CONST'])
 
-            with open(output_path + output_file, 'w', newline='') as csvfile:
-                csv_writer = csv.writer(csvfile)
-                csv_writer.writerow(['Step', 'V_VAR1', 'V_VAR2', 'V_CONST', 'I_VAR1', 'I_VAR2', 'I_CONST'])
+                    for j in range(num_points_VAR2):
+                        voltage_value_VAR2 = voltage_min_VAR2
+                        session_VAR2.voltage_level = voltage_value_VAR2  # 设置VAR2端的电压输出
 
-                for j in range(num_points_VAR2):
-                    voltage_value_VAR2 = voltage_min_VAR2
-                    session_VAR2.voltage_level = voltage_value_VAR2  # 设置VAR2端的电压输出
+                        # 创建VAR1控制的会话并设置参数
+                        with nidcpower.Session(resource_name=VAR1) as session_VAR1:
+                            session_VAR1.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
+                            session_VAR1.output_function = nidcpower.OutputFunction.DC_VOLTAGE  # 设置为直流电压输出
+                            session_VAR1.current_limit = current_limit_VAR1  # 设置VAR1端的电流限制
+                            session_VAR1.current_limit_autorange = True
+                            # 设置VAR1.PLC
+                            session_VAR1.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
+                            session_VAR1.aperture_time = VAR1_PLC
 
-                    # 创建VAR1控制的会话并设置参数
-                    with nidcpower.Session(resource_name=VAR1) as session_VAR1:
-                        session_VAR1.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
-                        session_VAR1.output_function = nidcpower.OutputFunction.DC_VOLTAGE  # 设置为直流电压输出
-                        session_VAR1.current_limit = current_limit_VAR1  # 设置VAR1端的电流限制
-                        session_VAR1.current_limit_autorange = True
-                        # 设置VAR1.PLC
-                        session_VAR1.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
-                        session_VAR1.aperture_time = VAR1_PLC
+                            # 创建CONST控制的会话并设置参数
+                            with nidcpower.Session(resource_name=CONST) as session_CONST:
+                                session_CONST.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
+                                session_CONST.output_function = nidcpower.OutputFunction.DC_VOLTAGE  # 设置为直流电压输出
+                                session_CONST.voltage_level = voltage_CONST  # 设CONST端的电压
+                                session_CONST.current_limit = current_limit_CONST
+                                session_CONST.current_limit_autorange = True
 
-                        # 创建CONST控制的会话并设置参数
-                        with nidcpower.Session(resource_name=CONST) as session_CONST:
-                            session_CONST.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
-                            session_CONST.output_function = nidcpower.OutputFunction.DC_VOLTAGE  # 设置为直流电压输出
-                            session_CONST.voltage_level = voltage_CONST  # 设CONST端的电压
-                            session_CONST.current_limit = current_limit_CONST
-                            session_CONST.current_limit_autorange = True
+                                # 设置CONST.PLC
+                                session_CONST.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
+                                session_CONST.aperture_time = CONST_PLC
 
-                            # 设置CONST.PLC
-                            session_CONST.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
-                            session_CONST.aperture_time = CONST_PLC
+                                # 计算步进电压
+                                voltage_step_VAR1 = round((voltage_max_VAR1 - voltage_min_VAR1) / (num_points_VAR1 - 1), 8)
 
-                            # 计算步进电压
-                            voltage_step_VAR1 = round((voltage_max_VAR1 - voltage_min_VAR1) / (num_points_VAR1 - 1), 8)
+                                # 启动所有会话
+                                session_VAR1.initiate()
+                                session_CONST.initiate()
 
-                            # 启动所有会话
-                            session_VAR1.initiate()
-                            session_CONST.initiate()
+                                # 打印表头
+                                print('{:<10} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15}'.format('Step', 'V_VAR1', 'V_VAR2',
+                                                                                               'V_CONST', 'I_VAR1',
+                                                                                               'I_VAR2', 'I_CONST'))
 
-                            # 打印表头
-                            print('{:<10} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15}'.format('Step', 'V_VAR1', 'V_VAR2',
-                                                                                           'V_CONST', 'I_VAR1',
-                                                                                           'I_VAR2', 'I_CONST'))
+                                # 逐步设置VAR1电压并测量VAR1、VAR2、CONST的电流
+                                for i in range(num_points_VAR1):
+                                    voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
+                                    session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
+                                    time.sleep(0.001)  # 暂停0.001秒，等待稳定
 
-                            # 逐步设置VAR1电压并测量VAR1、VAR2、CONST的电流
-                            for i in range(num_points_VAR1):
-                                voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
-                                session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
-                                time.sleep(0.001)  # 暂停0.001秒，等待稳定
+                                    # 执行测量VAR1电流
+                                    current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
 
-                                # 执行测量VAR1电流
-                                current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
+                                    # 执行测量VAR2电流
+                                    current_value_VAR2 = session_VAR2.measure(nidcpower.MeasurementTypes.CURRENT)
 
-                                # 执行测量VAR2电流
-                                current_value_VAR2 = session_VAR2.measure(nidcpower.MeasurementTypes.CURRENT)
+                                    # 执行测量CONST电流
+                                    current_value_CONST = session_CONST.measure(nidcpower.MeasurementTypes.CURRENT)
 
-                                # 执行测量CONST电流
-                                current_value_CONST = session_CONST.measure(nidcpower.MeasurementTypes.CURRENT)
+                                    # 写入CSV文件
+                                    csv_writer.writerow([i + 1, voltage_value_VAR1, voltage_value_VAR2, voltage_CONST,
+                                                         current_value_VAR1, current_value_VAR2, current_value_CONST])
 
-                                # 写入CSV文件
-                                csv_writer.writerow([i + 1, voltage_value_VAR1, voltage_value_VAR2, voltage_CONST,
-                                                     current_value_VAR1, current_value_VAR2, current_value_CONST])
-
-                                # 打印步数、VAR1、VAR2、CONST电压和IVAR1、IVAR2、CONST电流值
-                                print('{:<10} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f}'.format(
-                                    i + 1,
-                                    voltage_value_VAR1,
-                                    voltage_value_VAR2,
-                                    voltage_CONST,
-                                    current_value_VAR1,
-                                    current_value_VAR2,
-                                    current_value_CONST))
-
-        else:
-            # 计算VAR2步进电压
-            voltage_step_VAR2 = round((voltage_max_VAR2 - voltage_min_VAR2) / (num_points_VAR2 - 1), 8)
-            session_VAR2.initiate()
-
-            with open(output_path + output_file, 'w', newline='') as csvfile:
-                csv_writer = csv.writer(csvfile)
-                csv_writer.writerow(['Direction', 'Step', 'V_VAR1', 'V_VAR2', 'V_CONST', 'I_VAR1', 'I_VAR2', 'I_CONST'])
-
-                for j in range(num_points_VAR2):
-
-                    voltage_value_VAR2 = voltage_min_VAR2 + j * voltage_step_VAR2  # 计算当前步进的VAR2电压值
-                    session_VAR2.voltage_level = voltage_value_VAR2  # 设置VAR2端的电压输出
-
-                    # 创建VAR1控制的会话并设置参数
-                    with nidcpower.Session(resource_name=VAR1) as session_VAR1:
-                        session_VAR1.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
-                        session_VAR1.output_function = nidcpower.OutputFunction.DC_VOLTAGE  # 设置为直流电压输出
-                        session_VAR1.current_limit = current_limit_VAR1  # 设置VAR1端的电流限制
-                        session_VAR1.current_limit_autorange = True
-
-                        # 设置VAR1.PLC
-                        session_VAR1.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
-                        session_VAR1.aperture_time = VAR1_PLC
-
-                        # 创建CONST控制的会话并设置参数
-                        with nidcpower.Session(resource_name=CONST) as session_CONST:
-                            session_CONST.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
-                            session_CONST.output_function = nidcpower.OutputFunction.DC_VOLTAGE  # 设置为直流电压输出
-                            session_CONST.voltage_level = voltage_CONST  # 设CONST端的电压
-                            session_CONST.current_limit = current_limit_CONST
-                            session_CONST.current_limit_autorange = True
-
-                            # 设置CONST.PLC
-                            session_CONST.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
-                            session_CONST.aperture_time = CONST_PLC
-
-                            # 计算VAR1步进电压
-                            voltage_step_VAR1 = round((voltage_max_VAR1 - voltage_min_VAR1) / (num_points_VAR1 - 1), 8)
-
-                            # 启动所有会话
-                            session_VAR1.initiate()
-                            session_CONST.initiate()
-
-                            # 打印表头
-                            print('{:<10} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15}'.format('Direction', 'Step',
-                                                                                                   'V_VAR1', 'V_VAR2',
-                                                                                                   'V_CONST', 'I_VAR1',
-                                                                                                   'I_VAR2', 'I_CONST'))
-
-                            #扫描VAR1：逐步设置VAR1电压并测量VAR1、VAR2、CONST的电流
-                            for i in range(num_points_VAR1):
-                                voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
-                                session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
-                                time.sleep(0.001)  # 暂停0.001秒，等待稳定
-
-                                # 执行测量VAR1电流
-                                current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
-
-                                # 执行测量VAR2电流
-                                current_value_VAR2 = session_VAR2.measure(nidcpower.MeasurementTypes.CURRENT)
-
-                                # 执行测量CONST电流
-                                current_value_CONST = session_CONST.measure(nidcpower.MeasurementTypes.CURRENT)
-
-                                # 写入CSV文件
-                                csv_writer.writerow(['Forward', i + 1, voltage_value_VAR1, voltage_value_VAR2,
-                                                     voltage_CONST, current_value_VAR1, current_value_VAR2,
-                                                     current_value_CONST])
-
-                                # 打印步数、VAR1、VAR2、CONST电压和IVAR1、IVAR2、CONST电流值
-                                print(
-                                    '{:<10} {:<15} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f}'.format(
-                                        'Forward', i + 1,
+                                    # 打印步数、VAR1、VAR2、CONST电压和IVAR1、IVAR2、CONST电流值
+                                    print('{:<10} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f}'.format(
+                                        i + 1,
                                         voltage_value_VAR1,
                                         voltage_value_VAR2,
                                         voltage_CONST,
@@ -201,7 +131,120 @@ def IV_Sweep_Single(VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltag
                                         current_value_VAR2,
                                         current_value_CONST))
 
-        print(f"Data saved to {output_path + output_file }")
+            else:
+                # 计算VAR2步进电压
+                voltage_step_VAR2 = round((voltage_max_VAR2 - voltage_min_VAR2) / (num_points_VAR2 - 1), 8)
+                session_VAR2.initiate()
+
+                with open(output_path + output_file, 'w', newline='') as csvfile:
+                    csv_writer = csv.writer(csvfile)
+                    csv_writer.writerow(['Direction', 'Step', 'V_VAR1', 'V_VAR2', 'V_CONST', 'I_VAR1', 'I_VAR2', 'I_CONST'])
+
+                    for j in range(num_points_VAR2):
+
+                        voltage_value_VAR2 = voltage_min_VAR2 + j * voltage_step_VAR2  # 计算当前步进的VAR2电压值
+                        session_VAR2.voltage_level = voltage_value_VAR2  # 设置VAR2端的电压输出
+
+                        # 创建VAR1控制的会话并设置参数
+                        with nidcpower.Session(resource_name=VAR1) as session_VAR1:
+                            session_VAR1.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
+                            session_VAR1.output_function = nidcpower.OutputFunction.DC_VOLTAGE  # 设置为直流电压输出
+                            session_VAR1.current_limit = current_limit_VAR1  # 设置VAR1端的电流限制
+                            session_VAR1.current_limit_autorange = True
+
+                            # 设置VAR1.PLC
+                            session_VAR1.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
+                            session_VAR1.aperture_time = VAR1_PLC
+
+                            # 创建CONST控制的会话并设置参数
+                            with nidcpower.Session(resource_name=CONST) as session_CONST:
+                                session_CONST.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
+                                session_CONST.output_function = nidcpower.OutputFunction.DC_VOLTAGE  # 设置为直流电压输出
+                                session_CONST.voltage_level = voltage_CONST  # 设CONST端的电压
+                                session_CONST.current_limit = current_limit_CONST
+                                session_CONST.current_limit_autorange = True
+
+                                # 设置CONST.PLC
+                                session_CONST.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
+                                session_CONST.aperture_time = CONST_PLC
+
+                                # 计算VAR1步进电压
+                                voltage_step_VAR1 = round((voltage_max_VAR1 - voltage_min_VAR1) / (num_points_VAR1 - 1), 8)
+
+                                # 启动所有会话
+                                session_VAR1.initiate()
+                                session_CONST.initiate()
+
+                                # 打印表头
+                                print('{:<10} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15}'.format('Direction', 'Step',
+                                                                                                       'V_VAR1', 'V_VAR2',
+                                                                                                       'V_CONST', 'I_VAR1',
+                                                                                                       'I_VAR2', 'I_CONST'))
+
+                                #扫描VAR1：逐步设置VAR1电压并测量VAR1、VAR2、CONST的电流
+                                for i in range(num_points_VAR1):
+                                    voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
+                                    session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
+                                    time.sleep(0.001)  # 暂停0.001秒，等待稳定
+
+                                    # 执行测量VAR1电流
+                                    current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
+
+                                    # 执行测量VAR2电流
+                                    current_value_VAR2 = session_VAR2.measure(nidcpower.MeasurementTypes.CURRENT)
+
+                                    # 执行测量CONST电流
+                                    current_value_CONST = session_CONST.measure(nidcpower.MeasurementTypes.CURRENT)
+
+                                    # 写入CSV文件
+                                    csv_writer.writerow(['Forward', i + 1, voltage_value_VAR1, voltage_value_VAR2,
+                                                         voltage_CONST, current_value_VAR1, current_value_VAR2,
+                                                         current_value_CONST])
+
+                                    # 打印步数、VAR1、VAR2、CONST电压和IVAR1、IVAR2、CONST电流值
+                                    print(
+                                        '{:<10} {:<15} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f}'.format(
+                                            'Forward', i + 1,
+                                            voltage_value_VAR1,
+                                            voltage_value_VAR2,
+                                            voltage_CONST,
+                                            current_value_VAR1,
+                                            current_value_VAR2,
+                                            current_value_CONST))
+
+            print(f"Data saved to {output_path + output_file }")
+    else:
+        with open(output_path + output_file, 'w', newline='') as csvfile:
+            csv_writer = csv.writer(csvfile)
+            csv_writer.writerow(['Direction', 'Step', 'V_VAR1', 'I_VAR1'])
+            with nidcpower.Session(resource_name=VAR1) as session_VAR1:
+                    session_VAR1.source_mode = nidcpower.SourceMode.SINGLE_POINT
+                    session_VAR1.output_function = nidcpower.OutputFunction.DC_VOLTAGE
+                    session_VAR1.current_limit = current_limit_VAR1
+                    session_VAR1.current_limit_autorange = True
+                    # 设置VAR1.PLC
+                    session_VAR1.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
+                    session_VAR1.aperture_time = VAR1_PLC
+                    # 计算VAR1步进电压
+                    voltage_step_VAR1 = round((voltage_max_VAR1 - voltage_min_VAR1) / (num_points_VAR1 - 1), 8)
+                    # 打印表头
+                    print('{:<10} {:<15} {:<15} {:<15} '.format('Direction', 'Step', 'V_VAR1',  'I_VAR1'))
+
+                    # 扫描VAR1：逐步设置VAR1电压并测量VAR1的电流
+                    for i in range(num_points_VAR1):
+                        voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
+                        session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
+                        time.sleep(0.001)  # 暂停0.001秒，等待稳定
+
+                        # 执行测量VAR1电流
+                        current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
+                        # 写入CSV文件
+                        csv_writer.writerow(['Forward', i + 1, voltage_value_VAR1, current_value_VAR1])
+
+                        # 打印步数、VAR1、VAR2、CONST电压和IVAR1、IVAR2、CONST电流值
+                        print('{:<10} {:<15} {:<15.15f} {:<15.15f}'.format('Forward', i + 1,
+                                voltage_value_VAR1,current_value_VAR1,))
+        print(f"Data saved to {output_path + output_file}")
 
 def IV_Sweep_Double(VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltage_max_VAR1,
                     num_points_VAR2, voltage_min_VAR2, voltage_max_VAR2, voltage_CONST, current_limit_VAR1,current_limit_VAR2,
@@ -210,250 +253,293 @@ def IV_Sweep_Double(VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltag
     output_file = 'wdtnwjwl'
     output_file += '.csv'
     output_path = 'C:/Users/Administrator/Desktop/Yi.Wei_Data/'  # .csv文件存储路径
+    if VAR2 is not None:
+        # 创建VAR2测量的会话并设置参数
+        with nidcpower.Session(resource_name=VAR2) as session_VAR2:
+            session_VAR2.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
+            session_VAR2.output_function = nidcpower.OutputFunction.DC_VOLTAGE  # 设置为直流电压输出
+            session_VAR2.current_limit = current_limit_VAR2  # 设置VAR2端的电流限制
+            session_VAR2.current_limit = current_limit_VAR2
+            session_VAR2.current_limit_autorange = True
 
-    # 创建VAR2测量的会话并设置参数
-    with nidcpower.Session(resource_name=VAR2) as session_VAR2:
-        session_VAR2.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
-        session_VAR2.output_function = nidcpower.OutputFunction.DC_VOLTAGE  # 设置为直流电压输出
-        session_VAR2.current_limit = current_limit_VAR2  # 设置VAR2端的电流限制
-        session_VAR2.current_limit = current_limit_VAR2
-        session_VAR2.current_limit_autorange = True
+            # 设置VAR2.PLC
+            session_VAR2.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
+            session_VAR2.aperture_time = VAR2_PLC
 
-        # 设置VAR2.PLC
-        session_VAR2.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
-        session_VAR2.aperture_time = VAR2_PLC
+            #增添if语句，当VAR2只有一个点时，执行一次double测量
+            if voltage_max_VAR2 == voltage_min_VAR2:
+                session_VAR2.initiate()
 
-        #增添if语句，当VAR2只有一个点时，执行一次double测量
-        if voltage_max_VAR2 == voltage_min_VAR2:
-            session_VAR2.initiate()
+                with open(output_path + output_file, 'w', newline='') as csvfile:
+                    csv_writer = csv.writer(csvfile)
+                    csv_writer.writerow(['Direction', 'Step', 'V_VAR1', 'V_VAR2', 'V_CONST', 'I_VAR1', 'I_VAR2', 'I_CONST'])
+                    for j in range(num_points_VAR2):
 
-            with open(output_path + output_file, 'w', newline='') as csvfile:
-                csv_writer = csv.writer(csvfile)
-                csv_writer.writerow(['Direction', 'Step', 'V_VAR1', 'V_VAR2', 'V_CONST', 'I_VAR1', 'I_VAR2', 'I_CONST'])
+                        #设置VAR端输出参数
+                        voltage_value_VAR2 = voltage_min_VAR2
+                        session_VAR2.voltage_level = voltage_value_VAR2  # 设置VAR2端的电压输出
 
+                        # 创建VAR1控制的会话并设置参数
+                        with nidcpower.Session(resource_name=VAR1) as session_VAR1:
+                            session_VAR1.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
+                            session_VAR1.output_function = nidcpower.OutputFunction.DC_VOLTAGE  # 设置为直流电压输出
+                            session_VAR1.current_limit = current_limit_VAR1  # 设置VAR1端的电流限制
+                            session_VAR1.current_limit = current_limit_VAR1
+                            session_VAR1.current_limit_autorange = True
 
+                            # 设置VAR1.PLC
+                            session_VAR1.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
+                            session_VAR1.aperture_time = VAR1_PLC
 
+                            # 创建CONST控制的会话并设置参数
+                            with nidcpower.Session(resource_name=CONST) as session_CONST:
+                                session_CONST.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
+                                session_CONST.output_function = nidcpower.OutputFunction.DC_VOLTAGE  # 设置为直流电压输出
+                                session_CONST.voltage_level = voltage_CONST  # 设CONST端的电压
+                                session_CONST.current_limit = current_limit_CONST
+                                session_CONST.current_limit_autorange = True
 
-                for j in range(num_points_VAR2):
+                                # 设置CONST.PLC
+                                session_CONST.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
+                                session_CONST.aperture_time = CONST_PLC
 
-                    #设置VAR端输出参数
-                    voltage_value_VAR2 = voltage_min_VAR2
-                    session_VAR2.voltage_level = voltage_value_VAR2  # 设置VAR2端的电压输出
+                                # 计算VAR1步进电压
+                                voltage_step_VAR1 = round((voltage_max_VAR1 - voltage_min_VAR1) / (num_points_VAR1 - 1), 8)
 
-                    # 创建VAR1控制的会话并设置参数
-                    with nidcpower.Session(resource_name=VAR1) as session_VAR1:
-                        session_VAR1.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
-                        session_VAR1.output_function = nidcpower.OutputFunction.DC_VOLTAGE  # 设置为直流电压输出
-                        session_VAR1.current_limit = current_limit_VAR1  # 设置VAR1端的电流限制
-                        session_VAR1.current_limit = current_limit_VAR1
-                        session_VAR1.current_limit_autorange = True
+                                # 启动所有会话
+                                session_VAR1.initiate()
+                                session_CONST.initiate()
 
-                        # 设置VAR1.PLC
-                        session_VAR1.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
-                        session_VAR1.aperture_time = VAR1_PLC
+                                # 打印表头
+                                print('{:<10} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15}'.format('Direction', 'Step', 'V_VAR1',
+                                                                                            'V_VAR2', 'V_CONST', 'I_VAR1', 'I_VAR2', 'I_CONST'))
 
-                        # 创建CONST控制的会话并设置参数
-                        with nidcpower.Session(resource_name=CONST) as session_CONST:
-                            session_CONST.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
-                            session_CONST.output_function = nidcpower.OutputFunction.DC_VOLTAGE  # 设置为直流电压输出
-                            session_CONST.voltage_level = voltage_CONST  # 设CONST端的电压
-                            session_CONST.current_limit = current_limit_CONST
-                            session_CONST.current_limit_autorange = True
+                                # 正向扫描VAR1：逐步设置VAR1电压并测量VAR1、VAR2、CONST的电流
+                                for i in range(num_points_VAR1):
+                                    voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
+                                    session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
+                                    time.sleep(0.001)  # 暂停0.001秒，等待稳定
 
-                            # 设置CONST.PLC
-                            session_CONST.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
-                            session_CONST.aperture_time = CONST_PLC
-
-                            # 计算VAR1步进电压
-                            voltage_step_VAR1 = round((voltage_max_VAR1 - voltage_min_VAR1) / (num_points_VAR1 - 1), 8)
-
-                            # 启动所有会话
-                            session_VAR1.initiate()
-                            session_CONST.initiate()
-
-                            # 打印表头
-                            print('{:<10} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15}'.format('Direction', 'Step', 'V_VAR1',
-                                                                                        'V_VAR2', 'V_CONST', 'I_VAR1', 'I_VAR2', 'I_CONST'))
-
-                            # 正向扫描VAR1：逐步设置VAR1电压并测量VAR1、VAR2、CONST的电流
-                            for i in range(num_points_VAR1):
-                                voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
-                                session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
-                                time.sleep(0.001)  # 暂停0.001秒，等待稳定
-
-                                # 执行测量VAR1电流
-                                current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
+                                    # 执行测量VAR1电流
+                                    current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
 
 
-                                # 执行测量VAR2电流
-                                current_value_VAR2 = session_VAR2.measure(nidcpower.MeasurementTypes.CURRENT)
+                                    # 执行测量VAR2电流
+                                    current_value_VAR2 = session_VAR2.measure(nidcpower.MeasurementTypes.CURRENT)
 
 
-                                # 执行测量CONST电流
-                                current_value_CONST = session_CONST.measure(nidcpower.MeasurementTypes.CURRENT)
+                                    # 执行测量CONST电流
+                                    current_value_CONST = session_CONST.measure(nidcpower.MeasurementTypes.CURRENT)
 
-                                # 写入CSV文件
-                                csv_writer.writerow(['Forward', i + 1, voltage_value_VAR1, voltage_value_VAR2,
-                                                    voltage_CONST, current_value_VAR1, current_value_VAR2,
-                                                    current_value_CONST])
+                                    # 写入CSV文件
+                                    csv_writer.writerow(['Forward', i + 1, voltage_value_VAR1, voltage_value_VAR2,
+                                                        voltage_CONST, current_value_VAR1, current_value_VAR2,
+                                                        current_value_CONST])
 
-                                # 打印步数、VAR1、VAR2、CONST电压和IVAR1、IVAR2、CONST电流值
-                                print('{:<10} {:<15} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f}'.format(
-                                    'Forward', i + 1, voltage_value_VAR1, voltage_value_VAR2, voltage_CONST,
-                                        current_value_VAR1, current_value_VAR2, current_value_CONST))
+                                    # 打印步数、VAR1、VAR2、CONST电压和IVAR1、IVAR2、CONST电流值
+                                    print('{:<10} {:<15} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f}'.format(
+                                        'Forward', i + 1, voltage_value_VAR1, voltage_value_VAR2, voltage_CONST,
+                                            current_value_VAR1, current_value_VAR2, current_value_CONST))
 
-                            # 反向扫描VAR1
-                            for i in range(num_points_VAR1 - 1, -1, -1):
-                                voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
-                                session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
-                                time.sleep(0.001)  # 暂停0.001秒，等待稳定
+                                # 反向扫描VAR1
+                                for i in range(num_points_VAR1 - 1, -1, -1):
+                                    voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
+                                    session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
+                                    time.sleep(0.001)  # 暂停0.001秒，等待稳定
 
-                                # 执行测量VAR1电流
-                                current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
-
-
-                                # 执行测量VAR2电流
-                                current_value_VAR2 = session_VAR2.measure(nidcpower.MeasurementTypes.CURRENT)
+                                    # 执行测量VAR1电流
+                                    current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
 
 
-                                # 执行测量CONST电流
-                                current_value_CONST = session_CONST.measure(nidcpower.MeasurementTypes.CURRENT)
-
-                                # 写入CSV文件
-                                csv_writer.writerow(['Reverse', i + 1, voltage_value_VAR1, voltage_value_VAR2,
-                                                    voltage_CONST, current_value_VAR1, current_value_VAR2,
-                                                    current_value_CONST])
-
-                                # 打印步数、VAR1、VAR2、CONST电压和IVAR1、IVAR2、CONST电流值
-                                print('{:<10} {:<15} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f}'.format('Reverse',
-                                                                                                                i + 1, voltage_value_VAR1,
-                                                                                                                voltage_value_VAR2,
-                                                                                                                voltage_CONST,
-                                                                                                                current_value_VAR1,
-                                                                                                                current_value_VAR2,
-                                                                                                                current_value_CONST))
-        else:
-
-            # 计算VAR2步进电压
-            voltage_step_VAR2 = round((voltage_max_VAR2 - voltage_min_VAR2) / (num_points_VAR2 - 1), 8)
-            session_VAR2.initiate()
-
-            with open(output_path + output_file, 'w', newline='') as csvfile:
-                csv_writer = csv.writer(csvfile)
-                csv_writer.writerow(['Direction', 'Step', 'V_VAR1', 'V_VAR2', 'V_CONST', 'I_VAR1', 'I_VAR2', 'I_CONST'])
-
-                # 正向扫描和反向扫描
-                for j in range(num_points_VAR2):
-                    # 正向扫描VAR2
-                    voltage_value_VAR2 = voltage_min_VAR2 + j * voltage_step_VAR2  # 计算当前步进的VAR2电压值
-                    session_VAR2.voltage_level = voltage_value_VAR2  # 设置VAR2端的电压输出
-
-                    # 创建VAR1控制的会话并设置参数
-                    with nidcpower.Session(resource_name=VAR1) as session_VAR1:
-                        session_VAR1.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
-                        session_VAR1.output_function = nidcpower.OutputFunction.DC_VOLTAGE  # 设置为直流电压输出
-                        session_VAR1.current_limit = current_limit_VAR1  # 设置VAR1端的电流限制
-                        session_VAR1.current_limit = current_limit_VAR1
-                        session_VAR1.current_limit_autorange = True
-
-                        # 设置VAR1.PLC
-                        session_VAR1.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
-                        session_VAR1.aperture_time = VAR1_PLC
-
-                        # 创建CONST控制的会话并设置参数
-                        with nidcpower.Session(resource_name=CONST) as session_CONST:
-                            session_CONST.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
-                            session_CONST.output_function = nidcpower.OutputFunction.DC_VOLTAGE  # 设置为直流电压输出
-                            session_CONST.voltage_level = voltage_CONST  # 设CONST端的电压
-                            session_CONST.current_limit = current_limit_CONST
-                            session_CONST.current_limit_autorange = True
+                                    # 执行测量VAR2电流
+                                    current_value_VAR2 = session_VAR2.measure(nidcpower.MeasurementTypes.CURRENT)
 
 
-                            # 设置CONST.PLC
-                            session_CONST.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
-                            session_CONST.aperture_time = CONST_PLC
+                                    # 执行测量CONST电流
+                                    current_value_CONST = session_CONST.measure(nidcpower.MeasurementTypes.CURRENT)
 
-                            # 计算VAR1步进电压
-                            voltage_step_VAR1 = round((voltage_max_VAR1 - voltage_min_VAR1) / (num_points_VAR1 - 1), 8)
+                                    # 写入CSV文件
+                                    csv_writer.writerow(['Reverse', i + 1, voltage_value_VAR1, voltage_value_VAR2,
+                                                        voltage_CONST, current_value_VAR1, current_value_VAR2,
+                                                        current_value_CONST])
 
-                            # 启动所有会话
-                            session_VAR1.initiate()
-                            session_CONST.initiate()
+                                    # 打印步数、VAR1、VAR2、CONST电压和IVAR1、IVAR2、CONST电流值
+                                    print('{:<10} {:<15} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f}'.format('Reverse',
+                                                                                                                    i + 1, voltage_value_VAR1,
+                                                                                                                    voltage_value_VAR2,
+                                                                                                                    voltage_CONST,
+                                                                                                                    current_value_VAR1,
+                                                                                                                    current_value_VAR2,
+                                                                                                                    current_value_CONST))
+            else:
 
-                            # 打印表头
-                            print('{:<10} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15}'.format('Direction', 'Step', 'V_VAR1', 'V_VAR2', 'V_CONST', 'I_VAR1', 'I_VAR2', 'I_CONST'))
+                # 计算VAR2步进电压
+                voltage_step_VAR2 = round((voltage_max_VAR2 - voltage_min_VAR2) / (num_points_VAR2 - 1), 8)
+                session_VAR2.initiate()
 
-                            # 正向扫描VAR1：逐步设置VAR1电压并测量VAR1、VAR2、CONST的电流
-                            for i in range(num_points_VAR1):
-                                voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
-                                session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
-                                time.sleep(0.001)  # 暂停0.001秒，等待稳定
+                with open(output_path + output_file, 'w', newline='') as csvfile:
+                    csv_writer = csv.writer(csvfile)
+                    csv_writer.writerow(['Direction', 'Step', 'V_VAR1', 'V_VAR2', 'V_CONST', 'I_VAR1', 'I_VAR2', 'I_CONST'])
 
-                                # 执行测量VAR1电流
-                                current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
+                    # 正向扫描和反向扫描
+                    for j in range(num_points_VAR2):
+                        # 正向扫描VAR2
+                        voltage_value_VAR2 = voltage_min_VAR2 + j * voltage_step_VAR2  # 计算当前步进的VAR2电压值
+                        session_VAR2.voltage_level = voltage_value_VAR2  # 设置VAR2端的电压输出
 
-                                # 执行测量VAR2电流
-                                current_value_VAR2 = session_VAR2.measure(nidcpower.MeasurementTypes.CURRENT)
+                        # 创建VAR1控制的会话并设置参数
+                        with nidcpower.Session(resource_name=VAR1) as session_VAR1:
+                            session_VAR1.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
+                            session_VAR1.output_function = nidcpower.OutputFunction.DC_VOLTAGE  # 设置为直流电压输出
+                            session_VAR1.current_limit = current_limit_VAR1  # 设置VAR1端的电流限制
+                            session_VAR1.current_limit = current_limit_VAR1
+                            session_VAR1.current_limit_autorange = True
 
-                                # 执行测量CONST电流
-                                current_value_CONST = session_CONST.measure(nidcpower.MeasurementTypes.CURRENT)
+                            # 设置VAR1.PLC
+                            session_VAR1.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
+                            session_VAR1.aperture_time = VAR1_PLC
 
-                                # 写入CSV文件
-                                csv_writer.writerow(['Forward', i + 1, voltage_value_VAR1, voltage_value_VAR2,
-                                                 voltage_CONST, current_value_VAR1, current_value_VAR2, current_value_CONST])
+                            # 创建CONST控制的会话并设置参数
+                            with nidcpower.Session(resource_name=CONST) as session_CONST:
+                                session_CONST.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
+                                session_CONST.output_function = nidcpower.OutputFunction.DC_VOLTAGE  # 设置为直流电压输出
+                                session_CONST.voltage_level = voltage_CONST  # 设CONST端的电压
+                                session_CONST.current_limit = current_limit_CONST
+                                session_CONST.current_limit_autorange = True
 
 
-                                # 打印步数、VAR1、VAR2、CONST电压和IVAR1、IVAR2、CONST电流值
-                                print('{:<10} {:<15} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f}'.format('Forward', i + 1,
-                                                                                                                voltage_value_VAR1,
-                                                                                                                voltage_value_VAR2,
-                                                                                                                voltage_CONST,
-                                                                                                                current_value_VAR1,
-                                                                                                                current_value_VAR2,
-                                                                                                                current_value_CONST))
+                                # 设置CONST.PLC
+                                session_CONST.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
+                                session_CONST.aperture_time = CONST_PLC
 
-                            # 反向扫描VAR1
-                            for i in range(num_points_VAR1 - 1, -1, -1):
-                                voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
-                                session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
-                                time.sleep(0.001)  # 暂停0.001秒，等待稳定
+                                # 计算VAR1步进电压
+                                voltage_step_VAR1 = round((voltage_max_VAR1 - voltage_min_VAR1) / (num_points_VAR1 - 1), 8)
 
-                                # 执行测量VAR1电流
-                                current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
+                                # 启动所有会话
+                                session_VAR1.initiate()
+                                session_CONST.initiate()
 
-                                # 执行测量VAR2电流
-                                current_value_VAR2 = session_VAR2.measure(nidcpower.MeasurementTypes.CURRENT)
+                                # 打印表头
+                                print('{:<10} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15}'.format('Direction', 'Step', 'V_VAR1', 'V_VAR2', 'V_CONST', 'I_VAR1', 'I_VAR2', 'I_CONST'))
 
-                                # 执行测量CONST电流
-                                current_value_CONST = session_CONST.measure(nidcpower.MeasurementTypes.CURRENT)
+                                # 正向扫描VAR1：逐步设置VAR1电压并测量VAR1、VAR2、CONST的电流
+                                for i in range(num_points_VAR1):
+                                    voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
+                                    session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
+                                    time.sleep(0.001)  # 暂停0.001秒，等待稳定
 
-                                # 写入CSV文件
-                                csv_writer.writerow(['Reverse', i + 1, voltage_value_VAR1, voltage_value_VAR2,
-                                                    voltage_CONST, current_value_VAR1, current_value_VAR2, current_value_CONST])
+                                    # 执行测量VAR1电流
+                                    current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
 
-                                # 打印步数、VAR1、VAR2、CONST电压和IVAR1、IVAR2、CONST电流值
-                                print('{:<10} {:<15} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f}'.format('Reverse', i + 1,
-                                                                                                                voltage_value_VAR1,
-                                                                                                                voltage_value_VAR2,
-                                                                                                                voltage_CONST,
-                                                                                                                current_value_VAR1,
-                                                                                                                current_value_VAR2,
-                                                                                                                current_value_CONST))
+                                    # 执行测量VAR2电流
+                                    current_value_VAR2 = session_VAR2.measure(nidcpower.MeasurementTypes.CURRENT)
 
-        print(f"Data saved to {output_path + output_file }")
+                                    # 执行测量CONST电流
+                                    current_value_CONST = session_CONST.measure(nidcpower.MeasurementTypes.CURRENT)
+
+                                    # 写入CSV文件
+                                    csv_writer.writerow(['Forward', i + 1, voltage_value_VAR1, voltage_value_VAR2,
+                                                     voltage_CONST, current_value_VAR1, current_value_VAR2, current_value_CONST])
+
+
+                                    # 打印步数、VAR1、VAR2、CONST电压和IVAR1、IVAR2、CONST电流值
+                                    print('{:<10} {:<15} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f}'.format('Forward', i + 1,
+                                                                                                                    voltage_value_VAR1,
+                                                                                                                    voltage_value_VAR2,
+                                                                                                                    voltage_CONST,
+                                                                                                                    current_value_VAR1,
+                                                                                                                    current_value_VAR2,
+                                                                                                                    current_value_CONST))
+
+                                # 反向扫描VAR1
+                                for i in range(num_points_VAR1 - 1, -1, -1):
+                                    voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
+                                    session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
+                                    time.sleep(0.001)  # 暂停0.001秒，等待稳定
+
+                                    # 执行测量VAR1电流
+                                    current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
+
+                                    # 执行测量VAR2电流
+                                    current_value_VAR2 = session_VAR2.measure(nidcpower.MeasurementTypes.CURRENT)
+
+                                    # 执行测量CONST电流
+                                    current_value_CONST = session_CONST.measure(nidcpower.MeasurementTypes.CURRENT)
+
+                                    # 写入CSV文件
+                                    csv_writer.writerow(['Reverse', i + 1, voltage_value_VAR1, voltage_value_VAR2,
+                                                        voltage_CONST, current_value_VAR1, current_value_VAR2, current_value_CONST])
+
+                                    # 打印步数、VAR1、VAR2、CONST电压和IVAR1、IVAR2、CONST电流值
+                                    print('{:<10} {:<15} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f}'.format('Reverse', i + 1,
+                                                                                                                    voltage_value_VAR1,
+                                                                                                                    voltage_value_VAR2,
+                                                                                                                    voltage_CONST,
+                                                                                                                    current_value_VAR1,
+                                                                                                                    current_value_VAR2,
+                                                                                                                    current_value_CONST))
+            print(f"Data saved to {output_path + output_file }")
+    else:
+        with open(output_path + output_file, 'w', newline='') as csvfile:
+            csv_writer = csv.writer(csvfile)
+            csv_writer.writerow(['Direction', 'Step', 'V_VAR1', 'I_VAR1'])
+            with nidcpower.Session(resource_name=VAR1) as session_VAR1:
+                session_VAR1.source_mode = nidcpower.SourceMode.SINGLE_POINT
+                session_VAR1.output_function = nidcpower.OutputFunction.DC_VOLTAGE
+                session_VAR1.current_limit = current_limit_VAR1
+                session_VAR1.current_limit_autorange = True
+                # 设置VAR1.PLC
+                session_VAR1.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
+                session_VAR1.aperture_time = VAR1_PLC
+                # 计算VAR1步进电压
+                voltage_step_VAR1 = round((voltage_max_VAR1 - voltage_min_VAR1) / (num_points_VAR1 - 1), 8)
+                # 打印表头
+                print('{:<10} {:<15} {:<15} {:<15} '.format('Direction', 'Step', 'V_VAR1', 'I_VAR1'))
+
+                # 扫描VAR1：逐步设置VAR1电压并测量VAR1的电流
+                for i in range(num_points_VAR1):
+                    voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
+                    session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
+                    time.sleep(0.001)  # 暂停0.001秒，等待稳定
+
+                    # 执行测量VAR1电流
+                    current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
+                    # 写入CSV文件
+                    csv_writer.writerow(['Forward', i + 1, voltage_value_VAR1, current_value_VAR1])
+
+                    # 打印步数、VAR1、VAR2、CONST电压和IVAR1、IVAR2、CONST电流值
+                    print('{:<10} {:<15} {:<15.15f} {:<15.15f}'.format('Forward', i + 1,
+                                                                       voltage_value_VAR1, current_value_VAR1, ))
+
+                    # 反向扫描VAR1
+                    for i in range(num_points_VAR1 - 1, -1, -1):
+                        voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
+                        session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
+                        time.sleep(0.001)  # 暂停0.001秒，等待稳定
+
+                        # 执行测量VAR1电流
+                        current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
+
+                        # 写入CSV文件
+                        csv_writer.writerow(['Reverse', i + 1, voltage_value_VAR1, current_value_VAR1])
+
+                        # 打印步数
+                        print('{:<10} {:<15} {:<15.15f} {:<15.15f}'.format('Reverse', i + 1, voltage_value_VAR1,
+                            current_value_VAR1,))
+
 
 def choose_sweep_mode(sweep_mode, VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltage_max_VAR1,
                       num_points_VAR2, voltage_min_VAR2, voltage_max_VAR2, voltage_CONST, current_limit_VAR1, current_limit_VAR2, current_limit_CONST,
-                      VAR1_PLC, VAR2_PLC, CONST_PLC, SMU_COMMON):
+                      VAR1_PLC, VAR2_PLC, CONST_PLC, smu_common_list):
     if sweep_mode == 'single':
-        smu_common_mode(SMU_COMMON)
+        smu_common_mode(smu_common_list)
         IV_Sweep_Single(VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltage_max_VAR1,
                                  num_points_VAR2, voltage_min_VAR2, voltage_max_VAR2, voltage_CONST, current_limit_VAR1, current_limit_VAR2,
                                  current_limit_CONST,
                                  VAR1_PLC, VAR2_PLC, CONST_PLC)
 
     elif sweep_mode == 'double':
-        smu_common_mode(SMU_COMMON)
+        smu_common_mode(smu_common_list)
         IV_Sweep_Double(VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltage_max_VAR1,
                                  num_points_VAR2, voltage_min_VAR2, voltage_max_VAR2, voltage_CONST, current_limit_VAR1, current_limit_VAR2,
                                  current_limit_CONST,
