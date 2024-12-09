@@ -63,7 +63,7 @@ def IV_Sweep_Single(VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltag
 
                 with open(output_path + output_file, 'w', newline='') as csvfile:
                     csv_writer = csv.writer(csvfile)
-                    csv_writer.writerow(['Step', 'V_VAR1', 'V_VAR2', 'V_CONST', 'I_VAR1', 'I_VAR2', 'I_CONST'])
+                    csv_writer.writerow(['Direction', 'Step', 'V_VAR1', 'V_VAR2', 'V_CONST', 'I_VAR1', 'I_VAR2', 'I_CONST'])
 
                     for j in range(num_points_VAR2):
                         voltage_value_VAR2 = voltage_min_VAR2
@@ -99,9 +99,14 @@ def IV_Sweep_Single(VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltag
                                 session_CONST.initiate()
 
                                 # 打印表头
-                                print('{:<10} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15}'.format('Step', 'V_VAR1', 'V_VAR2',
-                                                                                               'V_CONST', 'I_VAR1',
-                                                                                               'I_VAR2', 'I_CONST'))
+                                print('{:<10} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15}'.format('Direction',
+                                                                                                       'Step',
+                                                                                                       'V_VAR1',
+                                                                                                       'V_VAR2',
+                                                                                                       'V_CONST',
+                                                                                                       'I_VAR1',
+                                                                                                       'I_VAR2',
+                                                                                                       'I_CONST'))
 
                                 # 逐步设置VAR1电压并测量VAR1、VAR2、CONST的电流
                                 for i in range(num_points_VAR1):
@@ -122,16 +127,14 @@ def IV_Sweep_Single(VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltag
                                     csv_writer.writerow([i + 1, voltage_value_VAR1, voltage_value_VAR2, voltage_CONST,
                                                          current_value_VAR1, current_value_VAR2, current_value_CONST])
 
-                                    # 打印步数、VAR1、VAR2、CONST电压和IVAR1、IVAR2、CONST电流值
-                                    print('{:<10} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f}'.format(
-                                        i + 1,
-                                        voltage_value_VAR1,
-                                        voltage_value_VAR2,
-                                        voltage_CONST,
-                                        current_value_VAR1,
-                                        current_value_VAR2,
-                                        current_value_CONST))
-
+                                    print('{:<10} {:<15} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f}'.format(
+                                            'Forward', i + 1,
+                                            voltage_value_VAR1,
+                                            voltage_value_VAR2,
+                                            voltage_CONST,
+                                            current_value_VAR1,
+                                            current_value_VAR2,
+                                            current_value_CONST))
             else:
                 # 计算VAR2步进电压
                 voltage_step_VAR2 = round((voltage_max_VAR2 - voltage_min_VAR2) / (num_points_VAR2 - 1), 8)

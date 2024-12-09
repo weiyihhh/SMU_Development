@@ -22,7 +22,8 @@ def main():
     NiDcpower_SelfTest.SelfTest(device_name, max_retries, retry_count, reset_num, selftest_num, selfcal_num)
     VAR1 = smu0
     VAR2 = None
-    CONST = None
+    CONST1 = None
+    CONST2 = None
     smu_common_list = [smu1, smu2, smu3]
 
     voltage_min_VAR1 = -1
@@ -37,22 +38,23 @@ def main():
     current_limit_VAR2 = 0.1  # 单位为A
 
 
-    voltage_CONST = 0
-    current_limit_CONST = 0.1 # 单位为A
-
+    voltage_CONST1 = 0
+    voltage_CONST2 = 0
+    current_limit_CONST1 = 0.1 # 单位为A
+    current_limit_CONST2 = 0.1
 
     VAR1_PLC = 1
     VAR2_PLC = 1
-    CONST_PLC = 1
-
+    CONST1_PLC = 1
+    CONST2_PLC = 1
     sweep_mode = 'double' #设置扫描模式
     while retry_count < max_retries:
         try:
-            IV_Sweep_Auto.choose_sweep_mode(sweep_mode, VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1,
+            IV_Sweep_Auto.choose_sweep_mode(sweep_mode, VAR1, VAR2, CONST1, CONST2, num_points_VAR1, voltage_min_VAR1,
                                             voltage_max_VAR1,
-                                            num_points_VAR2, voltage_min_VAR2, voltage_max_VAR2, voltage_CONST,
+                                            num_points_VAR2, voltage_min_VAR2, voltage_max_VAR2, voltage_CONST1,voltage_CONST2,
                                             current_limit_VAR1,
-                                            current_limit_VAR2, current_limit_CONST, VAR1_PLC, VAR2_PLC, CONST_PLC, smu_common_list, file_name, file_path)
+                                            current_limit_VAR2, current_limit_CONST1, current_limit_CONST2, VAR1_PLC, VAR2_PLC, CONST1_PLC, CONST2_PLC, smu_common_list, file_name, file_path)
             break
         except nidcpower.Error as e:
             print(f"Error happening: {e}")
