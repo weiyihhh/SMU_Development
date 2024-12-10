@@ -1,4 +1,5 @@
 """
+
  需要设定Unit、V Name、I Name、Mode（I、V、common）、Function（VAR1、VAR2、CONST）
  4140有四个smu模块
  新增Double模式
@@ -683,7 +684,7 @@ def IV_Sweep_Single(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
 
                         # 启动所有会话
                         session_VAR1.initiate()
-                        #session_CONST1.initiate()
+                        session_CONST1.initiate()
 
                         # 扫描VAR1：逐步设置VAR1电压并测量VAR1的电流
                         for i in range(num_points_VAR1):
@@ -1239,7 +1240,7 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                             voltage_CONST1, current_value_VAR1, current_value_VAR2,
                                             current_value_CONST1))
                         else:  # 这时候没有用到CONST
-                            csv_writer.writerow(['Direction', 'Step', 'V_VAR1', 'I_VAR1'])
+                            csv_writer.writerow(['Direction', 'Step', 'V_VAR1', 'V_VAR2', 'I_VAR1', 'I_VAR2'])
                             with nidcpower.Session(resource_name=VAR1) as session_VAR1:
                                 session_VAR1.source_mode = nidcpower.SourceMode.SINGLE_POINT
                                 session_VAR1.output_function = nidcpower.OutputFunction.DC_VOLTAGE
@@ -1254,7 +1255,7 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                     (voltage_max_VAR1 - voltage_min_VAR1) / (num_points_VAR1 - 1), 8)
                                 # 打印表头
                                 print(
-                                    '{:<10} {:<15} {:<15} {:<15} '.format('Direction', 'Step', 'V_VAR1', 'I_VAR1'))
+                                    '{:<10} {:<15} {:<15} {:<15} {:<15} {:<15}'.format('Direction', 'Step', 'V_VAR1', 'V_VAR2', 'I_VAR1', 'I_VAR2'))
 
                                 # 正向扫描VAR1：逐步设置VAR1电压并测量VAR1的电流
                                 for i in range(num_points_VAR1):
@@ -1264,13 +1265,15 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
 
                                     # 执行测量VAR1电流
                                     current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
+                                    # 执行测量VAR2电流
+                                    current_value_VAR2 = session_VAR2.measure(nidcpower.MeasurementTypes.CURRENT)
                                     # 写入CSV文件
                                     csv_writer.writerow(['Forward', i + 1, voltage_value_VAR1, current_value_VAR1])
 
-                                    # 打印步数、VAR1、VAR2、CONST电压和IVAR1、IVAR2、CONST电流值
-                                    print('{:<10} {:<15} {:<15.15f} {:<15.15f}'.format('Forward', i + 1,
-                                                                                       voltage_value_VAR1,
-                                                                                       current_value_VAR1, ))
+                                    # 打印步数、VAR1、VAR2电压和IVAR1、IVAR2电流值
+                                    print('{:<10} {:<15} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f}'.format('Forward', i + 1,
+                                                                                       voltage_value_VAR1, voltage_value_VAR2,
+                                                                                       current_value_VAR1, current_value_VAR2))
 
                                 # 反向扫描VAR1
                                 for i in range(num_points_VAR1 - 1, -1, -1):
@@ -1280,14 +1283,16 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
 
                                     # 执行测量VAR1电流
                                     current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
+                                    # 执行测量VAR2电流
+                                    current_value_VAR2 = session_VAR2.measure(nidcpower.MeasurementTypes.CURRENT)
 
                                     # 写入CSV文件
                                     csv_writer.writerow(['Reverse', i + 1, voltage_value_VAR1, current_value_VAR1])
 
                                     # 打印步数
-                                    print('{:<10} {:<15} {:<15.15f} {:<15.15f}'.format('Reverse', i + 1,
-                                                                                       voltage_value_VAR1,
-                                                                                       current_value_VAR1, ))
+                                    print('{:<10} {:<15} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f}'.format('Reverse', i + 1,
+                                                                                       voltage_value_VAR1, voltage_value_VAR2,
+                                                                                       current_value_VAR1, current_value_VAR2 ))
             print(f"Data saved to {output_path + output_file }")
     else:#说明使用VAR1，但是不使用VAR2
         with open(output_path + output_file, 'w', newline='') as csvfile:
@@ -1306,7 +1311,7 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                             # 设置VAR1.PLC
                             session_VAR1.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
                             session_VAR1.aperture_time = VAR1_PLC
-                            session_VAR1.initiate()
+
                             # 创建CONST1控制的会话并设置参数
                             with nidcpower.Session(resource_name=CONST1) as session_CONST1:
                                 session_CONST1.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
@@ -1430,7 +1435,7 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                             # 设置VAR1.PLC
                             session_VAR1.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
                             session_VAR1.aperture_time = VAR1_PLC
-                            session_VAR1.initiate()
+
                             # 创建CONST1控制的会话并设置参数
                             with nidcpower.Session(resource_name=CONST1) as session_CONST1:
                                 session_CONST1.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
@@ -1535,7 +1540,7 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                         # 设置VAR1.PLC
                         session_VAR1.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
                         session_VAR1.aperture_time = VAR1_PLC
-                        session_VAR1.initiate()
+
                         # 创建CONST1控制的会话并设置参数
                         with nidcpower.Session(resource_name=CONST1) as session_CONST1:
                             session_CONST1.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
