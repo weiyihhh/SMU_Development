@@ -3,10 +3,10 @@ import NiDcpower_SelfTest
 import nidcpower
 
 """smu模块选择"""
-smu0 = 'PXI1Slot5/0'
-smu1 = 'PXI1Slot5/1'
-smu2 = 'PXI1Slot5/2'
-smu3 = 'PXI1Slot5/3'
+smu1 = 'PXI1Slot5/0'
+smu2 = 'PXI1Slot5/1'
+smu3 = 'PXI1Slot5/2'
+smu4 = 'PXI1Slot5/3'
 
 
 #设置common端的smu通道：

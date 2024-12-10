@@ -29,9 +29,9 @@ def smu_common_mode(smu_common_list):
                 session.output_function = nidcpower.OutputFunction.DC_VOLTAGE
                 session.current_limit_autorange = True
                 session.voltage_level = 0
-                print(f"Successfully configured SMU-COMMON: {smu_resource}")
+                print(f"Successfully configured SMU-COMMON: {smu_resource}\n\n\n")
         except Exception as e:
-            print(f"Failed to configure SMU-COMMON: {smu_resource}. Error: {e}")
+            print(f"Failed to configure SMU-COMMON: {smu_resource}. Error: {e}\n\n\n")
 
 def smu_selection_test(**params):
     VAR1 = params.get('VAR1')
