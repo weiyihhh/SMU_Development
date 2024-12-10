@@ -10,14 +10,14 @@ smu3 = 'PXI1Slot5/3'
 
 
 #设置common端的smu通道：
-smu_common_list = [ smu2, smu3]
+smu_common_list = []
 # 创建参数字典
 params = {
-    'VAR1': smu0,
-    'VAR2': None,
-    'CONST1': smu1,
-    'CONST2': None,
-
+    'VAR1': None,
+    'VAR2':smu1,
+    'CONST1': smu2,
+    'CONST2': smu3,
+    'CONST3': None,
     'num_points_VAR1': 101,
     'voltage_min_VAR1': -1,
     'voltage_max_VAR1': 4,
@@ -37,6 +37,10 @@ params = {
     'voltage_CONST2': 0,
     'current_limit_CONST2': 0.1,
     'CONST2_PLC': 1,
+
+    'voltage_CONST3': 0,
+    'current_limit_CONST3': 0.1,
+    'CONST3_PLC': 1,
 
     'file_name': '1',
     'file_path': 'C:/Users/Administrator/Desktop/Yi.Wei_Data/',
