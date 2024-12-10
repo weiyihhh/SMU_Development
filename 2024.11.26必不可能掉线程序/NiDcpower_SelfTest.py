@@ -76,7 +76,7 @@ def SelfTest(device_name, max_retries, retry_count, reset_num, selftest_num, sel
     # 注意：如果while循环因为达到最大重复次数而退出，则下面的代码将执行
     # 但如果因为for循环成功完成而没有异常而退出，则下面的代码也将执行
     print("SelfCal process completed (either successfully or after retries).")
-    print("\n\n____________________Successfully prepared for testing!____________________")
+    print("\n\n\n____________________Successfully prepared for testing!____________________\n\n\n")
 
     #结束会话
     nidcpower.Session(resource_name=device_name).abort()

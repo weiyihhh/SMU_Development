@@ -13,9 +13,9 @@ smu3 = 'PXI1Slot5/3'
 smu_common_list = []
 # 创建参数字典
 params = {
-    'VAR1': None,
-    'VAR2':smu1,
-    'CONST1': smu2,
+    'VAR1': smu1,
+    'VAR2':smu0,
+    'CONST1': smu2, #CONST1的优先级是最高的，使用CONST的话，第一个开始使用CONST1，用两个的话，用CONST1和CONST2，三个才是CONST1、CONST2、CONST3
     'CONST2': smu3,
     'CONST3': None,
     'num_points_VAR1': 101,
@@ -45,7 +45,7 @@ params = {
     'file_name': '1',
     'file_path': 'C:/Users/Administrator/Desktop/Yi.Wei_Data/',
 
-    'sweep_mode': 'single',
+    'sweep_mode': 'double',
 }
 
 def main():

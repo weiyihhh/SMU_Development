@@ -8,6 +8,7 @@
 import nidcpower
 import time
 import csv
+import sys
 import test_IV_Sweep_Auto
 
 
@@ -30,6 +31,14 @@ def smu_common_mode(smu_common_list):
                 print(f"Successfully configured SMU-COMMON: {smu_resource}")
         except Exception as e:
             print(f"Failed to configure SMU-COMMON: {smu_resource}. Error: {e}")
+
+def smu_selection_test(**params):
+    VAR1 = params.get('VAR1')
+    if VAR1 is None :
+        print("Error:Output function (VAR1) must be assigned to any unit.....")
+        sys.exit()
+    else:
+        return True
 
 def IV_Sweep_Single(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage_min_VAR1, voltage_max_VAR1,
              num_points_VAR2, voltage_min_VAR2, voltage_max_VAR2, voltage_CONST1, voltage_CONST2, voltage_CONST3, current_limit_VAR1,current_limit_VAR2, current_limit_CONST1, current_limit_CONST2, current_limit_CONST3,
@@ -828,8 +837,7 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                                 current_value_CONST1 = session_CONST1.measure(nidcpower.MeasurementTypes.CURRENT)
 
                                                 # 执行测量CONST2电流
-                                                current_value_CONST2 = session_CONST2.measure(
-                                                    nidcpower.MeasurementTypes.CURRENT)
+                                                current_value_CONST2 = session_CONST2.measure(nidcpower.MeasurementTypes.CURRENT)
 
                                                 # 写入CSV文件
                                                 csv_writer.writerow(['Forward', i + 1, voltage_value_VAR1, voltage_value_VAR2,
@@ -866,7 +874,7 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                                                     current_value_CONST1, current_value_CONST2])
 
                                                 # 打印步数、VAR1、VAR2、CONST电压和IVAR1、IVAR2、CONST电流值
-                                                print('{:<10} {:<15} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f}'.format('Reverse', i + 1,
+                                                print('{:<10} {:<15} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f}'.format('Reverse', i + 1,
                                                                     voltage_value_VAR1, voltage_value_VAR2,
                                                                     voltage_CONST1, voltage_CONST2, current_value_VAR1, current_value_VAR2,
                                                                     current_value_CONST1, current_value_CONST2))
@@ -1071,7 +1079,7 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                             session_CONST1.initiate()
                                             session_CONST2.initiate()
                                             # 打印表头
-                                            print('{:<10} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15}'.format(
+                                            print('{:<10} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15} {:<15}'.format(
                                                 'Direction', 'Step',
                                                 'V_VAR1', 'V_VAR2', 'V_CONST1', 'V_CONST2', 'I_VAR1', 'I_VAR2', 'I_CONST1',
                                                 'I_CONST2'))
@@ -1134,7 +1142,7 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
 
                                                 # 打印步数、VAR1、VAR2、CONST电压和IVAR1、IVAR2、CONST电流值
                                                 print(
-                                                    '{:<10} {:<15} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f}'.format(
+                                                    '{:<10} {:<15} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f}'.format(
                                                         'Reverse', i + 1,
                                                         voltage_value_VAR1, voltage_value_VAR2,
                                                         voltage_CONST1, voltage_CONST2, current_value_VAR1, current_value_VAR2,
@@ -1678,6 +1686,7 @@ def choose_sweep_mode(**params):
 
 
     if sweep_mode == 'single':
+        smu_selection_test(**params)
         smu_common_list = test_IV_Sweep_Auto.smu_common_list
         smu_common_mode(smu_common_list)
         IV_Sweep_Single(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage_min_VAR1, voltage_max_VAR1,
@@ -1685,6 +1694,7 @@ def choose_sweep_mode(**params):
                         VAR1_PLC, VAR2_PLC, CONST1_PLC, CONST2_PLC, CONST3_PLC, file_name,file_path )
 
     elif sweep_mode == 'double':
+        smu_selection_test(**params)
         smu_common_list = test_IV_Sweep_Auto.smu_common_list
         smu_common_mode(smu_common_list)
         IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage_min_VAR1, voltage_max_VAR1,
