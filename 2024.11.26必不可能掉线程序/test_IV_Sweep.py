@@ -10,14 +10,14 @@ smu4 = 'PXI1Slot5/3'
 
 
 #设置common端的smu通道：
-smu_common_list = [smu1]
+smu_common_list = []
 # 创建参数字典
 params = {
-    'VAR1': smu4,
+    'VAR1': smu1,
     'VAR2':None,
     'CONST1': smu2, #CONST1的优先级是最高的，使用CONST的话，第一个开始使用CONST1，用两个的话，用CONST1和CONST2，三个才是CONST1、CONST2、CONST3
     'CONST2': smu3,
-    'CONST3': None,
+    'CONST3': smu4,
     'num_points_VAR1': 101,
     'voltage_min_VAR1': -1,
     'voltage_max_VAR1': 4,
