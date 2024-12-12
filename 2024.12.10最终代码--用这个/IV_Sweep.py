@@ -10,7 +10,7 @@ import nidcpower
 import time
 import csv
 import sys
-import test_IV_Sweep
+
 
 
 
@@ -2094,11 +2094,10 @@ def choose_sweep_mode(**params):
     file_name = params.get('file_name')
     file_path = params.get('file_path')
     sweep_mode = params.get('sweep_mode')
-
+    smu_common_list = params.get('smu_common')
 
     if sweep_mode == 'single':
         smu_selection_test(**params)
-        smu_common_list = test_IV_Sweep.smu_common_list
         smu_common_mode(smu_common_list)
         IV_Sweep_Single(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage_min_VAR1, voltage_max_VAR1, current_limit_range_VAR1,current_limit_range_CONST1,
                     current_limit_range_CONST2, current_limit_range_CONST3, num_points_VAR2, voltage_min_VAR2, voltage_max_VAR2, voltage_CONST1, voltage_CONST2,
@@ -2107,7 +2106,6 @@ def choose_sweep_mode(**params):
 
     elif sweep_mode == 'double':
         smu_selection_test(**params)
-        smu_common_list = test_IV_Sweep.smu_common_list
         smu_common_mode(smu_common_list)
         IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage_min_VAR1, voltage_max_VAR1, current_limit_range_VAR1,current_limit_range_CONST1,
                     current_limit_range_CONST2, current_limit_range_CONST3, num_points_VAR2, voltage_min_VAR2, voltage_max_VAR2, voltage_CONST1, voltage_CONST2,

@@ -1,4 +1,4 @@
-import IV_Sweep
+
 import NiDcpower_SelfTest
 import nidcpower
 
@@ -9,8 +9,7 @@ smu3 = 'PXI1Slot5/2'
 smu4 = 'PXI1Slot5/3'
 
 
-#设置common端的smu通道：
-smu_common_list = [smu1]
+
 # 创建参数字典
 params = {
     'VAR1': smu4,
@@ -47,6 +46,8 @@ params = {
     'current_limit_range_CONST3': 0.1,
     'CONST3_PLC': 1,
 
+    #设置common端的smu通道：
+    'smu_common': [smu1, smu2],
     'file_name': '1',
     'file_path': 'C:/Users/Administrator/Desktop/Yi.Wei_Data/',
 
@@ -67,7 +68,8 @@ def begin():
     retry_count = 0
     while retry_count < max_retries:
         try:
-            IV_Sweep.choose_sweep_mode(**params)
+            from IV_Sweep import choose_sweep_mode
+            choose_sweep_mode(**params)
             break
         except nidcpower.Error as e:
             print(f"Error happening: {e}")
