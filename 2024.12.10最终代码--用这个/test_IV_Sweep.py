@@ -15,8 +15,8 @@ smu_common_list = [smu1]
 params = {
     'VAR1': smu4,
     'VAR2':None,
-    'CONST1': smu2, #CONST1的优先级是最高的，使用CONST的话，第一个开始使用CONST1，用两个的话，用CONST1和CONST2，三个才是CONST1、CONST2、CONST3
-    'CONST2': smu3,
+    'CONST1': None, #CONST1的优先级是最高的，使用CONST的话，第一个开始使用CONST1，用两个的话，用CONST1和CONST2，三个才是CONST1、CONST2、CONST3
+    'CONST2': None,
     'CONST3': None,
     'num_points_VAR1': 101,
     'voltage_min_VAR1': -1,
@@ -53,7 +53,7 @@ params = {
     'sweep_mode': 'double',
 }
 
-def main():
+def begin():
     # 自检测部分参数设置
     device_name = "PXI1Slot5"
     max_retries = 300  # 最大重复次数
@@ -80,5 +80,4 @@ def main():
 
 
 
-if __name__ == '__main__':
-    main()
+begin()

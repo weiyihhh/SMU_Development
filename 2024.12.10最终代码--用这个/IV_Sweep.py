@@ -121,16 +121,31 @@ def IV_Sweep_Single(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                                 session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                                 time.sleep(0.001)  # 暂停0.001秒，等待稳定
 
+                                                direction = "Forward"
+                                                step = i+1
                                                 # 执行测量VAR1电流
                                                 current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
-
                                                 # 执行测量VAR2电流
                                                 current_value_VAR2 = session_VAR2.measure(nidcpower.MeasurementTypes.CURRENT)
-
                                                 # 执行测量CONST1电流
                                                 current_value_CONST1 = session_CONST1.measure(nidcpower.MeasurementTypes.CURRENT)
                                                 # 执行测量CONST2电流
                                                 current_value_CONST2 = session_CONST2.measure(nidcpower.MeasurementTypes.CURRENT)
+
+                                                #每一步的测量数据存入 measurement_data 字典
+                                                measurement_data = create_measurement(
+                                                    direction = direction,
+                                                    step = step,
+                                                    voltage_value_VAR1 = voltage_value_VAR1,
+                                                    voltage_value_VAR2 = voltage_value_VAR2,
+                                                    current_value_VAR1 = current_value_VAR1,
+                                                    current_value_VAR2 = current_value_VAR2,
+                                                    voltage_CONST1 = voltage_CONST1,
+                                                    voltage_CONST2 = voltage_CONST2,
+                                                    current_value_CONST1 = current_value_CONST1,
+                                                    current_value_CONST2 = current_value_CONST2,
+                                                    )
+                                                send_measurement(measurement_data)
                                                 # 写入CSV文件
                                                 csv_writer.writerow([i + 1, voltage_value_VAR1, voltage_value_VAR2, voltage_CONST1, voltage_CONST2,
                                                                     current_value_VAR1, current_value_VAR2, current_value_CONST1, current_value_CONST2])
@@ -191,6 +206,8 @@ def IV_Sweep_Single(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
 
                                         # 逐步设置VAR1电压并测量VAR1、VAR2、CONST的电流
                                         for i in range(num_points_VAR1):
+                                            direction = "Forward"
+                                            step = i + 1
                                             voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                             session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                             time.sleep(0.001)  # 暂停0.001秒，等待稳定
@@ -203,10 +220,22 @@ def IV_Sweep_Single(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                             current_value_VAR2 = session_VAR2.measure(
                                                 nidcpower.MeasurementTypes.CURRENT)
 
-                                            # 执行测量CONST电流
+                                            # 执行测量CONST1电流
                                             current_value_CONST1 = session_CONST1.measure(
                                                 nidcpower.MeasurementTypes.CURRENT)
 
+                                            # 每一步的测量数据存入 measurement_data 字典
+                                            measurement_data = create_measurement(
+                                                direction=direction,
+                                                step=step,
+                                                voltage_value_VAR1=voltage_value_VAR1,
+                                                voltage_value_VAR2=voltage_value_VAR2,
+                                                current_value_VAR1=current_value_VAR1,
+                                                current_value_VAR2=current_value_VAR2,
+                                                voltage_CONST1=voltage_CONST1,
+                                                current_value_CONST1=current_value_CONST1,
+                                            )
+                                            send_measurement(measurement_data)
                                             # 写入CSV文件
                                             csv_writer.writerow(
                                                 [i + 1, voltage_value_VAR1, voltage_value_VAR2, voltage_CONST1,
@@ -243,6 +272,8 @@ def IV_Sweep_Single(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                 print('{:<10} {:<15} {:<15} {:<15} {:<15} '.format('Step', 'V_VAR1', 'V_VAR2','I_VAR1', 'I_VAR2'))
                                 # 逐步设置VAR1电压并测量VAR1、VAR2、CONST的电流
                                 for i in range(num_points_VAR1):
+                                    direction = "Forward"
+                                    step = i + 1
                                     voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                     session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                     time.sleep(0.001)  # 暂停0.001秒，等待稳定
@@ -252,6 +283,17 @@ def IV_Sweep_Single(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
 
                                     # 执行测量VAR2电流
                                     current_value_VAR2 = session_VAR2.measure(nidcpower.MeasurementTypes.CURRENT)
+
+                                    # 每一步的测量数据存入 measurement_data 字典
+                                    measurement_data = create_measurement(
+                                        direction=direction,
+                                        step=step,
+                                        voltage_value_VAR1=voltage_value_VAR1,
+                                        voltage_value_VAR2=voltage_value_VAR2,
+                                        current_value_VAR1=current_value_VAR1,
+                                        current_value_VAR2=current_value_VAR2,
+                                    )
+                                    send_measurement(measurement_data)
                                     # 写入CSV文件
                                     csv_writer.writerow(
                                         [i + 1, voltage_value_VAR1, voltage_value_VAR2,
@@ -333,6 +375,8 @@ def IV_Sweep_Single(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                                                                                                         'I_CONST2'))
                                             # 逐步设置VAR1电压并测量VAR1、VAR2、CONST的电流
                                             for i in range(num_points_VAR1):
+                                                direction = "Forward"
+                                                step = i + 1
                                                 voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                                 session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                                 time.sleep(0.001)  # 暂停0.001秒，等待稳定
@@ -349,6 +393,21 @@ def IV_Sweep_Single(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                                 # 执行测量CONST2电流
                                                 current_value_CONST2 = session_CONST2.measure(
                                                     nidcpower.MeasurementTypes.CURRENT)
+
+                                                # 每一步的测量数据存入 measurement_data 字典
+                                                measurement_data = create_measurement(
+                                                    direction=direction,
+                                                    step=step,
+                                                    voltage_value_VAR1=voltage_value_VAR1,
+                                                    voltage_value_VAR2=voltage_value_VAR2,
+                                                    current_value_VAR1=current_value_VAR1,
+                                                    current_value_VAR2=current_value_VAR2,
+                                                    voltage_CONST1=voltage_CONST1,
+                                                    voltage_CONST2=voltage_CONST2,
+                                                    current_value_CONST1=current_value_CONST1,
+                                                    current_value_CONST2=current_value_CONST2,
+                                                )
+                                                send_measurement(measurement_data)
                                                 # 写入CSV文件
                                                 csv_writer.writerow(
                                                     [i + 1, voltage_value_VAR1, voltage_value_VAR2, voltage_CONST1,
@@ -411,8 +470,10 @@ def IV_Sweep_Single(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                                                                                       'I_VAR2',
                                                                                                       'I_CONST1'))
 
-                                        # 逐步设置VAR1电压并测量VAR1、VAR2、CONST的电流
+                                        # 逐步设置VAR1电压并测量VAR1、VAR2、CONST1的电流
                                         for i in range(num_points_VAR1):
+                                            direction = "Forward"
+                                            step = i + 1
                                             voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                             session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                             time.sleep(0.001)  # 暂停0.001秒，等待稳定
@@ -429,6 +490,17 @@ def IV_Sweep_Single(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                             current_value_CONST1 = session_CONST1.measure(
                                                 nidcpower.MeasurementTypes.CURRENT)
 
+                                            measurement_data = create_measurement(
+                                                direction=direction,
+                                                step=step,
+                                                voltage_value_VAR1=voltage_value_VAR1,
+                                                voltage_value_VAR2=voltage_value_VAR2,
+                                                current_value_VAR1=current_value_VAR1,
+                                                current_value_VAR2=current_value_VAR2,
+                                                voltage_CONST1=voltage_CONST1,
+                                                current_value_CONST1=current_value_CONST1,
+                                            )
+                                            send_measurement(measurement_data)
                                             # 写入CSV文件
                                             csv_writer.writerow(
                                                 [i + 1, voltage_value_VAR1, voltage_value_VAR2, voltage_CONST1,
@@ -466,6 +538,8 @@ def IV_Sweep_Single(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                                                                    'I_VAR2'))
                                 # 逐步设置VAR1电压并测量VAR1、VAR2、CONST的电流
                                 for i in range(num_points_VAR1):
+                                    direction = "Forward"
+                                    step = i + 1
                                     voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                     session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                     time.sleep(0.001)  # 暂停0.001秒，等待稳定
@@ -475,6 +549,16 @@ def IV_Sweep_Single(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
 
                                     # 执行测量VAR2电流
                                     current_value_VAR2 = session_VAR2.measure(nidcpower.MeasurementTypes.CURRENT)
+
+                                    measurement_data = create_measurement(
+                                        direction=direction,
+                                        step=step,
+                                        voltage_value_VAR1=voltage_value_VAR1,
+                                        voltage_value_VAR2=voltage_value_VAR2,
+                                        current_value_VAR1=current_value_VAR1,
+                                        current_value_VAR2=current_value_VAR2,
+                                    )
+                                    send_measurement(measurement_data)
                                     # 写入CSV文件
                                     csv_writer.writerow(
                                         [i + 1, voltage_value_VAR1, voltage_value_VAR2,
@@ -559,6 +643,8 @@ def IV_Sweep_Single(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
 
                                             # 扫描VAR1：逐步设置VAR1电压并测量VAR1的电流
                                         for i in range(num_points_VAR1):
+                                            direction = "Forward"
+                                            step = i + 1
                                             voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                             session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                             time.sleep(0.001)  # 暂停0.001秒，等待稳定
@@ -572,6 +658,19 @@ def IV_Sweep_Single(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                             # 执行测量CONST3电流
                                             current_value_CONST3 = session_CONST3.measure(nidcpower.MeasurementTypes.CURRENT)
 
+                                            measurement_data = create_measurement(
+                                                direction = direction,
+                                                step = step,
+                                                voltage_value_VAR1 = voltage_value_VAR1,
+                                                current_value_VAR1 = current_value_VAR1,
+                                                voltage_CONST1 = voltage_CONST1,
+                                                current_value_CONST1=current_value_CONST1,
+                                                voltage_CONST2 =voltage_CONST2,
+                                                current_value_CONST2 = current_value_CONST2,
+                                                voltage_CONST3 = voltage_CONST3,
+                                                current_value_CONST3 = current_value_CONST3,
+                                            )
+                                            send_measurement(measurement_data)
                                             # 写入CSV文件
                                             csv_writer.writerow(
                                                     ['Forward', i + 1, voltage_value_VAR1, voltage_CONST1, voltage_CONST2, voltage_CONST3,
@@ -633,6 +732,8 @@ def IV_Sweep_Single(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
 
                                     # 扫描VAR1：逐步设置VAR1电压并测量VAR1的电流
                                     for i in range(num_points_VAR1):
+                                        direction = "Forward"
+                                        step = i + 1
                                         voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                         session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                         time.sleep(0.001)  # 暂停0.001秒，等待稳定
@@ -643,6 +744,18 @@ def IV_Sweep_Single(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                         current_value_CONST1 = session_CONST1.measure(nidcpower.MeasurementTypes.CURRENT)
                                         # 执行测量CONST2电流
                                         current_value_CONST2 = session_CONST2.measure(nidcpower.MeasurementTypes.CURRENT)
+
+                                        measurement_data = create_measurement(
+                                            direction=direction,
+                                            step=step,
+                                            voltage_value_VAR1=voltage_value_VAR1,
+                                            current_value_VAR1=current_value_VAR1,
+                                            voltage_CONST1=voltage_CONST1,
+                                            current_value_CONST1=current_value_CONST1,
+                                            voltage_CONST2=voltage_CONST2,
+                                            current_value_CONST2=current_value_CONST2,
+                                        )
+                                        send_measurement(measurement_data)
                                         # 写入CSV文件
                                         csv_writer.writerow(['Forward', i + 1, voltage_value_VAR1, voltage_CONST1, voltage_CONST2, current_value_VAR1,
                                         current_value_CONST1, current_value_CONST2])
@@ -689,6 +802,8 @@ def IV_Sweep_Single(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
 
                             # 扫描VAR1：逐步设置VAR1电压并测量VAR1的电流
                             for i in range(num_points_VAR1):
+                                direction = "Forward"
+                                step = i + 1
                                 voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                 session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                 time.sleep(0.001)  # 暂停0.001秒，等待稳定
@@ -698,6 +813,15 @@ def IV_Sweep_Single(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                 # 执行测量CONST1电流
                                 current_value_CONST1 = session_CONST1.measure(nidcpower.MeasurementTypes.CURRENT)
 
+                                measurement_data = create_measurement(
+                                    direction=direction,
+                                    step=step,
+                                    voltage_value_VAR1=voltage_value_VAR1,
+                                    current_value_VAR1=current_value_VAR1,
+                                    voltage_CONST1=voltage_CONST1,
+                                    current_value_CONST1=current_value_CONST1,
+                                )
+                                send_measurement(measurement_data)
                                 # 写入CSV文件
                                 csv_writer.writerow(
                                     ['Forward', i + 1, voltage_value_VAR1, voltage_CONST1, current_value_VAR1,
@@ -727,12 +851,21 @@ def IV_Sweep_Single(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
 
                     # 扫描VAR1：逐步设置VAR1电压并测量VAR1的电流
                     for i in range(num_points_VAR1):
+                        direction = "Forward"
+                        step = i + 1
                         voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                         session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                         time.sleep(0.001)  # 暂停0.001秒，等待稳定
 
                         # 执行测量VAR1电流
                         current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
+                        measurement_data = create_measurement(
+                            direction=direction,
+                            step=step,
+                            voltage_value_VAR1=voltage_value_VAR1,
+                            current_value_VAR1=current_value_VAR1,
+                        )
+                        send_measurement(measurement_data)
                         # 写入CSV文件
                         csv_writer.writerow(['Forward', i + 1, voltage_value_VAR1, current_value_VAR1])
 
@@ -823,6 +956,8 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                                     'V_VAR1', 'V_VAR2', 'V_CONST1', 'V_CONST2', 'I_VAR1', 'I_VAR2', 'I_CONST1', 'I_CONST2'))
                                                 # 正向扫描VAR1：逐步设置VAR1电压并测量VAR1、VAR2、CONST的电流
                                             for i in range(num_points_VAR1):
+                                                direction = "Forward"
+                                                step = i + 1
                                                 voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                                 session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                                 time.sleep(0.001)  # 暂停0.001秒，等待稳定
@@ -841,6 +976,20 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                                 # 执行测量CONST2电流
                                                 current_value_CONST2 = session_CONST2.measure(nidcpower.MeasurementTypes.CURRENT)
 
+                                                measurement_data = create_measurement(
+                                                    direction=direction,
+                                                    step=step,
+                                                    voltage_value_VAR1=voltage_value_VAR1,
+                                                    current_value_VAR1=current_value_VAR1,
+                                                    voltage_value_VAR2=voltage_value_VAR2,
+                                                    current_value_VAR2=current_value_VAR2,
+                                                    voltage_CONST1=voltage_CONST1,
+                                                    current_value_CONST1=current_value_CONST1,
+                                                    voltage_CONST2=voltage_CONST2,
+                                                    current_value_CONST2=current_value_CONST2,
+
+                                                )
+                                                send_measurement(measurement_data)
                                                 # 写入CSV文件
                                                 csv_writer.writerow(['Forward', i + 1, voltage_value_VAR1, voltage_value_VAR2,
                                                                     voltage_CONST1, voltage_CONST2, current_value_VAR1, current_value_VAR2,
@@ -854,6 +1003,8 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
 
                                             # 反向扫描VAR1
                                             for i in range(num_points_VAR1 - 1, -1, -1):
+                                                direction = "Reverse"
+                                                step = i + 1
                                                 voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                                 session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                                 time.sleep(0.001)  # 暂停0.001秒，等待稳定
@@ -870,6 +1021,21 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                                 current_value_CONST1 = session_CONST1.measure(nidcpower.MeasurementTypes.CURRENT)
                                                 # 执行测量CONST2电流
                                                 current_value_CONST2 = session_CONST2.measure(nidcpower.MeasurementTypes.CURRENT)
+
+                                                measurement_data = create_measurement(
+                                                    direction=direction,
+                                                    step=step,
+                                                    voltage_value_VAR1=voltage_value_VAR1,
+                                                    current_value_VAR1=current_value_VAR1,
+                                                    voltage_value_VAR2=voltage_value_VAR2,
+                                                    current_value_VAR2=current_value_VAR2,
+                                                    voltage_CONST1=voltage_CONST1,
+                                                    current_value_CONST1=current_value_CONST1,
+                                                    voltage_CONST2=voltage_CONST2,
+                                                    current_value_CONST2=current_value_CONST2,
+
+                                                )
+                                                send_measurement(measurement_data)
                                                 # 写入CSV文件
                                                 csv_writer.writerow(['Reverse', i + 1, voltage_value_VAR1, voltage_value_VAR2,
                                                                     voltage_CONST1, voltage_CONST2, current_value_VAR1, current_value_VAR2,
@@ -920,6 +1086,8 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                             'V_VAR1', 'V_VAR2', 'V_CONST1', 'I_VAR1', 'I_VAR2', 'I_CONST1'))
                                         # 正向扫描VAR1：逐步设置VAR1电压并测量VAR1、VAR2、CONST的电流
                                         for i in range(num_points_VAR1):
+                                            direction = "Forward"
+                                            step = i + 1
                                             voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                             session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                             time.sleep(0.001)  # 暂停0.001秒，等待稳定
@@ -933,6 +1101,18 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                             # 执行测量CONST1电流
                                             current_value_CONST1 = session_CONST1.measure(
                                                 nidcpower.MeasurementTypes.CURRENT)
+
+                                            measurement_data = create_measurement(
+                                                direction=direction,
+                                                step=step,
+                                                voltage_value_VAR1=voltage_value_VAR1,
+                                                current_value_VAR1=current_value_VAR1,
+                                                voltage_value_VAR2=voltage_value_VAR2,
+                                                current_value_VAR2=current_value_VAR2,
+                                                voltage_CONST1=voltage_CONST1,
+                                                current_value_CONST1=current_value_CONST1,
+                                            )
+                                            send_measurement(measurement_data)
                                             # 写入CSV文件
                                             csv_writer.writerow(['Forward', i + 1, voltage_value_VAR1, voltage_value_VAR2,
                                                                  voltage_CONST1, current_value_VAR1, current_value_VAR2,
@@ -947,6 +1127,8 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
 
                                         # 反向扫描VAR1
                                         for i in range(num_points_VAR1 - 1, -1, -1):
+                                            direction = "Reverse"
+                                            step = i + 1
                                             voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                             session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                             time.sleep(0.001)  # 暂停0.001秒，等待稳定
@@ -960,6 +1142,18 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                             # 执行测量CONST1电流
                                             current_value_CONST1 = session_CONST1.measure(
                                                 nidcpower.MeasurementTypes.CURRENT)
+
+                                            measurement_data = create_measurement(
+                                                direction=direction,
+                                                step=step,
+                                                voltage_value_VAR1=voltage_value_VAR1,
+                                                current_value_VAR1=current_value_VAR1,
+                                                voltage_value_VAR2=voltage_value_VAR2,
+                                                current_value_VAR2=current_value_VAR2,
+                                                voltage_CONST1=voltage_CONST1,
+                                                current_value_CONST1=current_value_CONST1,
+                                            )
+                                            send_measurement(measurement_data)
                                             # 写入CSV文件
                                             csv_writer.writerow(['Reverse', i + 1, voltage_value_VAR1, voltage_value_VAR2,
                                                                  voltage_CONST1, current_value_VAR1, current_value_VAR2,
@@ -972,7 +1166,7 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                                     voltage_CONST1, current_value_VAR1, current_value_VAR2,
                                                     current_value_CONST1))
                         else:#这时候没有用到CONST
-                                csv_writer.writerow(['Direction', 'Step', 'V_VAR1', 'I_VAR1'])
+                                csv_writer.writerow(['Direction', 'Step', 'V_VAR1', 'V_VAR2', 'I_VAR1', 'I_VAR2'])
                                 with nidcpower.Session(resource_name=VAR1) as session_VAR1:
                                     session_VAR1.source_mode = nidcpower.SourceMode.SINGLE_POINT
                                     session_VAR1.output_function = nidcpower.OutputFunction.DC_VOLTAGE
@@ -987,40 +1181,67 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                         (voltage_max_VAR1 - voltage_min_VAR1) / (num_points_VAR1 - 1), 8)
                                     # 打印表头
                                     print(
-                                        '{:<10} {:<15} {:<15} {:<15} '.format('Direction', 'Step', 'V_VAR1', 'I_VAR1'))
+                                        '{:<10} {:<15} {:<15} {:<15} {:<15} {:<15}'.format('Direction', 'Step', 'V_VAR1','V_VAR2', 'I_VAR1', 'I_VAR2'))
 
                                     # 正向扫描VAR1：逐步设置VAR1电压并测量VAR1的电流
                                     for i in range(num_points_VAR1):
+                                        direction = "Forward"
+                                        step = i + 1
                                         voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                         session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                         time.sleep(0.001)  # 暂停0.001秒，等待稳定
 
                                         # 执行测量VAR1电流
                                         current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
+                                        current_value_VAR2 = session_VAR2.measure(nidcpower.MeasurementTypes.CURRENT)
+
+                                        measurement_data = create_measurement(
+                                            direction=direction,
+                                            step=step,
+                                            voltage_value_VAR1=voltage_value_VAR1,
+                                            current_value_VAR1=current_value_VAR1,
+                                            voltage_value_VAR2=voltage_value_VAR2,
+                                            current_value_VAR2=current_value_VAR2,
+                                        )
+                                        send_measurement(measurement_data)
                                         # 写入CSV文件
-                                        csv_writer.writerow(['Forward', i + 1, voltage_value_VAR1, current_value_VAR1])
+                                        csv_writer.writerow(['Forward', i + 1, voltage_value_VAR1,voltage_value_VAR2, current_value_VAR1, current_value_VAR2])
 
                                         # 打印步数、VAR1、VAR2、CONST电压和IVAR1、IVAR2、CONST电流值
-                                        print('{:<10} {:<15} {:<15.15f} {:<15.15f}'.format('Forward', i + 1,
-                                                                                           voltage_value_VAR1,
-                                                                                           current_value_VAR1, ))
+                                        print('{:<10} {:<15} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f}'.format('Forward', i + 1,
+                                                                                                                    voltage_value_VAR1, voltage_value_VAR2,
+                                                                                                                    current_value_VAR1,current_value_VAR2 ))
 
                                     # 反向扫描VAR1
                                     for i in range(num_points_VAR1 - 1, -1, -1):
+                                        direction = "Reverse"
+                                        step = i + 1
                                         voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                         session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                         time.sleep(0.001)  # 暂停0.001秒，等待稳定
 
                                         # 执行测量VAR1电流
                                         current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
+                                        current_value_VAR2 = session_VAR2.measure(nidcpower.MeasurementTypes.CURRENT)
 
+                                        measurement_data = create_measurement(
+                                            direction=direction,
+                                            step=step,
+                                            voltage_value_VAR1=voltage_value_VAR1,
+                                            current_value_VAR1=current_value_VAR1,
+                                            voltage_value_VAR2=voltage_value_VAR2,
+                                            current_value_VAR2=current_value_VAR2,
+                                        )
+                                        send_measurement(measurement_data)
                                         # 写入CSV文件
-                                        csv_writer.writerow(['Reverse', i + 1, voltage_value_VAR1, current_value_VAR1])
+                                        csv_writer.writerow(['Reverse', i + 1, voltage_value_VAR1,voltage_value_VAR2, current_value_VAR1, current_value_VAR2])
 
                                         # 打印步数
-                                        print('{:<10} {:<15} {:<15.15f} {:<15.15f}'.format('Reverse', i + 1,
-                                                                                           voltage_value_VAR1,
-                                                                                           current_value_VAR1, ))
+                                        print('{:<10} {:<15} {:<15.15f} {:<15.15f} {:<15.15f} {:<15.15f}'.format('Reverse', i + 1,
+                                                                                                                 voltage_value_VAR1,
+                                                                                                                 voltage_value_VAR2,
+                                                                                                                 current_value_VAR1,
+                                                                                                                 current_value_VAR2 ))
             else:
                 # 计算VAR2步进电压
                 voltage_step_VAR2 = round((voltage_max_VAR2 - voltage_min_VAR2) / (num_points_VAR2 - 1), 8)
@@ -1087,6 +1308,8 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                                 'I_CONST2'))
                                             # 正向扫描VAR1：逐步设置VAR1电压并测量VAR1、VAR2、CONST的电流
                                             for i in range(num_points_VAR1):
+                                                direction = "Forward"
+                                                step = i + 1
                                                 voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                                 session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                                 time.sleep(0.001)  # 暂停0.001秒，等待稳定
@@ -1104,7 +1327,20 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                                 # 执行测量CONST2电流
                                                 current_value_CONST2 = session_CONST2.measure(
                                                     nidcpower.MeasurementTypes.CURRENT)
+                                                measurement_data = create_measurement(
+                                                    direction=direction,
+                                                    step=step,
+                                                    voltage_value_VAR1=voltage_value_VAR1,
+                                                    current_value_VAR1=current_value_VAR1,
+                                                    voltage_value_VAR2=voltage_value_VAR2,
+                                                    current_value_VAR2=current_value_VAR2,
+                                                    voltage_CONST1=voltage_CONST1,
+                                                    current_value_CONST1=current_value_CONST1,
+                                                    voltage_CONST2=voltage_CONST2,
+                                                    current_value_CONST2=current_value_CONST2,
 
+                                                )
+                                                send_measurement(measurement_data)
                                                 # 写入CSV文件
                                                 csv_writer.writerow(['Forward', i + 1, voltage_value_VAR1, voltage_value_VAR2,
                                                                      voltage_CONST1, voltage_CONST2, current_value_VAR1,
@@ -1120,6 +1356,8 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
 
                                             # 反向扫描VAR1
                                             for i in range(num_points_VAR1 - 1, -1, -1):
+                                                direction = "Reverse"
+                                                step = i + 1
                                                 voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                                 session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                                 time.sleep(0.001)  # 暂停0.001秒，等待稳定
@@ -1136,6 +1374,20 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                                 # 执行测量CONST2电流
                                                 current_value_CONST2 = session_CONST2.measure(
                                                     nidcpower.MeasurementTypes.CURRENT)
+                                                measurement_data = create_measurement(
+                                                    direction=direction,
+                                                    step=step,
+                                                    voltage_value_VAR1=voltage_value_VAR1,
+                                                    current_value_VAR1=current_value_VAR1,
+                                                    voltage_value_VAR2=voltage_value_VAR2,
+                                                    current_value_VAR2=current_value_VAR2,
+                                                    voltage_CONST1=voltage_CONST1,
+                                                    current_value_CONST1=current_value_CONST1,
+                                                    voltage_CONST2=voltage_CONST2,
+                                                    current_value_CONST2=current_value_CONST2,
+
+                                                )
+                                                send_measurement(measurement_data)
                                                 # 写入CSV文件
                                                 csv_writer.writerow(['Reverse', i + 1, voltage_value_VAR1, voltage_value_VAR2,
                                                                      voltage_CONST1, voltage_CONST2, current_value_VAR1,
@@ -1189,6 +1441,8 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                             'V_VAR1', 'V_VAR2', 'V_CONST1', 'I_VAR1', 'I_VAR2', 'I_CONST1'))
                                         # 正向扫描VAR1：逐步设置VAR1电压并测量VAR1、VAR2、CONST的电流
                                         for i in range(num_points_VAR1):
+                                            direction = "Forward"
+                                            step = i + 1
                                             voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                             session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                             time.sleep(0.001)  # 暂停0.001秒，等待稳定
@@ -1202,6 +1456,19 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                             # 执行测量CONST1电流
                                             current_value_CONST1 = session_CONST1.measure(
                                                 nidcpower.MeasurementTypes.CURRENT)
+                                            measurement_data = create_measurement(
+                                                direction=direction,
+                                                step=step,
+                                                voltage_value_VAR1=voltage_value_VAR1,
+                                                current_value_VAR1=current_value_VAR1,
+                                                voltage_value_VAR2=voltage_value_VAR2,
+                                                current_value_VAR2=current_value_VAR2,
+                                                voltage_CONST1=voltage_CONST1,
+                                                current_value_CONST1=current_value_CONST1,
+
+
+                                            )
+                                            send_measurement(measurement_data)
                                             # 写入CSV文件
                                             csv_writer.writerow(['Forward', i + 1, voltage_value_VAR1, voltage_value_VAR2,
                                                                  voltage_CONST1, current_value_VAR1, current_value_VAR2,
@@ -1216,6 +1483,8 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
 
                                         # 反向扫描VAR1
                                         for i in range(num_points_VAR1 - 1, -1, -1):
+                                            direction = "Reverse"
+                                            step = i + 1
                                             voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                             session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                             time.sleep(0.001)  # 暂停0.001秒，等待稳定
@@ -1229,6 +1498,18 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                             # 执行测量CONST1电流
                                             current_value_CONST1 = session_CONST1.measure(
                                                 nidcpower.MeasurementTypes.CURRENT)
+                                            measurement_data = create_measurement(
+                                                direction=direction,
+                                                step=step,
+                                                voltage_value_VAR1=voltage_value_VAR1,
+                                                current_value_VAR1=current_value_VAR1,
+                                                voltage_value_VAR2=voltage_value_VAR2,
+                                                current_value_VAR2=current_value_VAR2,
+                                                voltage_CONST1=voltage_CONST1,
+                                                current_value_CONST1=current_value_CONST1,
+
+                                            )
+                                            send_measurement(measurement_data)
                                             # 写入CSV文件
                                             csv_writer.writerow(['Reverse', i + 1, voltage_value_VAR1, voltage_value_VAR2,
                                                                  voltage_CONST1, current_value_VAR1, current_value_VAR2,
@@ -1260,6 +1541,8 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
 
                                 # 正向扫描VAR1：逐步设置VAR1电压并测量VAR1的电流
                                 for i in range(num_points_VAR1):
+                                    direction = "Forward"
+                                    step = i + 1
                                     voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                     session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                     time.sleep(0.001)  # 暂停0.001秒，等待稳定
@@ -1268,6 +1551,16 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                     current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
                                     # 执行测量VAR2电流
                                     current_value_VAR2 = session_VAR2.measure(nidcpower.MeasurementTypes.CURRENT)
+                                    measurement_data = create_measurement(
+                                        direction=direction,
+                                        step=step,
+                                        voltage_value_VAR1=voltage_value_VAR1,
+                                        current_value_VAR1=current_value_VAR1,
+                                        voltage_value_VAR2=voltage_value_VAR2,
+                                        current_value_VAR2=current_value_VAR2,
+
+                                    )
+                                    send_measurement(measurement_data)
                                     # 写入CSV文件
                                     csv_writer.writerow(['Forward', i + 1, voltage_value_VAR1, current_value_VAR1])
 
@@ -1278,6 +1571,8 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
 
                                 # 反向扫描VAR1
                                 for i in range(num_points_VAR1 - 1, -1, -1):
+                                    direction = "Reverse"
+                                    step = i + 1
                                     voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                     session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                     time.sleep(0.001)  # 暂停0.001秒，等待稳定
@@ -1286,7 +1581,16 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                     current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
                                     # 执行测量VAR2电流
                                     current_value_VAR2 = session_VAR2.measure(nidcpower.MeasurementTypes.CURRENT)
+                                    measurement_data = create_measurement(
+                                        direction=direction,
+                                        step=step,
+                                        voltage_value_VAR1=voltage_value_VAR1,
+                                        current_value_VAR1=current_value_VAR1,
+                                        voltage_value_VAR2=voltage_value_VAR2,
+                                        current_value_VAR2=current_value_VAR2,
 
+                                    )
+                                    send_measurement(measurement_data)
                                     # 写入CSV文件
                                     csv_writer.writerow(['Reverse', i + 1, voltage_value_VAR1, current_value_VAR1])
 
@@ -1364,6 +1668,8 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
 
                                         # 扫描VAR1：逐步设置VAR1电压并测量VAR1的电流
                                         for i in range(num_points_VAR1):
+                                            direction = "Forward"
+                                            step = i+1
                                             voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                             session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                             time.sleep(0.001)  # 暂停0.001秒，等待稳定
@@ -1376,7 +1682,21 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                             current_value_CONST2 = session_CONST2.measure(nidcpower.MeasurementTypes.CURRENT)
                                             # 执行测量CONST3电流
                                             current_value_CONST3 = session_CONST3.measure(nidcpower.MeasurementTypes.CURRENT)
+                                            measurement_data = create_measurement(
+                                                direction=direction,
+                                                step=step,
+                                                voltage_value_VAR1=voltage_value_VAR1,
+                                                current_value_VAR1=current_value_VAR1,
 
+                                                voltage_CONST1=voltage_CONST1,
+                                                current_value_CONST1=current_value_CONST1,
+                                                voltage_CONST2=voltage_CONST2,
+                                                current_value_CONST2=current_value_CONST2,
+                                                voltage_CONST3=voltage_CONST3,
+                                                current_value_CONST3=current_value_CONST3,
+
+                                            )
+                                            send_measurement(measurement_data)
                                             # 写入CSV文件
                                             csv_writer.writerow(
                                                 ['Forward', i + 1, voltage_value_VAR1, voltage_CONST1, voltage_CONST2,
@@ -1395,6 +1715,8 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                                     current_value_CONST2, current_value_CONST3))
                                             # 反向扫描VAR1
                                         for i in range(num_points_VAR1 - 1, -1, -1):
+                                            direction = "Reverse"
+                                            step = i + 1
                                             voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                             session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                             time.sleep(0.001)  # 暂停0.001秒，等待稳定
@@ -1407,7 +1729,21 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                             current_value_CONST2 = session_CONST2.measure(nidcpower.MeasurementTypes.CURRENT)
                                             # 执行测量CONST3电流
                                             current_value_CONST3 = session_CONST3.measure(nidcpower.MeasurementTypes.CURRENT)
+                                            measurement_data = create_measurement(
+                                                direction=direction,
+                                                step=step,
+                                                voltage_value_VAR1=voltage_value_VAR1,
+                                                current_value_VAR1=current_value_VAR1,
 
+                                                voltage_CONST1=voltage_CONST1,
+                                                current_value_CONST1=current_value_CONST1,
+                                                voltage_CONST2=voltage_CONST2,
+                                                current_value_CONST2=current_value_CONST2,
+                                                voltage_CONST3=voltage_CONST3,
+                                                current_value_CONST3=current_value_CONST3,
+
+                                            )
+                                            send_measurement(measurement_data)
                                             # 写入CSV文件
                                             csv_writer.writerow(['Reverse', i + 1, voltage_value_VAR1, voltage_CONST1, voltage_CONST2,
                                                  voltage_CONST3,
@@ -1475,6 +1811,8 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
 
                                     # 扫描VAR1：逐步设置VAR1电压并测量VAR1的电流
                                     for i in range(num_points_VAR1):
+                                        direction = "Forward"
+                                        step = i + 1
                                         voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                         session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                         time.sleep(0.001)  # 暂停0.001秒，等待稳定
@@ -1485,7 +1823,17 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                         current_value_CONST1 = session_CONST1.measure(nidcpower.MeasurementTypes.CURRENT)
                                         # 执行测量CONST2电流
                                         current_value_CONST2 = session_CONST2.measure(nidcpower.MeasurementTypes.CURRENT)
-
+                                        measurement_data = create_measurement(
+                                            direction=direction,
+                                            step=step,
+                                            voltage_value_VAR1=voltage_value_VAR1,
+                                            current_value_VAR1=current_value_VAR1,
+                                            voltage_CONST1=voltage_CONST1,
+                                            current_value_CONST1=current_value_CONST1,
+                                            voltage_CONST2=voltage_CONST2,
+                                            current_value_CONST2=current_value_CONST2,
+                                        )
+                                        send_measurement(measurement_data)
                                         # 写入CSV文件
                                         csv_writer.writerow(
                                             ['Forward', i + 1, voltage_value_VAR1, voltage_CONST1, voltage_CONST2,
@@ -1503,6 +1851,8 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                                 current_value_CONST2))
                                         # 反向扫描VAR1
                                     for i in range(num_points_VAR1 - 1, -1, -1):
+                                        direction = "Reverse"
+                                        step = i + 1
                                         voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                         session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                         time.sleep(0.001)  # 暂停0.001秒，等待稳定
@@ -1513,7 +1863,17 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                         current_value_CONST1 = session_CONST1.measure(nidcpower.MeasurementTypes.CURRENT)
                                         # 执行测量CONST2电流
                                         current_value_CONST2 = session_CONST2.measure(nidcpower.MeasurementTypes.CURRENT)
-
+                                        measurement_data = create_measurement(
+                                            direction=direction,
+                                            step=step,
+                                            voltage_value_VAR1=voltage_value_VAR1,
+                                            current_value_VAR1=current_value_VAR1,
+                                            voltage_CONST1=voltage_CONST1,
+                                            current_value_CONST1=current_value_CONST1,
+                                            voltage_CONST2=voltage_CONST2,
+                                            current_value_CONST2=current_value_CONST2,
+                                        )
+                                        send_measurement(measurement_data)
                                         # 写入CSV文件
                                         csv_writer.writerow(
                                             ['Reverse', i + 1, voltage_value_VAR1, voltage_CONST1, voltage_CONST2,
@@ -1566,6 +1926,8 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
 
                             # 扫描VAR1：逐步设置VAR1电压并测量VAR1的电流
                             for i in range(num_points_VAR1):
+                                direction = "Forward"
+                                step = i + 1
                                 voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                 session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                 time.sleep(0.001)  # 暂停0.001秒，等待稳定
@@ -1574,7 +1936,16 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                 current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
                                 # 执行测量CONST1电流
                                 current_value_CONST1 = session_CONST1.measure(nidcpower.MeasurementTypes.CURRENT)
+                                measurement_data = create_measurement(
+                                    direction=direction,
+                                    step=step,
+                                    voltage_value_VAR1=voltage_value_VAR1,
+                                    current_value_VAR1=current_value_VAR1,
+                                    voltage_CONST1=voltage_CONST1,
+                                    current_value_CONST1=current_value_CONST1,
 
+                                )
+                                send_measurement(measurement_data)
                                 # 写入CSV文件
                                 csv_writer.writerow(
                                     ['Forward', i + 1, voltage_value_VAR1, voltage_CONST1,
@@ -1591,6 +1962,8 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                         current_value_CONST1))
                                 # 反向扫描VAR1
                             for i in range(num_points_VAR1 - 1, -1, -1):
+                                direction = "Reverse"
+                                step = i + 1
                                 voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                                 session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                                 time.sleep(0.001)  # 暂停0.001秒，等待稳定
@@ -1599,7 +1972,16 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                                 current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
                                 # 执行测量CONST1电流
                                 current_value_CONST1 = session_CONST1.measure(nidcpower.MeasurementTypes.CURRENT)
+                                measurement_data = create_measurement(
+                                    direction=direction,
+                                    step=step,
+                                    voltage_value_VAR1=voltage_value_VAR1,
+                                    current_value_VAR1=current_value_VAR1,
+                                    voltage_CONST1=voltage_CONST1,
+                                    current_value_CONST1=current_value_CONST1,
 
+                                )
+                                send_measurement(measurement_data)
                                 # 写入CSV文件
                                 csv_writer.writerow(['Reverse', i + 1, voltage_value_VAR1, voltage_CONST1,
                                                      current_value_VAR1,
@@ -1631,12 +2013,21 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
 
                     # 正向扫描VAR1：逐步设置VAR1电压并测量VAR1的电流
                     for i in range(num_points_VAR1):
+                        direction = "Forward"
+                        step = i + 1
                         voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                         session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                         time.sleep(0.001)  # 暂停0.001秒，等待稳定
 
                         # 执行测量VAR1电流
                         current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
+                        measurement_data = create_measurement(
+                            direction=direction,
+                            step=step,
+                            voltage_value_VAR1=voltage_value_VAR1,
+                            current_value_VAR1=current_value_VAR1,
+                        )
+                        send_measurement(measurement_data)
                         # 写入CSV文件
                         csv_writer.writerow(['Forward', i + 1, voltage_value_VAR1, current_value_VAR1])
 
@@ -1646,13 +2037,22 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
 
                     # 反向扫描VAR1
                     for i in range(num_points_VAR1 - 1, -1, -1):
+                        direction = "Reverse"
+                        step = i + 1
+
                         voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
                         session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
                         time.sleep(0.001)  # 暂停0.001秒，等待稳定
 
                         # 执行测量VAR1电流
                         current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
-
+                        measurement_data = create_measurement(
+                            direction=direction,
+                            step=step,
+                            voltage_value_VAR1=voltage_value_VAR1,
+                            current_value_VAR1=current_value_VAR1,
+                        )
+                        send_measurement(measurement_data)
                         # 写入CSV文件
                         csv_writer.writerow(['Reverse', i + 1, voltage_value_VAR1, current_value_VAR1])
 
@@ -1703,7 +2103,7 @@ def choose_sweep_mode(**params):
         IV_Sweep_Single(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage_min_VAR1, voltage_max_VAR1, current_limit_range_VAR1,current_limit_range_CONST1,
                     current_limit_range_CONST2, current_limit_range_CONST3, num_points_VAR2, voltage_min_VAR2, voltage_max_VAR2, voltage_CONST1, voltage_CONST2,
                     voltage_CONST3, current_limit_VAR1,current_limit_VAR2, current_limit_range_VAR2, current_limit_CONST1, current_limit_CONST2, current_limit_CONST3,
-                    VAR1_PLC, VAR2_PLC, CONST1_PLC, CONST2_PLC, CONST3_PLC, file_name,file_path )
+                    VAR1_PLC, VAR2_PLC, CONST1_PLC, CONST2_PLC, CONST3_PLC, file_name,file_path)
 
     elif sweep_mode == 'double':
         smu_selection_test(**params)
@@ -1715,5 +2115,48 @@ def choose_sweep_mode(**params):
                     VAR1_PLC, VAR2_PLC, CONST1_PLC, CONST2_PLC, CONST3_PLC, file_name,file_path)
     else:
         print("无效的扫描模式选择。")
+
+
+def create_measurement(
+        direction, step,
+        voltage_value_VAR1, current_value_VAR1,
+        voltage_value_VAR2=None, current_value_VAR2=None,
+        voltage_CONST1=None, current_value_CONST1=None,
+        voltage_CONST2=None, current_value_CONST2=None,
+        voltage_CONST3=None, current_value_CONST3=None,
+        include_VAR2=False,
+        include_const1=False,
+        include_const2=False,
+        include_const3=False,
+):
+    # 初始化字典，确保至少包含 Direction 和 Step
+    measurement = {
+        'Direction': direction,
+        'Step': step,
+        'V_VAR1': voltage_value_VAR1,
+        'I_VAR1': current_value_VAR1,
+    }
+
+    # 根据传入的参数动态添加电压和电流数据
+    if include_VAR2 and voltage_value_VAR2 is not None and current_value_VAR2 is not None:
+        measurement['V_VAR2'] = voltage_value_VAR2
+        measurement['I_VAR2'] = current_value_VAR2
+    if include_const1 and voltage_CONST1 is not None and current_value_CONST1 is not None:
+        measurement['V_CONST1'] = voltage_CONST1
+        measurement['I_CONST1'] = current_value_CONST1
+    if include_const2 and voltage_CONST2 is not None and current_value_CONST2 is not None:
+        measurement['V_CONST2'] = voltage_CONST2
+        measurement['I_CONST2'] = current_value_CONST2
+    if include_const3 and voltage_CONST3 is not None and current_value_CONST3 is not None:
+        measurement['V_CONST3'] = voltage_CONST3
+        measurement['I_CONST3'] = current_value_CONST3
+
+    return measurement
+
+def send_measurement(data):
+    value_data = data
+    return value_data
+
+
 
 
