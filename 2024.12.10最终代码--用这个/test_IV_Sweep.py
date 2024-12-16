@@ -52,6 +52,18 @@ params = {
     'file_path': 'C:/Users/Administrator/Desktop/Yi.Wei_Data/',
 
     'sweep_mode': 'double',
+
+    #绘图参数设置部分
+    'X_label': 'V_VAR1',
+    'Y1_label': 'I_VAR2',
+    'Y2_label': None,
+    'Y3_label': None,
+    'Y4_label': None,
+    'Y5_label': None,
+    'Y6_label': None,
+    'Y7_label': None,
+    'Y8_label': None,
+
 }
 
 def begin():
