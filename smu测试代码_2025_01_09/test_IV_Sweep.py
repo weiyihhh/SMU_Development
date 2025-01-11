@@ -6,7 +6,6 @@ smu1 = 'PXI1Slot5/0'
 smu2 = 'PXI1Slot5/1'
 smu3 = 'PXI1Slot5/2'
 smu4 = 'PXI1Slot5/3'
-<<<<<<< HEAD
 # 创建参数字典
 def get_params(VAR1 = 'PXI1Slot5/0',VAR2 = None, CONST1 = None, CONST2 = None, CONST3 = None, num_points_VAR1 = 101,voltage_min_VAR1=-1,voltage_max_VAR1 = 4,
                current_limit_VAR1 = 0.1, current_limit_range_VAR1 = 0.1, VAR1_PLC=1,num_points_VAR2=2,voltage_min_VAR2=0.5,voltage_max_VAR2=0.6,current_limit_VAR2=0.1,
@@ -26,24 +25,6 @@ def get_params(VAR1 = 'PXI1Slot5/0',VAR2 = None, CONST1 = None, CONST2 = None, C
         'current_limit_VAR1': current_limit_VAR1,
         'current_limit_range_VAR1':current_limit_range_VAR1,
         'VAR1_PLC': VAR1_PLC,
-=======
-
-
-
-# 创建测量参数字典
-params = {
-    'VAR1': smu4,
-    'VAR2':None,
-    'CONST1': None, #CONST1的优先级是最高的，使用CONST的话，第一个开始使用CONST1，用两个的话，用CONST1和CONST2，三个才是CONST1、CONST2、CONST3
-    'CONST2': None,
-    'CONST3': None,
-    'num_points_VAR1': 101,
-    'voltage_min_VAR1': -1,
-    'voltage_max_VAR1': 4,
-    'current_limit_VAR1': 0.1,
-    'current_limit_range_VAR1': 0.1,
-    'VAR1_PLC': 1,
->>>>>>> 43885d964b8e1b1c10ee9bde889c1499a32ce64b
 
         'num_points_VAR2': num_points_VAR2,
         'voltage_min_VAR2': voltage_min_VAR2,
@@ -72,23 +53,10 @@ params = {
         'file_name': file_name,
         'file_path': file_path,
 
-<<<<<<< HEAD
         'sweep_mode': sweep_mode,
     }
     return params
 def test_begin(device_name = "PXI1Slot5",max_retries = 300, retry_count = 0 , reset_num = 1, selftest_num = 1, selfcal_num = 1,):
-=======
-    'sweep_mode': 'double',
-}
-
-#创建绘图参数字典
-plot_params ={
-
-}
-
-
-def begin():
->>>>>>> 43885d964b8e1b1c10ee9bde889c1499a32ce64b
     # 自检测部分参数设置
     params = get_params()
     NiDcpower_SelfTest.SelfTest(device_name, max_retries, retry_count, reset_num, selftest_num, selfcal_num)
@@ -106,4 +74,3 @@ def begin():
             else:
                 print("Reached maximum number of retries. Mission failed.")
 
-test_begin()

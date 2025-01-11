@@ -11,7 +11,6 @@ import time
 import csv
 import sys
 
-import smu_params_setting
 
 def smu_common_mode(smu_common_list):
     for smu_resource in smu_common_list:
@@ -25,8 +24,8 @@ def smu_common_mode(smu_common_list):
         except Exception as e:
             print(f"Failed to configure SMU-COMMON: {smu_resource}. Error: {e}\n\n\n")
 
-def smu_selection_test(**params_trans):
-    VAR1 = params_trans.get('VAR1')
+def smu_selection_test(**params):
+    VAR1 = params.get('VAR1')
     if VAR1 is None :
         print("Error:Output function (VAR1) must be assigned to any unit.....")
         sys.exit()
@@ -2053,7 +2052,6 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
                             current_value_VAR1,))
 
 
-<<<<<<< Updated upstream
 def choose_sweep_mode(**params):
     VAR1 = params.get('VAR1')
     VAR2 = params.get('VAR2')
@@ -2091,46 +2089,6 @@ def choose_sweep_mode(**params):
 
     if sweep_mode == 'single':
         smu_selection_test(**params)
-=======
-def choose_sweep_mode(**params_trans):
-    VAR1 = params_trans.get('VAR1')
-    VAR2 = params_trans.get('VAR2')
-    CONST1 = params_trans.get('CONST1')
-    CONST2 = params_trans.get('CONST2')
-    CONST3 = params_trans.get('CONST3')
-    num_points_VAR1 = params_trans.get('num_points_VAR1')
-    voltage_min_VAR1 = params_trans.get('voltage_min_VAR1')
-    voltage_max_VAR1 = params_trans.get('voltage_max_VAR1')
-    current_limit_VAR1 = params_trans.get('current_limit_VAR1')
-    current_limit_range_VAR1 = params_trans.get('current_limit_range_VAR1')
-    VAR1_PLC = params_trans.get('VAR1_PLC')
-    num_points_VAR2 = params_trans.get('num_points_VAR2')
-    voltage_min_VAR2 = params_trans.get('voltage_min_VAR2')
-    voltage_max_VAR2 = params_trans.get('voltage_max_VAR2')
-    current_limit_VAR2 = params_trans.get('current_limit_VAR2')
-    current_limit_range_VAR2 = params_trans.get('current_limit_range_VAR2')
-    VAR2_PLC = params_trans.get('VAR2_PLC')
-    voltage_CONST1 = params_trans.get('voltage_CONST1')
-    current_limit_CONST1 = params_trans.get('current_limit_CONST1')
-    current_limit_range_CONST1 = params_trans.get('current_limit_range_CONST1')
-    CONST1_PLC = params_trans.get('CONST1_PLC')
-    voltage_CONST2 = params_trans.get('voltage_CONST2')
-    current_limit_CONST2 = params_trans.get('current_limit_CONST2')
-    current_limit_range_CONST2 = params_trans.get('current_limit_range_CONST2')
-    CONST2_PLC = params_trans.get('CONST2_PLC')
-    voltage_CONST3 = params_trans.get('voltage_CONST3')
-    current_limit_CONST3 = params_trans.get('current_limit_CONST3')
-    current_limit_range_CONST3 = params_trans.get('current_limit_range_CONST3')
-    CONST3_PLC = params_trans.get('CONST3_PLC')
-    file_name = params_trans.get('file_name')
-    file_path = params_trans.get('file_path')
-    sweep_mode = params_trans.get('sweep_mode')
-
-
-    if sweep_mode == 'single':
-        smu_selection_test(**params_trans)
-        smu_common_list = test_IV_Sweep.smu_common_list
->>>>>>> Stashed changes
         smu_common_mode(smu_common_list)
         IV_Sweep_Single(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage_min_VAR1, voltage_max_VAR1, current_limit_range_VAR1,current_limit_range_CONST1,
                     current_limit_range_CONST2, current_limit_range_CONST3, num_points_VAR2, voltage_min_VAR2, voltage_max_VAR2, voltage_CONST1, voltage_CONST2,
@@ -2138,12 +2096,7 @@ def choose_sweep_mode(**params_trans):
                     VAR1_PLC, VAR2_PLC, CONST1_PLC, CONST2_PLC, CONST3_PLC, file_name,file_path)
 
     elif sweep_mode == 'double':
-<<<<<<< Updated upstream
         smu_selection_test(**params)
-=======
-        smu_selection_test(**params_trans)
-        smu_common_list = test_IV_Sweep.smu_common_list
->>>>>>> Stashed changes
         smu_common_mode(smu_common_list)
         IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage_min_VAR1, voltage_max_VAR1, current_limit_range_VAR1,current_limit_range_CONST1,
                     current_limit_range_CONST2, current_limit_range_CONST3, num_points_VAR2, voltage_min_VAR2, voltage_max_VAR2, voltage_CONST1, voltage_CONST2,
