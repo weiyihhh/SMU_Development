@@ -1,12 +1,12 @@
 import nidcpower
 import time
 
-device_name = "PXI1Slot5"
+device_name = "PXI1Slot2"
 max_retries = 30  # 最大重复次数
 retry_count = 0  # 当前重复次数
-reset_num = 3
-selftest_num = 10
-selfcal_num = 5
+reset_num = 1
+selftest_num = 5
+selfcal_num = 1
 def SelfTest(device_name, max_retries, retry_count, reset_num, selftest_num, selfcal_num):
     while retry_count < max_retries:
         try:

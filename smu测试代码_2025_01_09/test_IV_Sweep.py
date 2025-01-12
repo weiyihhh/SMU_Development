@@ -7,12 +7,12 @@ smu2 = 'PXI1Slot5/1'
 smu3 = 'PXI1Slot5/2'
 smu4 = 'PXI1Slot5/3'
 # 创建参数字典
-def get_params(VAR1 = 'PXI1Slot5/0',VAR2 = None, CONST1 = None, CONST2 = None, CONST3 = None, num_points_VAR1 = 101,voltage_min_VAR1=-1,voltage_max_VAR1 = 4,
+def get_params(VAR1 = 'PXI1Slot2',VAR2 = 'PXI1Slot3', CONST1 = None, CONST2 = None, CONST3 = None, num_points_VAR1 = 101,voltage_min_VAR1=-1,voltage_max_VAR1 = 4,
                current_limit_VAR1 = 0.1, current_limit_range_VAR1 = 0.1, VAR1_PLC=1,num_points_VAR2=2,voltage_min_VAR2=0.5,voltage_max_VAR2=0.6,current_limit_VAR2=0.1,
                current_limit_range_VAR2 =0.1, VAR2_PLC=1, voltage_CONST1 = 0, current_limit_CONST1 = 0.1,current_limit_range_CONST1=0.1,CONST1_PLC =1,
                voltage_CONST2 = 0,current_limit_CONST2=0.1,current_limit_range_CONST2 =0.1,CONST2_PLC =1,voltage_CONST3 = 0,CONST3_PLC =1,current_limit_CONST3= 0.1,
-               current_limit_range_CONST3 = 0.3,smu_common = ['PXI1Slot5/1','PXI1Slot5/2','PXI1Slot5/3'],file_name = '1',
-               file_path = 'C:/Users/Administrator/Desktop/Yi.Wei_Data/',sweep_mode = 'double'):
+               current_limit_range_CONST3 = 0.3,smu_common = [],file_name = '1',
+               file_path = 'D:\\user文件\mac备份\qq123\other\smu测试数据保存',sweep_mode = 'double'):
     params = {
         'VAR1': VAR1,
         'VAR2': VAR2,
@@ -56,10 +56,11 @@ def get_params(VAR1 = 'PXI1Slot5/0',VAR2 = None, CONST1 = None, CONST2 = None, C
         'sweep_mode': sweep_mode,
     }
     return params
-def test_begin(device_name = "PXI1Slot5",max_retries = 300, retry_count = 0 , reset_num = 1, selftest_num = 1, selfcal_num = 1,):
+def test_begin(device_name1 = "PXI1Slot2",device_name2 = "PXI1Slot3",max_retries = 300, retry_count = 0 , reset_num = 1, selftest_num = 1, selfcal_num = 0,):
     # 自检测部分参数设置
     params = get_params()
-    NiDcpower_SelfTest.SelfTest(device_name, max_retries, retry_count, reset_num, selftest_num, selfcal_num)
+    NiDcpower_SelfTest.SelfTest(device_name1, max_retries, retry_count, reset_num, selftest_num, selfcal_num)
+    NiDcpower_SelfTest.SelfTest(device_name2, max_retries, retry_count, reset_num, selftest_num, selfcal_num)
     retry_count = 0
     while retry_count < max_retries:
         try:
@@ -74,3 +75,5 @@ def test_begin(device_name = "PXI1Slot5",max_retries = 300, retry_count = 0 , re
             else:
                 print("Reached maximum number of retries. Mission failed.")
 
+
+test_begin()
