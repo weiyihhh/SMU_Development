@@ -880,7 +880,6 @@ def IV_Sweep_Double(VAR1, VAR2, CONST1, CONST2, CONST3, num_points_VAR1, voltage
             session_VAR2.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
             session_VAR2.output_function = nidcpower.OutputFunction.DC_VOLTAGE  # 设置为直流电压输出
             session_VAR2.current_limit = current_limit_VAR2  # 设置VAR2端的电流限制
-            session_VAR2.current_limit = current_limit_VAR2
             session_VAR2.current_limit_range = current_limit_range_VAR2
 
             # 设置VAR2.PLC
