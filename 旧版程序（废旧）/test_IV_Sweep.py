@@ -1,14 +1,14 @@
 import IV_Sweep
-smu0 = 'PXI1Slot5/0'
-smu1 = 'PXI1Slot5/1'
+smu0 = 'PXI1Slot3/0'
+smu1 = 'PXI1Slot2/0'
 smu2 = 'PXI1Slot5/2'
 smu3 = 'PXI1Slot5/3'
 
 def main():
 
     VAR1 = smu0
-    VAR2 = smu1
-    CONST = smu2
+    VAR2 = None
+    CONST = smu1
 
 
     voltage_min_VAR1 = 0.05
@@ -28,9 +28,9 @@ def main():
     current_limit_CONST = 0.001 # 单位为A
     current_limit_range_CONST = 0.001 # 单位为A，uA为0.000001A， 有10uA、100uA、1mA、10mA、100mA可供选择
 
-    VAR1_PLC = 3
-    VAR2_PLC = 3
-    CONST_PLC = 3
+    VAR1_PLC = 1
+    VAR2_PLC = 1
+    CONST_PLC = 1
 
     sweep_mode = 'single' #设置扫描模式
 

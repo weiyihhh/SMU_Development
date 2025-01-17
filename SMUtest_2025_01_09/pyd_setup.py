@@ -4,4 +4,4 @@ setup(
 name=('test_IV_Sweep'),
 ext_modules=cythonize('test_IV_Sweep.py')
 )
-# python setup.py build_ext --inplace
+# python pyd_setup.py build_ext --inplace
