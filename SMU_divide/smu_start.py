@@ -1,7 +1,6 @@
 
 import nidcpower
 
-from SMU分解开发_sequence.test6 import session_VAR1
 from smu_config import SmuChannelConfig
 from smu_config_get import config_get
 import NiDcpower_SelfTest
@@ -48,7 +47,7 @@ for smu_config in smu_configs:
         voltage_step_VAR1 = data.get("step")
         voltage_max_VAR1 = data.get("voltage_max_VAR1")
         voltage_min_VAR1 = data.get("voltage_min_VAR1")
-        VAR1_session = SmuChannelConfig.create_session(**smu_config)
+        VAR1_session = SmuChannelConfig.create_session()
         IV_flag = 1
     elif data.get("IV_flag") == 2:
         sweep_mode_VAR1 = 'double'
