@@ -39,6 +39,7 @@ smu_configs = [smu1_config_dict, smu2_config_dict]
 
 # 遍历每个 SMU 配置
 for smu_config in smu_configs:
+    smu_channel = SmuChannelConfig(**smu_config)
     # 调用 config_get 函数，传递每个 SMU 配置
     data = config_get(smu_config)
     if  data.get("IV_flag") == 1 :
@@ -47,7 +48,7 @@ for smu_config in smu_configs:
         voltage_step_VAR1 = data.get("step")
         voltage_max_VAR1 = data.get("voltage_max_VAR1")
         voltage_min_VAR1 = data.get("voltage_min_VAR1")
-        VAR1_session = SmuChannelConfig.create_session()
+        VAR1_session = smu_channel.create_session()
         IV_flag = 1
     elif data.get("IV_flag") == 2:
         sweep_mode_VAR1 = 'double'
@@ -55,7 +56,7 @@ for smu_config in smu_configs:
         voltage_step_VAR1 = data.get("step")
         voltage_max_VAR1 = data.get("voltage_max_VAR1")
         voltage_min_VAR1 = data.get("voltage_min_VAR1")
-        VAR1_session = SmuChannelConfig.create_session(**smu_config)
+        VAR1_session = smu_channel.create_session()
         IV_flag = 2
     elif data.get("IV_flag") == 3:
         sweep_mode_VAR1 = 'single'
@@ -63,7 +64,7 @@ for smu_config in smu_configs:
         current_step_VAR1 = data.get("step")
         current_max_VAR1 = data.get("current_max_VAR1")
         current_min_VAR1 = data.get("current_min_VAR1")
-        VAR1_session = SmuChannelConfig.create_session(**smu_config)
+        VAR1_session = smu_channel.create_session()
         IV_flag = 3
     elif data.get("IV_flag") == 4:
         sweep_mode_VAR1 = 'double'
@@ -71,7 +72,7 @@ for smu_config in smu_configs:
         current_step_VAR1 = data.get("step")
         current_max_VAR1 = data.get("current_max_VAR1")
         current_min_VAR1 = data.get("current_min_VAR1")
-        VAR1_session = SmuChannelConfig.create_session(**smu_config)
+        VAR1_session = smu_channel.create_session()
         IV_flag = 4
     elif data.get("IV_flag") == 5:
         mode_VAR2 = 'V'
@@ -79,7 +80,7 @@ for smu_config in smu_configs:
         voltage_step_VAR2 = data.get("step")
         voltage_max_VAR2 = data.get("voltage_max_VAR2")
         voltage_min_VAR2 = data.get("voltage_min_VAR2")
-        VAR2_session = SmuChannelConfig.create_session(**smu_config)
+        VAR2_session = smu_channel.create_session()
         VAR2_flag = 1
     elif data.get("IV_flag") == 6:
         mode_VAR2 = 'I'
@@ -87,38 +88,38 @@ for smu_config in smu_configs:
         current_step_VAR2 = data.get("step")
         current_max_VAR2 = data.get("current_max_VAR2")
         current_min_VAR2 = data.get("current_min_VAR2")
-        VAR2_session = SmuChannelConfig.create_session(**smu_config)
+        VAR2_session = smu_channel.create_session()
         VAR2_flag = 1
     elif data.get("IV_flag") == 7:
         mode_CONST1 = 'V'
         CONST1_flag = 1
         voltage_CONST1 = data.get("voltage_CONST1")
-        CONST1_session = SmuChannelConfig.create_session(**smu_config)
+        CONST1_session = smu_channel.create_session()
     elif data.get("IV_flag") == 8:
         mode_CONST1 = 'I'
         CONST1_flag = 1
         current_CONST1 = data.get("current_CONST1")
-        CONST1_session = SmuChannelConfig.create_session(**smu_config)
+        CONST1_session = smu_channel.create_session()
     elif data.get("IV_flag") == 9:
         mode_CONST2 = 'V'
         CONST2_flag = 1
         voltage_CONST2 = data.get("voltage_CONST2")
-        CONST2_session = SmuChannelConfig.create_session(**smu_config)
+        CONST2_session = smu_channel.create_session()
     elif data.get("IV_flag") == 10:
         mode_CONST2 = 'I'
         CONST2_flag = 1
         current_CONST2 = data.get("current_CONST2")
-        CONST2_session = SmuChannelConfig.create_session(**smu_config)
+        CONST2_session = smu_channel.create_session()
     elif data.get("IV_flag") == 11:
         mode_CONST3 = 'V'
         CONST3_flag = 1
         voltage_CONST3 = data.get("voltage_CONST3")
-        CONST3_session = SmuChannelConfig.create_session(**smu_config)
+        CONST3_session = smu_channel.create_session()
     elif data.get("IV_flag") == 12:
         mode_CONST3 = 'I'
         CONST3_flag = 1
         current_CONST3 = data.get("current_CONST3")
-        CONST3_session = SmuChannelConfig.create_session(**smu_config)
+        CONST3_session = smu_channel.create_session()
 
 if 1 == VAR2_flag:#表明启用VAR2
     if mode_VAR2 == 'V':
