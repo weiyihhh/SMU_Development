@@ -20,31 +20,43 @@ def config_get(smu):
             if smu_params.sweep_mode == 'single':
                 voltage_step_VAR1 = round((smu_params.voltage_max_VAR1 - smu_params.voltage_min_VAR1) / (smu_params.num_points_VAR1 - 1), 8)
                 num_points_VAR1 = smu_params.num_points_VAR1
-                return {'step':voltage_step_VAR1,'points': num_points_VAR1,'IV_flag' : 1}
+                voltage_max_VAR1 = smu_params.voltage_max_VAR1
+                voltage_min_VAR1 = smu_params.voltage_min_VAR1
+                return {'step':voltage_step_VAR1,'points': num_points_VAR1,'IV_flag' : 1, 'voltage_max_VAR1':voltage_max_VAR1,'voltage_min_VAR1':voltage_min_VAR1}
             elif smu_params.sweep_mode == 'double':
                 voltage_step_VAR1 = round((smu_params.voltage_max_VAR1 - smu_params.voltage_min_VAR1) / (smu_params.num_points_VAR1 - 1), 8)
                 num_points_VAR1 = smu_params.num_points_VAR1
-                return {'step': voltage_step_VAR1, 'points': num_points_VAR1, 'IV_flag' : 2}
+                voltage_max_VAR1 = smu_params.voltage_max_VAR1
+                voltage_min_VAR1 = smu_params.voltage_min_VAR1
+                return {'step': voltage_step_VAR1, 'points': num_points_VAR1, 'IV_flag' : 2, 'voltage_max_VAR1':voltage_max_VAR1,'voltage_min_VAR1':voltage_min_VAR1}
         elif smu_params.mode == 'I':
             if smu_params.sweep_mode == 'single':
                 current_step_VAR1 = round((smu_params.current_max_VAR1 - smu_params.current_min_VAR1) / (smu_params.num_points_VAR1 - 1),8)
                 num_points_VAR1 = smu_params.num_points_VAR1
-                return {'step': current_step_VAR1, 'points': num_points_VAR1, 'IV_flag': 3}
+                current_max_VAR1 = smu_params.current_max_VAR1
+                current_min_VAR1 = smu_params.current_min_VAR1
+                return {'step': current_step_VAR1, 'points': num_points_VAR1, 'IV_flag': 3,  'current_max_VAR1':current_max_VAR1,'current_min_VAR1':current_min_VAR1}
             elif smu_params.sweep_mode == 'double':
                 current_step_VAR1 = round((smu_params.current_max_VAR1 - smu_params.current_min_VAR1) / (smu_params.num_points_VAR1 - 1), 8)
                 num_points_VAR1 = smu_params.num_points_VAR1
-                return {'step': current_step_VAR1,  'points': num_points_VAR1, 'IV_flag': 4}
+                current_max_VAR1 = smu_params.current_max_VAR1
+                current_min_VAR1 = smu_params.current_min_VAR1
+                return {'step': current_step_VAR1,  'points': num_points_VAR1, 'IV_flag': 4, 'current_max_VAR1':current_max_VAR1,'current_min_VAR1':current_min_VAR1}
         else:
             print("Error:SMU function error!")
     elif smu_params.function == 'VAR2':
         if smu_params.mode == 'V':
             voltage_step_VAR2 = round((smu_params.voltage_max_VAR2 - smu_params.voltage_min_VAR2) / (smu_params.num_points_VAR2 - 1), 8)
             num_points_VAR2 = smu_params.num_points_VAR2
-            return {'step': voltage_step_VAR2, 'points': num_points_VAR2, 'IV_flag': 5}
+            voltage_max_VAR2 = smu_params.voltage_max_VAR2
+            voltage_min_VAR2 = smu_params.voltage_min_VAR2
+            return {'step': voltage_step_VAR2, 'points': num_points_VAR2, 'IV_flag': 5, 'voltage_max_VAR2':voltage_max_VAR2,'voltage_min_VAR2':voltage_min_VAR2}
         elif smu_params.mode == 'I':
             current_step_VAR2 = round((smu_params.current_max_VAR2 - smu_params.current_min_VAR2) / (smu_params.num_points_VAR2 - 1), 8)
             num_points_VAR2 = smu_params.num_points_VAR2
-            return {'step': current_step_VAR2, 'points': num_points_VAR2, 'IV_flag': 6}
+            current_max_VAR2 = smu_params.current_max_VAR2
+            current_min_VAR2 = smu_params.current_min_VAR2
+            return {'step': current_step_VAR2, 'points': num_points_VAR2, 'IV_flag': 6,'current_max_VAR2':current_max_VAR2,'current_min_VAR2':current_min_VAR2}
         else:
             print("Error:SMU function error!")
         print()

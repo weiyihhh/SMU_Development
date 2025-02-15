@@ -1,61 +1,75 @@
-import nidcpower
-import time
-VAR1 = 'PXI1Slot2'
-current_limit_VAR1= 0.1
-current_limit_range_VAR1=0.1
-VAR1_PLC=1
-num_points_VAR1= 101
-voltage_min_VAR1= 0
-voltage_max_VAR1 = 4
-voltage_step_VAR1 = round((voltage_max_VAR1 - voltage_min_VAR1) / (num_points_VAR1 - 1), 8)
-with nidcpower.Session(resource_name=VAR1) as session_VAR1:
-    session_VAR1.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
-    session_VAR1.output_function = nidcpower.OutputFunction.DC_VOLTAGE  # 设置为直流电压输出1
-    session_VAR1.current_limit = current_limit_VAR1  # 设置VAR1端的电流限制
-    session_VAR1.current_limit_range = current_limit_range_VAR1
-
-    # 设置VAR1.PLC
-    session_VAR1.aperture_time_units = nidcpower.ApertureTimeUnits.POWER_LINE_CYCLES
-    session_VAR1.aperture_time = VAR1_PLC
-
-    # 逐步设置VAR1电压并测量VAR1、VAR2、CONST的电流
-    for i in range(num_points_VAR1):
-        voltage_value_VAR1 = voltage_min_VAR1 + i * voltage_step_VAR1  # 计算当前步进的VAR1电压值
-        session_VAR1.voltage_level = voltage_value_VAR1  # 设置VAR1端的电压输出
-        session_VAR1.initiate()
-        # 执行测量VAR1电流
-        current_value_VAR1 = session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
-        print(f"V_VAR1: {voltage_value_VAR1}, I_VAR1: {current_value_VAR1}")
-        session_VAR1.abort()
-        # 执行测量VAR2电流
-        #current_value_VAR2 = session_VAR2.measure(nidcpower.MeasurementTypes.CURRENT)
+import numpy as np
+import matplotlib.pyplot as plt
 
 
-    for j in range(num_points_VAR2):
-        VAR2_session.voltage_level = voltage_min_VAR2 + j * voltage_step_VAR2
-        VAR2_session.initiate()
-        if sweep_mode_VAR1 == 'single' :
-            # 继续判断是V还是I
-            if 1 == mode_VAR1:  # 表明是V模式
-                smu1_config = smu1.config_data
-                voltage_step_VAR1 = smu1_config.get("voltage_step_VAR1", 0)
-                #NiDcpower_SelfTest.SelfTest(device_name=smu1.resource_name, max_retries=300, retry_count=0, reset_num=1, selftest_num=10, selfcal_num=0)
-                for i in range(smu1.num_points_VAR1):
-                    smu1.session_VAR1.voltage_level = smu1.voltage_min_VAR1 + i * voltage_step_VAR1
-                    smu1.session_VAR1.initiate()
-                    # 进行 VAR1 测量
-                    current_value_VAR1 = smu1.session_VAR1.measure(nidcpower.MeasurementTypes.CURRENT)
-                    smu1.session_VAR1.abort()
-                    current_value_VAR2= smu2.session_VAR2.measure(nidcpower.MeasurementTypes.CURRENT)
-                    # 打印VAR1和CONST的电压和电流值
-                    print(f"V_VAR1: {smu1.session_VAR1.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: {smu2.session_VAR2.voltage_level}, I_VAR2: {current_value_VAR2}")
+class MOSFETMeasurement:
+    def __init__(self, Vg_values, Id_values, Is_values):
+        '''初始化 MOSFET 测量数据'''
+        self.Vg_values = Vg_values
+        self.Id_values = Id_values
+        self.Is_values = Is_values
 
-            elif 0 == mode_VAR1:  # 标明是I模式
-                print("1")
-            elif 2 == mode_VAR1:
-                print("ERROR: Output function must be constant for the unit_VAR1 in common mode.")
+        # 设置图形窗口
+        self.fig, self.ax = plt.subplots(figsize=(20, 12), facecolor='lightgray')
+        self.ax.set_title("MOSFET Id-Vg Curve with Is", fontsize=20, fontweight='bold')
+        self.ax.set_xlabel("Gate-Source Voltage (V)", fontsize=14)
+        self.ax.set_ylabel("Drain Current (Id) (A)", fontsize=14)
 
-        elif sweep_mode_VAR1 == 'double':
-            print("2")
-        smu2.session_VAR2.abort()
-        print("\n\n\n\n888888888888888888888888888888888888888888888\n\n\n\n\n\n\n\n")
+        # 创建右侧y轴
+        self.ax2 = self.ax.twinx()
+        self.ax2.set_ylabel("Source Current (Is) (A)", fontsize=14)
+
+        # 设置网格和坐标轴样式
+        self.ax.grid(True, which='both', axis='both', color='lightgray', linestyle='-', linewidth=0.7)
+        self.ax.set_facecolor('white')
+        self.ax.tick_params(axis='both', which='major', labelsize=12)
+        self.ax2.tick_params(axis='both', which='major', labelsize=12)
+
+        # 初始化数据
+        self.x_data = []
+        self.y_data_id = []
+        self.y_data_is = []
+
+        # 初始化图形线条，颜色改为橘色和绿色
+        self.line_id, = self.ax.plot([], [], linestyle='-', color='orange', linewidth=1.5)
+        self.line_is, = self.ax2.plot([], [], linestyle='-', color='blue', linewidth=1.5)
+
+        # 启动交互式绘图
+        plt.ion()
+
+    def update_data(self):
+        '''实时更新数据并绘制图形'''
+        for Vg, Id, Is in zip(self.Vg_values, self.Id_values, self.Is_values):
+            # 更新数据
+            self.x_data.append(Vg)
+            self.y_data_id.append(Id)
+            self.y_data_is.append(Is)
+
+            # 更新图形数据
+            self.line_id.set_data(self.x_data, self.y_data_id)
+            self.line_is.set_data(self.x_data, self.y_data_is)
+
+            # 动态调整X轴和Y轴范围
+            self.ax.set_xlim(min(self.Vg_values), max(self.Vg_values))
+            self.ax.set_ylim(min(self.y_data_id) * 1.1, max(self.y_data_id) * 1.1)
+            self.ax2.set_ylim(min(self.y_data_is) * 1.1, max(self.y_data_is) * 1.1)
+
+            # 刷新图形
+            plt.draw()
+            plt.pause(0.1)
+
+    def show_plot(self):
+        '''显示最终图形'''
+        self.update_data()
+        plt.ioff()
+        plt.show()
+
+
+# 使用示例
+Vg_values = [0, 0.1, 0.2, 0.3, 0.4]
+Id_values = [1e-6, 2e-6, 3e-6, 4e-6, 5e-6]
+Is_values = [0.5e-6, 1e-6, 1.5e-6, 2e-6, 2.5e-6]
+
+# 创建 MOSFETMeasurement 实例并显示图形
+measurement = MOSFETMeasurement(Vg_values, Id_values, Is_values)
+measurement.show_plot()
