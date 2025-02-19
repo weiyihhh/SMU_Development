@@ -74,6 +74,8 @@ def smu_const_measure(smu_const):
             "current_value_CONST3": current_value_CONST3,
             "voltage_value_CONST3": voltage_value_CONST3
         }
+
+
 def update_measurement(measurement, *args):
     """
     更新measurement字典中的电压和电流值，支持多种类型的电压/电流对。
