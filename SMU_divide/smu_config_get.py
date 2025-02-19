@@ -1,4 +1,6 @@
 import smu_config
+
+
 """
 IV-flag 解释：  =1：VAR1 V single
                =2: VAR1 V double
@@ -46,16 +48,28 @@ def config_get(smu):
             print("Error:SMU function error!")
     elif smu_params.function == 'VAR2':
         if smu_params.mode == 'V':
-            voltage_step_VAR2 = round((smu_params.voltage_max_VAR2 - smu_params.voltage_min_VAR2) / (smu_params.num_points_VAR2 - 1), 8)
-            num_points_VAR2 = smu_params.num_points_VAR2
-            voltage_max_VAR2 = smu_params.voltage_max_VAR2
-            voltage_min_VAR2 = smu_params.voltage_min_VAR2
+            if smu_params.num_points_VAR2 == 1:
+                voltage_step_VAR2 = 0
+                num_points_VAR2 = 1
+                voltage_max_VAR2 = smu_params.voltage_max_VAR2
+                voltage_min_VAR2 = smu_params.voltage_min_VAR2
+            else:
+                voltage_step_VAR2 = round((smu_params.voltage_max_VAR2 - smu_params.voltage_min_VAR2) / (smu_params.num_points_VAR2 - 1), 8)
+                num_points_VAR2 = smu_params.num_points_VAR2
+                voltage_max_VAR2 = smu_params.voltage_max_VAR2
+                voltage_min_VAR2 = smu_params.voltage_min_VAR2
             return {'step': voltage_step_VAR2, 'points': num_points_VAR2, 'IV_flag': 5, 'voltage_max_VAR2':voltage_max_VAR2,'voltage_min_VAR2':voltage_min_VAR2}
         elif smu_params.mode == 'I':
-            current_step_VAR2 = round((smu_params.current_max_VAR2 - smu_params.current_min_VAR2) / (smu_params.num_points_VAR2 - 1), 8)
-            num_points_VAR2 = smu_params.num_points_VAR2
-            current_max_VAR2 = smu_params.current_max_VAR2
-            current_min_VAR2 = smu_params.current_min_VAR2
+            if smu_params.num_points_VAR2 == 1:
+                current_step_VAR2 = 0
+                num_points_VAR2 = 1
+                current_max_VAR2 = smu_params.current_max_VAR2
+                current_min_VAR2 = smu_params.current_min_VAR2
+            else:
+                current_step_VAR2 = round((smu_params.current_max_VAR2 - smu_params.current_min_VAR2) / (smu_params.num_points_VAR2 - 1), 8)
+                num_points_VAR2 = smu_params.num_points_VAR2
+                current_max_VAR2 = smu_params.current_max_VAR2
+                current_min_VAR2 = smu_params.current_min_VAR2
             return {'step': current_step_VAR2, 'points': num_points_VAR2, 'IV_flag': 6,'current_max_VAR2':current_max_VAR2,'current_min_VAR2':current_min_VAR2}
         else:
             print("Error:SMU function error!")
@@ -63,21 +77,21 @@ def config_get(smu):
     elif smu_params.function == 'CONST1':
         if smu_params.mode == 'V':
             voltage_CONST1 = smu_params.voltage_CONST1
-            return {'level': voltage_CONST1, 'IV_flag': 7}
+            return {'voltage_CONST1': voltage_CONST1, 'IV_flag': 7}
         elif smu_params.mode == 'I':
             current_CONST1 = smu_params.current_CONST1
-            return {'level': current_CONST1, 'IV_flag': 8}
+            return {'current_CONST1': current_CONST1, 'IV_flag': 8}
     elif smu_params.function == 'CONST2':
         if smu_params.mode == 'V':
             voltage_CONST2 = smu_params.voltage_CONST2
-            return {'level': voltage_CONST2, 'IV_flag': 9}
+            return {'voltage_CONST2': voltage_CONST2, 'IV_flag': 9}
         elif smu_params.mode == 'I':
             current_CONST2 = smu_params.current_CONST2
-            return {'level': current_CONST2, 'IV_flag': 10}
+            return {'current_CONST2': current_CONST2, 'IV_flag': 10}
     elif smu_params.function == 'CONST3':
         if smu_params.mode == 'V':
             voltage_CONST3 = smu_params.voltage_CONST3
-            return {'level': voltage_CONST3, 'IV_flag': 11}
+            return {'voltage_CONST3': voltage_CONST3, 'IV_flag': 11}
         elif smu_params.mode == 'I':
             current_CONST3 = smu_params.current_CONST3
-            return {'level': current_CONST3, 'IV_flag': 12}
+            return {'current_CONST3': current_CONST3, 'IV_flag': 12}

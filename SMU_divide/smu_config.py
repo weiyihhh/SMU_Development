@@ -102,7 +102,6 @@ class SmuChannelConfig:
             return 0
         elif self.mode == 'COMMON':
             return 2
-
     def CONST_select(self):
         if self.function == 'CONST1':
             return {"CONST": 1}
@@ -112,7 +111,6 @@ class SmuChannelConfig:
             return {"CONST": 3}
         else:
             return {"CONST": 0} #表示未用CONST
-
     def create_session(self):
         # 根据function选择VAR1、VAR2或CONST
         if self.function == 'VAR1':
@@ -178,25 +176,41 @@ class SmuChannelConfig:
                     self.session_VAR2.current_limit = self.current_limit_VAR2  # 设置VAR2端的电流限制
                     self.session_VAR2.current_limit_range = self.current_limit_range_VAR2
                     # 计算VAR2步进电压
-                    voltage_step_VAR2 = round((self.voltage_max_VAR2 - self.voltage_min_VAR2) / (self.num_points_VAR2 - 1), 8)
-                    self.config_data = {"num_points_VAR2": self.num_points_VAR2,
-                                        "voltage_step_VAR2": voltage_step_VAR2,
-                                        "voltage_max_VAR2": self.voltage_max_VAR2,
-                                        "voltage_min_VAR2": self.voltage_min_VAR2,
-                                        "v_name": self.v_name, "i_name": self.i_name,}
+                    if self.num_points_VAR2 == 1:
+                        voltage_step_VAR2 = 0
+                        self.config_data = {"num_points_VAR2": self.num_points_VAR2,
+                                            "voltage_step_VAR2": voltage_step_VAR2,
+                                            "voltage_max_VAR2": self.voltage_max_VAR2,
+                                            "voltage_min_VAR2": self.voltage_min_VAR2,
+                                            "v_name": self.v_name, "i_name": self.i_name, }
+                    else:
+                        voltage_step_VAR2 = round((self.voltage_max_VAR2 - self.voltage_min_VAR2) / (self.num_points_VAR2 - 1), 8)
+                        self.config_data = {"num_points_VAR2": self.num_points_VAR2,
+                                            "voltage_step_VAR2": voltage_step_VAR2,
+                                            "voltage_max_VAR2": self.voltage_max_VAR2,
+                                            "voltage_min_VAR2": self.voltage_min_VAR2,
+                                            "v_name": self.v_name, "i_name": self.i_name,}
                     return self.session_VAR2
 
                 elif self.mode == 'I':
                     self.session_VAR2.output_function = nidcpower.OutputFunction.DC_CURRENT  # 设置为直流电压输出
                     self.session_VAR2.voltage_limit = self.voltage_limit_VAR2  # 设置VAR2端的电流限制
                     self.session_VAR2.voltage_limit_range = self.voltage_limit_range_VAR2
-                    # 计算VAR2步进电流
-                    current_step_VAR2 = round((self.current_max_VAR2 - self.current_min_VAR2) / (self.num_points_VAR2 - 1),8)
-                    self.config_data = {"num_points_VAR2": self.num_points_VAR2,
-                                        "current_step_VAR2": current_step_VAR2,
-                                        "current_max_VAR2": self.voltage_max_VAR2,
-                                        "voltage_min_VAR2": self.voltage_min_VAR2,
-                                        "v_name": self.v_name, "i_name": self.i_name, }
+                    if self.num_points_VAR2 == 1:
+                        voltage_step_VAR2 = 0
+                        self.config_data = {"num_points_VAR2": self.num_points_VAR2,
+                                            "current_step_VAR2": current_step_VAR2,
+                                            "current_max_VAR2": self.voltage_max_VAR2,
+                                            "voltage_min_VAR2": self.voltage_min_VAR2,
+                                            "v_name": self.v_name, "i_name": self.i_name, }
+                    else:
+                        # 计算VAR2步进电流
+                        current_step_VAR2 = round((self.current_max_VAR2 - self.current_min_VAR2) / (self.num_points_VAR2 - 1),8)
+                        self.config_data = {"num_points_VAR2": self.num_points_VAR2,
+                                            "current_step_VAR2": current_step_VAR2,
+                                            "current_max_VAR2": self.voltage_max_VAR2,
+                                            "voltage_min_VAR2": self.voltage_min_VAR2,
+                                            "v_name": self.v_name, "i_name": self.i_name, }
                     return self.session_VAR2
         elif self.function == 'CONST1':
             if self.mode == 'COMMON':
