@@ -18,12 +18,15 @@ def configure_smu(smu_configs):
             if data.get("IV_flag") in [1, 2]:
                 sweep_mode_VAR1, num_points_VAR1, voltage_step_VAR1, voltage_max_VAR1, voltage_min_VAR1, IV_flag_VAR1 = params
                 VAR1_session = session  # 保存会话对象
+                return sweep_mode_VAR1, num_points_VAR1, voltage_step_VAR1, voltage_max_VAR1, voltage_min_VAR1, IV_flag_VAR1,VAR1_session
             elif data.get("IV_flag") in [3, 4]:
                 sweep_mode_VAR1, num_points_VAR1, current_step_VAR1, current_max_VAR1, current_min_VAR1, IV_flag_VAR1 = params
                 VAR1_session = session  # 保存会话对象
+                return sweep_mode_VAR1, num_points_VAR1, current_step_VAR1, current_max_VAR1, current_min_VAR1, IV_flag_VAR1, VAR1_session
             elif data.get("IV_flag") in [5]:
                 mode_VAR2, num_points_VAR2, voltage_step_VAR2, voltage_max_VAR2, voltage_min_VAR2, VAR2_flag = params
                 VAR2_session = session  # 保存会话对象
+                return mode_VAR2, num_points_VAR2, voltage_step_VAR2, voltage_max_VAR2, voltage_min_VAR2, VAR2_flag,VAR2_session
             elif data.get("IV_flag") in [6]:
                 mode_VAR2, num_points_VAR2, current_step_VAR2, current_max_VAR2, current_min_VAR2, VAR2_flag = params
                 VAR2_session = session  # 保存会话对象

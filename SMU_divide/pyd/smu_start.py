@@ -83,7 +83,7 @@ smu1_config_dict = {
     'i_name': 'I1',
     'voltage_min_VAR1': 0,
     'voltage_max_VAR1': 5,
-    'num_points_VAR1': 101,
+    'num_points_VAR1': 10,
     'current_limit_range_VAR1': 0.1,
     'current_limit_VAR1': 0.05,
     'VAR1_PLC': 1,
@@ -102,6 +102,7 @@ smu2_config_dict = {
     'current_limit_VAR2': 0.05,
     'VAR2_PLC': 1,
 }
+
 smu3_config_dict = {
     "resource_name": "PXI1Slot4/2",
     "mode": "V",
@@ -127,7 +128,7 @@ smu4_config_dict = {
 
 VAR2_flag, CONST1_flag, CONST2_flag, CONST3_flag = 0,0,0,0
 #此处添加smu字典
-smu_configs = [smu1_config_dict, smu2_config_dict,smu3_config_dict, smu4_config_dict]
+smu_configs = [smu1_config_dict, smu2_config_dict, smu3_config_dict, smu4_config_dict]
 #---------------------------------------------完成---------------------------------------------------------
 
 

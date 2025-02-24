@@ -1,3 +1,4 @@
+
 class MeasurementManager:
     def __init__(self):
         '''初始化测量数据列表'''
@@ -9,7 +10,8 @@ class MeasurementManager:
 
     def get_measurements(self):
         '''返回所有测量数据'''
-        return self.measurements_data
+        measurement_1 = self.measurements_data[0]
+        return measurement_1
 
     def clear_measurements(self):
         '''清空所有测量数据'''
