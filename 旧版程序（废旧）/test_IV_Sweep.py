@@ -1,13 +1,15 @@
 import IV_Sweep
-smu0 = 'PXI1Slot3/0'
-smu1 = 'PXI1Slot2/0'
-smu2 = 'PXI1Slot5/2'
-smu3 = 'PXI1Slot5/3'
+smu0 = 'PXI1Slot4/0'
+smu1 = 'PXI1Slot4/1'
+smu2 = 'PXI1Slot4/2'
+smu3 = 'PXI1Slot4/3'
 
 def main():
 
     VAR1 = smu0
-    VAR2 = None
+    VAR2 = smu2
+
+
     CONST = smu1
 
 

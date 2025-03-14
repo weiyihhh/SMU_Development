@@ -1,89 +1,18 @@
-import nidcpower
-import smu_config
-def smu_const_measure(smu_const):
-    const_flag = smu_const.create_session().get("CONST_FLAG")
-    if const_flag == 1:
-        # 执行测量CONST1电流
-        current_value_CONST1 = smu_const.session_CONST1.measure(nidcpower.MeasurementTypes.CURRENT)
-        voltage_value_CONST1 = 0
-        return {
-            "current_value_CONST1":current_value_CONST1,
-            "voltage_value_CONST1": 0
-        }
-    elif const_flag == 2:
-        # 执行测量CONST1电流
-        current_value_CONST1 = smu_const.session_CONST1.measure(nidcpower.MeasurementTypes.CURRENT)
-        voltage_value_CONST1 = smu_const.voltage_CONST1
-        return {
-            "current_value_CONST1": current_value_CONST1,
-            "voltage_value_CONST1": voltage_value_CONST1
-        }
-    elif const_flag == 3: #'I'模式
-        # 执行测量CONST1电压
-        voltage_value_CONST1 = smu_const.session_CONST1.measure(nidcpower.MeasurementTypes.VOLTAGE)
-        current_value_CONST1 = smu_const.current_CONST1
-        return {
-            "current_value_CONST1": current_value_CONST1,
-            "voltage_value_CONST1": voltage_value_CONST1
-        }
-    elif const_flag == 4:
-        # 执行测量CONST2电流
-        current_value_CONST2 = smu_const.session_CONST2.measure(nidcpower.MeasurementTypes.CURRENT)
-        voltage_value_CONST2 = 0
-        return {
-            "current_value_CONST2": current_value_CONST2,
-            "voltage_value_CONST2": voltage_value_CONST2
-        }
-    elif const_flag == 5:
-        # 执行测量CONST2电流
-        current_value_CONST2 = smu_const.session_CONST2.measure(nidcpower.MeasurementTypes.CURRENT)
-        voltage_value_CONST2 = smu_const.voltage_CONST2
-        return {
-            "current_value_CONST2": current_value_CONST2,
-            "voltage_value_CONST2": voltage_value_CONST2
-        }
-    elif const_flag == 6:
-        # 执行测量CONST2电压
-        voltage_value_CONST2 = smu_const.session_CONST2.measure(nidcpower.MeasurementTypes.VOLTAGE)
-        current_value_CONST2 = smu_const.current_CONST2
-        return {
-            "current_value_CONST2": current_value_CONST2,
-            "voltage_value_CONST2": voltage_value_CONST2
-        }
-    elif const_flag == 7:
-        # 执行测量CONST3电流
-        current_value_CONST3 = smu_const.session_CONST3.measure(nidcpower.MeasurementTypes.CURRENT)
-        voltage_value_CONST3 = 0
-        return {
-            "current_value_CONST3": current_value_CONST3,
-            "voltage_value_CONST3": voltage_value_CONST3
-        }
-    elif const_flag == 8:
-        # 执行测量CONST3电流
-        current_value_CONST3 = smu_const.session_CONST3.measure(nidcpower.MeasurementTypes.CURRENT)
-        voltage_value_CONST3 = smu_const.voltage_CONST3
-        return {
-            "current_value_CONST3": current_value_CONST3,
-            "voltage_value_CONST3": voltage_value_CONST3
-        }
-    elif const_flag == 9:
-        # 执行测量CONST3电压
-        voltage_value_CONST3 = smu_const.session_CONST3.measure(nidcpower.MeasurementTypes.VOLTAGE)
-        current_value_CONST3 = smu_const.current_CONST3
-        return {
-            "current_value_CONST3": current_value_CONST3,
-            "voltage_value_CONST3": voltage_value_CONST3
-        }
 def update_measurement(measurement, *args):
     """
     更新measurement字典中的电压和电流值，支持多种类型的电压/电流对。
 
     :param measurement: 要更新的字典
-    :param args: 每个参数包含一个元组，元组格式为 ('V_<类型>', voltage_value) 和 ('I_<类型>', current_value)
+    :param args: 每个参数包含一个元组，元组格式为 ('方向', Direction)，以及 ('V_<类型>', voltage_value, 'I_<类型>', current_value)
     :return: 更新后的measurement字典
     """
-    for voltage_key, voltage_value, current_key, current_value in args:
-        measurement[voltage_key] = voltage_value
-        measurement[current_key] = current_value
+    for args_tuple in args:
+        if len(args_tuple) == 2:  # 方向元组，只有方向和值
+            Direction_key, Direction_value = args_tuple
+            measurement[Direction_key] = Direction_value
+        elif len(args_tuple) == 4:  # 电压和电流元组
+            voltage_key, voltage_value, current_key, current_value = args_tuple
+            measurement[voltage_key] = voltage_value
+            measurement[current_key] = current_value
 
     return measurement

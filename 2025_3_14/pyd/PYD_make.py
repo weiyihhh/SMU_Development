@@ -9,4 +9,4 @@ distutils.core.setup(
     ext_modules = [a],
     author = '',
 )
-#python 1.py build_ext --inplace
+#python PYD_make.py build_ext --inplace

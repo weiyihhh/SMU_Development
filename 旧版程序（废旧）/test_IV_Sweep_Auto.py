@@ -1,9 +1,9 @@
 import IV_Sweep_Auto
 """smu模块选择"""
-smu0 = 'PXI1Slot5/0'
-smu1 = 'PXI1Slot5/1'
-smu2 = 'PXI1Slot5/2'
-smu3 = 'PXI1Slot5/3'
+smu0 = 'PXI1Slot4/0'
+smu1 = 'PXI1Slot4/1'
+smu2 = 'PXI1Slot4/2'
+smu3 = 'PXI1Slot4/3'
 
 def main():
 

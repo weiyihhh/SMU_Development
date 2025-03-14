@@ -59,7 +59,7 @@ def get_params(VAR1 = None, VAR2 = None, CONST1 = None, CONST2 = None, CONST3 = 
         'sweep_mode': sweep_mode,
     }
     return params
-def test_begin(device_name1 = "PXI1Slot2",device_name2 = "PXI1Slot3",max_retries = 300, retry_count = 0 , reset_num = 1, selftest_num = 1, selfcal_num = 0,):
+def test_begin(device_name1 = "PXI1Slot4/0",device_name2 = "PXI1Slot4/1",max_retries = 300, retry_count = 0 , reset_num = 1, selftest_num = 1, selfcal_num = 0,):
     # 自检测部分参数设置
     params = get_params()
     NiDcpower_SelfTest.SelfTest(device_name1, max_retries, retry_count, reset_num, selftest_num, selfcal_num)

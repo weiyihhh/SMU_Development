@@ -1,4 +1,6 @@
 import nidcpower
+from PIL.ImageCms import Direction
+
 from measurements import MeasurementManager
 from smu_config import SmuChannelConfig
 from smu_config_get import config_get
@@ -70,10 +72,6 @@ def const_record(measurement):
         ('V_CONST3', voltage_value_CONST3, 'I_CONST3', current_value_CONST3)
     )
     return measurement
-#--------------------------------------------完成----------------------------------------------------------
-
-
-
 #-------------------------------------在这里写入smu配置字典---------------------------------------------------
 smu1_config_dict = {
     'resource_name': "PXI1Slot4/0",
@@ -83,7 +81,7 @@ smu1_config_dict = {
     'i_name': 'I1',
     'voltage_min_VAR1': 0,
     'voltage_max_VAR1': 5,
-    'num_points_VAR1': 101,
+    'num_points_VAR1': 11,
     'current_limit_range_VAR1': 0.1,
     'current_limit_VAR1': 0.05,
     'VAR1_PLC': 1,
@@ -96,8 +94,8 @@ smu2_config_dict = {
     'v_name': 'V2',
     'i_name': 'I2',
     'voltage_min_VAR2': 0,
-    'voltage_max_VAR2': 1,
-    'num_points_VAR2': 3,
+    'voltage_max_VAR2': 0,
+    'num_points_VAR2': 1,
     'current_limit_range_VAR2': 0.1,
     'current_limit_VAR2': 0.05,
     'VAR2_PLC': 1,
@@ -110,8 +108,8 @@ smu3_config_dict = {
     "i_name": "I3",
     "voltage_CONST1": 1,
     "CONST1_PLC": 1,
-    "current_limit_range_CONST1": 0.1,  # 设置 VAR2 的电流限制范围
-    "current_limit_CONST1": 0.05,  # 设置 VAR2 的电流限制
+    "current_limit_range_CONST1": 0.1,
+    "current_limit_CONST1": 0.05,
 }
 smu4_config_dict = {
     "resource_name": "PXI1Slot4/3",
@@ -121,15 +119,13 @@ smu4_config_dict = {
     "i_name": "I4",
     "voltage_CONST2": 2,
     "CONST2_PLC": 1,
-    "current_limit_range_CONST2": 0.1,  # 设置 VAR2 的电流限制范围
-    "current_limit_CONST2": 0.05,  # 设置 VAR2 的电流限制
+    "current_limit_range_CONST2": 0.1,
+    "current_limit_CONST2": 0.05,
 }
 
 VAR2_flag, CONST1_flag, CONST2_flag, CONST3_flag = 0,0,0,0
 #此处添加smu字典
-smu_configs = [smu1_config_dict, smu2_config_dict,smu3_config_dict, smu4_config_dict]
-#---------------------------------------------完成---------------------------------------------------------
-
+smu_configs = [smu1_config_dict, smu2_config_dict, smu3_config_dict, smu4_config_dict]
 
 #------------------------------------------完成smu字典参数写入-------------------------------------------------
 #configure_smu(smu_configs)
@@ -177,9 +173,6 @@ for smu_config in smu_configs:
             CONST3_session = session  # 保存会话对象
         else:
             print("----------Configure SMU ERROR!----------")
-#-----------------------------------------------完成---------------------------------------------------------
-
-
 
 #------------------------------------------测试运行部分--------------------------------------------------------
 if 1 == VAR2_flag:#表明启用VAR2
@@ -190,6 +183,7 @@ if 1 == VAR2_flag:#表明启用VAR2
             if IV_flag_VAR1 == 1:  #VAR1_V_single
                 for i in range(num_points_VAR1):
                     measurement = {}
+                    Direction = "Forward"
                     VAR1_session.voltage_level = voltage_min_VAR1 + i * voltage_step_VAR1
                     #测量开始
                     VAR2_session.initiate()
@@ -202,6 +196,7 @@ if 1 == VAR2_flag:#表明启用VAR2
                     # 将测量数据添加到字典中
                     measurement = update_measurement(
                         measurement,
+                        ('Direction', Direction),
                         ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),
                         ('V_VAR2', VAR2_session.voltage_level, 'I_VAR2', current_value_VAR2),
                     )
@@ -215,6 +210,7 @@ if 1 == VAR2_flag:#表明启用VAR2
                 #VAR1正向扫描
                 for i in range(num_points_VAR1):
                     measurement = {}
+                    Direction = "Forward"
                     VAR1_session.voltage_level = voltage_min_VAR1 + i * voltage_step_VAR1
                     VAR2_session.initiate()
                     VAR1_session.initiate()
@@ -226,6 +222,7 @@ if 1 == VAR2_flag:#表明启用VAR2
                     # 将测量数据添加到字典中
                     measurement = update_measurement(
                         measurement,
+                        ('Direction', Direction),
                         ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),
                         ('V_VAR2', VAR2_session.voltage_level, 'I_VAR2', current_value_VAR2),
                     )
@@ -236,6 +233,8 @@ if 1 == VAR2_flag:#表明启用VAR2
                     print(f"Direction: 'Forward' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: {VAR2_session.voltage_level}, I_VAR2: {current_value_VAR2}, V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
                 #VAR1反向扫描
                 for i in range(num_points_VAR1):
+                    measurement = {}
+                    Direction = "Reverse"
                     VAR1_session.voltage_level = voltage_max_VAR1 - i * voltage_step_VAR1
                     VAR2_session.initiate()
                     VAR1_session.initiate()
@@ -247,16 +246,19 @@ if 1 == VAR2_flag:#表明启用VAR2
                     # 将测量数据添加到字典中
                     measurement = update_measurement(
                         measurement,
+                        ('Direction', Direction),
                         ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),
                         ('V_VAR2', VAR2_session.voltage_level, 'I_VAR2', current_value_VAR2),
                     )
                     measurement=const_record(measurement)
                     measurement_manager.add_measurement(measurement)
                     single_point_measurement = measurement_manager.get_measurements()  # 单点测得数据字典获取
+                    print(single_point_measurement)
                     # 打印VAR1和CONST的电压和电流值
                     print(f"Direction: 'Reverse' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: {VAR2_session.voltage_level}, I_VAR2: {current_value_VAR2} ,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
             elif IV_flag_VAR1 == 3:##VAR1_I_single
                 for i in range(num_points_VAR1):
+                    Direction = "Forward"
                     measurement = {}
                     VAR1_session.current_level = current_min_VAR1 + i * current_step_VAR1
                     VAR2_session.initiate()
@@ -269,6 +271,7 @@ if 1 == VAR2_flag:#表明启用VAR2
                     # 将测量数据添加到字典中
                     measurement = update_measurement(
                         measurement,
+                        ('Direction', Direction),
                         ('V_VAR1', voltage_value_VAR1, 'I_VAR1', VAR1_session.current_level),
                         ('V_VAR2', VAR2_session.voltage_level, 'I_VAR2', current_value_VAR2),
                     )
@@ -280,6 +283,7 @@ if 1 == VAR2_flag:#表明启用VAR2
                 # VAR1正向扫描
                 for i in range(num_points_VAR1):
                     measurement = {}
+                    Direction = "Forward"
                     VAR1_session.current_level = current_min_VAR1 + i * current_step_VAR1
                     VAR2_session.initiate()
                     VAR1_session.initiate()
@@ -291,6 +295,7 @@ if 1 == VAR2_flag:#表明启用VAR2
                     # 将测量数据添加到字典中
                     measurement = update_measurement(
                         measurement,
+                        ('Direction', Direction),
                         ('V_VAR1', VAR1_session.current_level, 'I_VAR1', voltage_value_VAR1),
                         ('V_VAR2', VAR2_session.voltage_level, 'I_VAR2', current_value_VAR2),
                     )
@@ -300,6 +305,8 @@ if 1 == VAR2_flag:#表明启用VAR2
                     print(f"Direction: 'Forward' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: {VAR2_session.voltage_level}, I_VAR2: {current_value_VAR2}, V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
                 # VAR1反向扫描
                 for i in range(num_points_VAR1):
+                    measurement = {}
+                    Direction = "Reverse"
                     VAR1_session.current_level = current_max_VAR1 - i * current_step_VAR1
                     VAR2_session.initiate()
                     VAR1_session.initiate()
@@ -310,6 +317,7 @@ if 1 == VAR2_flag:#表明启用VAR2
                     # 将测量数据添加到字典中
                     measurement = update_measurement(
                         measurement,
+                        ('Direction', Direction),
                         ('V_VAR1', VAR1_session.current_level, 'I_VAR1', voltage_value_VAR1),
                         ('V_VAR2', VAR2_session.voltage_level, 'I_VAR2', current_value_VAR2),
                     )
@@ -318,8 +326,8 @@ if 1 == VAR2_flag:#表明启用VAR2
                     single_point_measurement = measurement_manager.get_measurements()#单点测得数据字典获取
                     print(f"Direction: 'Reverse' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: {VAR2_session.voltage_level}, I_VAR2: {current_value_VAR2}, V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
         # 获取所有测量数据
-        all_measurements = measurement_manager.get_measurements()
-        #print(all_measurements)
+        all_measurements = measurement_manager.measurements_data
+        print(all_measurements)
     elif mode_VAR2 == 'I':
         measurement_manager = MeasurementManager()
         for j in range(num_points_VAR2):
@@ -327,6 +335,7 @@ if 1 == VAR2_flag:#表明启用VAR2
             if IV_flag_VAR1 == 1:
                 for i in range(num_points_VAR1):
                     measurement = {}
+                    Direction = "Forward"
                     VAR1_session.voltage_level = voltage_min_VAR1 + i * voltage_step_VAR1
                     VAR2_session.initiate()
                     VAR1_session.initiate()
@@ -338,6 +347,7 @@ if 1 == VAR2_flag:#表明启用VAR2
                     # 将测量数据添加到字典中
                     measurement = update_measurement(
                         measurement,
+                        ('Direction', Direction),
                         ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),
                         ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),
                     )
@@ -350,6 +360,7 @@ if 1 == VAR2_flag:#表明启用VAR2
                 #VAR1正向扫描
                 for i in range(num_points_VAR1):
                     measurement = {}
+                    Direction = "Forward"
                     VAR1_session.voltage_level = voltage_min_VAR1 + i * voltage_step_VAR1
                     VAR2_session.initiate()
                     VAR1_session.initiate()
@@ -358,6 +369,13 @@ if 1 == VAR2_flag:#表明启用VAR2
                     VAR1_session.abort()
                     voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
                     VAR2_session.abort()
+                    # 将测量数据添加到字典中
+                    measurement = update_measurement(
+                        measurement,
+                        ('Direction', Direction),
+                        ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),
+                        ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),
+                    )
                     measurement=const_record(measurement)
                     # 使用 add_measurement 添加数据
                     measurement_manager.add_measurement(measurement)
@@ -366,6 +384,8 @@ if 1 == VAR2_flag:#表明启用VAR2
                     print(f"Direction: 'Forward' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level} ,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
                 #VAR1反向扫描
                 for i in range(num_points_VAR1):
+                    measurement = {}
+                    Direction = "Reverse"
                     VAR1_session.voltage_level = voltage_max_VAR1 - i * voltage_step_VAR1
                     VAR2_session.initiate()
                     VAR1_session.initiate()
@@ -374,6 +394,13 @@ if 1 == VAR2_flag:#表明启用VAR2
                     VAR1_session.abort()
                     voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
                     VAR2_session.abort()
+                    # 将测量数据添加到字典中
+                    measurement = update_measurement(
+                        measurement,
+                        ('Direction', Direction),
+                        ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),
+                        ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),
+                    )
                     measurement=const_record(measurement)
                     # 使用 add_measurement 添加数据
                     measurement_manager.add_measurement(measurement)
@@ -382,6 +409,7 @@ if 1 == VAR2_flag:#表明启用VAR2
                     print(f"Direction: 'Reverse' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level},V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
             elif IV_flag_VAR1 == 3:
                 for i in range(num_points_VAR1):
+                    Direction = "Forward"
                     measurement = {}
                     VAR1_session.current_level = current_min_VAR1 + i * current_step_VAR1
                     VAR2_session.initiate()
@@ -391,6 +419,13 @@ if 1 == VAR2_flag:#表明启用VAR2
                     VAR1_session.abort()
                     voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
                     VAR2_session.abort()
+                    # 将测量数据添加到字典中
+                    measurement = update_measurement(
+                        measurement,
+                        ('Direction', Direction),
+                        ('V_VAR1', voltage_value_VAR1, 'I_VAR1', VAR1_session.current_level),
+                        ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),
+                    )
                     measurement=const_record(measurement)
                     # 使用 add_measurement 添加数据
                     measurement_manager.add_measurement(measurement)
@@ -400,6 +435,7 @@ if 1 == VAR2_flag:#表明启用VAR2
                 # VAR1正向扫描
                 for i in range(num_points_VAR1):
                     measurement = {}
+                    Direction = "Forward"
                     VAR1_session.current_level = current_min_VAR1 + i * current_step_VAR1
                     VAR2_session.initiate()
                     VAR1_session.initiate()
@@ -408,6 +444,13 @@ if 1 == VAR2_flag:#表明启用VAR2
                     VAR1_session.abort()
                     voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
                     VAR2_session.abort()
+                    # 将测量数据添加到字典中
+                    measurement = update_measurement(
+                        measurement,
+                        ('Direction', Direction),
+                        ('V_VAR1', voltage_value_VAR1, 'I_VAR1', VAR1_session.current_level),
+                        ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),
+                    )
                     measurement=const_record(measurement)
                     # 使用 add_measurement 添加数据
                     measurement_manager.add_measurement(measurement)
@@ -415,6 +458,8 @@ if 1 == VAR2_flag:#表明启用VAR2
                     print(f"Direction: 'Forward' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level},V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
                 # VAR1反向扫描
                 for i in range(num_points_VAR1):
+                    measurement = {}
+                    Direction = "Reverse"
                     VAR1_session.current_level = current_max_VAR1 - i * current_step_VAR1
                     VAR2_session.initiate()
                     VAR1_session.initiate()
@@ -422,6 +467,13 @@ if 1 == VAR2_flag:#表明启用VAR2
                     VAR1_session.abort()
                     voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
                     VAR2_session.abort()
+                    # 将测量数据添加到字典中
+                    measurement = update_measurement(
+                        measurement,
+                        ('Direction', Direction),
+                        ('V_VAR1', voltage_value_VAR1, 'I_VAR1', VAR1_session.current_level),
+                        ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),
+                    )
                     measurement=const_record(measurement)
                     # 使用 add_measurement 添加数据
                     measurement_manager.add_measurement(measurement)
@@ -432,6 +484,7 @@ elif 0 == VAR2_flag:#表明未启用VAR2
     measurement_manager = MeasurementManager()
     if IV_flag_VAR1 == 1:
         for i in range(num_points_VAR1):
+            Direction = "Forward"
             measurement = {}
             VAR1_session.voltage_level = voltage_min_VAR1 + i * voltage_step_VAR1
             VAR1_session.initiate()
@@ -439,10 +492,12 @@ elif 0 == VAR2_flag:#表明未启用VAR2
             current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)
             VAR1_session.abort()
             # 将测量数据添加到字典中
-            measurement['V_VAR1'] = VAR1_session.voltage_level
-            measurement['I_VAR1'] = current_value_VAR1
-            measurement['V_VAR2'] = 0  # 固定值，假设为0
-            measurement['I_VAR2'] = 0  # 固定值，假设为0
+            measurement = update_measurement(
+                measurement,
+                ('Direction', Direction),
+                ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),
+                ('V_VAR2', 0, 'I_VAR2', 0),
+            )
             measurement=const_record(measurement)
             # 使用 add_measurement 添加数据
             measurement_manager.add_measurement(measurement)
@@ -452,6 +507,7 @@ elif 0 == VAR2_flag:#表明未启用VAR2
     elif IV_flag_VAR1 == 2:
         # VAR1正向扫描
         for i in range(num_points_VAR1):
+            Direction = "Forward"
             measurement = {}
             VAR1_session.voltage_level = voltage_min_VAR1 + i * voltage_step_VAR1
             VAR1_session.initiate()
@@ -459,6 +515,13 @@ elif 0 == VAR2_flag:#表明未启用VAR2
             current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)
             VAR1_session.abort()
             measurement=const_record(measurement)
+            # 将测量数据添加到字典中
+            measurement = update_measurement(
+                measurement,
+                ('Direction', Direction),
+                ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),
+                ('V_VAR2', 0, 'I_VAR2', 0),
+            )
             # 使用 add_measurement 添加数据
             measurement_manager.add_measurement(measurement)
             single_point_measurement = measurement_manager.get_measurements()  # 单点测得数据字典获取
@@ -466,12 +529,21 @@ elif 0 == VAR2_flag:#表明未启用VAR2
             print(f"Direction: 'Forward' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
         # VAR1反向扫描
         for i in range(num_points_VAR1):
+            measurement = {}
+            Direction = "Reverse"
             VAR1_session.voltage_level = voltage_max_VAR1 - i * voltage_step_VAR1
             VAR1_session.initiate()
             # 进行 VAR1 测量
             current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)
             VAR1_session.abort()
             measurement=const_record(measurement)
+            # 将测量数据添加到字典中
+            measurement = update_measurement(
+                measurement,
+                ('Direction', Direction),
+                ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),
+                ('V_VAR2', 0, 'I_VAR2', 0),
+            )
             # 使用 add_measurement 添加数据
             measurement_manager.add_measurement(measurement)
             single_point_measurement = measurement_manager.get_measurements()  # 单点测得数据字典获取
@@ -480,6 +552,7 @@ elif 0 == VAR2_flag:#表明未启用VAR2
                 f"Direction: 'Reverse' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
     elif IV_flag_VAR1 == 3:
         for i in range(num_points_VAR1):
+            Direction = "Forward"
             measurement = {}
             VAR1_session.current_level = current_min_VAR1 + i * current_step_VAR1
             VAR1_session.initiate()
@@ -487,6 +560,13 @@ elif 0 == VAR2_flag:#表明未启用VAR2
             voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
             VAR1_session.abort()
             measurement=const_record(measurement)
+            # 将测量数据添加到字典中
+            measurement = update_measurement(
+                measurement,
+                ('Direction', Direction),
+                ('V_VAR1', voltage_value_VAR1, 'I_VAR1', VAR1_session.current_level),
+                ('V_VAR2', 0, 'I_VAR2', 0),
+            )
             # 使用 add_measurement 添加数据
             measurement_manager.add_measurement(measurement)
             single_point_measurement = measurement_manager.get_measurements()  # 单点测得数据字典获取
@@ -494,6 +574,7 @@ elif 0 == VAR2_flag:#表明未启用VAR2
     elif IV_flag_VAR1 == 4:
         # VAR1正向扫描
         for i in range(num_points_VAR1):
+            Direction = "Forward"
             measurement = {}
             VAR1_session.current_level = current_min_VAR1 + i * current_step_VAR1
             VAR1_session.initiate()
@@ -501,17 +582,33 @@ elif 0 == VAR2_flag:#表明未启用VAR2
             voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
             VAR1_session.abort()
             measurement=const_record(measurement)
+            # 将测量数据添加到字典中
+            measurement = update_measurement(
+                measurement,
+                ('Direction', Direction),
+                ('V_VAR1', voltage_value_VAR1, 'I_VAR1', VAR1_session.current_level),
+                ('V_VAR2', 0, 'I_VAR2', 0),
+            )
             # 使用 add_measurement 添加数据
             measurement_manager.add_measurement(measurement)
             single_point_measurement = measurement_manager.get_measurements()  # 单点测得数据字典获取
             print(f"Direction: 'Forward' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
         # VAR1反向扫描
         for i in range(num_points_VAR1):
+            measurement = {}
+            Direction = "Reverse"
             VAR1_session.current_level = current_max_VAR1 - i * current_step_VAR1
             VAR1_session.initiate()
             voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
             VAR1_session.abort()
             measurement=const_record(measurement)
+            # 将测量数据添加到字典中
+            measurement = update_measurement(
+                measurement,
+                ('Direction', Direction),
+                ('V_VAR1', voltage_value_VAR1, 'I_VAR1', VAR1_session.current_level),
+                ('V_VAR2', 0, 'I_VAR2', 0),
+            )
             # 使用 add_measurement 添加数据
             measurement_manager.add_measurement(measurement)
             single_point_measurement = measurement_manager.get_measurements()  # 单点测得数据字典获取

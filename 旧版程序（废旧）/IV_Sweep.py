@@ -25,8 +25,7 @@ def IV_Sweep_Single(VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltag
 
     #添加CSV扩展名
     output_file += '.csv'
-    output_path = 'D:/user文件/mac备份/qq123/other/smu测试数据保存' #.csv文件存储路径
-
+    output_path = 'D:/user文件/mac备份/qq123/工作安排/第二十周/二代smu测试数据'
     #创建VAR2测量的会话并设置参数
     with nidcpower.Session(resource_name=VAR2) as session_VAR2:
         session_VAR2.source_mode = nidcpower.SourceMode.SINGLE_POINT  # 设置为单点输出模式
@@ -213,7 +212,7 @@ def IV_Sweep_Double(VAR1, VAR2, CONST, num_points_VAR1, voltage_min_VAR1, voltag
 
     # 添加CSV扩展名
     output_file += '.csv'
-    output_path = 'D:/user文件/mac备份/qq123/other/smu测试数据保存'
+    output_path = 'D:/user文件/mac备份/qq123/工作安排/第二十周/二代smu测试数据'
 
     # 创建VAR2测量的会话并设置参数
     with nidcpower.Session(resource_name=VAR2) as session_VAR2:

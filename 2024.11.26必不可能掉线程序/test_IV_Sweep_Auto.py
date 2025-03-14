@@ -3,10 +3,10 @@ import NiDcpower_SelfTest
 import nidcpower
 
 """smu模块选择"""
-smu1 = 'PXI1Slot5/0'
-smu2 = 'PXI1Slot5/1'
-smu3 = 'PXI1Slot5/2'
-smu4 = 'PXI1Slot5/3'
+smu1 = 'PXI1Slot4/0'
+smu2 = 'PXI1Slot4/1'
+smu3 = 'PXI1Slot4/2'
+smu4 = 'PXI1Slot4/3'
 
 
 #设置common端的smu通道：
@@ -50,7 +50,7 @@ params = {
 
 def main():
     # 自检测部分参数设置
-    device_name = "PXI1Slot5"
+    device_name = "PXI1Slot4"
     max_retries = 300  # 最大重复次数
     retry_count = 0  # 当前重复次数
     reset_num = 1

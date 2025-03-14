@@ -2,7 +2,7 @@ import nidcpower
 import time
 
 
-device_name = "PXI1Slot3"
+device_name = "PXI1Slot4"
 max_retries = 30  # 最大重复次数
 retry_count = 0  # 当前重复次数
 reset_num = 1

@@ -71,8 +71,5 @@ def main():
             else:
                 print("Reached maximum number of retries. Mission failed.")
 
-
-
-
 if __name__ == '__main__':
     main()
