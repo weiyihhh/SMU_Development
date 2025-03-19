@@ -10956,7 +10956,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
  *             #
  *             all_measurements = measurement_manager.measurements_data             # <<<<<<<<<<<<<<
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH, CSV_NAME)
- *             #print(all_measurements)
+ *             return all_measurements
  */
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_measurements_data); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 305, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
@@ -10967,8 +10967,8 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
  *             #
  *             all_measurements = measurement_manager.measurements_data
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH, CSV_NAME)             # <<<<<<<<<<<<<<
+ *             return all_measurements
  *             #print(all_measurements)
- *         elif mode_VAR2 == 'I':
  */
       __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_csv_make); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 306, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
@@ -10999,6 +10999,18 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
+      /* "smu_start.py":307
+ *             all_measurements = measurement_manager.measurements_data
+ *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH, CSV_NAME)
+ *             return all_measurements             # <<<<<<<<<<<<<<
+ *             #print(all_measurements)
+ *         elif mode_VAR2 == 'I':
+ */
+      __Pyx_XDECREF(__pyx_r);
+      __Pyx_INCREF(__pyx_v_all_measurements);
+      __pyx_r = __pyx_v_all_measurements;
+      goto __pyx_L0;
+
       /* "smu_start.py":150
  *     # --------------------------------------------------------------------------------------------------
  *     if 1 == VAR2_flag:  # VAR2
@@ -11006,28 +11018,27 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
  *             measurement_manager = MeasurementManager()
  *             for j in range(num_points_VAR2):
  */
-      goto __pyx_L37;
     }
 
-    /* "smu_start.py":308
- *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH, CSV_NAME)
+    /* "smu_start.py":309
+ *             return all_measurements
  *             #print(all_measurements)
  *         elif mode_VAR2 == 'I':             # <<<<<<<<<<<<<<
  *             measurement_manager = MeasurementManager()
  *             for j in range(num_points_VAR2):
  */
-    if (unlikely(!__pyx_v_mode_VAR2)) { __Pyx_RaiseUnboundLocalError("mode_VAR2"); __PYX_ERR(0, 308, __pyx_L1_error) }
-    __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_v_mode_VAR2, __pyx_n_s_I, Py_EQ)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 308, __pyx_L1_error)
+    if (unlikely(!__pyx_v_mode_VAR2)) { __Pyx_RaiseUnboundLocalError("mode_VAR2"); __PYX_ERR(0, 309, __pyx_L1_error) }
+    __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_v_mode_VAR2, __pyx_n_s_I, Py_EQ)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 309, __pyx_L1_error)
     if (__pyx_t_5) {
 
-      /* "smu_start.py":309
+      /* "smu_start.py":310
  *             #print(all_measurements)
  *         elif mode_VAR2 == 'I':
  *             measurement_manager = MeasurementManager()             # <<<<<<<<<<<<<<
  *             for j in range(num_points_VAR2):
  *                 VAR2_session.current_level = current_min_VAR2 + j * current_step_VAR2
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_MeasurementManager); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 309, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_MeasurementManager); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 310, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_4 = NULL;
       __pyx_t_8 = 0;
@@ -11047,31 +11058,31 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         PyObject *__pyx_callargs[2] = {__pyx_t_4, NULL};
         __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 309, __pyx_L1_error)
+        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 310, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       }
       __pyx_v_measurement_manager = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "smu_start.py":310
+      /* "smu_start.py":311
  *         elif mode_VAR2 == 'I':
  *             measurement_manager = MeasurementManager()
  *             for j in range(num_points_VAR2):             # <<<<<<<<<<<<<<
  *                 VAR2_session.current_level = current_min_VAR2 + j * current_step_VAR2
  *                 if IV_flag_VAR1 == 1:
  */
-      if (unlikely(!__pyx_v_num_points_VAR2)) { __Pyx_RaiseUnboundLocalError("num_points_VAR2"); __PYX_ERR(0, 310, __pyx_L1_error) }
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 310, __pyx_L1_error)
+      if (unlikely(!__pyx_v_num_points_VAR2)) { __Pyx_RaiseUnboundLocalError("num_points_VAR2"); __PYX_ERR(0, 311, __pyx_L1_error) }
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 311, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
         __pyx_t_2 = __pyx_t_1; __Pyx_INCREF(__pyx_t_2);
         __pyx_t_7 = 0;
         __pyx_t_15 = NULL;
       } else {
-        __pyx_t_7 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 310, __pyx_L1_error)
+        __pyx_t_7 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 311, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_15 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 310, __pyx_L1_error)
+        __pyx_t_15 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 311, __pyx_L1_error)
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       for (;;) {
@@ -11080,28 +11091,28 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             {
               Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_2);
               #if !CYTHON_ASSUME_SAFE_MACROS
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 310, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 311, __pyx_L1_error)
               #endif
               if (__pyx_t_7 >= __pyx_temp) break;
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_1); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 310, __pyx_L1_error)
+            __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_1); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 311, __pyx_L1_error)
             #else
-            __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 310, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 311, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             #endif
           } else {
             {
               Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_2);
               #if !CYTHON_ASSUME_SAFE_MACROS
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 310, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 311, __pyx_L1_error)
               #endif
               if (__pyx_t_7 >= __pyx_temp) break;
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_1); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 310, __pyx_L1_error)
+            __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_1); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 311, __pyx_L1_error)
             #else
-            __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 310, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 311, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             #endif
           }
@@ -11111,7 +11122,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 310, __pyx_L1_error)
+              else __PYX_ERR(0, 311, __pyx_L1_error)
             }
             break;
           }
@@ -11120,53 +11131,53 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __Pyx_XDECREF_SET(__pyx_v_j, __pyx_t_1);
         __pyx_t_1 = 0;
 
-        /* "smu_start.py":311
+        /* "smu_start.py":312
  *             measurement_manager = MeasurementManager()
  *             for j in range(num_points_VAR2):
  *                 VAR2_session.current_level = current_min_VAR2 + j * current_step_VAR2             # <<<<<<<<<<<<<<
  *                 if IV_flag_VAR1 == 1:
  *                     for i in range(num_points_VAR1):
  */
-        if (unlikely(!__pyx_v_current_min_VAR2)) { __Pyx_RaiseUnboundLocalError("current_min_VAR2"); __PYX_ERR(0, 311, __pyx_L1_error) }
-        if (unlikely(!__pyx_v_current_step_VAR2)) { __Pyx_RaiseUnboundLocalError("current_step_VAR2"); __PYX_ERR(0, 311, __pyx_L1_error) }
-        __pyx_t_1 = PyNumber_Multiply(__pyx_v_j, __pyx_v_current_step_VAR2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 311, __pyx_L1_error)
+        if (unlikely(!__pyx_v_current_min_VAR2)) { __Pyx_RaiseUnboundLocalError("current_min_VAR2"); __PYX_ERR(0, 312, __pyx_L1_error) }
+        if (unlikely(!__pyx_v_current_step_VAR2)) { __Pyx_RaiseUnboundLocalError("current_step_VAR2"); __PYX_ERR(0, 312, __pyx_L1_error) }
+        __pyx_t_1 = PyNumber_Multiply(__pyx_v_j, __pyx_v_current_step_VAR2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 312, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_4 = PyNumber_Add(__pyx_v_current_min_VAR2, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 311, __pyx_L1_error)
+        __pyx_t_4 = PyNumber_Add(__pyx_v_current_min_VAR2, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 312, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 311, __pyx_L1_error) }
-        if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level, __pyx_t_4) < 0) __PYX_ERR(0, 311, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 312, __pyx_L1_error) }
+        if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level, __pyx_t_4) < 0) __PYX_ERR(0, 312, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "smu_start.py":312
+        /* "smu_start.py":313
  *             for j in range(num_points_VAR2):
  *                 VAR2_session.current_level = current_min_VAR2 + j * current_step_VAR2
  *                 if IV_flag_VAR1 == 1:             # <<<<<<<<<<<<<<
  *                     for i in range(num_points_VAR1):
  *                         measurement = {}
  */
-        if (unlikely(!__pyx_v_IV_flag_VAR1)) { __Pyx_RaiseUnboundLocalError("IV_flag_VAR1"); __PYX_ERR(0, 312, __pyx_L1_error) }
-        __pyx_t_5 = (__Pyx_PyInt_BoolEqObjC(__pyx_v_IV_flag_VAR1, __pyx_int_1, 1, 0)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 312, __pyx_L1_error)
+        if (unlikely(!__pyx_v_IV_flag_VAR1)) { __Pyx_RaiseUnboundLocalError("IV_flag_VAR1"); __PYX_ERR(0, 313, __pyx_L1_error) }
+        __pyx_t_5 = (__Pyx_PyInt_BoolEqObjC(__pyx_v_IV_flag_VAR1, __pyx_int_1, 1, 0)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 313, __pyx_L1_error)
         if (__pyx_t_5) {
 
-          /* "smu_start.py":313
+          /* "smu_start.py":314
  *                 VAR2_session.current_level = current_min_VAR2 + j * current_step_VAR2
  *                 if IV_flag_VAR1 == 1:
  *                     for i in range(num_points_VAR1):             # <<<<<<<<<<<<<<
  *                         measurement = {}
  *                         Direction = "Forward"
  */
-          if (unlikely(!__pyx_v_num_points_VAR1)) { __Pyx_RaiseUnboundLocalError("num_points_VAR1"); __PYX_ERR(0, 313, __pyx_L1_error) }
-          __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 313, __pyx_L1_error)
+          if (unlikely(!__pyx_v_num_points_VAR1)) { __Pyx_RaiseUnboundLocalError("num_points_VAR1"); __PYX_ERR(0, 314, __pyx_L1_error) }
+          __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 314, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           if (likely(PyList_CheckExact(__pyx_t_4)) || PyTuple_CheckExact(__pyx_t_4)) {
             __pyx_t_1 = __pyx_t_4; __Pyx_INCREF(__pyx_t_1);
             __pyx_t_16 = 0;
             __pyx_t_17 = NULL;
           } else {
-            __pyx_t_16 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 313, __pyx_L1_error)
+            __pyx_t_16 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 314, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_17 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 313, __pyx_L1_error)
+            __pyx_t_17 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 314, __pyx_L1_error)
           }
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           for (;;) {
@@ -11175,28 +11186,28 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
                 {
                   Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
                   #if !CYTHON_ASSUME_SAFE_MACROS
-                  if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 313, __pyx_L1_error)
+                  if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 314, __pyx_L1_error)
                   #endif
                   if (__pyx_t_16 >= __pyx_temp) break;
                 }
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_16); __Pyx_INCREF(__pyx_t_4); __pyx_t_16++; if (unlikely((0 < 0))) __PYX_ERR(0, 313, __pyx_L1_error)
+                __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_16); __Pyx_INCREF(__pyx_t_4); __pyx_t_16++; if (unlikely((0 < 0))) __PYX_ERR(0, 314, __pyx_L1_error)
                 #else
-                __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 313, __pyx_L1_error)
+                __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 314, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_4);
                 #endif
               } else {
                 {
                   Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_1);
                   #if !CYTHON_ASSUME_SAFE_MACROS
-                  if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 313, __pyx_L1_error)
+                  if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 314, __pyx_L1_error)
                   #endif
                   if (__pyx_t_16 >= __pyx_temp) break;
                 }
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_16); __Pyx_INCREF(__pyx_t_4); __pyx_t_16++; if (unlikely((0 < 0))) __PYX_ERR(0, 313, __pyx_L1_error)
+                __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_16); __Pyx_INCREF(__pyx_t_4); __pyx_t_16++; if (unlikely((0 < 0))) __PYX_ERR(0, 314, __pyx_L1_error)
                 #else
-                __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 313, __pyx_L1_error)
+                __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 314, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_4);
                 #endif
               }
@@ -11206,7 +11217,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
                 PyObject* exc_type = PyErr_Occurred();
                 if (exc_type) {
                   if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                  else __PYX_ERR(0, 313, __pyx_L1_error)
+                  else __PYX_ERR(0, 314, __pyx_L1_error)
                 }
                 break;
               }
@@ -11215,19 +11226,19 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_4);
             __pyx_t_4 = 0;
 
-            /* "smu_start.py":314
+            /* "smu_start.py":315
  *                 if IV_flag_VAR1 == 1:
  *                     for i in range(num_points_VAR1):
  *                         measurement = {}             # <<<<<<<<<<<<<<
  *                         Direction = "Forward"
  *                         VAR1_session.voltage_level = voltage_min_VAR1 + i * voltage_step_VAR1
  */
-            __pyx_t_4 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 314, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 315, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_XDECREF_SET(__pyx_v_measurement, __pyx_t_4);
             __pyx_t_4 = 0;
 
-            /* "smu_start.py":315
+            /* "smu_start.py":316
  *                     for i in range(num_points_VAR1):
  *                         measurement = {}
  *                         Direction = "Forward"             # <<<<<<<<<<<<<<
@@ -11237,67 +11248,33 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __Pyx_INCREF(__pyx_n_s_Forward);
             __Pyx_XDECREF_SET(__pyx_v_Direction, __pyx_n_s_Forward);
 
-            /* "smu_start.py":316
+            /* "smu_start.py":317
  *                         measurement = {}
  *                         Direction = "Forward"
  *                         VAR1_session.voltage_level = voltage_min_VAR1 + i * voltage_step_VAR1             # <<<<<<<<<<<<<<
  *                         VAR2_session.initiate()
  *                         VAR1_session.initiate()
  */
-            if (unlikely(!__pyx_v_voltage_min_VAR1)) { __Pyx_RaiseUnboundLocalError("voltage_min_VAR1"); __PYX_ERR(0, 316, __pyx_L1_error) }
-            if (unlikely(!__pyx_v_voltage_step_VAR1)) { __Pyx_RaiseUnboundLocalError("voltage_step_VAR1"); __PYX_ERR(0, 316, __pyx_L1_error) }
-            __pyx_t_4 = PyNumber_Multiply(__pyx_v_i, __pyx_v_voltage_step_VAR1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 316, __pyx_L1_error)
+            if (unlikely(!__pyx_v_voltage_min_VAR1)) { __Pyx_RaiseUnboundLocalError("voltage_min_VAR1"); __PYX_ERR(0, 317, __pyx_L1_error) }
+            if (unlikely(!__pyx_v_voltage_step_VAR1)) { __Pyx_RaiseUnboundLocalError("voltage_step_VAR1"); __PYX_ERR(0, 317, __pyx_L1_error) }
+            __pyx_t_4 = PyNumber_Multiply(__pyx_v_i, __pyx_v_voltage_step_VAR1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 317, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_3 = PyNumber_Add(__pyx_v_voltage_min_VAR1, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 316, __pyx_L1_error)
+            __pyx_t_3 = PyNumber_Add(__pyx_v_voltage_min_VAR1, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 317, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 316, __pyx_L1_error) }
-            if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level, __pyx_t_3) < 0) __PYX_ERR(0, 316, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 317, __pyx_L1_error) }
+            if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level, __pyx_t_3) < 0) __PYX_ERR(0, 317, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-            /* "smu_start.py":317
+            /* "smu_start.py":318
  *                         Direction = "Forward"
  *                         VAR1_session.voltage_level = voltage_min_VAR1 + i * voltage_step_VAR1
  *                         VAR2_session.initiate()             # <<<<<<<<<<<<<<
  *                         VAR1_session.initiate()
  *                         #  VAR1
  */
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 317, __pyx_L1_error) }
-            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 317, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_11 = NULL;
-            __pyx_t_8 = 0;
-            #if CYTHON_UNPACK_METHODS
-            if (likely(PyMethod_Check(__pyx_t_4))) {
-              __pyx_t_11 = PyMethod_GET_SELF(__pyx_t_4);
-              if (likely(__pyx_t_11)) {
-                PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-                __Pyx_INCREF(__pyx_t_11);
-                __Pyx_INCREF(function);
-                __Pyx_DECREF_SET(__pyx_t_4, function);
-                __pyx_t_8 = 1;
-              }
-            }
-            #endif
-            {
-              PyObject *__pyx_callargs[2] = {__pyx_t_11, NULL};
-              __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
-              __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 317, __pyx_L1_error)
-              __Pyx_GOTREF(__pyx_t_3);
-              __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            }
-            __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-
-            /* "smu_start.py":318
- *                         VAR1_session.voltage_level = voltage_min_VAR1 + i * voltage_step_VAR1
- *                         VAR2_session.initiate()
- *                         VAR1_session.initiate()             # <<<<<<<<<<<<<<
- *                         #  VAR1
- *                         current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)
- */
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 318, __pyx_L1_error) }
-            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 318, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 318, __pyx_L1_error) }
+            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 318, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __pyx_t_11 = NULL;
             __pyx_t_8 = 0;
@@ -11323,22 +11300,56 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             }
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-            /* "smu_start.py":320
+            /* "smu_start.py":319
+ *                         VAR1_session.voltage_level = voltage_min_VAR1 + i * voltage_step_VAR1
+ *                         VAR2_session.initiate()
+ *                         VAR1_session.initiate()             # <<<<<<<<<<<<<<
+ *                         #  VAR1
+ *                         current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)
+ */
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 319, __pyx_L1_error) }
+            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 319, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_4);
+            __pyx_t_11 = NULL;
+            __pyx_t_8 = 0;
+            #if CYTHON_UNPACK_METHODS
+            if (likely(PyMethod_Check(__pyx_t_4))) {
+              __pyx_t_11 = PyMethod_GET_SELF(__pyx_t_4);
+              if (likely(__pyx_t_11)) {
+                PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+                __Pyx_INCREF(__pyx_t_11);
+                __Pyx_INCREF(function);
+                __Pyx_DECREF_SET(__pyx_t_4, function);
+                __pyx_t_8 = 1;
+              }
+            }
+            #endif
+            {
+              PyObject *__pyx_callargs[2] = {__pyx_t_11, NULL};
+              __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
+              __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
+              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 319, __pyx_L1_error)
+              __Pyx_GOTREF(__pyx_t_3);
+              __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            }
+            __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+            /* "smu_start.py":321
  *                         VAR1_session.initiate()
  *                         #  VAR1
  *                         current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)             # <<<<<<<<<<<<<<
  *                         VAR1_session.abort()
  *                         voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  */
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 320, __pyx_L1_error) }
-            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 320, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 321, __pyx_L1_error) }
+            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 321, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 320, __pyx_L1_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 321, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
-            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 320, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 321, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-            __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_CURRENT); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 320, __pyx_L1_error)
+            __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_CURRENT); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 321, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             __pyx_t_10 = NULL;
@@ -11360,22 +11371,22 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
               __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 320, __pyx_L1_error)
+              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 321, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             }
             __Pyx_XDECREF_SET(__pyx_v_current_value_VAR1, __pyx_t_3);
             __pyx_t_3 = 0;
 
-            /* "smu_start.py":321
+            /* "smu_start.py":322
  *                         #  VAR1
  *                         current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)
  *                         VAR1_session.abort()             # <<<<<<<<<<<<<<
  *                         voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  *                         VAR2_session.abort()
  */
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 321, __pyx_L1_error) }
-            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 321, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 322, __pyx_L1_error) }
+            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 322, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __pyx_t_11 = NULL;
             __pyx_t_8 = 0;
@@ -11395,28 +11406,28 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               PyObject *__pyx_callargs[2] = {__pyx_t_11, NULL};
               __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 321, __pyx_L1_error)
+              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 322, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             }
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-            /* "smu_start.py":322
+            /* "smu_start.py":323
  *                         current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)
  *                         VAR1_session.abort()
  *                         voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)             # <<<<<<<<<<<<<<
  *                         VAR2_session.abort()
  *                         #
  */
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 322, __pyx_L1_error) }
-            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 322, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 323, __pyx_L1_error) }
+            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 323, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 322, __pyx_L1_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 323, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
-            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 322, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 323, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-            __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_VOLTAGE); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 322, __pyx_L1_error)
+            __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_VOLTAGE); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 323, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             __pyx_t_10 = NULL;
@@ -11438,22 +11449,22 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
               __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 322, __pyx_L1_error)
+              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 323, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             }
             __Pyx_XDECREF_SET(__pyx_v_voltage_value_VAR2, __pyx_t_3);
             __pyx_t_3 = 0;
 
-            /* "smu_start.py":323
+            /* "smu_start.py":324
  *                         VAR1_session.abort()
  *                         voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  *                         VAR2_session.abort()             # <<<<<<<<<<<<<<
  *                         #
  *                         measurement = update_measurement(
  */
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 323, __pyx_L1_error) }
-            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 323, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 324, __pyx_L1_error) }
+            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 324, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __pyx_t_11 = NULL;
             __pyx_t_8 = 0;
@@ -11473,86 +11484,86 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               PyObject *__pyx_callargs[2] = {__pyx_t_11, NULL};
               __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 323, __pyx_L1_error)
+              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 324, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             }
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-            /* "smu_start.py":325
+            /* "smu_start.py":326
  *                         VAR2_session.abort()
  *                         #
  *                         measurement = update_measurement(             # <<<<<<<<<<<<<<
  *                             measurement,
  *                             ('Direction', Direction),
  */
-            __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_update_measurement); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 325, __pyx_L1_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_update_measurement); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 326, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
 
-            /* "smu_start.py":327
+            /* "smu_start.py":328
  *                         measurement = update_measurement(
  *                             measurement,
  *                             ('Direction', Direction),             # <<<<<<<<<<<<<<
  *                             ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),
  *                             ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),
  */
-            __pyx_t_11 = PyTuple_New(2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 327, __pyx_L1_error)
+            __pyx_t_11 = PyTuple_New(2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 328, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             __Pyx_INCREF(__pyx_n_s_Direction);
             __Pyx_GIVEREF(__pyx_n_s_Direction);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_n_s_Direction)) __PYX_ERR(0, 327, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_n_s_Direction)) __PYX_ERR(0, 328, __pyx_L1_error);
             __Pyx_INCREF(__pyx_v_Direction);
             __Pyx_GIVEREF(__pyx_v_Direction);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_v_Direction)) __PYX_ERR(0, 327, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_v_Direction)) __PYX_ERR(0, 328, __pyx_L1_error);
 
-            /* "smu_start.py":328
+            /* "smu_start.py":329
  *                             measurement,
  *                             ('Direction', Direction),
  *                             ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),             # <<<<<<<<<<<<<<
  *                             ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),
  *                         )
  */
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 328, __pyx_L1_error) }
-            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 328, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 329, __pyx_L1_error) }
+            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 329, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
-            __pyx_t_13 = PyTuple_New(4); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 328, __pyx_L1_error)
+            __pyx_t_13 = PyTuple_New(4); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 329, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
             __Pyx_INCREF(__pyx_n_s_V_VAR1);
             __Pyx_GIVEREF(__pyx_n_s_V_VAR1);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_n_s_V_VAR1)) __PYX_ERR(0, 328, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_n_s_V_VAR1)) __PYX_ERR(0, 329, __pyx_L1_error);
             __Pyx_GIVEREF(__pyx_t_10);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 1, __pyx_t_10)) __PYX_ERR(0, 328, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 1, __pyx_t_10)) __PYX_ERR(0, 329, __pyx_L1_error);
             __Pyx_INCREF(__pyx_n_s_I_VAR1);
             __Pyx_GIVEREF(__pyx_n_s_I_VAR1);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 2, __pyx_n_s_I_VAR1)) __PYX_ERR(0, 328, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 2, __pyx_n_s_I_VAR1)) __PYX_ERR(0, 329, __pyx_L1_error);
             __Pyx_INCREF(__pyx_v_current_value_VAR1);
             __Pyx_GIVEREF(__pyx_v_current_value_VAR1);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 3, __pyx_v_current_value_VAR1)) __PYX_ERR(0, 328, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 3, __pyx_v_current_value_VAR1)) __PYX_ERR(0, 329, __pyx_L1_error);
             __pyx_t_10 = 0;
 
-            /* "smu_start.py":329
+            /* "smu_start.py":330
  *                             ('Direction', Direction),
  *                             ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),
  *                             ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),             # <<<<<<<<<<<<<<
  *                         )
  *                         measurement = const_record(measurement)
  */
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 329, __pyx_L1_error) }
-            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 329, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 330, __pyx_L1_error) }
+            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 330, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
-            __pyx_t_12 = PyTuple_New(4); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 329, __pyx_L1_error)
+            __pyx_t_12 = PyTuple_New(4); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 330, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_INCREF(__pyx_n_s_V_VAR2);
             __Pyx_GIVEREF(__pyx_n_s_V_VAR2);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_n_s_V_VAR2)) __PYX_ERR(0, 329, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_n_s_V_VAR2)) __PYX_ERR(0, 330, __pyx_L1_error);
             __Pyx_INCREF(__pyx_v_voltage_value_VAR2);
             __Pyx_GIVEREF(__pyx_v_voltage_value_VAR2);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_v_voltage_value_VAR2)) __PYX_ERR(0, 329, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_v_voltage_value_VAR2)) __PYX_ERR(0, 330, __pyx_L1_error);
             __Pyx_INCREF(__pyx_n_s_I_VAR2);
             __Pyx_GIVEREF(__pyx_n_s_I_VAR2);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 2, __pyx_n_s_I_VAR2)) __PYX_ERR(0, 329, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 2, __pyx_n_s_I_VAR2)) __PYX_ERR(0, 330, __pyx_L1_error);
             __Pyx_GIVEREF(__pyx_t_10);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 3, __pyx_t_10)) __PYX_ERR(0, 329, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 3, __pyx_t_10)) __PYX_ERR(0, 330, __pyx_L1_error);
             __pyx_t_10 = 0;
             __pyx_t_10 = NULL;
             __pyx_t_8 = 0;
@@ -11575,33 +11586,33 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
               __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
               __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 325, __pyx_L1_error)
+              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 326, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             }
             __Pyx_DECREF_SET(__pyx_v_measurement, __pyx_t_3);
             __pyx_t_3 = 0;
 
-            /* "smu_start.py":331
+            /* "smu_start.py":332
  *                             ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),
  *                         )
  *                         measurement = const_record(measurement)             # <<<<<<<<<<<<<<
  *                         measurement_manager.add_measurement(measurement)
  *                         single_point_measurement = measurement_manager.get_measurements()  #
  */
-            __pyx_t_3 = __pyx_pf_9smu_start_14smu_test_start_const_record(__pyx_v_const_record, __pyx_v_measurement); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 331, __pyx_L1_error)
+            __pyx_t_3 = __pyx_pf_9smu_start_14smu_test_start_const_record(__pyx_v_const_record, __pyx_v_measurement); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 332, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF_SET(__pyx_v_measurement, __pyx_t_3);
             __pyx_t_3 = 0;
 
-            /* "smu_start.py":332
+            /* "smu_start.py":333
  *                         )
  *                         measurement = const_record(measurement)
  *                         measurement_manager.add_measurement(measurement)             # <<<<<<<<<<<<<<
  *                         single_point_measurement = measurement_manager.get_measurements()  #
  *                         # VAR1CONST
  */
-            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_add_measurement); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 332, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_add_measurement); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 333, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __pyx_t_12 = NULL;
             __pyx_t_8 = 0;
@@ -11621,20 +11632,20 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               PyObject *__pyx_callargs[2] = {__pyx_t_12, __pyx_v_measurement};
               __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
-              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 332, __pyx_L1_error)
+              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 333, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             }
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-            /* "smu_start.py":333
+            /* "smu_start.py":334
  *                         measurement = const_record(measurement)
  *                         measurement_manager.add_measurement(measurement)
  *                         single_point_measurement = measurement_manager.get_measurements()  #             # <<<<<<<<<<<<<<
  *                         # VAR1CONST
  *                         print(
  */
-            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_get_measurements); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 333, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_get_measurements); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 334, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __pyx_t_12 = NULL;
             __pyx_t_8 = 0;
@@ -11654,21 +11665,21 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               PyObject *__pyx_callargs[2] = {__pyx_t_12, NULL};
               __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
-              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 333, __pyx_L1_error)
+              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 334, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             }
             __Pyx_XDECREF_SET(__pyx_v_single_point_measurement, __pyx_t_3);
             __pyx_t_3 = 0;
 
-            /* "smu_start.py":336
+            /* "smu_start.py":337
  *                         # VAR1CONST
  *                         print(
  *                             f"Direction: 'Forward' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level}, V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")             # <<<<<<<<<<<<<<
  *                 elif IV_flag_VAR1 == 2:
  *                     # VAR1
  */
-            __pyx_t_3 = PyTuple_New(20); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 336, __pyx_L1_error)
+            __pyx_t_3 = PyTuple_New(20); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 337, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __pyx_t_18 = 0;
             __pyx_t_19 = 127;
@@ -11676,10 +11687,10 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 30;
             __Pyx_GIVEREF(__pyx_kp_u_Direction_Forward_V_VAR1);
             PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_kp_u_Direction_Forward_V_VAR1);
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 336, __pyx_L1_error) }
-            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 336, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 337, __pyx_L1_error) }
+            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 337, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_12 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 336, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 337, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_12) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_12) : __pyx_t_19;
@@ -11691,7 +11702,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_VAR1_2);
             PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_kp_u_I_VAR1_2);
-            __pyx_t_12 = __Pyx_PyObject_FormatSimple(__pyx_v_current_value_VAR1, __pyx_empty_unicode); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 336, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_FormatSimple(__pyx_v_current_value_VAR1, __pyx_empty_unicode); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 337, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_12) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_12) : __pyx_t_19;
             __pyx_t_18 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_12);
@@ -11702,7 +11713,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_V_VAR2_2);
             PyTuple_SET_ITEM(__pyx_t_3, 4, __pyx_kp_u_V_VAR2_2);
-            __pyx_t_12 = __Pyx_PyObject_FormatSimple(__pyx_v_voltage_value_VAR2, __pyx_empty_unicode); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 336, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_FormatSimple(__pyx_v_voltage_value_VAR2, __pyx_empty_unicode); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 337, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_12) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_12) : __pyx_t_19;
             __pyx_t_18 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_12);
@@ -11713,10 +11724,10 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_VAR2_2);
             PyTuple_SET_ITEM(__pyx_t_3, 6, __pyx_kp_u_I_VAR2_2);
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 336, __pyx_L1_error) }
-            __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 336, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 337, __pyx_L1_error) }
+            __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 337, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
-            __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_12, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 336, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_12, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 337, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_19;
@@ -11728,9 +11739,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 11;
             __Pyx_GIVEREF(__pyx_kp_u_V_CONST1_2);
             PyTuple_SET_ITEM(__pyx_t_3, 8, __pyx_kp_u_V_CONST1_2);
-            __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 336, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 337, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_12 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 336, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 337, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_12) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_12) : __pyx_t_19;
@@ -11742,9 +11753,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_CONST1_2);
             PyTuple_SET_ITEM(__pyx_t_3, 10, __pyx_kp_u_I_CONST1_2);
-            __pyx_t_12 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 336, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 337, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
-            __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_12, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 336, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_12, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 337, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_19;
@@ -11756,9 +11767,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_V_CONST2_2);
             PyTuple_SET_ITEM(__pyx_t_3, 12, __pyx_kp_u_V_CONST2_2);
-            __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 336, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 337, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_12 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 336, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 337, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_12) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_12) : __pyx_t_19;
@@ -11770,9 +11781,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_CONST2_2);
             PyTuple_SET_ITEM(__pyx_t_3, 14, __pyx_kp_u_I_CONST2_2);
-            __pyx_t_12 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 336, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 337, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
-            __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_12, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 336, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_12, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 337, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_19;
@@ -11784,9 +11795,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_V_CONST3_2);
             PyTuple_SET_ITEM(__pyx_t_3, 16, __pyx_kp_u_V_CONST3_2);
-            __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 336, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 337, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_12 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 336, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 337, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_12) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_12) : __pyx_t_19;
@@ -11798,9 +11809,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_CONST3_2);
             PyTuple_SET_ITEM(__pyx_t_3, 18, __pyx_kp_u_I_CONST3_2);
-            __pyx_t_12 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 336, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 337, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
-            __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_12, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 336, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_12, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 337, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_19;
@@ -11808,23 +11819,23 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __Pyx_GIVEREF(__pyx_t_4);
             PyTuple_SET_ITEM(__pyx_t_3, 19, __pyx_t_4);
             __pyx_t_4 = 0;
-            __pyx_t_4 = __Pyx_PyUnicode_Join(__pyx_t_3, 20, __pyx_t_18, __pyx_t_19); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 336, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyUnicode_Join(__pyx_t_3, 20, __pyx_t_18, __pyx_t_19); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 337, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-            /* "smu_start.py":335
+            /* "smu_start.py":336
  *                         single_point_measurement = measurement_manager.get_measurements()  #
  *                         # VAR1CONST
  *                         print(             # <<<<<<<<<<<<<<
  *                             f"Direction: 'Forward' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level}, V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *                 elif IV_flag_VAR1 == 2:
  */
-            __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 335, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 336, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-            /* "smu_start.py":313
+            /* "smu_start.py":314
  *                 VAR2_session.current_level = current_min_VAR2 + j * current_step_VAR2
  *                 if IV_flag_VAR1 == 1:
  *                     for i in range(num_points_VAR1):             # <<<<<<<<<<<<<<
@@ -11834,7 +11845,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           }
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-          /* "smu_start.py":312
+          /* "smu_start.py":313
  *             for j in range(num_points_VAR2):
  *                 VAR2_session.current_level = current_min_VAR2 + j * current_step_VAR2
  *                 if IV_flag_VAR1 == 1:             # <<<<<<<<<<<<<<
@@ -11844,35 +11855,35 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           goto __pyx_L62;
         }
 
-        /* "smu_start.py":337
+        /* "smu_start.py":338
  *                         print(
  *                             f"Direction: 'Forward' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level}, V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *                 elif IV_flag_VAR1 == 2:             # <<<<<<<<<<<<<<
  *                     # VAR1
  *                     for i in range(num_points_VAR1):
  */
-        if (unlikely(!__pyx_v_IV_flag_VAR1)) { __Pyx_RaiseUnboundLocalError("IV_flag_VAR1"); __PYX_ERR(0, 337, __pyx_L1_error) }
-        __pyx_t_5 = (__Pyx_PyInt_BoolEqObjC(__pyx_v_IV_flag_VAR1, __pyx_int_2, 2, 0)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 337, __pyx_L1_error)
+        if (unlikely(!__pyx_v_IV_flag_VAR1)) { __Pyx_RaiseUnboundLocalError("IV_flag_VAR1"); __PYX_ERR(0, 338, __pyx_L1_error) }
+        __pyx_t_5 = (__Pyx_PyInt_BoolEqObjC(__pyx_v_IV_flag_VAR1, __pyx_int_2, 2, 0)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 338, __pyx_L1_error)
         if (__pyx_t_5) {
 
-          /* "smu_start.py":339
+          /* "smu_start.py":340
  *                 elif IV_flag_VAR1 == 2:
  *                     # VAR1
  *                     for i in range(num_points_VAR1):             # <<<<<<<<<<<<<<
  *                         measurement = {}
  *                         Direction = "Forward"
  */
-          if (unlikely(!__pyx_v_num_points_VAR1)) { __Pyx_RaiseUnboundLocalError("num_points_VAR1"); __PYX_ERR(0, 339, __pyx_L1_error) }
-          __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 339, __pyx_L1_error)
+          if (unlikely(!__pyx_v_num_points_VAR1)) { __Pyx_RaiseUnboundLocalError("num_points_VAR1"); __PYX_ERR(0, 340, __pyx_L1_error) }
+          __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 340, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
             __pyx_t_3 = __pyx_t_1; __Pyx_INCREF(__pyx_t_3);
             __pyx_t_16 = 0;
             __pyx_t_17 = NULL;
           } else {
-            __pyx_t_16 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 339, __pyx_L1_error)
+            __pyx_t_16 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 340, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
-            __pyx_t_17 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 339, __pyx_L1_error)
+            __pyx_t_17 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 340, __pyx_L1_error)
           }
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           for (;;) {
@@ -11881,28 +11892,28 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
                 {
                   Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_3);
                   #if !CYTHON_ASSUME_SAFE_MACROS
-                  if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 339, __pyx_L1_error)
+                  if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 340, __pyx_L1_error)
                   #endif
                   if (__pyx_t_16 >= __pyx_temp) break;
                 }
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_16); __Pyx_INCREF(__pyx_t_1); __pyx_t_16++; if (unlikely((0 < 0))) __PYX_ERR(0, 339, __pyx_L1_error)
+                __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_16); __Pyx_INCREF(__pyx_t_1); __pyx_t_16++; if (unlikely((0 < 0))) __PYX_ERR(0, 340, __pyx_L1_error)
                 #else
-                __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 339, __pyx_L1_error)
+                __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 340, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_1);
                 #endif
               } else {
                 {
                   Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_3);
                   #if !CYTHON_ASSUME_SAFE_MACROS
-                  if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 339, __pyx_L1_error)
+                  if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 340, __pyx_L1_error)
                   #endif
                   if (__pyx_t_16 >= __pyx_temp) break;
                 }
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_16); __Pyx_INCREF(__pyx_t_1); __pyx_t_16++; if (unlikely((0 < 0))) __PYX_ERR(0, 339, __pyx_L1_error)
+                __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_16); __Pyx_INCREF(__pyx_t_1); __pyx_t_16++; if (unlikely((0 < 0))) __PYX_ERR(0, 340, __pyx_L1_error)
                 #else
-                __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 339, __pyx_L1_error)
+                __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 340, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_1);
                 #endif
               }
@@ -11912,7 +11923,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
                 PyObject* exc_type = PyErr_Occurred();
                 if (exc_type) {
                   if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                  else __PYX_ERR(0, 339, __pyx_L1_error)
+                  else __PYX_ERR(0, 340, __pyx_L1_error)
                 }
                 break;
               }
@@ -11921,19 +11932,19 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_1);
             __pyx_t_1 = 0;
 
-            /* "smu_start.py":340
+            /* "smu_start.py":341
  *                     # VAR1
  *                     for i in range(num_points_VAR1):
  *                         measurement = {}             # <<<<<<<<<<<<<<
  *                         Direction = "Forward"
  *                         VAR1_session.voltage_level = voltage_min_VAR1 + i * voltage_step_VAR1
  */
-            __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 340, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 341, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_XDECREF_SET(__pyx_v_measurement, __pyx_t_1);
             __pyx_t_1 = 0;
 
-            /* "smu_start.py":341
+            /* "smu_start.py":342
  *                     for i in range(num_points_VAR1):
  *                         measurement = {}
  *                         Direction = "Forward"             # <<<<<<<<<<<<<<
@@ -11943,67 +11954,33 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __Pyx_INCREF(__pyx_n_s_Forward);
             __Pyx_XDECREF_SET(__pyx_v_Direction, __pyx_n_s_Forward);
 
-            /* "smu_start.py":342
+            /* "smu_start.py":343
  *                         measurement = {}
  *                         Direction = "Forward"
  *                         VAR1_session.voltage_level = voltage_min_VAR1 + i * voltage_step_VAR1             # <<<<<<<<<<<<<<
  *                         VAR2_session.initiate()
  *                         VAR1_session.initiate()
  */
-            if (unlikely(!__pyx_v_voltage_min_VAR1)) { __Pyx_RaiseUnboundLocalError("voltage_min_VAR1"); __PYX_ERR(0, 342, __pyx_L1_error) }
-            if (unlikely(!__pyx_v_voltage_step_VAR1)) { __Pyx_RaiseUnboundLocalError("voltage_step_VAR1"); __PYX_ERR(0, 342, __pyx_L1_error) }
-            __pyx_t_1 = PyNumber_Multiply(__pyx_v_i, __pyx_v_voltage_step_VAR1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 342, __pyx_L1_error)
+            if (unlikely(!__pyx_v_voltage_min_VAR1)) { __Pyx_RaiseUnboundLocalError("voltage_min_VAR1"); __PYX_ERR(0, 343, __pyx_L1_error) }
+            if (unlikely(!__pyx_v_voltage_step_VAR1)) { __Pyx_RaiseUnboundLocalError("voltage_step_VAR1"); __PYX_ERR(0, 343, __pyx_L1_error) }
+            __pyx_t_1 = PyNumber_Multiply(__pyx_v_i, __pyx_v_voltage_step_VAR1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 343, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_4 = PyNumber_Add(__pyx_v_voltage_min_VAR1, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 342, __pyx_L1_error)
+            __pyx_t_4 = PyNumber_Add(__pyx_v_voltage_min_VAR1, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 343, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 342, __pyx_L1_error) }
-            if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level, __pyx_t_4) < 0) __PYX_ERR(0, 342, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 343, __pyx_L1_error) }
+            if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level, __pyx_t_4) < 0) __PYX_ERR(0, 343, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-            /* "smu_start.py":343
+            /* "smu_start.py":344
  *                         Direction = "Forward"
  *                         VAR1_session.voltage_level = voltage_min_VAR1 + i * voltage_step_VAR1
  *                         VAR2_session.initiate()             # <<<<<<<<<<<<<<
  *                         VAR1_session.initiate()
  *                         #  VAR1
  */
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 343, __pyx_L1_error) }
-            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 343, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_12 = NULL;
-            __pyx_t_8 = 0;
-            #if CYTHON_UNPACK_METHODS
-            if (likely(PyMethod_Check(__pyx_t_1))) {
-              __pyx_t_12 = PyMethod_GET_SELF(__pyx_t_1);
-              if (likely(__pyx_t_12)) {
-                PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
-                __Pyx_INCREF(__pyx_t_12);
-                __Pyx_INCREF(function);
-                __Pyx_DECREF_SET(__pyx_t_1, function);
-                __pyx_t_8 = 1;
-              }
-            }
-            #endif
-            {
-              PyObject *__pyx_callargs[2] = {__pyx_t_12, NULL};
-              __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
-              __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
-              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 343, __pyx_L1_error)
-              __Pyx_GOTREF(__pyx_t_4);
-              __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-            }
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-            /* "smu_start.py":344
- *                         VAR1_session.voltage_level = voltage_min_VAR1 + i * voltage_step_VAR1
- *                         VAR2_session.initiate()
- *                         VAR1_session.initiate()             # <<<<<<<<<<<<<<
- *                         #  VAR1
- *                         current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)
- */
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 344, __pyx_L1_error) }
-            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 344, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 344, __pyx_L1_error) }
+            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 344, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __pyx_t_12 = NULL;
             __pyx_t_8 = 0;
@@ -12029,22 +12006,56 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             }
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-            /* "smu_start.py":346
+            /* "smu_start.py":345
+ *                         VAR1_session.voltage_level = voltage_min_VAR1 + i * voltage_step_VAR1
+ *                         VAR2_session.initiate()
+ *                         VAR1_session.initiate()             # <<<<<<<<<<<<<<
+ *                         #  VAR1
+ *                         current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)
+ */
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 345, __pyx_L1_error) }
+            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 345, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_1);
+            __pyx_t_12 = NULL;
+            __pyx_t_8 = 0;
+            #if CYTHON_UNPACK_METHODS
+            if (likely(PyMethod_Check(__pyx_t_1))) {
+              __pyx_t_12 = PyMethod_GET_SELF(__pyx_t_1);
+              if (likely(__pyx_t_12)) {
+                PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+                __Pyx_INCREF(__pyx_t_12);
+                __Pyx_INCREF(function);
+                __Pyx_DECREF_SET(__pyx_t_1, function);
+                __pyx_t_8 = 1;
+              }
+            }
+            #endif
+            {
+              PyObject *__pyx_callargs[2] = {__pyx_t_12, NULL};
+              __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
+              __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
+              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 345, __pyx_L1_error)
+              __Pyx_GOTREF(__pyx_t_4);
+              __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+            }
+            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+            /* "smu_start.py":347
  *                         VAR1_session.initiate()
  *                         #  VAR1
  *                         current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)             # <<<<<<<<<<<<<<
  *                         VAR1_session.abort()
  *                         voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  */
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 346, __pyx_L1_error) }
-            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 346, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 347, __pyx_L1_error) }
+            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 347, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 346, __pyx_L1_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 347, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
-            __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 346, __pyx_L1_error)
+            __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 347, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-            __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_CURRENT); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 346, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_CURRENT); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 347, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
             __pyx_t_13 = NULL;
@@ -12066,22 +12077,22 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
               __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 346, __pyx_L1_error)
+              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 347, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             }
             __Pyx_XDECREF_SET(__pyx_v_current_value_VAR1, __pyx_t_4);
             __pyx_t_4 = 0;
 
-            /* "smu_start.py":347
+            /* "smu_start.py":348
  *                         #  VAR1
  *                         current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)
  *                         VAR1_session.abort()             # <<<<<<<<<<<<<<
  *                         voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  *                         VAR2_session.abort()
  */
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 347, __pyx_L1_error) }
-            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 347, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 348, __pyx_L1_error) }
+            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 348, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __pyx_t_12 = NULL;
             __pyx_t_8 = 0;
@@ -12101,28 +12112,28 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               PyObject *__pyx_callargs[2] = {__pyx_t_12, NULL};
               __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
-              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 347, __pyx_L1_error)
+              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 348, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             }
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-            /* "smu_start.py":348
+            /* "smu_start.py":349
  *                         current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)
  *                         VAR1_session.abort()
  *                         voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)             # <<<<<<<<<<<<<<
  *                         VAR2_session.abort()
  *                         #
  */
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 348, __pyx_L1_error) }
-            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 348, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 349, __pyx_L1_error) }
+            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 349, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 348, __pyx_L1_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 349, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
-            __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 348, __pyx_L1_error)
+            __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 349, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-            __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_VOLTAGE); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 348, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_VOLTAGE); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 349, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
             __pyx_t_13 = NULL;
@@ -12144,22 +12155,22 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
               __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 348, __pyx_L1_error)
+              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 349, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             }
             __Pyx_XDECREF_SET(__pyx_v_voltage_value_VAR2, __pyx_t_4);
             __pyx_t_4 = 0;
 
-            /* "smu_start.py":349
+            /* "smu_start.py":350
  *                         VAR1_session.abort()
  *                         voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  *                         VAR2_session.abort()             # <<<<<<<<<<<<<<
  *                         #
  *                         measurement = update_measurement(
  */
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 349, __pyx_L1_error) }
-            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 349, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 350, __pyx_L1_error) }
+            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 350, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __pyx_t_12 = NULL;
             __pyx_t_8 = 0;
@@ -12179,86 +12190,86 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               PyObject *__pyx_callargs[2] = {__pyx_t_12, NULL};
               __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
-              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 349, __pyx_L1_error)
+              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 350, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             }
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-            /* "smu_start.py":351
+            /* "smu_start.py":352
  *                         VAR2_session.abort()
  *                         #
  *                         measurement = update_measurement(             # <<<<<<<<<<<<<<
  *                             measurement,
  *                             ('Direction', Direction),
  */
-            __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_update_measurement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 351, __pyx_L1_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_update_measurement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 352, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
 
-            /* "smu_start.py":353
+            /* "smu_start.py":354
  *                         measurement = update_measurement(
  *                             measurement,
  *                             ('Direction', Direction),             # <<<<<<<<<<<<<<
  *                             ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),
  *                             ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),
  */
-            __pyx_t_12 = PyTuple_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 353, __pyx_L1_error)
+            __pyx_t_12 = PyTuple_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 354, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_INCREF(__pyx_n_s_Direction);
             __Pyx_GIVEREF(__pyx_n_s_Direction);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_n_s_Direction)) __PYX_ERR(0, 353, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_n_s_Direction)) __PYX_ERR(0, 354, __pyx_L1_error);
             __Pyx_INCREF(__pyx_v_Direction);
             __Pyx_GIVEREF(__pyx_v_Direction);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_v_Direction)) __PYX_ERR(0, 353, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_v_Direction)) __PYX_ERR(0, 354, __pyx_L1_error);
 
-            /* "smu_start.py":354
+            /* "smu_start.py":355
  *                             measurement,
  *                             ('Direction', Direction),
  *                             ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),             # <<<<<<<<<<<<<<
  *                             ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),
  *                         )
  */
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 354, __pyx_L1_error) }
-            __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 354, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 355, __pyx_L1_error) }
+            __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 355, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
-            __pyx_t_11 = PyTuple_New(4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 354, __pyx_L1_error)
+            __pyx_t_11 = PyTuple_New(4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 355, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             __Pyx_INCREF(__pyx_n_s_V_VAR1);
             __Pyx_GIVEREF(__pyx_n_s_V_VAR1);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_n_s_V_VAR1)) __PYX_ERR(0, 354, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_n_s_V_VAR1)) __PYX_ERR(0, 355, __pyx_L1_error);
             __Pyx_GIVEREF(__pyx_t_13);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_t_13)) __PYX_ERR(0, 354, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_t_13)) __PYX_ERR(0, 355, __pyx_L1_error);
             __Pyx_INCREF(__pyx_n_s_I_VAR1);
             __Pyx_GIVEREF(__pyx_n_s_I_VAR1);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 2, __pyx_n_s_I_VAR1)) __PYX_ERR(0, 354, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 2, __pyx_n_s_I_VAR1)) __PYX_ERR(0, 355, __pyx_L1_error);
             __Pyx_INCREF(__pyx_v_current_value_VAR1);
             __Pyx_GIVEREF(__pyx_v_current_value_VAR1);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 3, __pyx_v_current_value_VAR1)) __PYX_ERR(0, 354, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 3, __pyx_v_current_value_VAR1)) __PYX_ERR(0, 355, __pyx_L1_error);
             __pyx_t_13 = 0;
 
-            /* "smu_start.py":355
+            /* "smu_start.py":356
  *                             ('Direction', Direction),
  *                             ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),
  *                             ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),             # <<<<<<<<<<<<<<
  *                         )
  *                         measurement = const_record(measurement)
  */
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 355, __pyx_L1_error) }
-            __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 355, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 356, __pyx_L1_error) }
+            __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 356, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
-            __pyx_t_10 = PyTuple_New(4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 355, __pyx_L1_error)
+            __pyx_t_10 = PyTuple_New(4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 356, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_INCREF(__pyx_n_s_V_VAR2);
             __Pyx_GIVEREF(__pyx_n_s_V_VAR2);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_n_s_V_VAR2)) __PYX_ERR(0, 355, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_n_s_V_VAR2)) __PYX_ERR(0, 356, __pyx_L1_error);
             __Pyx_INCREF(__pyx_v_voltage_value_VAR2);
             __Pyx_GIVEREF(__pyx_v_voltage_value_VAR2);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_v_voltage_value_VAR2)) __PYX_ERR(0, 355, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_v_voltage_value_VAR2)) __PYX_ERR(0, 356, __pyx_L1_error);
             __Pyx_INCREF(__pyx_n_s_I_VAR2);
             __Pyx_GIVEREF(__pyx_n_s_I_VAR2);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_n_s_I_VAR2)) __PYX_ERR(0, 355, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_n_s_I_VAR2)) __PYX_ERR(0, 356, __pyx_L1_error);
             __Pyx_GIVEREF(__pyx_t_13);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 3, __pyx_t_13)) __PYX_ERR(0, 355, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 3, __pyx_t_13)) __PYX_ERR(0, 356, __pyx_L1_error);
             __pyx_t_13 = 0;
             __pyx_t_13 = NULL;
             __pyx_t_8 = 0;
@@ -12281,33 +12292,33 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
               __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
               __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 351, __pyx_L1_error)
+              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 352, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             }
             __Pyx_DECREF_SET(__pyx_v_measurement, __pyx_t_4);
             __pyx_t_4 = 0;
 
-            /* "smu_start.py":357
+            /* "smu_start.py":358
  *                             ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),
  *                         )
  *                         measurement = const_record(measurement)             # <<<<<<<<<<<<<<
  *                         #  add_measurement
  *                         measurement_manager.add_measurement(measurement)
  */
-            __pyx_t_4 = __pyx_pf_9smu_start_14smu_test_start_const_record(__pyx_v_const_record, __pyx_v_measurement); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 357, __pyx_L1_error)
+            __pyx_t_4 = __pyx_pf_9smu_start_14smu_test_start_const_record(__pyx_v_const_record, __pyx_v_measurement); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 358, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF_SET(__pyx_v_measurement, __pyx_t_4);
             __pyx_t_4 = 0;
 
-            /* "smu_start.py":359
+            /* "smu_start.py":360
  *                         measurement = const_record(measurement)
  *                         #  add_measurement
  *                         measurement_manager.add_measurement(measurement)             # <<<<<<<<<<<<<<
  *                         single_point_measurement = measurement_manager.get_measurements()  #
  *                         # VAR1CONST
  */
-            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_add_measurement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 359, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_add_measurement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 360, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __pyx_t_10 = NULL;
             __pyx_t_8 = 0;
@@ -12327,20 +12338,20 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               PyObject *__pyx_callargs[2] = {__pyx_t_10, __pyx_v_measurement};
               __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 359, __pyx_L1_error)
+              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 360, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             }
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-            /* "smu_start.py":360
+            /* "smu_start.py":361
  *                         #  add_measurement
  *                         measurement_manager.add_measurement(measurement)
  *                         single_point_measurement = measurement_manager.get_measurements()  #             # <<<<<<<<<<<<<<
  *                         # VAR1CONST
  *                         print(
  */
-            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_get_measurements); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 360, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_get_measurements); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 361, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __pyx_t_10 = NULL;
             __pyx_t_8 = 0;
@@ -12360,21 +12371,21 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               PyObject *__pyx_callargs[2] = {__pyx_t_10, NULL};
               __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 360, __pyx_L1_error)
+              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 361, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             }
             __Pyx_XDECREF_SET(__pyx_v_single_point_measurement, __pyx_t_4);
             __pyx_t_4 = 0;
 
-            /* "smu_start.py":363
+            /* "smu_start.py":364
  *                         # VAR1CONST
  *                         print(
  *                             f"Direction: 'Forward' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level} ,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")             # <<<<<<<<<<<<<<
  *                     # VAR1
  *                     for i in range(num_points_VAR1):
  */
-            __pyx_t_4 = PyTuple_New(20); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 363, __pyx_L1_error)
+            __pyx_t_4 = PyTuple_New(20); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 364, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __pyx_t_18 = 0;
             __pyx_t_19 = 127;
@@ -12382,10 +12393,10 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 30;
             __Pyx_GIVEREF(__pyx_kp_u_Direction_Forward_V_VAR1);
             PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_kp_u_Direction_Forward_V_VAR1);
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 363, __pyx_L1_error) }
-            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 363, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 364, __pyx_L1_error) }
+            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 364, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 363, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 364, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) : __pyx_t_19;
@@ -12397,7 +12408,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_VAR1_2);
             PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_kp_u_I_VAR1_2);
-            __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_v_current_value_VAR1, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 363, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_v_current_value_VAR1, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 364, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) : __pyx_t_19;
             __pyx_t_18 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_10);
@@ -12408,7 +12419,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_V_VAR2_2);
             PyTuple_SET_ITEM(__pyx_t_4, 4, __pyx_kp_u_V_VAR2_2);
-            __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_v_voltage_value_VAR2, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 363, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_v_voltage_value_VAR2, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 364, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) : __pyx_t_19;
             __pyx_t_18 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_10);
@@ -12419,10 +12430,10 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_VAR2_2);
             PyTuple_SET_ITEM(__pyx_t_4, 6, __pyx_kp_u_I_VAR2_2);
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 363, __pyx_L1_error) }
-            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 363, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 364, __pyx_L1_error) }
+            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 364, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
-            __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 363, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 364, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) : __pyx_t_19;
@@ -12434,9 +12445,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 11;
             __Pyx_GIVEREF(__pyx_kp_u_V_CONST1_3);
             PyTuple_SET_ITEM(__pyx_t_4, 8, __pyx_kp_u_V_CONST1_3);
-            __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 363, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 364, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 363, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 364, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) : __pyx_t_19;
@@ -12448,9 +12459,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_CONST1_2);
             PyTuple_SET_ITEM(__pyx_t_4, 10, __pyx_kp_u_I_CONST1_2);
-            __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 363, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 364, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
-            __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 363, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 364, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) : __pyx_t_19;
@@ -12462,9 +12473,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_V_CONST2_2);
             PyTuple_SET_ITEM(__pyx_t_4, 12, __pyx_kp_u_V_CONST2_2);
-            __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 363, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 364, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 363, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 364, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) : __pyx_t_19;
@@ -12476,9 +12487,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_CONST2_2);
             PyTuple_SET_ITEM(__pyx_t_4, 14, __pyx_kp_u_I_CONST2_2);
-            __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 363, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 364, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
-            __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 363, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 364, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) : __pyx_t_19;
@@ -12490,9 +12501,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_V_CONST3_2);
             PyTuple_SET_ITEM(__pyx_t_4, 16, __pyx_kp_u_V_CONST3_2);
-            __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 363, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 364, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 363, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 364, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) : __pyx_t_19;
@@ -12504,9 +12515,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_CONST3_2);
             PyTuple_SET_ITEM(__pyx_t_4, 18, __pyx_kp_u_I_CONST3_2);
-            __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 363, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 364, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
-            __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 363, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 364, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) : __pyx_t_19;
@@ -12514,23 +12525,23 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __Pyx_GIVEREF(__pyx_t_1);
             PyTuple_SET_ITEM(__pyx_t_4, 19, __pyx_t_1);
             __pyx_t_1 = 0;
-            __pyx_t_1 = __Pyx_PyUnicode_Join(__pyx_t_4, 20, __pyx_t_18, __pyx_t_19); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 363, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyUnicode_Join(__pyx_t_4, 20, __pyx_t_18, __pyx_t_19); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 364, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-            /* "smu_start.py":362
+            /* "smu_start.py":363
  *                         single_point_measurement = measurement_manager.get_measurements()  #
  *                         # VAR1CONST
  *                         print(             # <<<<<<<<<<<<<<
  *                             f"Direction: 'Forward' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level} ,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *                     # VAR1
  */
-            __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 362, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 363, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-            /* "smu_start.py":339
+            /* "smu_start.py":340
  *                 elif IV_flag_VAR1 == 2:
  *                     # VAR1
  *                     for i in range(num_points_VAR1):             # <<<<<<<<<<<<<<
@@ -12540,24 +12551,24 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           }
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-          /* "smu_start.py":365
+          /* "smu_start.py":366
  *                             f"Direction: 'Forward' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level} ,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *                     # VAR1
  *                     for i in range(num_points_VAR1):             # <<<<<<<<<<<<<<
  *                         measurement = {}
  *                         Direction = "Reverse"
  */
-          if (unlikely(!__pyx_v_num_points_VAR1)) { __Pyx_RaiseUnboundLocalError("num_points_VAR1"); __PYX_ERR(0, 365, __pyx_L1_error) }
-          __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 365, __pyx_L1_error)
+          if (unlikely(!__pyx_v_num_points_VAR1)) { __Pyx_RaiseUnboundLocalError("num_points_VAR1"); __PYX_ERR(0, 366, __pyx_L1_error) }
+          __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 366, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           if (likely(PyList_CheckExact(__pyx_t_3)) || PyTuple_CheckExact(__pyx_t_3)) {
             __pyx_t_4 = __pyx_t_3; __Pyx_INCREF(__pyx_t_4);
             __pyx_t_16 = 0;
             __pyx_t_17 = NULL;
           } else {
-            __pyx_t_16 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 365, __pyx_L1_error)
+            __pyx_t_16 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 366, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_17 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 365, __pyx_L1_error)
+            __pyx_t_17 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 366, __pyx_L1_error)
           }
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           for (;;) {
@@ -12566,28 +12577,28 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
                 {
                   Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_4);
                   #if !CYTHON_ASSUME_SAFE_MACROS
-                  if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 365, __pyx_L1_error)
+                  if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 366, __pyx_L1_error)
                   #endif
                   if (__pyx_t_16 >= __pyx_temp) break;
                 }
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                __pyx_t_3 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_16); __Pyx_INCREF(__pyx_t_3); __pyx_t_16++; if (unlikely((0 < 0))) __PYX_ERR(0, 365, __pyx_L1_error)
+                __pyx_t_3 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_16); __Pyx_INCREF(__pyx_t_3); __pyx_t_16++; if (unlikely((0 < 0))) __PYX_ERR(0, 366, __pyx_L1_error)
                 #else
-                __pyx_t_3 = __Pyx_PySequence_ITEM(__pyx_t_4, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 365, __pyx_L1_error)
+                __pyx_t_3 = __Pyx_PySequence_ITEM(__pyx_t_4, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 366, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_3);
                 #endif
               } else {
                 {
                   Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_4);
                   #if !CYTHON_ASSUME_SAFE_MACROS
-                  if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 365, __pyx_L1_error)
+                  if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 366, __pyx_L1_error)
                   #endif
                   if (__pyx_t_16 >= __pyx_temp) break;
                 }
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_16); __Pyx_INCREF(__pyx_t_3); __pyx_t_16++; if (unlikely((0 < 0))) __PYX_ERR(0, 365, __pyx_L1_error)
+                __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_16); __Pyx_INCREF(__pyx_t_3); __pyx_t_16++; if (unlikely((0 < 0))) __PYX_ERR(0, 366, __pyx_L1_error)
                 #else
-                __pyx_t_3 = __Pyx_PySequence_ITEM(__pyx_t_4, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 365, __pyx_L1_error)
+                __pyx_t_3 = __Pyx_PySequence_ITEM(__pyx_t_4, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 366, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_3);
                 #endif
               }
@@ -12597,7 +12608,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
                 PyObject* exc_type = PyErr_Occurred();
                 if (exc_type) {
                   if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                  else __PYX_ERR(0, 365, __pyx_L1_error)
+                  else __PYX_ERR(0, 366, __pyx_L1_error)
                 }
                 break;
               }
@@ -12606,19 +12617,19 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_3);
             __pyx_t_3 = 0;
 
-            /* "smu_start.py":366
+            /* "smu_start.py":367
  *                     # VAR1
  *                     for i in range(num_points_VAR1):
  *                         measurement = {}             # <<<<<<<<<<<<<<
  *                         Direction = "Reverse"
  *                         VAR1_session.voltage_level = voltage_max_VAR1 - i * voltage_step_VAR1
  */
-            __pyx_t_3 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 366, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 367, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_XDECREF_SET(__pyx_v_measurement, __pyx_t_3);
             __pyx_t_3 = 0;
 
-            /* "smu_start.py":367
+            /* "smu_start.py":368
  *                     for i in range(num_points_VAR1):
  *                         measurement = {}
  *                         Direction = "Reverse"             # <<<<<<<<<<<<<<
@@ -12628,67 +12639,33 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __Pyx_INCREF(__pyx_n_s_Reverse);
             __Pyx_XDECREF_SET(__pyx_v_Direction, __pyx_n_s_Reverse);
 
-            /* "smu_start.py":368
+            /* "smu_start.py":369
  *                         measurement = {}
  *                         Direction = "Reverse"
  *                         VAR1_session.voltage_level = voltage_max_VAR1 - i * voltage_step_VAR1             # <<<<<<<<<<<<<<
  *                         VAR2_session.initiate()
  *                         VAR1_session.initiate()
  */
-            if (unlikely(!__pyx_v_voltage_max_VAR1)) { __Pyx_RaiseUnboundLocalError("voltage_max_VAR1"); __PYX_ERR(0, 368, __pyx_L1_error) }
-            if (unlikely(!__pyx_v_voltage_step_VAR1)) { __Pyx_RaiseUnboundLocalError("voltage_step_VAR1"); __PYX_ERR(0, 368, __pyx_L1_error) }
-            __pyx_t_3 = PyNumber_Multiply(__pyx_v_i, __pyx_v_voltage_step_VAR1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 368, __pyx_L1_error)
+            if (unlikely(!__pyx_v_voltage_max_VAR1)) { __Pyx_RaiseUnboundLocalError("voltage_max_VAR1"); __PYX_ERR(0, 369, __pyx_L1_error) }
+            if (unlikely(!__pyx_v_voltage_step_VAR1)) { __Pyx_RaiseUnboundLocalError("voltage_step_VAR1"); __PYX_ERR(0, 369, __pyx_L1_error) }
+            __pyx_t_3 = PyNumber_Multiply(__pyx_v_i, __pyx_v_voltage_step_VAR1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 369, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
-            __pyx_t_1 = PyNumber_Subtract(__pyx_v_voltage_max_VAR1, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 368, __pyx_L1_error)
+            __pyx_t_1 = PyNumber_Subtract(__pyx_v_voltage_max_VAR1, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 369, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 368, __pyx_L1_error) }
-            if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level, __pyx_t_1) < 0) __PYX_ERR(0, 368, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 369, __pyx_L1_error) }
+            if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level, __pyx_t_1) < 0) __PYX_ERR(0, 369, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-            /* "smu_start.py":369
+            /* "smu_start.py":370
  *                         Direction = "Reverse"
  *                         VAR1_session.voltage_level = voltage_max_VAR1 - i * voltage_step_VAR1
  *                         VAR2_session.initiate()             # <<<<<<<<<<<<<<
  *                         VAR1_session.initiate()
  *                         #  VAR1
  */
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 369, __pyx_L1_error) }
-            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 369, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_3);
-            __pyx_t_10 = NULL;
-            __pyx_t_8 = 0;
-            #if CYTHON_UNPACK_METHODS
-            if (likely(PyMethod_Check(__pyx_t_3))) {
-              __pyx_t_10 = PyMethod_GET_SELF(__pyx_t_3);
-              if (likely(__pyx_t_10)) {
-                PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-                __Pyx_INCREF(__pyx_t_10);
-                __Pyx_INCREF(function);
-                __Pyx_DECREF_SET(__pyx_t_3, function);
-                __pyx_t_8 = 1;
-              }
-            }
-            #endif
-            {
-              PyObject *__pyx_callargs[2] = {__pyx_t_10, NULL};
-              __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
-              __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 369, __pyx_L1_error)
-              __Pyx_GOTREF(__pyx_t_1);
-              __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-            }
-            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-            /* "smu_start.py":370
- *                         VAR1_session.voltage_level = voltage_max_VAR1 - i * voltage_step_VAR1
- *                         VAR2_session.initiate()
- *                         VAR1_session.initiate()             # <<<<<<<<<<<<<<
- *                         #  VAR1
- *                         current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)
- */
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 370, __pyx_L1_error) }
-            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 370, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 370, __pyx_L1_error) }
+            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 370, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __pyx_t_10 = NULL;
             __pyx_t_8 = 0;
@@ -12714,22 +12691,56 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             }
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-            /* "smu_start.py":372
+            /* "smu_start.py":371
+ *                         VAR1_session.voltage_level = voltage_max_VAR1 - i * voltage_step_VAR1
+ *                         VAR2_session.initiate()
+ *                         VAR1_session.initiate()             # <<<<<<<<<<<<<<
+ *                         #  VAR1
+ *                         current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)
+ */
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 371, __pyx_L1_error) }
+            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 371, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_3);
+            __pyx_t_10 = NULL;
+            __pyx_t_8 = 0;
+            #if CYTHON_UNPACK_METHODS
+            if (likely(PyMethod_Check(__pyx_t_3))) {
+              __pyx_t_10 = PyMethod_GET_SELF(__pyx_t_3);
+              if (likely(__pyx_t_10)) {
+                PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+                __Pyx_INCREF(__pyx_t_10);
+                __Pyx_INCREF(function);
+                __Pyx_DECREF_SET(__pyx_t_3, function);
+                __pyx_t_8 = 1;
+              }
+            }
+            #endif
+            {
+              PyObject *__pyx_callargs[2] = {__pyx_t_10, NULL};
+              __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
+              __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
+              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 371, __pyx_L1_error)
+              __Pyx_GOTREF(__pyx_t_1);
+              __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+            }
+            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+            /* "smu_start.py":373
  *                         VAR1_session.initiate()
  *                         #  VAR1
  *                         current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)             # <<<<<<<<<<<<<<
  *                         VAR1_session.abort()
  *                         voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  */
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 372, __pyx_L1_error) }
-            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 372, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 373, __pyx_L1_error) }
+            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 373, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
-            __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 372, __pyx_L1_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 373, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
-            __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 372, __pyx_L1_error)
+            __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 373, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_CURRENT); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 372, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_CURRENT); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 373, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
             __pyx_t_11 = NULL;
@@ -12751,22 +12762,22 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
               __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 372, __pyx_L1_error)
+              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 373, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_1);
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             }
             __Pyx_XDECREF_SET(__pyx_v_current_value_VAR1, __pyx_t_1);
             __pyx_t_1 = 0;
 
-            /* "smu_start.py":373
+            /* "smu_start.py":374
  *                         #  VAR1
  *                         current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)
  *                         VAR1_session.abort()             # <<<<<<<<<<<<<<
  *                         voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  *                         VAR2_session.abort()
  */
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 373, __pyx_L1_error) }
-            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 373, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 374, __pyx_L1_error) }
+            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 374, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __pyx_t_10 = NULL;
             __pyx_t_8 = 0;
@@ -12786,28 +12797,28 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               PyObject *__pyx_callargs[2] = {__pyx_t_10, NULL};
               __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 373, __pyx_L1_error)
+              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 374, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_1);
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             }
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-            /* "smu_start.py":374
+            /* "smu_start.py":375
  *                         current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)
  *                         VAR1_session.abort()
  *                         voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)             # <<<<<<<<<<<<<<
  *                         VAR2_session.abort()
  *                         #
  */
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 374, __pyx_L1_error) }
-            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 374, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 375, __pyx_L1_error) }
+            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 375, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
-            __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 374, __pyx_L1_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 375, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
-            __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 374, __pyx_L1_error)
+            __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 375, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_VOLTAGE); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 374, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_VOLTAGE); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 375, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
             __pyx_t_11 = NULL;
@@ -12829,22 +12840,22 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
               __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 374, __pyx_L1_error)
+              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 375, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_1);
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             }
             __Pyx_XDECREF_SET(__pyx_v_voltage_value_VAR2, __pyx_t_1);
             __pyx_t_1 = 0;
 
-            /* "smu_start.py":375
+            /* "smu_start.py":376
  *                         VAR1_session.abort()
  *                         voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  *                         VAR2_session.abort()             # <<<<<<<<<<<<<<
  *                         #
  *                         measurement = update_measurement(
  */
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 375, __pyx_L1_error) }
-            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 375, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 376, __pyx_L1_error) }
+            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 376, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __pyx_t_10 = NULL;
             __pyx_t_8 = 0;
@@ -12864,86 +12875,86 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               PyObject *__pyx_callargs[2] = {__pyx_t_10, NULL};
               __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 375, __pyx_L1_error)
+              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 376, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_1);
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             }
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-            /* "smu_start.py":377
+            /* "smu_start.py":378
  *                         VAR2_session.abort()
  *                         #
  *                         measurement = update_measurement(             # <<<<<<<<<<<<<<
  *                             measurement,
  *                             ('Direction', Direction),
  */
-            __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_update_measurement); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 377, __pyx_L1_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_update_measurement); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 378, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
 
-            /* "smu_start.py":379
+            /* "smu_start.py":380
  *                         measurement = update_measurement(
  *                             measurement,
  *                             ('Direction', Direction),             # <<<<<<<<<<<<<<
  *                             ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),
  *                             ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),
  */
-            __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 379, __pyx_L1_error)
+            __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 380, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_INCREF(__pyx_n_s_Direction);
             __Pyx_GIVEREF(__pyx_n_s_Direction);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_n_s_Direction)) __PYX_ERR(0, 379, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_n_s_Direction)) __PYX_ERR(0, 380, __pyx_L1_error);
             __Pyx_INCREF(__pyx_v_Direction);
             __Pyx_GIVEREF(__pyx_v_Direction);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_v_Direction)) __PYX_ERR(0, 379, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_v_Direction)) __PYX_ERR(0, 380, __pyx_L1_error);
 
-            /* "smu_start.py":380
+            /* "smu_start.py":381
  *                             measurement,
  *                             ('Direction', Direction),
  *                             ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),             # <<<<<<<<<<<<<<
  *                             ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),
  *                         )
  */
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 380, __pyx_L1_error) }
-            __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 380, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 381, __pyx_L1_error) }
+            __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 381, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
-            __pyx_t_12 = PyTuple_New(4); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 380, __pyx_L1_error)
+            __pyx_t_12 = PyTuple_New(4); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 381, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_INCREF(__pyx_n_s_V_VAR1);
             __Pyx_GIVEREF(__pyx_n_s_V_VAR1);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_n_s_V_VAR1)) __PYX_ERR(0, 380, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_n_s_V_VAR1)) __PYX_ERR(0, 381, __pyx_L1_error);
             __Pyx_GIVEREF(__pyx_t_11);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_t_11)) __PYX_ERR(0, 380, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_t_11)) __PYX_ERR(0, 381, __pyx_L1_error);
             __Pyx_INCREF(__pyx_n_s_I_VAR1);
             __Pyx_GIVEREF(__pyx_n_s_I_VAR1);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 2, __pyx_n_s_I_VAR1)) __PYX_ERR(0, 380, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 2, __pyx_n_s_I_VAR1)) __PYX_ERR(0, 381, __pyx_L1_error);
             __Pyx_INCREF(__pyx_v_current_value_VAR1);
             __Pyx_GIVEREF(__pyx_v_current_value_VAR1);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 3, __pyx_v_current_value_VAR1)) __PYX_ERR(0, 380, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 3, __pyx_v_current_value_VAR1)) __PYX_ERR(0, 381, __pyx_L1_error);
             __pyx_t_11 = 0;
 
-            /* "smu_start.py":381
+            /* "smu_start.py":382
  *                             ('Direction', Direction),
  *                             ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),
  *                             ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),             # <<<<<<<<<<<<<<
  *                         )
  *                         measurement = const_record(measurement)
  */
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 381, __pyx_L1_error) }
-            __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 381, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 382, __pyx_L1_error) }
+            __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 382, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
-            __pyx_t_13 = PyTuple_New(4); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 381, __pyx_L1_error)
+            __pyx_t_13 = PyTuple_New(4); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 382, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
             __Pyx_INCREF(__pyx_n_s_V_VAR2);
             __Pyx_GIVEREF(__pyx_n_s_V_VAR2);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_n_s_V_VAR2)) __PYX_ERR(0, 381, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_n_s_V_VAR2)) __PYX_ERR(0, 382, __pyx_L1_error);
             __Pyx_INCREF(__pyx_v_voltage_value_VAR2);
             __Pyx_GIVEREF(__pyx_v_voltage_value_VAR2);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 1, __pyx_v_voltage_value_VAR2)) __PYX_ERR(0, 381, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 1, __pyx_v_voltage_value_VAR2)) __PYX_ERR(0, 382, __pyx_L1_error);
             __Pyx_INCREF(__pyx_n_s_I_VAR2);
             __Pyx_GIVEREF(__pyx_n_s_I_VAR2);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 2, __pyx_n_s_I_VAR2)) __PYX_ERR(0, 381, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 2, __pyx_n_s_I_VAR2)) __PYX_ERR(0, 382, __pyx_L1_error);
             __Pyx_GIVEREF(__pyx_t_11);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 3, __pyx_t_11)) __PYX_ERR(0, 381, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 3, __pyx_t_11)) __PYX_ERR(0, 382, __pyx_L1_error);
             __pyx_t_11 = 0;
             __pyx_t_11 = NULL;
             __pyx_t_8 = 0;
@@ -12966,33 +12977,33 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
               __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
               __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 377, __pyx_L1_error)
+              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 378, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_1);
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             }
             __Pyx_DECREF_SET(__pyx_v_measurement, __pyx_t_1);
             __pyx_t_1 = 0;
 
-            /* "smu_start.py":383
+            /* "smu_start.py":384
  *                             ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),
  *                         )
  *                         measurement = const_record(measurement)             # <<<<<<<<<<<<<<
  *                         #  add_measurement
  *                         measurement_manager.add_measurement(measurement)
  */
-            __pyx_t_1 = __pyx_pf_9smu_start_14smu_test_start_const_record(__pyx_v_const_record, __pyx_v_measurement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 383, __pyx_L1_error)
+            __pyx_t_1 = __pyx_pf_9smu_start_14smu_test_start_const_record(__pyx_v_const_record, __pyx_v_measurement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 384, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF_SET(__pyx_v_measurement, __pyx_t_1);
             __pyx_t_1 = 0;
 
-            /* "smu_start.py":385
+            /* "smu_start.py":386
  *                         measurement = const_record(measurement)
  *                         #  add_measurement
  *                         measurement_manager.add_measurement(measurement)             # <<<<<<<<<<<<<<
  *                         single_point_measurement = measurement_manager.get_measurements()  #
  *                         print(single_point_measurement)
  */
-            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_add_measurement); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 385, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_add_measurement); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 386, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __pyx_t_13 = NULL;
             __pyx_t_8 = 0;
@@ -13012,20 +13023,20 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               PyObject *__pyx_callargs[2] = {__pyx_t_13, __pyx_v_measurement};
               __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
-              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 385, __pyx_L1_error)
+              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 386, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_1);
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             }
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-            /* "smu_start.py":386
+            /* "smu_start.py":387
  *                         #  add_measurement
  *                         measurement_manager.add_measurement(measurement)
  *                         single_point_measurement = measurement_manager.get_measurements()  #             # <<<<<<<<<<<<<<
  *                         print(single_point_measurement)
  *                         # VAR1CONST
  */
-            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_get_measurements); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 386, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_get_measurements); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 387, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __pyx_t_13 = NULL;
             __pyx_t_8 = 0;
@@ -13045,32 +13056,32 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               PyObject *__pyx_callargs[2] = {__pyx_t_13, NULL};
               __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
-              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 386, __pyx_L1_error)
+              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 387, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_1);
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             }
             __Pyx_XDECREF_SET(__pyx_v_single_point_measurement, __pyx_t_1);
             __pyx_t_1 = 0;
 
-            /* "smu_start.py":387
+            /* "smu_start.py":388
  *                         measurement_manager.add_measurement(measurement)
  *                         single_point_measurement = measurement_manager.get_measurements()  #
  *                         print(single_point_measurement)             # <<<<<<<<<<<<<<
  *                         # VAR1CONST
  *                         print(
  */
-            __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_v_single_point_measurement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 387, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_v_single_point_measurement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 388, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-            /* "smu_start.py":390
+            /* "smu_start.py":391
  *                         # VAR1CONST
  *                         print(
  *                             f"Direction: 'Reverse' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level},V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")             # <<<<<<<<<<<<<<
  *                 elif IV_flag_VAR1 == 3:
  *                     for i in range(num_points_VAR1):
  */
-            __pyx_t_1 = PyTuple_New(20); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 390, __pyx_L1_error)
+            __pyx_t_1 = PyTuple_New(20); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 391, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __pyx_t_18 = 0;
             __pyx_t_19 = 127;
@@ -13078,10 +13089,10 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 30;
             __Pyx_GIVEREF(__pyx_kp_u_Direction_Reverse_V_VAR1);
             PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_kp_u_Direction_Reverse_V_VAR1);
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 390, __pyx_L1_error) }
-            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 390, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 391, __pyx_L1_error) }
+            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 391, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
-            __pyx_t_13 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 390, __pyx_L1_error)
+            __pyx_t_13 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 391, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_13) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_13) : __pyx_t_19;
@@ -13093,7 +13104,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_VAR1_2);
             PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_kp_u_I_VAR1_2);
-            __pyx_t_13 = __Pyx_PyObject_FormatSimple(__pyx_v_current_value_VAR1, __pyx_empty_unicode); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 390, __pyx_L1_error)
+            __pyx_t_13 = __Pyx_PyObject_FormatSimple(__pyx_v_current_value_VAR1, __pyx_empty_unicode); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 391, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_13) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_13) : __pyx_t_19;
             __pyx_t_18 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_13);
@@ -13104,7 +13115,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_V_VAR2_2);
             PyTuple_SET_ITEM(__pyx_t_1, 4, __pyx_kp_u_V_VAR2_2);
-            __pyx_t_13 = __Pyx_PyObject_FormatSimple(__pyx_v_voltage_value_VAR2, __pyx_empty_unicode); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 390, __pyx_L1_error)
+            __pyx_t_13 = __Pyx_PyObject_FormatSimple(__pyx_v_voltage_value_VAR2, __pyx_empty_unicode); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 391, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_13) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_13) : __pyx_t_19;
             __pyx_t_18 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_13);
@@ -13115,10 +13126,10 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_VAR2_2);
             PyTuple_SET_ITEM(__pyx_t_1, 6, __pyx_kp_u_I_VAR2_2);
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 390, __pyx_L1_error) }
-            __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 390, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 391, __pyx_L1_error) }
+            __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 391, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
-            __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_13, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 390, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_13, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 391, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) : __pyx_t_19;
@@ -13130,9 +13141,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_V_CONST1_4);
             PyTuple_SET_ITEM(__pyx_t_1, 8, __pyx_kp_u_V_CONST1_4);
-            __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 390, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 391, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
-            __pyx_t_13 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 390, __pyx_L1_error)
+            __pyx_t_13 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 391, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_13) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_13) : __pyx_t_19;
@@ -13144,9 +13155,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_CONST1_2);
             PyTuple_SET_ITEM(__pyx_t_1, 10, __pyx_kp_u_I_CONST1_2);
-            __pyx_t_13 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 390, __pyx_L1_error)
+            __pyx_t_13 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 391, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
-            __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_13, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 390, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_13, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 391, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) : __pyx_t_19;
@@ -13158,9 +13169,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_V_CONST2_2);
             PyTuple_SET_ITEM(__pyx_t_1, 12, __pyx_kp_u_V_CONST2_2);
-            __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 390, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 391, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
-            __pyx_t_13 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 390, __pyx_L1_error)
+            __pyx_t_13 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 391, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_13) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_13) : __pyx_t_19;
@@ -13172,9 +13183,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_CONST2_2);
             PyTuple_SET_ITEM(__pyx_t_1, 14, __pyx_kp_u_I_CONST2_2);
-            __pyx_t_13 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST2); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 390, __pyx_L1_error)
+            __pyx_t_13 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST2); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 391, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
-            __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_13, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 390, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_13, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 391, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) : __pyx_t_19;
@@ -13186,9 +13197,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_V_CONST3_2);
             PyTuple_SET_ITEM(__pyx_t_1, 16, __pyx_kp_u_V_CONST3_2);
-            __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 390, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 391, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
-            __pyx_t_13 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 390, __pyx_L1_error)
+            __pyx_t_13 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 391, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_13) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_13) : __pyx_t_19;
@@ -13200,9 +13211,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_CONST3_2);
             PyTuple_SET_ITEM(__pyx_t_1, 18, __pyx_kp_u_I_CONST3_2);
-            __pyx_t_13 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST3); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 390, __pyx_L1_error)
+            __pyx_t_13 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST3); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 391, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
-            __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_13, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 390, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_13, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 391, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) : __pyx_t_19;
@@ -13210,23 +13221,23 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __Pyx_GIVEREF(__pyx_t_3);
             PyTuple_SET_ITEM(__pyx_t_1, 19, __pyx_t_3);
             __pyx_t_3 = 0;
-            __pyx_t_3 = __Pyx_PyUnicode_Join(__pyx_t_1, 20, __pyx_t_18, __pyx_t_19); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 390, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyUnicode_Join(__pyx_t_1, 20, __pyx_t_18, __pyx_t_19); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 391, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-            /* "smu_start.py":389
+            /* "smu_start.py":390
  *                         print(single_point_measurement)
  *                         # VAR1CONST
  *                         print(             # <<<<<<<<<<<<<<
  *                             f"Direction: 'Reverse' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level},V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *                 elif IV_flag_VAR1 == 3:
  */
-            __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 389, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 390, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-            /* "smu_start.py":365
+            /* "smu_start.py":366
  *                             f"Direction: 'Forward' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level} ,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *                     # VAR1
  *                     for i in range(num_points_VAR1):             # <<<<<<<<<<<<<<
@@ -13236,7 +13247,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           }
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-          /* "smu_start.py":337
+          /* "smu_start.py":338
  *                         print(
  *                             f"Direction: 'Forward' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level}, V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *                 elif IV_flag_VAR1 == 2:             # <<<<<<<<<<<<<<
@@ -13246,35 +13257,35 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           goto __pyx_L62;
         }
 
-        /* "smu_start.py":391
+        /* "smu_start.py":392
  *                         print(
  *                             f"Direction: 'Reverse' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level},V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *                 elif IV_flag_VAR1 == 3:             # <<<<<<<<<<<<<<
  *                     for i in range(num_points_VAR1):
  *                         Direction = "Forward"
  */
-        if (unlikely(!__pyx_v_IV_flag_VAR1)) { __Pyx_RaiseUnboundLocalError("IV_flag_VAR1"); __PYX_ERR(0, 391, __pyx_L1_error) }
-        __pyx_t_5 = (__Pyx_PyInt_BoolEqObjC(__pyx_v_IV_flag_VAR1, __pyx_int_3, 3, 0)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 391, __pyx_L1_error)
+        if (unlikely(!__pyx_v_IV_flag_VAR1)) { __Pyx_RaiseUnboundLocalError("IV_flag_VAR1"); __PYX_ERR(0, 392, __pyx_L1_error) }
+        __pyx_t_5 = (__Pyx_PyInt_BoolEqObjC(__pyx_v_IV_flag_VAR1, __pyx_int_3, 3, 0)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 392, __pyx_L1_error)
         if (__pyx_t_5) {
 
-          /* "smu_start.py":392
+          /* "smu_start.py":393
  *                             f"Direction: 'Reverse' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level},V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *                 elif IV_flag_VAR1 == 3:
  *                     for i in range(num_points_VAR1):             # <<<<<<<<<<<<<<
  *                         Direction = "Forward"
  *                         measurement = {}
  */
-          if (unlikely(!__pyx_v_num_points_VAR1)) { __Pyx_RaiseUnboundLocalError("num_points_VAR1"); __PYX_ERR(0, 392, __pyx_L1_error) }
-          __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 392, __pyx_L1_error)
+          if (unlikely(!__pyx_v_num_points_VAR1)) { __Pyx_RaiseUnboundLocalError("num_points_VAR1"); __PYX_ERR(0, 393, __pyx_L1_error) }
+          __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 393, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           if (likely(PyList_CheckExact(__pyx_t_4)) || PyTuple_CheckExact(__pyx_t_4)) {
             __pyx_t_1 = __pyx_t_4; __Pyx_INCREF(__pyx_t_1);
             __pyx_t_16 = 0;
             __pyx_t_17 = NULL;
           } else {
-            __pyx_t_16 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 392, __pyx_L1_error)
+            __pyx_t_16 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 393, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_17 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 392, __pyx_L1_error)
+            __pyx_t_17 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 393, __pyx_L1_error)
           }
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           for (;;) {
@@ -13283,28 +13294,28 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
                 {
                   Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
                   #if !CYTHON_ASSUME_SAFE_MACROS
-                  if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 392, __pyx_L1_error)
+                  if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 393, __pyx_L1_error)
                   #endif
                   if (__pyx_t_16 >= __pyx_temp) break;
                 }
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_16); __Pyx_INCREF(__pyx_t_4); __pyx_t_16++; if (unlikely((0 < 0))) __PYX_ERR(0, 392, __pyx_L1_error)
+                __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_16); __Pyx_INCREF(__pyx_t_4); __pyx_t_16++; if (unlikely((0 < 0))) __PYX_ERR(0, 393, __pyx_L1_error)
                 #else
-                __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 392, __pyx_L1_error)
+                __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 393, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_4);
                 #endif
               } else {
                 {
                   Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_1);
                   #if !CYTHON_ASSUME_SAFE_MACROS
-                  if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 392, __pyx_L1_error)
+                  if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 393, __pyx_L1_error)
                   #endif
                   if (__pyx_t_16 >= __pyx_temp) break;
                 }
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_16); __Pyx_INCREF(__pyx_t_4); __pyx_t_16++; if (unlikely((0 < 0))) __PYX_ERR(0, 392, __pyx_L1_error)
+                __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_16); __Pyx_INCREF(__pyx_t_4); __pyx_t_16++; if (unlikely((0 < 0))) __PYX_ERR(0, 393, __pyx_L1_error)
                 #else
-                __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 392, __pyx_L1_error)
+                __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 393, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_4);
                 #endif
               }
@@ -13314,7 +13325,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
                 PyObject* exc_type = PyErr_Occurred();
                 if (exc_type) {
                   if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                  else __PYX_ERR(0, 392, __pyx_L1_error)
+                  else __PYX_ERR(0, 393, __pyx_L1_error)
                 }
                 break;
               }
@@ -13323,7 +13334,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_4);
             __pyx_t_4 = 0;
 
-            /* "smu_start.py":393
+            /* "smu_start.py":394
  *                 elif IV_flag_VAR1 == 3:
  *                     for i in range(num_points_VAR1):
  *                         Direction = "Forward"             # <<<<<<<<<<<<<<
@@ -13333,79 +13344,45 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __Pyx_INCREF(__pyx_n_s_Forward);
             __Pyx_XDECREF_SET(__pyx_v_Direction, __pyx_n_s_Forward);
 
-            /* "smu_start.py":394
+            /* "smu_start.py":395
  *                     for i in range(num_points_VAR1):
  *                         Direction = "Forward"
  *                         measurement = {}             # <<<<<<<<<<<<<<
  *                         VAR1_session.current_level = current_min_VAR1 + i * current_step_VAR1
  *                         VAR2_session.initiate()
  */
-            __pyx_t_4 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 394, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 395, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_XDECREF_SET(__pyx_v_measurement, __pyx_t_4);
             __pyx_t_4 = 0;
 
-            /* "smu_start.py":395
+            /* "smu_start.py":396
  *                         Direction = "Forward"
  *                         measurement = {}
  *                         VAR1_session.current_level = current_min_VAR1 + i * current_step_VAR1             # <<<<<<<<<<<<<<
  *                         VAR2_session.initiate()
  *                         VAR1_session.initiate()
  */
-            if (unlikely(!__pyx_v_current_min_VAR1)) { __Pyx_RaiseUnboundLocalError("current_min_VAR1"); __PYX_ERR(0, 395, __pyx_L1_error) }
-            if (unlikely(!__pyx_v_current_step_VAR1)) { __Pyx_RaiseUnboundLocalError("current_step_VAR1"); __PYX_ERR(0, 395, __pyx_L1_error) }
-            __pyx_t_4 = PyNumber_Multiply(__pyx_v_i, __pyx_v_current_step_VAR1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 395, __pyx_L1_error)
+            if (unlikely(!__pyx_v_current_min_VAR1)) { __Pyx_RaiseUnboundLocalError("current_min_VAR1"); __PYX_ERR(0, 396, __pyx_L1_error) }
+            if (unlikely(!__pyx_v_current_step_VAR1)) { __Pyx_RaiseUnboundLocalError("current_step_VAR1"); __PYX_ERR(0, 396, __pyx_L1_error) }
+            __pyx_t_4 = PyNumber_Multiply(__pyx_v_i, __pyx_v_current_step_VAR1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 396, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_3 = PyNumber_Add(__pyx_v_current_min_VAR1, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 395, __pyx_L1_error)
+            __pyx_t_3 = PyNumber_Add(__pyx_v_current_min_VAR1, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 396, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 395, __pyx_L1_error) }
-            if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level, __pyx_t_3) < 0) __PYX_ERR(0, 395, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 396, __pyx_L1_error) }
+            if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level, __pyx_t_3) < 0) __PYX_ERR(0, 396, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-            /* "smu_start.py":396
+            /* "smu_start.py":397
  *                         measurement = {}
  *                         VAR1_session.current_level = current_min_VAR1 + i * current_step_VAR1
  *                         VAR2_session.initiate()             # <<<<<<<<<<<<<<
  *                         VAR1_session.initiate()
  *                         #  VAR1
  */
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 396, __pyx_L1_error) }
-            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 396, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_13 = NULL;
-            __pyx_t_8 = 0;
-            #if CYTHON_UNPACK_METHODS
-            if (likely(PyMethod_Check(__pyx_t_4))) {
-              __pyx_t_13 = PyMethod_GET_SELF(__pyx_t_4);
-              if (likely(__pyx_t_13)) {
-                PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-                __Pyx_INCREF(__pyx_t_13);
-                __Pyx_INCREF(function);
-                __Pyx_DECREF_SET(__pyx_t_4, function);
-                __pyx_t_8 = 1;
-              }
-            }
-            #endif
-            {
-              PyObject *__pyx_callargs[2] = {__pyx_t_13, NULL};
-              __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
-              __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
-              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 396, __pyx_L1_error)
-              __Pyx_GOTREF(__pyx_t_3);
-              __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            }
-            __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-
-            /* "smu_start.py":397
- *                         VAR1_session.current_level = current_min_VAR1 + i * current_step_VAR1
- *                         VAR2_session.initiate()
- *                         VAR1_session.initiate()             # <<<<<<<<<<<<<<
- *                         #  VAR1
- *                         voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
- */
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 397, __pyx_L1_error) }
-            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 397, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 397, __pyx_L1_error) }
+            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 397, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __pyx_t_13 = NULL;
             __pyx_t_8 = 0;
@@ -13431,22 +13408,56 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             }
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-            /* "smu_start.py":399
+            /* "smu_start.py":398
+ *                         VAR1_session.current_level = current_min_VAR1 + i * current_step_VAR1
+ *                         VAR2_session.initiate()
+ *                         VAR1_session.initiate()             # <<<<<<<<<<<<<<
+ *                         #  VAR1
+ *                         voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
+ */
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 398, __pyx_L1_error) }
+            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 398, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_4);
+            __pyx_t_13 = NULL;
+            __pyx_t_8 = 0;
+            #if CYTHON_UNPACK_METHODS
+            if (likely(PyMethod_Check(__pyx_t_4))) {
+              __pyx_t_13 = PyMethod_GET_SELF(__pyx_t_4);
+              if (likely(__pyx_t_13)) {
+                PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+                __Pyx_INCREF(__pyx_t_13);
+                __Pyx_INCREF(function);
+                __Pyx_DECREF_SET(__pyx_t_4, function);
+                __pyx_t_8 = 1;
+              }
+            }
+            #endif
+            {
+              PyObject *__pyx_callargs[2] = {__pyx_t_13, NULL};
+              __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
+              __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
+              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 398, __pyx_L1_error)
+              __Pyx_GOTREF(__pyx_t_3);
+              __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+            }
+            __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+            /* "smu_start.py":400
  *                         VAR1_session.initiate()
  *                         #  VAR1
  *                         voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)             # <<<<<<<<<<<<<<
  *                         VAR1_session.abort()
  *                         voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  */
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 399, __pyx_L1_error) }
-            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 399, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 400, __pyx_L1_error) }
+            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 400, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 399, __pyx_L1_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 400, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
-            __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 399, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 400, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-            __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_VOLTAGE); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 399, __pyx_L1_error)
+            __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_VOLTAGE); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 400, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
             __pyx_t_12 = NULL;
@@ -13468,22 +13479,22 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
               __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 399, __pyx_L1_error)
+              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 400, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             }
             __Pyx_XDECREF_SET(__pyx_v_voltage_value_VAR1, __pyx_t_3);
             __pyx_t_3 = 0;
 
-            /* "smu_start.py":400
+            /* "smu_start.py":401
  *                         #  VAR1
  *                         voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  *                         VAR1_session.abort()             # <<<<<<<<<<<<<<
  *                         voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  *                         VAR2_session.abort()
  */
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 400, __pyx_L1_error) }
-            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 400, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 401, __pyx_L1_error) }
+            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 401, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __pyx_t_13 = NULL;
             __pyx_t_8 = 0;
@@ -13503,28 +13514,28 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               PyObject *__pyx_callargs[2] = {__pyx_t_13, NULL};
               __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
-              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 400, __pyx_L1_error)
+              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 401, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             }
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-            /* "smu_start.py":401
+            /* "smu_start.py":402
  *                         voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  *                         VAR1_session.abort()
  *                         voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)             # <<<<<<<<<<<<<<
  *                         VAR2_session.abort()
  *                         #
  */
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 401, __pyx_L1_error) }
-            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 401, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 402, __pyx_L1_error) }
+            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 402, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 401, __pyx_L1_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 402, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
-            __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 401, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 402, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-            __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_VOLTAGE); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 401, __pyx_L1_error)
+            __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_VOLTAGE); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 402, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
             __pyx_t_12 = NULL;
@@ -13546,22 +13557,22 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
               __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 401, __pyx_L1_error)
+              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 402, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             }
             __Pyx_XDECREF_SET(__pyx_v_voltage_value_VAR2, __pyx_t_3);
             __pyx_t_3 = 0;
 
-            /* "smu_start.py":402
+            /* "smu_start.py":403
  *                         VAR1_session.abort()
  *                         voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  *                         VAR2_session.abort()             # <<<<<<<<<<<<<<
  *                         #
  *                         measurement = update_measurement(
  */
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 402, __pyx_L1_error) }
-            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 402, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 403, __pyx_L1_error) }
+            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 403, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __pyx_t_13 = NULL;
             __pyx_t_8 = 0;
@@ -13581,86 +13592,86 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               PyObject *__pyx_callargs[2] = {__pyx_t_13, NULL};
               __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
-              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 402, __pyx_L1_error)
+              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 403, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             }
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-            /* "smu_start.py":404
+            /* "smu_start.py":405
  *                         VAR2_session.abort()
  *                         #
  *                         measurement = update_measurement(             # <<<<<<<<<<<<<<
  *                             measurement,
  *                             ('Direction', Direction),
  */
-            __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_update_measurement); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 404, __pyx_L1_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_update_measurement); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 405, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
 
-            /* "smu_start.py":406
+            /* "smu_start.py":407
  *                         measurement = update_measurement(
  *                             measurement,
  *                             ('Direction', Direction),             # <<<<<<<<<<<<<<
  *                             ('V_VAR1', voltage_value_VAR1, 'I_VAR1', VAR1_session.current_level),
  *                             ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),
  */
-            __pyx_t_13 = PyTuple_New(2); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 406, __pyx_L1_error)
+            __pyx_t_13 = PyTuple_New(2); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 407, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
             __Pyx_INCREF(__pyx_n_s_Direction);
             __Pyx_GIVEREF(__pyx_n_s_Direction);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_n_s_Direction)) __PYX_ERR(0, 406, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_n_s_Direction)) __PYX_ERR(0, 407, __pyx_L1_error);
             __Pyx_INCREF(__pyx_v_Direction);
             __Pyx_GIVEREF(__pyx_v_Direction);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 1, __pyx_v_Direction)) __PYX_ERR(0, 406, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 1, __pyx_v_Direction)) __PYX_ERR(0, 407, __pyx_L1_error);
 
-            /* "smu_start.py":407
+            /* "smu_start.py":408
  *                             measurement,
  *                             ('Direction', Direction),
  *                             ('V_VAR1', voltage_value_VAR1, 'I_VAR1', VAR1_session.current_level),             # <<<<<<<<<<<<<<
  *                             ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),
  *                         )
  */
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 407, __pyx_L1_error) }
-            __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 407, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 408, __pyx_L1_error) }
+            __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 408, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
-            __pyx_t_10 = PyTuple_New(4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 407, __pyx_L1_error)
+            __pyx_t_10 = PyTuple_New(4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 408, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_INCREF(__pyx_n_s_V_VAR1);
             __Pyx_GIVEREF(__pyx_n_s_V_VAR1);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_n_s_V_VAR1)) __PYX_ERR(0, 407, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_n_s_V_VAR1)) __PYX_ERR(0, 408, __pyx_L1_error);
             __Pyx_INCREF(__pyx_v_voltage_value_VAR1);
             __Pyx_GIVEREF(__pyx_v_voltage_value_VAR1);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_v_voltage_value_VAR1)) __PYX_ERR(0, 407, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_v_voltage_value_VAR1)) __PYX_ERR(0, 408, __pyx_L1_error);
             __Pyx_INCREF(__pyx_n_s_I_VAR1);
             __Pyx_GIVEREF(__pyx_n_s_I_VAR1);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_n_s_I_VAR1)) __PYX_ERR(0, 407, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_n_s_I_VAR1)) __PYX_ERR(0, 408, __pyx_L1_error);
             __Pyx_GIVEREF(__pyx_t_12);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 3, __pyx_t_12)) __PYX_ERR(0, 407, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 3, __pyx_t_12)) __PYX_ERR(0, 408, __pyx_L1_error);
             __pyx_t_12 = 0;
 
-            /* "smu_start.py":408
+            /* "smu_start.py":409
  *                             ('Direction', Direction),
  *                             ('V_VAR1', voltage_value_VAR1, 'I_VAR1', VAR1_session.current_level),
  *                             ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),             # <<<<<<<<<<<<<<
  *                         )
  *                         measurement = const_record(measurement)
  */
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 408, __pyx_L1_error) }
-            __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 408, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 409, __pyx_L1_error) }
+            __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 409, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
-            __pyx_t_11 = PyTuple_New(4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 408, __pyx_L1_error)
+            __pyx_t_11 = PyTuple_New(4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 409, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             __Pyx_INCREF(__pyx_n_s_V_VAR2);
             __Pyx_GIVEREF(__pyx_n_s_V_VAR2);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_n_s_V_VAR2)) __PYX_ERR(0, 408, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_n_s_V_VAR2)) __PYX_ERR(0, 409, __pyx_L1_error);
             __Pyx_INCREF(__pyx_v_voltage_value_VAR2);
             __Pyx_GIVEREF(__pyx_v_voltage_value_VAR2);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_v_voltage_value_VAR2)) __PYX_ERR(0, 408, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_v_voltage_value_VAR2)) __PYX_ERR(0, 409, __pyx_L1_error);
             __Pyx_INCREF(__pyx_n_s_I_VAR2);
             __Pyx_GIVEREF(__pyx_n_s_I_VAR2);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 2, __pyx_n_s_I_VAR2)) __PYX_ERR(0, 408, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 2, __pyx_n_s_I_VAR2)) __PYX_ERR(0, 409, __pyx_L1_error);
             __Pyx_GIVEREF(__pyx_t_12);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 3, __pyx_t_12)) __PYX_ERR(0, 408, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 3, __pyx_t_12)) __PYX_ERR(0, 409, __pyx_L1_error);
             __pyx_t_12 = 0;
             __pyx_t_12 = NULL;
             __pyx_t_8 = 0;
@@ -13683,33 +13694,33 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
               __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
               __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 404, __pyx_L1_error)
+              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 405, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             }
             __Pyx_DECREF_SET(__pyx_v_measurement, __pyx_t_3);
             __pyx_t_3 = 0;
 
-            /* "smu_start.py":410
+            /* "smu_start.py":411
  *                             ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),
  *                         )
  *                         measurement = const_record(measurement)             # <<<<<<<<<<<<<<
  *                         #  add_measurement
  *                         measurement_manager.add_measurement(measurement)
  */
-            __pyx_t_3 = __pyx_pf_9smu_start_14smu_test_start_const_record(__pyx_v_const_record, __pyx_v_measurement); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 410, __pyx_L1_error)
+            __pyx_t_3 = __pyx_pf_9smu_start_14smu_test_start_const_record(__pyx_v_const_record, __pyx_v_measurement); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 411, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF_SET(__pyx_v_measurement, __pyx_t_3);
             __pyx_t_3 = 0;
 
-            /* "smu_start.py":412
+            /* "smu_start.py":413
  *                         measurement = const_record(measurement)
  *                         #  add_measurement
  *                         measurement_manager.add_measurement(measurement)             # <<<<<<<<<<<<<<
  *                         single_point_measurement = measurement_manager.get_measurements()  #
  *                         print(
  */
-            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_add_measurement); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 412, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_add_measurement); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 413, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __pyx_t_11 = NULL;
             __pyx_t_8 = 0;
@@ -13729,20 +13740,20 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               PyObject *__pyx_callargs[2] = {__pyx_t_11, __pyx_v_measurement};
               __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 412, __pyx_L1_error)
+              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 413, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             }
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-            /* "smu_start.py":413
+            /* "smu_start.py":414
  *                         #  add_measurement
  *                         measurement_manager.add_measurement(measurement)
  *                         single_point_measurement = measurement_manager.get_measurements()  #             # <<<<<<<<<<<<<<
  *                         print(
  *                             f"Direction: 'Forward' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level},V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  */
-            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_get_measurements); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 413, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_get_measurements); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 414, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __pyx_t_11 = NULL;
             __pyx_t_8 = 0;
@@ -13762,21 +13773,21 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               PyObject *__pyx_callargs[2] = {__pyx_t_11, NULL};
               __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 413, __pyx_L1_error)
+              if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 414, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             }
             __Pyx_XDECREF_SET(__pyx_v_single_point_measurement, __pyx_t_3);
             __pyx_t_3 = 0;
 
-            /* "smu_start.py":415
+            /* "smu_start.py":416
  *                         single_point_measurement = measurement_manager.get_measurements()  #
  *                         print(
  *                             f"Direction: 'Forward' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level},V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")             # <<<<<<<<<<<<<<
  *                 elif IV_flag_VAR1 == 4:
  *                     # VAR1
  */
-            __pyx_t_3 = PyTuple_New(20); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 415, __pyx_L1_error)
+            __pyx_t_3 = PyTuple_New(20); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 416, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __pyx_t_18 = 0;
             __pyx_t_19 = 127;
@@ -13784,7 +13795,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 30;
             __Pyx_GIVEREF(__pyx_kp_u_Direction_Forward_V_VAR1);
             PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_kp_u_Direction_Forward_V_VAR1);
-            __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_v_voltage_value_VAR1, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 415, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_v_voltage_value_VAR1, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 416, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_19;
             __pyx_t_18 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_4);
@@ -13795,10 +13806,10 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_VAR1_2);
             PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_kp_u_I_VAR1_2);
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 415, __pyx_L1_error) }
-            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 415, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 416, __pyx_L1_error) }
+            __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 416, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 415, __pyx_L1_error)
+            __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 416, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) : __pyx_t_19;
@@ -13810,7 +13821,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_V_VAR2_2);
             PyTuple_SET_ITEM(__pyx_t_3, 4, __pyx_kp_u_V_VAR2_2);
-            __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_v_voltage_value_VAR2, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 415, __pyx_L1_error)
+            __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_v_voltage_value_VAR2, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 416, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) : __pyx_t_19;
             __pyx_t_18 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_11);
@@ -13821,10 +13832,10 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_VAR2_2);
             PyTuple_SET_ITEM(__pyx_t_3, 6, __pyx_kp_u_I_VAR2_2);
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 415, __pyx_L1_error) }
-            __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 415, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 416, __pyx_L1_error) }
+            __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 416, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
-            __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_11, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 415, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_11, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 416, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_19;
@@ -13836,9 +13847,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_V_CONST1_4);
             PyTuple_SET_ITEM(__pyx_t_3, 8, __pyx_kp_u_V_CONST1_4);
-            __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 415, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 416, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 415, __pyx_L1_error)
+            __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 416, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) : __pyx_t_19;
@@ -13850,9 +13861,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_CONST1_2);
             PyTuple_SET_ITEM(__pyx_t_3, 10, __pyx_kp_u_I_CONST1_2);
-            __pyx_t_11 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 415, __pyx_L1_error)
+            __pyx_t_11 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 416, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
-            __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_11, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 415, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_11, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 416, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_19;
@@ -13864,9 +13875,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_V_CONST2_2);
             PyTuple_SET_ITEM(__pyx_t_3, 12, __pyx_kp_u_V_CONST2_2);
-            __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 415, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 416, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 415, __pyx_L1_error)
+            __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 416, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) : __pyx_t_19;
@@ -13878,9 +13889,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_CONST2_2);
             PyTuple_SET_ITEM(__pyx_t_3, 14, __pyx_kp_u_I_CONST2_2);
-            __pyx_t_11 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 415, __pyx_L1_error)
+            __pyx_t_11 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 416, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
-            __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_11, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 415, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_11, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 416, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_19;
@@ -13892,9 +13903,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_V_CONST3_2);
             PyTuple_SET_ITEM(__pyx_t_3, 16, __pyx_kp_u_V_CONST3_2);
-            __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 415, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 416, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 415, __pyx_L1_error)
+            __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 416, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) : __pyx_t_19;
@@ -13906,9 +13917,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_CONST3_2);
             PyTuple_SET_ITEM(__pyx_t_3, 18, __pyx_kp_u_I_CONST3_2);
-            __pyx_t_11 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST3); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 415, __pyx_L1_error)
+            __pyx_t_11 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST3); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 416, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
-            __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_11, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 415, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_11, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 416, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_19;
@@ -13916,23 +13927,23 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __Pyx_GIVEREF(__pyx_t_4);
             PyTuple_SET_ITEM(__pyx_t_3, 19, __pyx_t_4);
             __pyx_t_4 = 0;
-            __pyx_t_4 = __Pyx_PyUnicode_Join(__pyx_t_3, 20, __pyx_t_18, __pyx_t_19); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 415, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyUnicode_Join(__pyx_t_3, 20, __pyx_t_18, __pyx_t_19); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 416, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-            /* "smu_start.py":414
+            /* "smu_start.py":415
  *                         measurement_manager.add_measurement(measurement)
  *                         single_point_measurement = measurement_manager.get_measurements()  #
  *                         print(             # <<<<<<<<<<<<<<
  *                             f"Direction: 'Forward' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level},V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *                 elif IV_flag_VAR1 == 4:
  */
-            __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 414, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 415, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-            /* "smu_start.py":392
+            /* "smu_start.py":393
  *                             f"Direction: 'Reverse' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level},V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *                 elif IV_flag_VAR1 == 3:
  *                     for i in range(num_points_VAR1):             # <<<<<<<<<<<<<<
@@ -13942,7 +13953,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           }
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-          /* "smu_start.py":391
+          /* "smu_start.py":392
  *                         print(
  *                             f"Direction: 'Reverse' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level},V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *                 elif IV_flag_VAR1 == 3:             # <<<<<<<<<<<<<<
@@ -13952,35 +13963,35 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           goto __pyx_L62;
         }
 
-        /* "smu_start.py":416
+        /* "smu_start.py":417
  *                         print(
  *                             f"Direction: 'Forward' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level},V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *                 elif IV_flag_VAR1 == 4:             # <<<<<<<<<<<<<<
  *                     # VAR1
  *                     for i in range(num_points_VAR1):
  */
-        if (unlikely(!__pyx_v_IV_flag_VAR1)) { __Pyx_RaiseUnboundLocalError("IV_flag_VAR1"); __PYX_ERR(0, 416, __pyx_L1_error) }
-        __pyx_t_5 = (__Pyx_PyInt_BoolEqObjC(__pyx_v_IV_flag_VAR1, __pyx_int_4, 4, 0)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 416, __pyx_L1_error)
+        if (unlikely(!__pyx_v_IV_flag_VAR1)) { __Pyx_RaiseUnboundLocalError("IV_flag_VAR1"); __PYX_ERR(0, 417, __pyx_L1_error) }
+        __pyx_t_5 = (__Pyx_PyInt_BoolEqObjC(__pyx_v_IV_flag_VAR1, __pyx_int_4, 4, 0)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 417, __pyx_L1_error)
         if (__pyx_t_5) {
 
-          /* "smu_start.py":418
+          /* "smu_start.py":419
  *                 elif IV_flag_VAR1 == 4:
  *                     # VAR1
  *                     for i in range(num_points_VAR1):             # <<<<<<<<<<<<<<
  *                         measurement = {}
  *                         Direction = "Forward"
  */
-          if (unlikely(!__pyx_v_num_points_VAR1)) { __Pyx_RaiseUnboundLocalError("num_points_VAR1"); __PYX_ERR(0, 418, __pyx_L1_error) }
-          __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 418, __pyx_L1_error)
+          if (unlikely(!__pyx_v_num_points_VAR1)) { __Pyx_RaiseUnboundLocalError("num_points_VAR1"); __PYX_ERR(0, 419, __pyx_L1_error) }
+          __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 419, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
             __pyx_t_3 = __pyx_t_1; __Pyx_INCREF(__pyx_t_3);
             __pyx_t_16 = 0;
             __pyx_t_17 = NULL;
           } else {
-            __pyx_t_16 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 418, __pyx_L1_error)
+            __pyx_t_16 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 419, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
-            __pyx_t_17 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 418, __pyx_L1_error)
+            __pyx_t_17 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 419, __pyx_L1_error)
           }
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           for (;;) {
@@ -13989,28 +14000,28 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
                 {
                   Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_3);
                   #if !CYTHON_ASSUME_SAFE_MACROS
-                  if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 418, __pyx_L1_error)
+                  if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 419, __pyx_L1_error)
                   #endif
                   if (__pyx_t_16 >= __pyx_temp) break;
                 }
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_16); __Pyx_INCREF(__pyx_t_1); __pyx_t_16++; if (unlikely((0 < 0))) __PYX_ERR(0, 418, __pyx_L1_error)
+                __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_16); __Pyx_INCREF(__pyx_t_1); __pyx_t_16++; if (unlikely((0 < 0))) __PYX_ERR(0, 419, __pyx_L1_error)
                 #else
-                __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 418, __pyx_L1_error)
+                __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 419, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_1);
                 #endif
               } else {
                 {
                   Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_3);
                   #if !CYTHON_ASSUME_SAFE_MACROS
-                  if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 418, __pyx_L1_error)
+                  if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 419, __pyx_L1_error)
                   #endif
                   if (__pyx_t_16 >= __pyx_temp) break;
                 }
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_16); __Pyx_INCREF(__pyx_t_1); __pyx_t_16++; if (unlikely((0 < 0))) __PYX_ERR(0, 418, __pyx_L1_error)
+                __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_16); __Pyx_INCREF(__pyx_t_1); __pyx_t_16++; if (unlikely((0 < 0))) __PYX_ERR(0, 419, __pyx_L1_error)
                 #else
-                __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 418, __pyx_L1_error)
+                __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 419, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_1);
                 #endif
               }
@@ -14020,7 +14031,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
                 PyObject* exc_type = PyErr_Occurred();
                 if (exc_type) {
                   if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                  else __PYX_ERR(0, 418, __pyx_L1_error)
+                  else __PYX_ERR(0, 419, __pyx_L1_error)
                 }
                 break;
               }
@@ -14029,19 +14040,19 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_1);
             __pyx_t_1 = 0;
 
-            /* "smu_start.py":419
+            /* "smu_start.py":420
  *                     # VAR1
  *                     for i in range(num_points_VAR1):
  *                         measurement = {}             # <<<<<<<<<<<<<<
  *                         Direction = "Forward"
  *                         VAR1_session.current_level = current_min_VAR1 + i * current_step_VAR1
  */
-            __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 419, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 420, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_XDECREF_SET(__pyx_v_measurement, __pyx_t_1);
             __pyx_t_1 = 0;
 
-            /* "smu_start.py":420
+            /* "smu_start.py":421
  *                     for i in range(num_points_VAR1):
  *                         measurement = {}
  *                         Direction = "Forward"             # <<<<<<<<<<<<<<
@@ -14051,67 +14062,33 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __Pyx_INCREF(__pyx_n_s_Forward);
             __Pyx_XDECREF_SET(__pyx_v_Direction, __pyx_n_s_Forward);
 
-            /* "smu_start.py":421
+            /* "smu_start.py":422
  *                         measurement = {}
  *                         Direction = "Forward"
  *                         VAR1_session.current_level = current_min_VAR1 + i * current_step_VAR1             # <<<<<<<<<<<<<<
  *                         VAR2_session.initiate()
  *                         VAR1_session.initiate()
  */
-            if (unlikely(!__pyx_v_current_min_VAR1)) { __Pyx_RaiseUnboundLocalError("current_min_VAR1"); __PYX_ERR(0, 421, __pyx_L1_error) }
-            if (unlikely(!__pyx_v_current_step_VAR1)) { __Pyx_RaiseUnboundLocalError("current_step_VAR1"); __PYX_ERR(0, 421, __pyx_L1_error) }
-            __pyx_t_1 = PyNumber_Multiply(__pyx_v_i, __pyx_v_current_step_VAR1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 421, __pyx_L1_error)
+            if (unlikely(!__pyx_v_current_min_VAR1)) { __Pyx_RaiseUnboundLocalError("current_min_VAR1"); __PYX_ERR(0, 422, __pyx_L1_error) }
+            if (unlikely(!__pyx_v_current_step_VAR1)) { __Pyx_RaiseUnboundLocalError("current_step_VAR1"); __PYX_ERR(0, 422, __pyx_L1_error) }
+            __pyx_t_1 = PyNumber_Multiply(__pyx_v_i, __pyx_v_current_step_VAR1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 422, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_4 = PyNumber_Add(__pyx_v_current_min_VAR1, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 421, __pyx_L1_error)
+            __pyx_t_4 = PyNumber_Add(__pyx_v_current_min_VAR1, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 422, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 421, __pyx_L1_error) }
-            if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level, __pyx_t_4) < 0) __PYX_ERR(0, 421, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 422, __pyx_L1_error) }
+            if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level, __pyx_t_4) < 0) __PYX_ERR(0, 422, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-            /* "smu_start.py":422
+            /* "smu_start.py":423
  *                         Direction = "Forward"
  *                         VAR1_session.current_level = current_min_VAR1 + i * current_step_VAR1
  *                         VAR2_session.initiate()             # <<<<<<<<<<<<<<
  *                         VAR1_session.initiate()
  *                         #  VAR1
  */
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 422, __pyx_L1_error) }
-            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 422, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_11 = NULL;
-            __pyx_t_8 = 0;
-            #if CYTHON_UNPACK_METHODS
-            if (likely(PyMethod_Check(__pyx_t_1))) {
-              __pyx_t_11 = PyMethod_GET_SELF(__pyx_t_1);
-              if (likely(__pyx_t_11)) {
-                PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
-                __Pyx_INCREF(__pyx_t_11);
-                __Pyx_INCREF(function);
-                __Pyx_DECREF_SET(__pyx_t_1, function);
-                __pyx_t_8 = 1;
-              }
-            }
-            #endif
-            {
-              PyObject *__pyx_callargs[2] = {__pyx_t_11, NULL};
-              __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
-              __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 422, __pyx_L1_error)
-              __Pyx_GOTREF(__pyx_t_4);
-              __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-            }
-            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-            /* "smu_start.py":423
- *                         VAR1_session.current_level = current_min_VAR1 + i * current_step_VAR1
- *                         VAR2_session.initiate()
- *                         VAR1_session.initiate()             # <<<<<<<<<<<<<<
- *                         #  VAR1
- *                         voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
- */
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 423, __pyx_L1_error) }
-            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 423, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 423, __pyx_L1_error) }
+            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 423, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __pyx_t_11 = NULL;
             __pyx_t_8 = 0;
@@ -14137,22 +14114,56 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             }
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-            /* "smu_start.py":425
+            /* "smu_start.py":424
+ *                         VAR1_session.current_level = current_min_VAR1 + i * current_step_VAR1
+ *                         VAR2_session.initiate()
+ *                         VAR1_session.initiate()             # <<<<<<<<<<<<<<
+ *                         #  VAR1
+ *                         voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
+ */
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 424, __pyx_L1_error) }
+            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 424, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_1);
+            __pyx_t_11 = NULL;
+            __pyx_t_8 = 0;
+            #if CYTHON_UNPACK_METHODS
+            if (likely(PyMethod_Check(__pyx_t_1))) {
+              __pyx_t_11 = PyMethod_GET_SELF(__pyx_t_1);
+              if (likely(__pyx_t_11)) {
+                PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+                __Pyx_INCREF(__pyx_t_11);
+                __Pyx_INCREF(function);
+                __Pyx_DECREF_SET(__pyx_t_1, function);
+                __pyx_t_8 = 1;
+              }
+            }
+            #endif
+            {
+              PyObject *__pyx_callargs[2] = {__pyx_t_11, NULL};
+              __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
+              __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
+              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 424, __pyx_L1_error)
+              __Pyx_GOTREF(__pyx_t_4);
+              __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+            }
+            __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+            /* "smu_start.py":426
  *                         VAR1_session.initiate()
  *                         #  VAR1
  *                         voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)             # <<<<<<<<<<<<<<
  *                         VAR1_session.abort()
  *                         voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  */
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 425, __pyx_L1_error) }
-            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 425, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 426, __pyx_L1_error) }
+            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 426, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 425, __pyx_L1_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 426, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
-            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 425, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 426, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-            __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_VOLTAGE); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 425, __pyx_L1_error)
+            __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_VOLTAGE); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 426, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             __pyx_t_10 = NULL;
@@ -14174,22 +14185,22 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
               __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 425, __pyx_L1_error)
+              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 426, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             }
             __Pyx_XDECREF_SET(__pyx_v_voltage_value_VAR1, __pyx_t_4);
             __pyx_t_4 = 0;
 
-            /* "smu_start.py":426
+            /* "smu_start.py":427
  *                         #  VAR1
  *                         voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  *                         VAR1_session.abort()             # <<<<<<<<<<<<<<
  *                         voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  *                         VAR2_session.abort()
  */
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 426, __pyx_L1_error) }
-            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 426, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 427, __pyx_L1_error) }
+            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 427, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __pyx_t_11 = NULL;
             __pyx_t_8 = 0;
@@ -14209,28 +14220,28 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               PyObject *__pyx_callargs[2] = {__pyx_t_11, NULL};
               __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 426, __pyx_L1_error)
+              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 427, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             }
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-            /* "smu_start.py":427
+            /* "smu_start.py":428
  *                         voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  *                         VAR1_session.abort()
  *                         voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)             # <<<<<<<<<<<<<<
  *                         VAR2_session.abort()
  *                         #
  */
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 427, __pyx_L1_error) }
-            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 427, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 428, __pyx_L1_error) }
+            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 428, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 427, __pyx_L1_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 428, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
-            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 427, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 428, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-            __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_VOLTAGE); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 427, __pyx_L1_error)
+            __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_VOLTAGE); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 428, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             __pyx_t_10 = NULL;
@@ -14252,22 +14263,22 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
               __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 427, __pyx_L1_error)
+              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 428, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             }
             __Pyx_XDECREF_SET(__pyx_v_voltage_value_VAR2, __pyx_t_4);
             __pyx_t_4 = 0;
 
-            /* "smu_start.py":428
+            /* "smu_start.py":429
  *                         VAR1_session.abort()
  *                         voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  *                         VAR2_session.abort()             # <<<<<<<<<<<<<<
  *                         #
  *                         measurement = update_measurement(
  */
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 428, __pyx_L1_error) }
-            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 428, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 429, __pyx_L1_error) }
+            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 429, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __pyx_t_11 = NULL;
             __pyx_t_8 = 0;
@@ -14287,86 +14298,86 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               PyObject *__pyx_callargs[2] = {__pyx_t_11, NULL};
               __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 428, __pyx_L1_error)
+              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 429, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             }
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-            /* "smu_start.py":430
+            /* "smu_start.py":431
  *                         VAR2_session.abort()
  *                         #
  *                         measurement = update_measurement(             # <<<<<<<<<<<<<<
  *                             measurement,
  *                             ('Direction', Direction),
  */
-            __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_update_measurement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 430, __pyx_L1_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_update_measurement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 431, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
 
-            /* "smu_start.py":432
+            /* "smu_start.py":433
  *                         measurement = update_measurement(
  *                             measurement,
  *                             ('Direction', Direction),             # <<<<<<<<<<<<<<
  *                             ('V_VAR1', voltage_value_VAR1, 'I_VAR1', VAR1_session.current_level),
  *                             ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),
  */
-            __pyx_t_11 = PyTuple_New(2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 432, __pyx_L1_error)
+            __pyx_t_11 = PyTuple_New(2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 433, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             __Pyx_INCREF(__pyx_n_s_Direction);
             __Pyx_GIVEREF(__pyx_n_s_Direction);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_n_s_Direction)) __PYX_ERR(0, 432, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_n_s_Direction)) __PYX_ERR(0, 433, __pyx_L1_error);
             __Pyx_INCREF(__pyx_v_Direction);
             __Pyx_GIVEREF(__pyx_v_Direction);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_v_Direction)) __PYX_ERR(0, 432, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_v_Direction)) __PYX_ERR(0, 433, __pyx_L1_error);
 
-            /* "smu_start.py":433
+            /* "smu_start.py":434
  *                             measurement,
  *                             ('Direction', Direction),
  *                             ('V_VAR1', voltage_value_VAR1, 'I_VAR1', VAR1_session.current_level),             # <<<<<<<<<<<<<<
  *                             ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),
  *                         )
  */
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 433, __pyx_L1_error) }
-            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 433, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 434, __pyx_L1_error) }
+            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 434, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
-            __pyx_t_13 = PyTuple_New(4); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 433, __pyx_L1_error)
+            __pyx_t_13 = PyTuple_New(4); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 434, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
             __Pyx_INCREF(__pyx_n_s_V_VAR1);
             __Pyx_GIVEREF(__pyx_n_s_V_VAR1);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_n_s_V_VAR1)) __PYX_ERR(0, 433, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_n_s_V_VAR1)) __PYX_ERR(0, 434, __pyx_L1_error);
             __Pyx_INCREF(__pyx_v_voltage_value_VAR1);
             __Pyx_GIVEREF(__pyx_v_voltage_value_VAR1);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 1, __pyx_v_voltage_value_VAR1)) __PYX_ERR(0, 433, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 1, __pyx_v_voltage_value_VAR1)) __PYX_ERR(0, 434, __pyx_L1_error);
             __Pyx_INCREF(__pyx_n_s_I_VAR1);
             __Pyx_GIVEREF(__pyx_n_s_I_VAR1);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 2, __pyx_n_s_I_VAR1)) __PYX_ERR(0, 433, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 2, __pyx_n_s_I_VAR1)) __PYX_ERR(0, 434, __pyx_L1_error);
             __Pyx_GIVEREF(__pyx_t_10);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 3, __pyx_t_10)) __PYX_ERR(0, 433, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_13, 3, __pyx_t_10)) __PYX_ERR(0, 434, __pyx_L1_error);
             __pyx_t_10 = 0;
 
-            /* "smu_start.py":434
+            /* "smu_start.py":435
  *                             ('Direction', Direction),
  *                             ('V_VAR1', voltage_value_VAR1, 'I_VAR1', VAR1_session.current_level),
  *                             ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),             # <<<<<<<<<<<<<<
  *                         )
  *                         measurement = const_record(measurement)
  */
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 434, __pyx_L1_error) }
-            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 434, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 435, __pyx_L1_error) }
+            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 435, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
-            __pyx_t_12 = PyTuple_New(4); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 434, __pyx_L1_error)
+            __pyx_t_12 = PyTuple_New(4); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 435, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_INCREF(__pyx_n_s_V_VAR2);
             __Pyx_GIVEREF(__pyx_n_s_V_VAR2);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_n_s_V_VAR2)) __PYX_ERR(0, 434, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_n_s_V_VAR2)) __PYX_ERR(0, 435, __pyx_L1_error);
             __Pyx_INCREF(__pyx_v_voltage_value_VAR2);
             __Pyx_GIVEREF(__pyx_v_voltage_value_VAR2);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_v_voltage_value_VAR2)) __PYX_ERR(0, 434, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_v_voltage_value_VAR2)) __PYX_ERR(0, 435, __pyx_L1_error);
             __Pyx_INCREF(__pyx_n_s_I_VAR2);
             __Pyx_GIVEREF(__pyx_n_s_I_VAR2);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 2, __pyx_n_s_I_VAR2)) __PYX_ERR(0, 434, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 2, __pyx_n_s_I_VAR2)) __PYX_ERR(0, 435, __pyx_L1_error);
             __Pyx_GIVEREF(__pyx_t_10);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 3, __pyx_t_10)) __PYX_ERR(0, 434, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 3, __pyx_t_10)) __PYX_ERR(0, 435, __pyx_L1_error);
             __pyx_t_10 = 0;
             __pyx_t_10 = NULL;
             __pyx_t_8 = 0;
@@ -14389,33 +14400,33 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
               __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
               __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 430, __pyx_L1_error)
+              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 431, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             }
             __Pyx_DECREF_SET(__pyx_v_measurement, __pyx_t_4);
             __pyx_t_4 = 0;
 
-            /* "smu_start.py":436
+            /* "smu_start.py":437
  *                             ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),
  *                         )
  *                         measurement = const_record(measurement)             # <<<<<<<<<<<<<<
  *                         #  add_measurement
  *                         measurement_manager.add_measurement(measurement)
  */
-            __pyx_t_4 = __pyx_pf_9smu_start_14smu_test_start_const_record(__pyx_v_const_record, __pyx_v_measurement); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 436, __pyx_L1_error)
+            __pyx_t_4 = __pyx_pf_9smu_start_14smu_test_start_const_record(__pyx_v_const_record, __pyx_v_measurement); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 437, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF_SET(__pyx_v_measurement, __pyx_t_4);
             __pyx_t_4 = 0;
 
-            /* "smu_start.py":438
+            /* "smu_start.py":439
  *                         measurement = const_record(measurement)
  *                         #  add_measurement
  *                         measurement_manager.add_measurement(measurement)             # <<<<<<<<<<<<<<
  *                         single_point_measurement = measurement_manager.get_measurements()  #
  *                         print(
  */
-            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_add_measurement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 438, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_add_measurement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 439, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __pyx_t_12 = NULL;
             __pyx_t_8 = 0;
@@ -14435,20 +14446,20 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               PyObject *__pyx_callargs[2] = {__pyx_t_12, __pyx_v_measurement};
               __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
-              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 438, __pyx_L1_error)
+              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 439, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             }
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-            /* "smu_start.py":439
+            /* "smu_start.py":440
  *                         #  add_measurement
  *                         measurement_manager.add_measurement(measurement)
  *                         single_point_measurement = measurement_manager.get_measurements()  #             # <<<<<<<<<<<<<<
  *                         print(
  *                             f"Direction: 'Forward' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level},V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  */
-            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_get_measurements); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 439, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_get_measurements); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 440, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __pyx_t_12 = NULL;
             __pyx_t_8 = 0;
@@ -14468,21 +14479,21 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               PyObject *__pyx_callargs[2] = {__pyx_t_12, NULL};
               __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
-              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 439, __pyx_L1_error)
+              if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 440, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_4);
               __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             }
             __Pyx_XDECREF_SET(__pyx_v_single_point_measurement, __pyx_t_4);
             __pyx_t_4 = 0;
 
-            /* "smu_start.py":441
+            /* "smu_start.py":442
  *                         single_point_measurement = measurement_manager.get_measurements()  #
  *                         print(
  *                             f"Direction: 'Forward' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level},V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")             # <<<<<<<<<<<<<<
  *                     # VAR1
  *                     for i in range(num_points_VAR1):
  */
-            __pyx_t_4 = PyTuple_New(20); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 441, __pyx_L1_error)
+            __pyx_t_4 = PyTuple_New(20); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 442, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __pyx_t_18 = 0;
             __pyx_t_19 = 127;
@@ -14490,7 +14501,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 30;
             __Pyx_GIVEREF(__pyx_kp_u_Direction_Forward_V_VAR1);
             PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_kp_u_Direction_Forward_V_VAR1);
-            __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_v_voltage_value_VAR1, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 441, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_v_voltage_value_VAR1, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 442, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) : __pyx_t_19;
             __pyx_t_18 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_1);
@@ -14501,10 +14512,10 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_VAR1_2);
             PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_kp_u_I_VAR1_2);
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 441, __pyx_L1_error) }
-            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 441, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 442, __pyx_L1_error) }
+            __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 442, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_12 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 441, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 442, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_12) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_12) : __pyx_t_19;
@@ -14516,7 +14527,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_V_VAR2_2);
             PyTuple_SET_ITEM(__pyx_t_4, 4, __pyx_kp_u_V_VAR2_2);
-            __pyx_t_12 = __Pyx_PyObject_FormatSimple(__pyx_v_voltage_value_VAR2, __pyx_empty_unicode); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 441, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_FormatSimple(__pyx_v_voltage_value_VAR2, __pyx_empty_unicode); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 442, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_12) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_12) : __pyx_t_19;
             __pyx_t_18 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_12);
@@ -14527,10 +14538,10 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_VAR2_2);
             PyTuple_SET_ITEM(__pyx_t_4, 6, __pyx_kp_u_I_VAR2_2);
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 441, __pyx_L1_error) }
-            __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 441, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 442, __pyx_L1_error) }
+            __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 442, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
-            __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_12, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 441, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_12, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 442, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) : __pyx_t_19;
@@ -14542,9 +14553,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_V_CONST1_4);
             PyTuple_SET_ITEM(__pyx_t_4, 8, __pyx_kp_u_V_CONST1_4);
-            __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 441, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 442, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_12 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 441, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 442, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_12) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_12) : __pyx_t_19;
@@ -14556,9 +14567,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_CONST1_2);
             PyTuple_SET_ITEM(__pyx_t_4, 10, __pyx_kp_u_I_CONST1_2);
-            __pyx_t_12 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 441, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 442, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
-            __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_12, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 441, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_12, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 442, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) : __pyx_t_19;
@@ -14570,9 +14581,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_V_CONST2_2);
             PyTuple_SET_ITEM(__pyx_t_4, 12, __pyx_kp_u_V_CONST2_2);
-            __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 441, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 442, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_12 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 441, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 442, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_12) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_12) : __pyx_t_19;
@@ -14584,9 +14595,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_CONST2_2);
             PyTuple_SET_ITEM(__pyx_t_4, 14, __pyx_kp_u_I_CONST2_2);
-            __pyx_t_12 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 441, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 442, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
-            __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_12, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 441, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_12, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 442, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) : __pyx_t_19;
@@ -14598,9 +14609,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_V_CONST3_2);
             PyTuple_SET_ITEM(__pyx_t_4, 16, __pyx_kp_u_V_CONST3_2);
-            __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 441, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 442, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_12 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 441, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 442, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_12) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_12) : __pyx_t_19;
@@ -14612,9 +14623,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_CONST3_2);
             PyTuple_SET_ITEM(__pyx_t_4, 18, __pyx_kp_u_I_CONST3_2);
-            __pyx_t_12 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 441, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 442, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
-            __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_12, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 441, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_12, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 442, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) : __pyx_t_19;
@@ -14622,23 +14633,23 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __Pyx_GIVEREF(__pyx_t_1);
             PyTuple_SET_ITEM(__pyx_t_4, 19, __pyx_t_1);
             __pyx_t_1 = 0;
-            __pyx_t_1 = __Pyx_PyUnicode_Join(__pyx_t_4, 20, __pyx_t_18, __pyx_t_19); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 441, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyUnicode_Join(__pyx_t_4, 20, __pyx_t_18, __pyx_t_19); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 442, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-            /* "smu_start.py":440
+            /* "smu_start.py":441
  *                         measurement_manager.add_measurement(measurement)
  *                         single_point_measurement = measurement_manager.get_measurements()  #
  *                         print(             # <<<<<<<<<<<<<<
  *                             f"Direction: 'Forward' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level},V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *                     # VAR1
  */
-            __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 440, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 441, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-            /* "smu_start.py":418
+            /* "smu_start.py":419
  *                 elif IV_flag_VAR1 == 4:
  *                     # VAR1
  *                     for i in range(num_points_VAR1):             # <<<<<<<<<<<<<<
@@ -14648,24 +14659,24 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           }
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-          /* "smu_start.py":443
+          /* "smu_start.py":444
  *                             f"Direction: 'Forward' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level},V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *                     # VAR1
  *                     for i in range(num_points_VAR1):             # <<<<<<<<<<<<<<
  *                         measurement = {}
  *                         Direction = "Reverse"
  */
-          if (unlikely(!__pyx_v_num_points_VAR1)) { __Pyx_RaiseUnboundLocalError("num_points_VAR1"); __PYX_ERR(0, 443, __pyx_L1_error) }
-          __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 443, __pyx_L1_error)
+          if (unlikely(!__pyx_v_num_points_VAR1)) { __Pyx_RaiseUnboundLocalError("num_points_VAR1"); __PYX_ERR(0, 444, __pyx_L1_error) }
+          __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 444, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           if (likely(PyList_CheckExact(__pyx_t_3)) || PyTuple_CheckExact(__pyx_t_3)) {
             __pyx_t_4 = __pyx_t_3; __Pyx_INCREF(__pyx_t_4);
             __pyx_t_16 = 0;
             __pyx_t_17 = NULL;
           } else {
-            __pyx_t_16 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 443, __pyx_L1_error)
+            __pyx_t_16 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 444, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_17 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 443, __pyx_L1_error)
+            __pyx_t_17 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 444, __pyx_L1_error)
           }
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           for (;;) {
@@ -14674,28 +14685,28 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
                 {
                   Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_4);
                   #if !CYTHON_ASSUME_SAFE_MACROS
-                  if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 443, __pyx_L1_error)
+                  if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 444, __pyx_L1_error)
                   #endif
                   if (__pyx_t_16 >= __pyx_temp) break;
                 }
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                __pyx_t_3 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_16); __Pyx_INCREF(__pyx_t_3); __pyx_t_16++; if (unlikely((0 < 0))) __PYX_ERR(0, 443, __pyx_L1_error)
+                __pyx_t_3 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_16); __Pyx_INCREF(__pyx_t_3); __pyx_t_16++; if (unlikely((0 < 0))) __PYX_ERR(0, 444, __pyx_L1_error)
                 #else
-                __pyx_t_3 = __Pyx_PySequence_ITEM(__pyx_t_4, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 443, __pyx_L1_error)
+                __pyx_t_3 = __Pyx_PySequence_ITEM(__pyx_t_4, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 444, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_3);
                 #endif
               } else {
                 {
                   Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_4);
                   #if !CYTHON_ASSUME_SAFE_MACROS
-                  if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 443, __pyx_L1_error)
+                  if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 444, __pyx_L1_error)
                   #endif
                   if (__pyx_t_16 >= __pyx_temp) break;
                 }
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_16); __Pyx_INCREF(__pyx_t_3); __pyx_t_16++; if (unlikely((0 < 0))) __PYX_ERR(0, 443, __pyx_L1_error)
+                __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_16); __Pyx_INCREF(__pyx_t_3); __pyx_t_16++; if (unlikely((0 < 0))) __PYX_ERR(0, 444, __pyx_L1_error)
                 #else
-                __pyx_t_3 = __Pyx_PySequence_ITEM(__pyx_t_4, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 443, __pyx_L1_error)
+                __pyx_t_3 = __Pyx_PySequence_ITEM(__pyx_t_4, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 444, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_3);
                 #endif
               }
@@ -14705,7 +14716,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
                 PyObject* exc_type = PyErr_Occurred();
                 if (exc_type) {
                   if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                  else __PYX_ERR(0, 443, __pyx_L1_error)
+                  else __PYX_ERR(0, 444, __pyx_L1_error)
                 }
                 break;
               }
@@ -14714,19 +14725,19 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_3);
             __pyx_t_3 = 0;
 
-            /* "smu_start.py":444
+            /* "smu_start.py":445
  *                     # VAR1
  *                     for i in range(num_points_VAR1):
  *                         measurement = {}             # <<<<<<<<<<<<<<
  *                         Direction = "Reverse"
  *                         VAR1_session.current_level = current_max_VAR1 - i * current_step_VAR1
  */
-            __pyx_t_3 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 444, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 445, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_XDECREF_SET(__pyx_v_measurement, __pyx_t_3);
             __pyx_t_3 = 0;
 
-            /* "smu_start.py":445
+            /* "smu_start.py":446
  *                     for i in range(num_points_VAR1):
  *                         measurement = {}
  *                         Direction = "Reverse"             # <<<<<<<<<<<<<<
@@ -14736,67 +14747,33 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __Pyx_INCREF(__pyx_n_s_Reverse);
             __Pyx_XDECREF_SET(__pyx_v_Direction, __pyx_n_s_Reverse);
 
-            /* "smu_start.py":446
+            /* "smu_start.py":447
  *                         measurement = {}
  *                         Direction = "Reverse"
  *                         VAR1_session.current_level = current_max_VAR1 - i * current_step_VAR1             # <<<<<<<<<<<<<<
  *                         VAR2_session.initiate()
  *                         VAR1_session.initiate()
  */
-            if (unlikely(!__pyx_v_current_max_VAR1)) { __Pyx_RaiseUnboundLocalError("current_max_VAR1"); __PYX_ERR(0, 446, __pyx_L1_error) }
-            if (unlikely(!__pyx_v_current_step_VAR1)) { __Pyx_RaiseUnboundLocalError("current_step_VAR1"); __PYX_ERR(0, 446, __pyx_L1_error) }
-            __pyx_t_3 = PyNumber_Multiply(__pyx_v_i, __pyx_v_current_step_VAR1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 446, __pyx_L1_error)
+            if (unlikely(!__pyx_v_current_max_VAR1)) { __Pyx_RaiseUnboundLocalError("current_max_VAR1"); __PYX_ERR(0, 447, __pyx_L1_error) }
+            if (unlikely(!__pyx_v_current_step_VAR1)) { __Pyx_RaiseUnboundLocalError("current_step_VAR1"); __PYX_ERR(0, 447, __pyx_L1_error) }
+            __pyx_t_3 = PyNumber_Multiply(__pyx_v_i, __pyx_v_current_step_VAR1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 447, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
-            __pyx_t_1 = PyNumber_Subtract(__pyx_v_current_max_VAR1, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 446, __pyx_L1_error)
+            __pyx_t_1 = PyNumber_Subtract(__pyx_v_current_max_VAR1, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 447, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 446, __pyx_L1_error) }
-            if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level, __pyx_t_1) < 0) __PYX_ERR(0, 446, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 447, __pyx_L1_error) }
+            if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level, __pyx_t_1) < 0) __PYX_ERR(0, 447, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-            /* "smu_start.py":447
+            /* "smu_start.py":448
  *                         Direction = "Reverse"
  *                         VAR1_session.current_level = current_max_VAR1 - i * current_step_VAR1
  *                         VAR2_session.initiate()             # <<<<<<<<<<<<<<
  *                         VAR1_session.initiate()
  *                         voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  */
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 447, __pyx_L1_error) }
-            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 447, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_3);
-            __pyx_t_12 = NULL;
-            __pyx_t_8 = 0;
-            #if CYTHON_UNPACK_METHODS
-            if (likely(PyMethod_Check(__pyx_t_3))) {
-              __pyx_t_12 = PyMethod_GET_SELF(__pyx_t_3);
-              if (likely(__pyx_t_12)) {
-                PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-                __Pyx_INCREF(__pyx_t_12);
-                __Pyx_INCREF(function);
-                __Pyx_DECREF_SET(__pyx_t_3, function);
-                __pyx_t_8 = 1;
-              }
-            }
-            #endif
-            {
-              PyObject *__pyx_callargs[2] = {__pyx_t_12, NULL};
-              __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
-              __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
-              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 447, __pyx_L1_error)
-              __Pyx_GOTREF(__pyx_t_1);
-              __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-            }
-            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-            /* "smu_start.py":448
- *                         VAR1_session.current_level = current_max_VAR1 - i * current_step_VAR1
- *                         VAR2_session.initiate()
- *                         VAR1_session.initiate()             # <<<<<<<<<<<<<<
- *                         voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
- *                         VAR1_session.abort()
- */
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 448, __pyx_L1_error) }
-            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 448, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 448, __pyx_L1_error) }
+            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 448, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __pyx_t_12 = NULL;
             __pyx_t_8 = 0;
@@ -14823,21 +14800,55 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
             /* "smu_start.py":449
+ *                         VAR1_session.current_level = current_max_VAR1 - i * current_step_VAR1
+ *                         VAR2_session.initiate()
+ *                         VAR1_session.initiate()             # <<<<<<<<<<<<<<
+ *                         voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
+ *                         VAR1_session.abort()
+ */
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 449, __pyx_L1_error) }
+            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 449, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_3);
+            __pyx_t_12 = NULL;
+            __pyx_t_8 = 0;
+            #if CYTHON_UNPACK_METHODS
+            if (likely(PyMethod_Check(__pyx_t_3))) {
+              __pyx_t_12 = PyMethod_GET_SELF(__pyx_t_3);
+              if (likely(__pyx_t_12)) {
+                PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+                __Pyx_INCREF(__pyx_t_12);
+                __Pyx_INCREF(function);
+                __Pyx_DECREF_SET(__pyx_t_3, function);
+                __pyx_t_8 = 1;
+              }
+            }
+            #endif
+            {
+              PyObject *__pyx_callargs[2] = {__pyx_t_12, NULL};
+              __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
+              __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
+              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 449, __pyx_L1_error)
+              __Pyx_GOTREF(__pyx_t_1);
+              __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+            }
+            __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+            /* "smu_start.py":450
  *                         VAR2_session.initiate()
  *                         VAR1_session.initiate()
  *                         voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)             # <<<<<<<<<<<<<<
  *                         VAR1_session.abort()
  *                         voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  */
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 449, __pyx_L1_error) }
-            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 449, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 450, __pyx_L1_error) }
+            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 450, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
-            __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 449, __pyx_L1_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 450, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
-            __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 449, __pyx_L1_error)
+            __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 450, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-            __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_VOLTAGE); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 449, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_VOLTAGE); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 450, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
             __pyx_t_13 = NULL;
@@ -14859,22 +14870,22 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
               __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 449, __pyx_L1_error)
+              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 450, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_1);
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             }
             __Pyx_XDECREF_SET(__pyx_v_voltage_value_VAR1, __pyx_t_1);
             __pyx_t_1 = 0;
 
-            /* "smu_start.py":450
+            /* "smu_start.py":451
  *                         VAR1_session.initiate()
  *                         voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  *                         VAR1_session.abort()             # <<<<<<<<<<<<<<
  *                         voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  *                         VAR2_session.abort()
  */
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 450, __pyx_L1_error) }
-            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 450, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 451, __pyx_L1_error) }
+            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 451, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __pyx_t_12 = NULL;
             __pyx_t_8 = 0;
@@ -14894,28 +14905,28 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               PyObject *__pyx_callargs[2] = {__pyx_t_12, NULL};
               __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
-              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 450, __pyx_L1_error)
+              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 451, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_1);
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             }
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-            /* "smu_start.py":451
+            /* "smu_start.py":452
  *                         voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  *                         VAR1_session.abort()
  *                         voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)             # <<<<<<<<<<<<<<
  *                         VAR2_session.abort()
  *                         #
  */
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 451, __pyx_L1_error) }
-            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 451, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 452, __pyx_L1_error) }
+            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 452, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
-            __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 451, __pyx_L1_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 452, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
-            __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 451, __pyx_L1_error)
+            __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 452, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-            __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_VOLTAGE); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 451, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_VOLTAGE); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 452, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
             __pyx_t_13 = NULL;
@@ -14937,22 +14948,22 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
               __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 451, __pyx_L1_error)
+              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 452, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_1);
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             }
             __Pyx_XDECREF_SET(__pyx_v_voltage_value_VAR2, __pyx_t_1);
             __pyx_t_1 = 0;
 
-            /* "smu_start.py":452
+            /* "smu_start.py":453
  *                         VAR1_session.abort()
  *                         voltage_value_VAR2 = VAR2_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  *                         VAR2_session.abort()             # <<<<<<<<<<<<<<
  *                         #
  *                         measurement = update_measurement(
  */
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 452, __pyx_L1_error) }
-            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 452, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 453, __pyx_L1_error) }
+            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 453, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __pyx_t_12 = NULL;
             __pyx_t_8 = 0;
@@ -14972,86 +14983,86 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               PyObject *__pyx_callargs[2] = {__pyx_t_12, NULL};
               __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
-              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 452, __pyx_L1_error)
+              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 453, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_1);
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             }
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-            /* "smu_start.py":454
+            /* "smu_start.py":455
  *                         VAR2_session.abort()
  *                         #
  *                         measurement = update_measurement(             # <<<<<<<<<<<<<<
  *                             measurement,
  *                             ('Direction', Direction),
  */
-            __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_update_measurement); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 454, __pyx_L1_error)
+            __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_update_measurement); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 455, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
 
-            /* "smu_start.py":456
+            /* "smu_start.py":457
  *                         measurement = update_measurement(
  *                             measurement,
  *                             ('Direction', Direction),             # <<<<<<<<<<<<<<
  *                             ('V_VAR1', voltage_value_VAR1, 'I_VAR1', VAR1_session.current_level),
  *                             ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),
  */
-            __pyx_t_12 = PyTuple_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 456, __pyx_L1_error)
+            __pyx_t_12 = PyTuple_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 457, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_INCREF(__pyx_n_s_Direction);
             __Pyx_GIVEREF(__pyx_n_s_Direction);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_n_s_Direction)) __PYX_ERR(0, 456, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_n_s_Direction)) __PYX_ERR(0, 457, __pyx_L1_error);
             __Pyx_INCREF(__pyx_v_Direction);
             __Pyx_GIVEREF(__pyx_v_Direction);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_v_Direction)) __PYX_ERR(0, 456, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_v_Direction)) __PYX_ERR(0, 457, __pyx_L1_error);
 
-            /* "smu_start.py":457
+            /* "smu_start.py":458
  *                             measurement,
  *                             ('Direction', Direction),
  *                             ('V_VAR1', voltage_value_VAR1, 'I_VAR1', VAR1_session.current_level),             # <<<<<<<<<<<<<<
  *                             ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),
  *                         )
  */
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 457, __pyx_L1_error) }
-            __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 457, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 458, __pyx_L1_error) }
+            __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 458, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
-            __pyx_t_11 = PyTuple_New(4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 457, __pyx_L1_error)
+            __pyx_t_11 = PyTuple_New(4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 458, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             __Pyx_INCREF(__pyx_n_s_V_VAR1);
             __Pyx_GIVEREF(__pyx_n_s_V_VAR1);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_n_s_V_VAR1)) __PYX_ERR(0, 457, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_n_s_V_VAR1)) __PYX_ERR(0, 458, __pyx_L1_error);
             __Pyx_INCREF(__pyx_v_voltage_value_VAR1);
             __Pyx_GIVEREF(__pyx_v_voltage_value_VAR1);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_v_voltage_value_VAR1)) __PYX_ERR(0, 457, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_v_voltage_value_VAR1)) __PYX_ERR(0, 458, __pyx_L1_error);
             __Pyx_INCREF(__pyx_n_s_I_VAR1);
             __Pyx_GIVEREF(__pyx_n_s_I_VAR1);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 2, __pyx_n_s_I_VAR1)) __PYX_ERR(0, 457, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 2, __pyx_n_s_I_VAR1)) __PYX_ERR(0, 458, __pyx_L1_error);
             __Pyx_GIVEREF(__pyx_t_13);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 3, __pyx_t_13)) __PYX_ERR(0, 457, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 3, __pyx_t_13)) __PYX_ERR(0, 458, __pyx_L1_error);
             __pyx_t_13 = 0;
 
-            /* "smu_start.py":458
+            /* "smu_start.py":459
  *                             ('Direction', Direction),
  *                             ('V_VAR1', voltage_value_VAR1, 'I_VAR1', VAR1_session.current_level),
  *                             ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),             # <<<<<<<<<<<<<<
  *                         )
  *                         measurement = const_record(measurement)
  */
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 458, __pyx_L1_error) }
-            __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 458, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 459, __pyx_L1_error) }
+            __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 459, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
-            __pyx_t_10 = PyTuple_New(4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 458, __pyx_L1_error)
+            __pyx_t_10 = PyTuple_New(4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 459, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_INCREF(__pyx_n_s_V_VAR2);
             __Pyx_GIVEREF(__pyx_n_s_V_VAR2);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_n_s_V_VAR2)) __PYX_ERR(0, 458, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_n_s_V_VAR2)) __PYX_ERR(0, 459, __pyx_L1_error);
             __Pyx_INCREF(__pyx_v_voltage_value_VAR2);
             __Pyx_GIVEREF(__pyx_v_voltage_value_VAR2);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_v_voltage_value_VAR2)) __PYX_ERR(0, 458, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_v_voltage_value_VAR2)) __PYX_ERR(0, 459, __pyx_L1_error);
             __Pyx_INCREF(__pyx_n_s_I_VAR2);
             __Pyx_GIVEREF(__pyx_n_s_I_VAR2);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_n_s_I_VAR2)) __PYX_ERR(0, 458, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_n_s_I_VAR2)) __PYX_ERR(0, 459, __pyx_L1_error);
             __Pyx_GIVEREF(__pyx_t_13);
-            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 3, __pyx_t_13)) __PYX_ERR(0, 458, __pyx_L1_error);
+            if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 3, __pyx_t_13)) __PYX_ERR(0, 459, __pyx_L1_error);
             __pyx_t_13 = 0;
             __pyx_t_13 = NULL;
             __pyx_t_8 = 0;
@@ -15074,33 +15085,33 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
               __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
               __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 454, __pyx_L1_error)
+              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 455, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_1);
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             }
             __Pyx_DECREF_SET(__pyx_v_measurement, __pyx_t_1);
             __pyx_t_1 = 0;
 
-            /* "smu_start.py":460
+            /* "smu_start.py":461
  *                             ('V_VAR2', voltage_value_VAR2, 'I_VAR2', VAR2_session.current_level),
  *                         )
  *                         measurement = const_record(measurement)             # <<<<<<<<<<<<<<
  *                         #  add_measurement
  *                         measurement_manager.add_measurement(measurement)
  */
-            __pyx_t_1 = __pyx_pf_9smu_start_14smu_test_start_const_record(__pyx_v_const_record, __pyx_v_measurement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 460, __pyx_L1_error)
+            __pyx_t_1 = __pyx_pf_9smu_start_14smu_test_start_const_record(__pyx_v_const_record, __pyx_v_measurement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 461, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF_SET(__pyx_v_measurement, __pyx_t_1);
             __pyx_t_1 = 0;
 
-            /* "smu_start.py":462
+            /* "smu_start.py":463
  *                         measurement = const_record(measurement)
  *                         #  add_measurement
  *                         measurement_manager.add_measurement(measurement)             # <<<<<<<<<<<<<<
  *                         single_point_measurement = measurement_manager.get_measurements()  #
  *                         print(
  */
-            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_add_measurement); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 462, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_add_measurement); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 463, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __pyx_t_10 = NULL;
             __pyx_t_8 = 0;
@@ -15120,20 +15131,20 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               PyObject *__pyx_callargs[2] = {__pyx_t_10, __pyx_v_measurement};
               __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 462, __pyx_L1_error)
+              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 463, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_1);
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             }
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-            /* "smu_start.py":463
+            /* "smu_start.py":464
  *                         #  add_measurement
  *                         measurement_manager.add_measurement(measurement)
  *                         single_point_measurement = measurement_manager.get_measurements()  #             # <<<<<<<<<<<<<<
  *                         print(
  *                             f"Direction: 'Reverse' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level},V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  */
-            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_get_measurements); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 463, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_get_measurements); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 464, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __pyx_t_10 = NULL;
             __pyx_t_8 = 0;
@@ -15153,21 +15164,21 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
               PyObject *__pyx_callargs[2] = {__pyx_t_10, NULL};
               __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
               __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 463, __pyx_L1_error)
+              if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 464, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_1);
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             }
             __Pyx_XDECREF_SET(__pyx_v_single_point_measurement, __pyx_t_1);
             __pyx_t_1 = 0;
 
-            /* "smu_start.py":465
+            /* "smu_start.py":466
  *                         single_point_measurement = measurement_manager.get_measurements()  #
  *                         print(
  *                             f"Direction: 'Reverse' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level},V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")             # <<<<<<<<<<<<<<
  *             all_measurements = measurement_manager.measurements_data
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH, CSV_NAME)
  */
-            __pyx_t_1 = PyTuple_New(20); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 465, __pyx_L1_error)
+            __pyx_t_1 = PyTuple_New(20); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 466, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __pyx_t_18 = 0;
             __pyx_t_19 = 127;
@@ -15175,7 +15186,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 30;
             __Pyx_GIVEREF(__pyx_kp_u_Direction_Reverse_V_VAR1);
             PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_kp_u_Direction_Reverse_V_VAR1);
-            __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_voltage_value_VAR1, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 465, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_voltage_value_VAR1, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 466, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) : __pyx_t_19;
             __pyx_t_18 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_3);
@@ -15186,10 +15197,10 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_VAR1_2);
             PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_kp_u_I_VAR1_2);
-            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 465, __pyx_L1_error) }
-            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 465, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 466, __pyx_L1_error) }
+            __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 466, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
-            __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 465, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 466, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) : __pyx_t_19;
@@ -15201,7 +15212,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_V_VAR2_2);
             PyTuple_SET_ITEM(__pyx_t_1, 4, __pyx_kp_u_V_VAR2_2);
-            __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_v_voltage_value_VAR2, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 465, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_v_voltage_value_VAR2, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 466, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) : __pyx_t_19;
             __pyx_t_18 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_10);
@@ -15212,10 +15223,10 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_VAR2_2);
             PyTuple_SET_ITEM(__pyx_t_1, 6, __pyx_kp_u_I_VAR2_2);
-            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 465, __pyx_L1_error) }
-            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 465, __pyx_L1_error)
+            if (unlikely(!__pyx_v_VAR2_session)) { __Pyx_RaiseUnboundLocalError("VAR2_session"); __PYX_ERR(0, 466, __pyx_L1_error) }
+            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR2_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 466, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
-            __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 465, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 466, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) : __pyx_t_19;
@@ -15227,9 +15238,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_V_CONST1_4);
             PyTuple_SET_ITEM(__pyx_t_1, 8, __pyx_kp_u_V_CONST1_4);
-            __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 465, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 466, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
-            __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 465, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 466, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) : __pyx_t_19;
@@ -15241,9 +15252,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_CONST1_2);
             PyTuple_SET_ITEM(__pyx_t_1, 10, __pyx_kp_u_I_CONST1_2);
-            __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 465, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 466, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
-            __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 465, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 466, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) : __pyx_t_19;
@@ -15255,9 +15266,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_V_CONST2_2);
             PyTuple_SET_ITEM(__pyx_t_1, 12, __pyx_kp_u_V_CONST2_2);
-            __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 465, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 466, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
-            __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 465, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 466, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) : __pyx_t_19;
@@ -15269,9 +15280,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_CONST2_2);
             PyTuple_SET_ITEM(__pyx_t_1, 14, __pyx_kp_u_I_CONST2_2);
-            __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 465, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 466, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
-            __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 465, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 466, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) : __pyx_t_19;
@@ -15283,9 +15294,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_V_CONST3_2);
             PyTuple_SET_ITEM(__pyx_t_1, 16, __pyx_kp_u_V_CONST3_2);
-            __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 465, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 466, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
-            __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 465, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 466, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) : __pyx_t_19;
@@ -15297,9 +15308,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __pyx_t_18 += 10;
             __Pyx_GIVEREF(__pyx_kp_u_I_CONST3_2);
             PyTuple_SET_ITEM(__pyx_t_1, 18, __pyx_kp_u_I_CONST3_2);
-            __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 465, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 466, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
-            __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 465, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 466, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) : __pyx_t_19;
@@ -15307,23 +15318,23 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             __Pyx_GIVEREF(__pyx_t_3);
             PyTuple_SET_ITEM(__pyx_t_1, 19, __pyx_t_3);
             __pyx_t_3 = 0;
-            __pyx_t_3 = __Pyx_PyUnicode_Join(__pyx_t_1, 20, __pyx_t_18, __pyx_t_19); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 465, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyUnicode_Join(__pyx_t_1, 20, __pyx_t_18, __pyx_t_19); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 466, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-            /* "smu_start.py":464
+            /* "smu_start.py":465
  *                         measurement_manager.add_measurement(measurement)
  *                         single_point_measurement = measurement_manager.get_measurements()  #
  *                         print(             # <<<<<<<<<<<<<<
  *                             f"Direction: 'Reverse' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level},V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *             all_measurements = measurement_manager.measurements_data
  */
-            __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 464, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 465, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-            /* "smu_start.py":443
+            /* "smu_start.py":444
  *                             f"Direction: 'Forward' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level},V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *                     # VAR1
  *                     for i in range(num_points_VAR1):             # <<<<<<<<<<<<<<
@@ -15333,7 +15344,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           }
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-          /* "smu_start.py":416
+          /* "smu_start.py":417
  *                         print(
  *                             f"Direction: 'Forward' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level},V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *                 elif IV_flag_VAR1 == 4:             # <<<<<<<<<<<<<<
@@ -15343,7 +15354,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         }
         __pyx_L62:;
 
-        /* "smu_start.py":310
+        /* "smu_start.py":311
  *         elif mode_VAR2 == 'I':
  *             measurement_manager = MeasurementManager()
  *             for j in range(num_points_VAR2):             # <<<<<<<<<<<<<<
@@ -15353,28 +15364,28 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "smu_start.py":466
+      /* "smu_start.py":467
  *                         print(
  *                             f"Direction: 'Reverse' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level},V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *             all_measurements = measurement_manager.measurements_data             # <<<<<<<<<<<<<<
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH, CSV_NAME)
- *     elif 0 == VAR2_flag:  # VAR2
+ *             return all_measurements
  */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_measurements_data); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 466, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_measurements_data); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 467, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_v_all_measurements = __pyx_t_2;
       __pyx_t_2 = 0;
 
-      /* "smu_start.py":467
+      /* "smu_start.py":468
  *                             f"Direction: 'Reverse' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level},V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *             all_measurements = measurement_manager.measurements_data
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH, CSV_NAME)             # <<<<<<<<<<<<<<
+ *             return all_measurements
  *     elif 0 == VAR2_flag:  # VAR2
- *         #
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_csv_make); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 467, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_csv_make); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 468, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_measurements_data); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 467, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_measurements_data); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 468, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_3 = NULL;
       __pyx_t_8 = 0;
@@ -15395,21 +15406,32 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 3+__pyx_t_8);
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 467, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 468, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "smu_start.py":308
+      /* "smu_start.py":469
+ *             all_measurements = measurement_manager.measurements_data
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH, CSV_NAME)
+ *             return all_measurements             # <<<<<<<<<<<<<<
+ *     elif 0 == VAR2_flag:  # VAR2
+ *         #
+ */
+      __Pyx_XDECREF(__pyx_r);
+      __Pyx_INCREF(__pyx_v_all_measurements);
+      __pyx_r = __pyx_v_all_measurements;
+      goto __pyx_L0;
+
+      /* "smu_start.py":309
+ *             return all_measurements
  *             #print(all_measurements)
  *         elif mode_VAR2 == 'I':             # <<<<<<<<<<<<<<
  *             measurement_manager = MeasurementManager()
  *             for j in range(num_points_VAR2):
  */
     }
-    __pyx_L37:;
 
     /* "smu_start.py":149
  *         return measurement
@@ -15421,24 +15443,24 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
     goto __pyx_L36;
   }
 
-  /* "smu_start.py":468
- *             all_measurements = measurement_manager.measurements_data
+  /* "smu_start.py":470
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH, CSV_NAME)
+ *             return all_measurements
  *     elif 0 == VAR2_flag:  # VAR2             # <<<<<<<<<<<<<<
  *         #
  *         measurement_manager = MeasurementManager()
  */
-  __pyx_t_5 = (__Pyx_PyInt_BoolEqCObj(__pyx_int_0, __pyx_v_VAR2_flag, 0, 0)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 468, __pyx_L1_error)
+  __pyx_t_5 = (__Pyx_PyInt_BoolEqCObj(__pyx_int_0, __pyx_v_VAR2_flag, 0, 0)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 470, __pyx_L1_error)
   if (__pyx_t_5) {
 
-    /* "smu_start.py":470
+    /* "smu_start.py":472
  *     elif 0 == VAR2_flag:  # VAR2
  *         #
  *         measurement_manager = MeasurementManager()             # <<<<<<<<<<<<<<
  *         if IV_flag_VAR1 == 1:
  *             for i in range(num_points_VAR1):
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_MeasurementManager); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 470, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_MeasurementManager); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 472, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_1 = NULL;
     __pyx_t_8 = 0;
@@ -15458,42 +15480,42 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
       PyObject *__pyx_callargs[2] = {__pyx_t_1, NULL};
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 470, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 472, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
     __pyx_v_measurement_manager = __pyx_t_2;
     __pyx_t_2 = 0;
 
-    /* "smu_start.py":471
+    /* "smu_start.py":473
  *         #
  *         measurement_manager = MeasurementManager()
  *         if IV_flag_VAR1 == 1:             # <<<<<<<<<<<<<<
  *             for i in range(num_points_VAR1):
  *                 Direction = "Forward"
  */
-    if (unlikely(!__pyx_v_IV_flag_VAR1)) { __Pyx_RaiseUnboundLocalError("IV_flag_VAR1"); __PYX_ERR(0, 471, __pyx_L1_error) }
-    __pyx_t_5 = (__Pyx_PyInt_BoolEqObjC(__pyx_v_IV_flag_VAR1, __pyx_int_1, 1, 0)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 471, __pyx_L1_error)
+    if (unlikely(!__pyx_v_IV_flag_VAR1)) { __Pyx_RaiseUnboundLocalError("IV_flag_VAR1"); __PYX_ERR(0, 473, __pyx_L1_error) }
+    __pyx_t_5 = (__Pyx_PyInt_BoolEqObjC(__pyx_v_IV_flag_VAR1, __pyx_int_1, 1, 0)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 473, __pyx_L1_error)
     if (__pyx_t_5) {
 
-      /* "smu_start.py":472
+      /* "smu_start.py":474
  *         measurement_manager = MeasurementManager()
  *         if IV_flag_VAR1 == 1:
  *             for i in range(num_points_VAR1):             # <<<<<<<<<<<<<<
  *                 Direction = "Forward"
  *                 measurement = {}
  */
-      if (unlikely(!__pyx_v_num_points_VAR1)) { __Pyx_RaiseUnboundLocalError("num_points_VAR1"); __PYX_ERR(0, 472, __pyx_L1_error) }
-      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 472, __pyx_L1_error)
+      if (unlikely(!__pyx_v_num_points_VAR1)) { __Pyx_RaiseUnboundLocalError("num_points_VAR1"); __PYX_ERR(0, 474, __pyx_L1_error) }
+      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 474, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       if (likely(PyList_CheckExact(__pyx_t_2)) || PyTuple_CheckExact(__pyx_t_2)) {
         __pyx_t_4 = __pyx_t_2; __Pyx_INCREF(__pyx_t_4);
         __pyx_t_7 = 0;
         __pyx_t_15 = NULL;
       } else {
-        __pyx_t_7 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 472, __pyx_L1_error)
+        __pyx_t_7 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 474, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_15 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 472, __pyx_L1_error)
+        __pyx_t_15 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 474, __pyx_L1_error)
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       for (;;) {
@@ -15502,28 +15524,28 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             {
               Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_4);
               #if !CYTHON_ASSUME_SAFE_MACROS
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 472, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 474, __pyx_L1_error)
               #endif
               if (__pyx_t_7 >= __pyx_temp) break;
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_2 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 472, __pyx_L1_error)
+            __pyx_t_2 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 474, __pyx_L1_error)
             #else
-            __pyx_t_2 = __Pyx_PySequence_ITEM(__pyx_t_4, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 472, __pyx_L1_error)
+            __pyx_t_2 = __Pyx_PySequence_ITEM(__pyx_t_4, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 474, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_2);
             #endif
           } else {
             {
               Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_4);
               #if !CYTHON_ASSUME_SAFE_MACROS
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 472, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 474, __pyx_L1_error)
               #endif
               if (__pyx_t_7 >= __pyx_temp) break;
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 472, __pyx_L1_error)
+            __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 474, __pyx_L1_error)
             #else
-            __pyx_t_2 = __Pyx_PySequence_ITEM(__pyx_t_4, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 472, __pyx_L1_error)
+            __pyx_t_2 = __Pyx_PySequence_ITEM(__pyx_t_4, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 474, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_2);
             #endif
           }
@@ -15533,7 +15555,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 472, __pyx_L1_error)
+              else __PYX_ERR(0, 474, __pyx_L1_error)
             }
             break;
           }
@@ -15542,7 +15564,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_2);
         __pyx_t_2 = 0;
 
-        /* "smu_start.py":473
+        /* "smu_start.py":475
  *         if IV_flag_VAR1 == 1:
  *             for i in range(num_points_VAR1):
  *                 Direction = "Forward"             # <<<<<<<<<<<<<<
@@ -15552,45 +15574,45 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __Pyx_INCREF(__pyx_n_s_Forward);
         __Pyx_XDECREF_SET(__pyx_v_Direction, __pyx_n_s_Forward);
 
-        /* "smu_start.py":474
+        /* "smu_start.py":476
  *             for i in range(num_points_VAR1):
  *                 Direction = "Forward"
  *                 measurement = {}             # <<<<<<<<<<<<<<
  *                 VAR1_session.voltage_level = voltage_min_VAR1 + i * voltage_step_VAR1
  *                 VAR1_session.initiate()
  */
-        __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 474, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 476, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_XDECREF_SET(__pyx_v_measurement, __pyx_t_2);
         __pyx_t_2 = 0;
 
-        /* "smu_start.py":475
+        /* "smu_start.py":477
  *                 Direction = "Forward"
  *                 measurement = {}
  *                 VAR1_session.voltage_level = voltage_min_VAR1 + i * voltage_step_VAR1             # <<<<<<<<<<<<<<
  *                 VAR1_session.initiate()
  *                 #  VAR1
  */
-        if (unlikely(!__pyx_v_voltage_min_VAR1)) { __Pyx_RaiseUnboundLocalError("voltage_min_VAR1"); __PYX_ERR(0, 475, __pyx_L1_error) }
-        if (unlikely(!__pyx_v_voltage_step_VAR1)) { __Pyx_RaiseUnboundLocalError("voltage_step_VAR1"); __PYX_ERR(0, 475, __pyx_L1_error) }
-        __pyx_t_2 = PyNumber_Multiply(__pyx_v_i, __pyx_v_voltage_step_VAR1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 475, __pyx_L1_error)
+        if (unlikely(!__pyx_v_voltage_min_VAR1)) { __Pyx_RaiseUnboundLocalError("voltage_min_VAR1"); __PYX_ERR(0, 477, __pyx_L1_error) }
+        if (unlikely(!__pyx_v_voltage_step_VAR1)) { __Pyx_RaiseUnboundLocalError("voltage_step_VAR1"); __PYX_ERR(0, 477, __pyx_L1_error) }
+        __pyx_t_2 = PyNumber_Multiply(__pyx_v_i, __pyx_v_voltage_step_VAR1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 477, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_1 = PyNumber_Add(__pyx_v_voltage_min_VAR1, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 475, __pyx_L1_error)
+        __pyx_t_1 = PyNumber_Add(__pyx_v_voltage_min_VAR1, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 477, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 475, __pyx_L1_error) }
-        if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level, __pyx_t_1) < 0) __PYX_ERR(0, 475, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 477, __pyx_L1_error) }
+        if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level, __pyx_t_1) < 0) __PYX_ERR(0, 477, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "smu_start.py":476
+        /* "smu_start.py":478
  *                 measurement = {}
  *                 VAR1_session.voltage_level = voltage_min_VAR1 + i * voltage_step_VAR1
  *                 VAR1_session.initiate()             # <<<<<<<<<<<<<<
  *                 #  VAR1
  *                 current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)
  */
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 476, __pyx_L1_error) }
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 476, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 478, __pyx_L1_error) }
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 478, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __pyx_t_3 = NULL;
         __pyx_t_8 = 0;
@@ -15610,28 +15632,28 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           PyObject *__pyx_callargs[2] = {__pyx_t_3, NULL};
           __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 476, __pyx_L1_error)
+          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 478, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         }
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "smu_start.py":478
+        /* "smu_start.py":480
  *                 VAR1_session.initiate()
  *                 #  VAR1
  *                 current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)             # <<<<<<<<<<<<<<
  *                 VAR1_session.abort()
  *                 #
  */
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 478, __pyx_L1_error) }
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 478, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 480, __pyx_L1_error) }
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 480, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 478, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 480, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 478, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 480, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_CURRENT); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 478, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_CURRENT); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 480, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_10 = NULL;
@@ -15653,22 +15675,22 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 478, __pyx_L1_error)
+          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 480, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         }
         __Pyx_XDECREF_SET(__pyx_v_current_value_VAR1, __pyx_t_1);
         __pyx_t_1 = 0;
 
-        /* "smu_start.py":479
+        /* "smu_start.py":481
  *                 #  VAR1
  *                 current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)
  *                 VAR1_session.abort()             # <<<<<<<<<<<<<<
  *                 #
  *                 measurement = update_measurement(
  */
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 479, __pyx_L1_error) }
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 479, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 481, __pyx_L1_error) }
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 481, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __pyx_t_3 = NULL;
         __pyx_t_8 = 0;
@@ -15688,64 +15710,64 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           PyObject *__pyx_callargs[2] = {__pyx_t_3, NULL};
           __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 479, __pyx_L1_error)
+          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 481, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         }
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "smu_start.py":481
+        /* "smu_start.py":483
  *                 VAR1_session.abort()
  *                 #
  *                 measurement = update_measurement(             # <<<<<<<<<<<<<<
  *                     measurement,
  *                     ('Direction', Direction),
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_update_measurement); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 481, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_update_measurement); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 483, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
 
-        /* "smu_start.py":483
+        /* "smu_start.py":485
  *                 measurement = update_measurement(
  *                     measurement,
  *                     ('Direction', Direction),             # <<<<<<<<<<<<<<
  *                     ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),
  *                     ('V_VAR2', 0, 'I_VAR2', 0),
  */
-        __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 483, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 485, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_INCREF(__pyx_n_s_Direction);
         __Pyx_GIVEREF(__pyx_n_s_Direction);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_n_s_Direction)) __PYX_ERR(0, 483, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_n_s_Direction)) __PYX_ERR(0, 485, __pyx_L1_error);
         __Pyx_INCREF(__pyx_v_Direction);
         __Pyx_GIVEREF(__pyx_v_Direction);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_Direction)) __PYX_ERR(0, 483, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_Direction)) __PYX_ERR(0, 485, __pyx_L1_error);
 
-        /* "smu_start.py":484
+        /* "smu_start.py":486
  *                     measurement,
  *                     ('Direction', Direction),
  *                     ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),             # <<<<<<<<<<<<<<
  *                     ('V_VAR2', 0, 'I_VAR2', 0),
  *                 )
  */
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 484, __pyx_L1_error) }
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 484, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 486, __pyx_L1_error) }
+        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 486, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_11 = PyTuple_New(4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 484, __pyx_L1_error)
+        __pyx_t_11 = PyTuple_New(4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 486, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_INCREF(__pyx_n_s_V_VAR1);
         __Pyx_GIVEREF(__pyx_n_s_V_VAR1);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_n_s_V_VAR1)) __PYX_ERR(0, 484, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_n_s_V_VAR1)) __PYX_ERR(0, 486, __pyx_L1_error);
         __Pyx_GIVEREF(__pyx_t_10);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_t_10)) __PYX_ERR(0, 484, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_t_10)) __PYX_ERR(0, 486, __pyx_L1_error);
         __Pyx_INCREF(__pyx_n_s_I_VAR1);
         __Pyx_GIVEREF(__pyx_n_s_I_VAR1);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 2, __pyx_n_s_I_VAR1)) __PYX_ERR(0, 484, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 2, __pyx_n_s_I_VAR1)) __PYX_ERR(0, 486, __pyx_L1_error);
         __Pyx_INCREF(__pyx_v_current_value_VAR1);
         __Pyx_GIVEREF(__pyx_v_current_value_VAR1);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 3, __pyx_v_current_value_VAR1)) __PYX_ERR(0, 484, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 3, __pyx_v_current_value_VAR1)) __PYX_ERR(0, 486, __pyx_L1_error);
         __pyx_t_10 = 0;
 
-        /* "smu_start.py":485
+        /* "smu_start.py":487
  *                     ('Direction', Direction),
  *                     ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),
  *                     ('V_VAR2', 0, 'I_VAR2', 0),             # <<<<<<<<<<<<<<
@@ -15772,33 +15794,33 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 481, __pyx_L1_error)
+          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 483, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         }
         __Pyx_DECREF_SET(__pyx_v_measurement, __pyx_t_1);
         __pyx_t_1 = 0;
 
-        /* "smu_start.py":487
+        /* "smu_start.py":489
  *                     ('V_VAR2', 0, 'I_VAR2', 0),
  *                 )
  *                 measurement = const_record(measurement)             # <<<<<<<<<<<<<<
  *                 #  add_measurement
  *                 measurement_manager.add_measurement(measurement)
  */
-        __pyx_t_1 = __pyx_pf_9smu_start_14smu_test_start_const_record(__pyx_v_const_record, __pyx_v_measurement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 487, __pyx_L1_error)
+        __pyx_t_1 = __pyx_pf_9smu_start_14smu_test_start_const_record(__pyx_v_const_record, __pyx_v_measurement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 489, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF_SET(__pyx_v_measurement, __pyx_t_1);
         __pyx_t_1 = 0;
 
-        /* "smu_start.py":489
+        /* "smu_start.py":491
  *                 measurement = const_record(measurement)
  *                 #  add_measurement
  *                 measurement_manager.add_measurement(measurement)             # <<<<<<<<<<<<<<
  *                 single_point_measurement = measurement_manager.get_measurements()  #
  *                 # VAR1CONST
  */
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_add_measurement); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 489, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_add_measurement); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 491, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __pyx_t_11 = NULL;
         __pyx_t_8 = 0;
@@ -15818,20 +15840,20 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           PyObject *__pyx_callargs[2] = {__pyx_t_11, __pyx_v_measurement};
           __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 489, __pyx_L1_error)
+          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 491, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         }
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "smu_start.py":490
+        /* "smu_start.py":492
  *                 #  add_measurement
  *                 measurement_manager.add_measurement(measurement)
  *                 single_point_measurement = measurement_manager.get_measurements()  #             # <<<<<<<<<<<<<<
  *                 # VAR1CONST
  *                 print(
  */
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_get_measurements); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 490, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_get_measurements); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 492, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __pyx_t_11 = NULL;
         __pyx_t_8 = 0;
@@ -15851,21 +15873,21 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           PyObject *__pyx_callargs[2] = {__pyx_t_11, NULL};
           __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 490, __pyx_L1_error)
+          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 492, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         }
         __Pyx_XDECREF_SET(__pyx_v_single_point_measurement, __pyx_t_1);
         __pyx_t_1 = 0;
 
-        /* "smu_start.py":493
+        /* "smu_start.py":495
  *                 # VAR1CONST
  *                 print(
  *                     f"Direction: 'Forward' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")             # <<<<<<<<<<<<<<
  *             all_measurements = measurement_manager.measurements_data
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,
  */
-        __pyx_t_1 = PyTuple_New(16); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 493, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_New(16); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 495, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __pyx_t_16 = 0;
         __pyx_t_19 = 127;
@@ -15873,10 +15895,10 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 30;
         __Pyx_GIVEREF(__pyx_kp_u_Direction_Forward_V_VAR1);
         PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_kp_u_Direction_Forward_V_VAR1);
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 493, __pyx_L1_error) }
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 493, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 495, __pyx_L1_error) }
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 495, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_t_2, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 493, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_t_2, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 495, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) : __pyx_t_19;
@@ -15888,7 +15910,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_I_VAR1_2);
         PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_kp_u_I_VAR1_2);
-        __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_v_current_value_VAR1, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 493, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_v_current_value_VAR1, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 495, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) : __pyx_t_19;
         __pyx_t_16 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_11);
@@ -15899,9 +15921,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 32;
         __Pyx_GIVEREF(__pyx_kp_u_V_VAR2_0_I_VAR2_0_V_CONST1);
         PyTuple_SET_ITEM(__pyx_t_1, 4, __pyx_kp_u_V_VAR2_0_I_VAR2_0_V_CONST1);
-        __pyx_t_11 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 493, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 495, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_t_11, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 493, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_t_11, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 495, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_2) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_2) : __pyx_t_19;
@@ -15913,9 +15935,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_I_CONST1_2);
         PyTuple_SET_ITEM(__pyx_t_1, 6, __pyx_kp_u_I_CONST1_2);
-        __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 493, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 495, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_t_2, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 493, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_t_2, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 495, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) : __pyx_t_19;
@@ -15927,9 +15949,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_V_CONST2_2);
         PyTuple_SET_ITEM(__pyx_t_1, 8, __pyx_kp_u_V_CONST2_2);
-        __pyx_t_11 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 493, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 495, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_t_11, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 493, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_t_11, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 495, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_2) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_2) : __pyx_t_19;
@@ -15941,9 +15963,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_I_CONST2_2);
         PyTuple_SET_ITEM(__pyx_t_1, 10, __pyx_kp_u_I_CONST2_2);
-        __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 493, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 495, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_t_2, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 493, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_t_2, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 495, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) : __pyx_t_19;
@@ -15955,9 +15977,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_V_CONST3_2);
         PyTuple_SET_ITEM(__pyx_t_1, 12, __pyx_kp_u_V_CONST3_2);
-        __pyx_t_11 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST3); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 493, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST3); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 495, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_t_11, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 493, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_t_11, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 495, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_2) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_2) : __pyx_t_19;
@@ -15969,9 +15991,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_I_CONST3_2);
         PyTuple_SET_ITEM(__pyx_t_1, 14, __pyx_kp_u_I_CONST3_2);
-        __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 493, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 495, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_t_2, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 493, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_t_2, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 495, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) : __pyx_t_19;
@@ -15979,23 +16001,23 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __Pyx_GIVEREF(__pyx_t_11);
         PyTuple_SET_ITEM(__pyx_t_1, 15, __pyx_t_11);
         __pyx_t_11 = 0;
-        __pyx_t_11 = __Pyx_PyUnicode_Join(__pyx_t_1, 16, __pyx_t_16, __pyx_t_19); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 493, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyUnicode_Join(__pyx_t_1, 16, __pyx_t_16, __pyx_t_19); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 495, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "smu_start.py":492
+        /* "smu_start.py":494
  *                 single_point_measurement = measurement_manager.get_measurements()  #
  *                 # VAR1CONST
  *                 print(             # <<<<<<<<<<<<<<
  *                     f"Direction: 'Forward' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *             all_measurements = measurement_manager.measurements_data
  */
-        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_11); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 492, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_11); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 494, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "smu_start.py":472
+        /* "smu_start.py":474
  *         measurement_manager = MeasurementManager()
  *         if IV_flag_VAR1 == 1:
  *             for i in range(num_points_VAR1):             # <<<<<<<<<<<<<<
@@ -16005,36 +16027,36 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
       }
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "smu_start.py":494
+      /* "smu_start.py":496
  *                 print(
  *                     f"Direction: 'Forward' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *             all_measurements = measurement_manager.measurements_data             # <<<<<<<<<<<<<<
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,
  *                      CSV_NAME)
  */
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_measurements_data); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 494, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_measurements_data); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 496, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_v_all_measurements = __pyx_t_4;
       __pyx_t_4 = 0;
 
-      /* "smu_start.py":495
+      /* "smu_start.py":497
  *                     f"Direction: 'Forward' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *             all_measurements = measurement_manager.measurements_data
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,             # <<<<<<<<<<<<<<
  *                      CSV_NAME)
- *         elif IV_flag_VAR1 == 2:
+ *             return all_measurements
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_csv_make); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 495, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_csv_make); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 497, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_measurements_data); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 495, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_measurements_data); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 497, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
 
-      /* "smu_start.py":496
+      /* "smu_start.py":498
  *             all_measurements = measurement_manager.measurements_data
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,
  *                      CSV_NAME)             # <<<<<<<<<<<<<<
+ *             return all_measurements
  *         elif IV_flag_VAR1 == 2:
- *             # VAR1
  */
       __pyx_t_2 = NULL;
       __pyx_t_8 = 0;
@@ -16055,51 +16077,62 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 3+__pyx_t_8);
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 495, __pyx_L1_error)
+        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 497, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       }
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "smu_start.py":471
+      /* "smu_start.py":499
+ *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,
+ *                      CSV_NAME)
+ *             return all_measurements             # <<<<<<<<<<<<<<
+ *         elif IV_flag_VAR1 == 2:
+ *             # VAR1
+ */
+      __Pyx_XDECREF(__pyx_r);
+      __Pyx_INCREF(__pyx_v_all_measurements);
+      __pyx_r = __pyx_v_all_measurements;
+      goto __pyx_L0;
+
+      /* "smu_start.py":473
  *         #
  *         measurement_manager = MeasurementManager()
  *         if IV_flag_VAR1 == 1:             # <<<<<<<<<<<<<<
  *             for i in range(num_points_VAR1):
  *                 Direction = "Forward"
  */
-      goto __pyx_L82;
     }
 
-    /* "smu_start.py":497
- *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,
+    /* "smu_start.py":500
  *                      CSV_NAME)
+ *             return all_measurements
  *         elif IV_flag_VAR1 == 2:             # <<<<<<<<<<<<<<
  *             # VAR1
  *             for i in range(num_points_VAR1):
  */
-    if (unlikely(!__pyx_v_IV_flag_VAR1)) { __Pyx_RaiseUnboundLocalError("IV_flag_VAR1"); __PYX_ERR(0, 497, __pyx_L1_error) }
-    __pyx_t_5 = (__Pyx_PyInt_BoolEqObjC(__pyx_v_IV_flag_VAR1, __pyx_int_2, 2, 0)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 497, __pyx_L1_error)
+    if (unlikely(!__pyx_v_IV_flag_VAR1)) { __Pyx_RaiseUnboundLocalError("IV_flag_VAR1"); __PYX_ERR(0, 500, __pyx_L1_error) }
+    __pyx_t_5 = (__Pyx_PyInt_BoolEqObjC(__pyx_v_IV_flag_VAR1, __pyx_int_2, 2, 0)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 500, __pyx_L1_error)
     if (__pyx_t_5) {
 
-      /* "smu_start.py":499
+      /* "smu_start.py":502
  *         elif IV_flag_VAR1 == 2:
  *             # VAR1
  *             for i in range(num_points_VAR1):             # <<<<<<<<<<<<<<
  *                 Direction = "Forward"
  *                 measurement = {}
  */
-      if (unlikely(!__pyx_v_num_points_VAR1)) { __Pyx_RaiseUnboundLocalError("num_points_VAR1"); __PYX_ERR(0, 499, __pyx_L1_error) }
-      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 499, __pyx_L1_error)
+      if (unlikely(!__pyx_v_num_points_VAR1)) { __Pyx_RaiseUnboundLocalError("num_points_VAR1"); __PYX_ERR(0, 502, __pyx_L1_error) }
+      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 502, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       if (likely(PyList_CheckExact(__pyx_t_4)) || PyTuple_CheckExact(__pyx_t_4)) {
         __pyx_t_1 = __pyx_t_4; __Pyx_INCREF(__pyx_t_1);
         __pyx_t_7 = 0;
         __pyx_t_15 = NULL;
       } else {
-        __pyx_t_7 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 499, __pyx_L1_error)
+        __pyx_t_7 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 502, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_15 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 499, __pyx_L1_error)
+        __pyx_t_15 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 502, __pyx_L1_error)
       }
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       for (;;) {
@@ -16108,28 +16141,28 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             {
               Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
               #if !CYTHON_ASSUME_SAFE_MACROS
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 499, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 502, __pyx_L1_error)
               #endif
               if (__pyx_t_7 >= __pyx_temp) break;
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_4); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 499, __pyx_L1_error)
+            __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_4); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 502, __pyx_L1_error)
             #else
-            __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 499, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 502, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             #endif
           } else {
             {
               Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_1);
               #if !CYTHON_ASSUME_SAFE_MACROS
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 499, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 502, __pyx_L1_error)
               #endif
               if (__pyx_t_7 >= __pyx_temp) break;
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_4); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 499, __pyx_L1_error)
+            __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_4); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 502, __pyx_L1_error)
             #else
-            __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 499, __pyx_L1_error)
+            __pyx_t_4 = __Pyx_PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 502, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_4);
             #endif
           }
@@ -16139,7 +16172,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 499, __pyx_L1_error)
+              else __PYX_ERR(0, 502, __pyx_L1_error)
             }
             break;
           }
@@ -16148,7 +16181,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_4);
         __pyx_t_4 = 0;
 
-        /* "smu_start.py":500
+        /* "smu_start.py":503
  *             # VAR1
  *             for i in range(num_points_VAR1):
  *                 Direction = "Forward"             # <<<<<<<<<<<<<<
@@ -16158,123 +16191,45 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __Pyx_INCREF(__pyx_n_s_Forward);
         __Pyx_XDECREF_SET(__pyx_v_Direction, __pyx_n_s_Forward);
 
-        /* "smu_start.py":501
+        /* "smu_start.py":504
  *             for i in range(num_points_VAR1):
  *                 Direction = "Forward"
  *                 measurement = {}             # <<<<<<<<<<<<<<
  *                 VAR1_session.voltage_level = voltage_min_VAR1 + i * voltage_step_VAR1
  *                 VAR1_session.initiate()
  */
-        __pyx_t_4 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 501, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 504, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_XDECREF_SET(__pyx_v_measurement, __pyx_t_4);
         __pyx_t_4 = 0;
 
-        /* "smu_start.py":502
+        /* "smu_start.py":505
  *                 Direction = "Forward"
  *                 measurement = {}
  *                 VAR1_session.voltage_level = voltage_min_VAR1 + i * voltage_step_VAR1             # <<<<<<<<<<<<<<
  *                 VAR1_session.initiate()
  *                 #  VAR1
  */
-        if (unlikely(!__pyx_v_voltage_min_VAR1)) { __Pyx_RaiseUnboundLocalError("voltage_min_VAR1"); __PYX_ERR(0, 502, __pyx_L1_error) }
-        if (unlikely(!__pyx_v_voltage_step_VAR1)) { __Pyx_RaiseUnboundLocalError("voltage_step_VAR1"); __PYX_ERR(0, 502, __pyx_L1_error) }
-        __pyx_t_4 = PyNumber_Multiply(__pyx_v_i, __pyx_v_voltage_step_VAR1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 502, __pyx_L1_error)
+        if (unlikely(!__pyx_v_voltage_min_VAR1)) { __Pyx_RaiseUnboundLocalError("voltage_min_VAR1"); __PYX_ERR(0, 505, __pyx_L1_error) }
+        if (unlikely(!__pyx_v_voltage_step_VAR1)) { __Pyx_RaiseUnboundLocalError("voltage_step_VAR1"); __PYX_ERR(0, 505, __pyx_L1_error) }
+        __pyx_t_4 = PyNumber_Multiply(__pyx_v_i, __pyx_v_voltage_step_VAR1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 505, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_11 = PyNumber_Add(__pyx_v_voltage_min_VAR1, __pyx_t_4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 502, __pyx_L1_error)
+        __pyx_t_11 = PyNumber_Add(__pyx_v_voltage_min_VAR1, __pyx_t_4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 505, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 502, __pyx_L1_error) }
-        if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level, __pyx_t_11) < 0) __PYX_ERR(0, 502, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 505, __pyx_L1_error) }
+        if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level, __pyx_t_11) < 0) __PYX_ERR(0, 505, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-        /* "smu_start.py":503
+        /* "smu_start.py":506
  *                 measurement = {}
  *                 VAR1_session.voltage_level = voltage_min_VAR1 + i * voltage_step_VAR1
  *                 VAR1_session.initiate()             # <<<<<<<<<<<<<<
  *                 #  VAR1
  *                 current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)
  */
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 503, __pyx_L1_error) }
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 503, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_2 = NULL;
-        __pyx_t_8 = 0;
-        #if CYTHON_UNPACK_METHODS
-        if (likely(PyMethod_Check(__pyx_t_4))) {
-          __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_4);
-          if (likely(__pyx_t_2)) {
-            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-            __Pyx_INCREF(__pyx_t_2);
-            __Pyx_INCREF(function);
-            __Pyx_DECREF_SET(__pyx_t_4, function);
-            __pyx_t_8 = 1;
-          }
-        }
-        #endif
-        {
-          PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
-          __pyx_t_11 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
-          __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-          if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 503, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_11);
-          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        }
-        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-
-        /* "smu_start.py":505
- *                 VAR1_session.initiate()
- *                 #  VAR1
- *                 current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)             # <<<<<<<<<<<<<<
- *                 VAR1_session.abort()
- *                 measurement = const_record(measurement)
- */
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 505, __pyx_L1_error) }
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 505, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_4);
-        __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 505, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 505, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_CURRENT); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 505, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_3 = NULL;
-        __pyx_t_8 = 0;
-        #if CYTHON_UNPACK_METHODS
-        if (likely(PyMethod_Check(__pyx_t_4))) {
-          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
-          if (likely(__pyx_t_3)) {
-            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-            __Pyx_INCREF(__pyx_t_3);
-            __Pyx_INCREF(function);
-            __Pyx_DECREF_SET(__pyx_t_4, function);
-            __pyx_t_8 = 1;
-          }
-        }
-        #endif
-        {
-          PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_t_2};
-          __pyx_t_11 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
-          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 505, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_11);
-          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        }
-        __Pyx_XDECREF_SET(__pyx_v_current_value_VAR1, __pyx_t_11);
-        __pyx_t_11 = 0;
-
-        /* "smu_start.py":506
- *                 #  VAR1
- *                 current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)
- *                 VAR1_session.abort()             # <<<<<<<<<<<<<<
- *                 measurement = const_record(measurement)
- *                 #
- */
         if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 506, __pyx_L1_error) }
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 506, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 506, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __pyx_t_2 = NULL;
         __pyx_t_8 = 0;
@@ -16300,70 +16255,148 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         }
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-        /* "smu_start.py":507
+        /* "smu_start.py":508
+ *                 VAR1_session.initiate()
+ *                 #  VAR1
+ *                 current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)             # <<<<<<<<<<<<<<
+ *                 VAR1_session.abort()
+ *                 measurement = const_record(measurement)
+ */
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 508, __pyx_L1_error) }
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 508, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 508, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 508, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_CURRENT); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 508, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        __pyx_t_3 = NULL;
+        __pyx_t_8 = 0;
+        #if CYTHON_UNPACK_METHODS
+        if (likely(PyMethod_Check(__pyx_t_4))) {
+          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+          if (likely(__pyx_t_3)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+            __Pyx_INCREF(__pyx_t_3);
+            __Pyx_INCREF(function);
+            __Pyx_DECREF_SET(__pyx_t_4, function);
+            __pyx_t_8 = 1;
+          }
+        }
+        #endif
+        {
+          PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_t_2};
+          __pyx_t_11 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
+          __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+          if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 508, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_11);
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        }
+        __Pyx_XDECREF_SET(__pyx_v_current_value_VAR1, __pyx_t_11);
+        __pyx_t_11 = 0;
+
+        /* "smu_start.py":509
+ *                 #  VAR1
+ *                 current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)
+ *                 VAR1_session.abort()             # <<<<<<<<<<<<<<
+ *                 measurement = const_record(measurement)
+ *                 #
+ */
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 509, __pyx_L1_error) }
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 509, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __pyx_t_2 = NULL;
+        __pyx_t_8 = 0;
+        #if CYTHON_UNPACK_METHODS
+        if (likely(PyMethod_Check(__pyx_t_4))) {
+          __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_4);
+          if (likely(__pyx_t_2)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+            __Pyx_INCREF(__pyx_t_2);
+            __Pyx_INCREF(function);
+            __Pyx_DECREF_SET(__pyx_t_4, function);
+            __pyx_t_8 = 1;
+          }
+        }
+        #endif
+        {
+          PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
+          __pyx_t_11 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
+          __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+          if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 509, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_11);
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        }
+        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+
+        /* "smu_start.py":510
  *                 current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)
  *                 VAR1_session.abort()
  *                 measurement = const_record(measurement)             # <<<<<<<<<<<<<<
  *                 #
  *                 measurement = update_measurement(
  */
-        __pyx_t_11 = __pyx_pf_9smu_start_14smu_test_start_const_record(__pyx_v_const_record, __pyx_v_measurement); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 507, __pyx_L1_error)
+        __pyx_t_11 = __pyx_pf_9smu_start_14smu_test_start_const_record(__pyx_v_const_record, __pyx_v_measurement); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 510, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF_SET(__pyx_v_measurement, __pyx_t_11);
         __pyx_t_11 = 0;
 
-        /* "smu_start.py":509
+        /* "smu_start.py":512
  *                 measurement = const_record(measurement)
  *                 #
  *                 measurement = update_measurement(             # <<<<<<<<<<<<<<
  *                     measurement,
  *                     ('Direction', Direction),
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_update_measurement); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 509, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_update_measurement); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 512, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
 
-        /* "smu_start.py":511
+        /* "smu_start.py":514
  *                 measurement = update_measurement(
  *                     measurement,
  *                     ('Direction', Direction),             # <<<<<<<<<<<<<<
  *                     ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),
  *                     ('V_VAR2', 0, 'I_VAR2', 0),
  */
-        __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 511, __pyx_L1_error)
+        __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 514, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_INCREF(__pyx_n_s_Direction);
         __Pyx_GIVEREF(__pyx_n_s_Direction);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_Direction)) __PYX_ERR(0, 511, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_Direction)) __PYX_ERR(0, 514, __pyx_L1_error);
         __Pyx_INCREF(__pyx_v_Direction);
         __Pyx_GIVEREF(__pyx_v_Direction);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_Direction)) __PYX_ERR(0, 511, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_Direction)) __PYX_ERR(0, 514, __pyx_L1_error);
 
-        /* "smu_start.py":512
+        /* "smu_start.py":515
  *                     measurement,
  *                     ('Direction', Direction),
  *                     ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),             # <<<<<<<<<<<<<<
  *                     ('V_VAR2', 0, 'I_VAR2', 0),
  *                 )
  */
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 512, __pyx_L1_error) }
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 512, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 515, __pyx_L1_error) }
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 515, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_10 = PyTuple_New(4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 512, __pyx_L1_error)
+        __pyx_t_10 = PyTuple_New(4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 515, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_INCREF(__pyx_n_s_V_VAR1);
         __Pyx_GIVEREF(__pyx_n_s_V_VAR1);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_n_s_V_VAR1)) __PYX_ERR(0, 512, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_n_s_V_VAR1)) __PYX_ERR(0, 515, __pyx_L1_error);
         __Pyx_GIVEREF(__pyx_t_3);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_3)) __PYX_ERR(0, 512, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_3)) __PYX_ERR(0, 515, __pyx_L1_error);
         __Pyx_INCREF(__pyx_n_s_I_VAR1);
         __Pyx_GIVEREF(__pyx_n_s_I_VAR1);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_n_s_I_VAR1)) __PYX_ERR(0, 512, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_n_s_I_VAR1)) __PYX_ERR(0, 515, __pyx_L1_error);
         __Pyx_INCREF(__pyx_v_current_value_VAR1);
         __Pyx_GIVEREF(__pyx_v_current_value_VAR1);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 3, __pyx_v_current_value_VAR1)) __PYX_ERR(0, 512, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 3, __pyx_v_current_value_VAR1)) __PYX_ERR(0, 515, __pyx_L1_error);
         __pyx_t_3 = 0;
 
-        /* "smu_start.py":513
+        /* "smu_start.py":516
  *                     ('Direction', Direction),
  *                     ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),
  *                     ('V_VAR2', 0, 'I_VAR2', 0),             # <<<<<<<<<<<<<<
@@ -16390,21 +16423,21 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-          if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 509, __pyx_L1_error)
+          if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 512, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         }
         __Pyx_DECREF_SET(__pyx_v_measurement, __pyx_t_11);
         __pyx_t_11 = 0;
 
-        /* "smu_start.py":516
+        /* "smu_start.py":519
  *                 )
  *                 #  add_measurement
  *                 measurement_manager.add_measurement(measurement)             # <<<<<<<<<<<<<<
  *                 single_point_measurement = measurement_manager.get_measurements()  #
  *                 # VAR1CONST
  */
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_add_measurement); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 516, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_add_measurement); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 519, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __pyx_t_10 = NULL;
         __pyx_t_8 = 0;
@@ -16424,20 +16457,20 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           PyObject *__pyx_callargs[2] = {__pyx_t_10, __pyx_v_measurement};
           __pyx_t_11 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-          if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 516, __pyx_L1_error)
+          if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 519, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         }
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-        /* "smu_start.py":517
+        /* "smu_start.py":520
  *                 #  add_measurement
  *                 measurement_manager.add_measurement(measurement)
  *                 single_point_measurement = measurement_manager.get_measurements()  #             # <<<<<<<<<<<<<<
  *                 # VAR1CONST
  *                 print(
  */
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_get_measurements); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 517, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_get_measurements); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 520, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __pyx_t_10 = NULL;
         __pyx_t_8 = 0;
@@ -16457,21 +16490,21 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           PyObject *__pyx_callargs[2] = {__pyx_t_10, NULL};
           __pyx_t_11 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-          if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 517, __pyx_L1_error)
+          if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 520, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         }
         __Pyx_XDECREF_SET(__pyx_v_single_point_measurement, __pyx_t_11);
         __pyx_t_11 = 0;
 
-        /* "smu_start.py":520
+        /* "smu_start.py":523
  *                 # VAR1CONST
  *                 print(
  *                     f"Direction: 'Forward' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")             # <<<<<<<<<<<<<<
  *             # VAR1
  *             for i in range(num_points_VAR1):
  */
-        __pyx_t_11 = PyTuple_New(16); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 520, __pyx_L1_error)
+        __pyx_t_11 = PyTuple_New(16); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 523, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __pyx_t_16 = 0;
         __pyx_t_19 = 127;
@@ -16479,10 +16512,10 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 30;
         __Pyx_GIVEREF(__pyx_kp_u_Direction_Forward_V_VAR1);
         PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_kp_u_Direction_Forward_V_VAR1);
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 520, __pyx_L1_error) }
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 520, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 523, __pyx_L1_error) }
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 523, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 520, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 523, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) : __pyx_t_19;
@@ -16494,7 +16527,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_I_VAR1_2);
         PyTuple_SET_ITEM(__pyx_t_11, 2, __pyx_kp_u_I_VAR1_2);
-        __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_v_current_value_VAR1, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 520, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_v_current_value_VAR1, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 523, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) : __pyx_t_19;
         __pyx_t_16 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_10);
@@ -16505,9 +16538,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 32;
         __Pyx_GIVEREF(__pyx_kp_u_V_VAR2_0_I_VAR2_0_V_CONST1);
         PyTuple_SET_ITEM(__pyx_t_11, 4, __pyx_kp_u_V_VAR2_0_I_VAR2_0_V_CONST1);
-        __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 520, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 523, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 520, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 523, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_19;
@@ -16519,9 +16552,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_I_CONST1_2);
         PyTuple_SET_ITEM(__pyx_t_11, 6, __pyx_kp_u_I_CONST1_2);
-        __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 520, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 523, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 520, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 523, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) : __pyx_t_19;
@@ -16533,9 +16566,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_V_CONST2_2);
         PyTuple_SET_ITEM(__pyx_t_11, 8, __pyx_kp_u_V_CONST2_2);
-        __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 520, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 523, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 520, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 523, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_19;
@@ -16547,9 +16580,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_I_CONST2_2);
         PyTuple_SET_ITEM(__pyx_t_11, 10, __pyx_kp_u_I_CONST2_2);
-        __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 520, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 523, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 520, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 523, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) : __pyx_t_19;
@@ -16561,9 +16594,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_V_CONST3_2);
         PyTuple_SET_ITEM(__pyx_t_11, 12, __pyx_kp_u_V_CONST3_2);
-        __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 520, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 523, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 520, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 523, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_19;
@@ -16575,9 +16608,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_I_CONST3_2);
         PyTuple_SET_ITEM(__pyx_t_11, 14, __pyx_kp_u_I_CONST3_2);
-        __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 520, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 523, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 520, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 523, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) : __pyx_t_19;
@@ -16585,23 +16618,23 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __Pyx_GIVEREF(__pyx_t_10);
         PyTuple_SET_ITEM(__pyx_t_11, 15, __pyx_t_10);
         __pyx_t_10 = 0;
-        __pyx_t_10 = __Pyx_PyUnicode_Join(__pyx_t_11, 16, __pyx_t_16, __pyx_t_19); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 520, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyUnicode_Join(__pyx_t_11, 16, __pyx_t_16, __pyx_t_19); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 523, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-        /* "smu_start.py":519
+        /* "smu_start.py":522
  *                 single_point_measurement = measurement_manager.get_measurements()  #
  *                 # VAR1CONST
  *                 print(             # <<<<<<<<<<<<<<
  *                     f"Direction: 'Forward' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *             # VAR1
  */
-        __pyx_t_11 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 519, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_10); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 522, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-        /* "smu_start.py":499
+        /* "smu_start.py":502
  *         elif IV_flag_VAR1 == 2:
  *             # VAR1
  *             for i in range(num_points_VAR1):             # <<<<<<<<<<<<<<
@@ -16611,24 +16644,24 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "smu_start.py":522
+      /* "smu_start.py":525
  *                     f"Direction: 'Forward' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *             # VAR1
  *             for i in range(num_points_VAR1):             # <<<<<<<<<<<<<<
  *                 measurement = {}
  *                 Direction = "Reverse"
  */
-      if (unlikely(!__pyx_v_num_points_VAR1)) { __Pyx_RaiseUnboundLocalError("num_points_VAR1"); __PYX_ERR(0, 522, __pyx_L1_error) }
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 522, __pyx_L1_error)
+      if (unlikely(!__pyx_v_num_points_VAR1)) { __Pyx_RaiseUnboundLocalError("num_points_VAR1"); __PYX_ERR(0, 525, __pyx_L1_error) }
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 525, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
         __pyx_t_11 = __pyx_t_1; __Pyx_INCREF(__pyx_t_11);
         __pyx_t_7 = 0;
         __pyx_t_15 = NULL;
       } else {
-        __pyx_t_7 = -1; __pyx_t_11 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 522, __pyx_L1_error)
+        __pyx_t_7 = -1; __pyx_t_11 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 525, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_15 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_11); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 522, __pyx_L1_error)
+        __pyx_t_15 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_11); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 525, __pyx_L1_error)
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       for (;;) {
@@ -16637,28 +16670,28 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             {
               Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_11);
               #if !CYTHON_ASSUME_SAFE_MACROS
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 522, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 525, __pyx_L1_error)
               #endif
               if (__pyx_t_7 >= __pyx_temp) break;
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_1 = PyList_GET_ITEM(__pyx_t_11, __pyx_t_7); __Pyx_INCREF(__pyx_t_1); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 522, __pyx_L1_error)
+            __pyx_t_1 = PyList_GET_ITEM(__pyx_t_11, __pyx_t_7); __Pyx_INCREF(__pyx_t_1); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 525, __pyx_L1_error)
             #else
-            __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_11, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 522, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_11, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 525, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             #endif
           } else {
             {
               Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_11);
               #if !CYTHON_ASSUME_SAFE_MACROS
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 522, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 525, __pyx_L1_error)
               #endif
               if (__pyx_t_7 >= __pyx_temp) break;
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_11, __pyx_t_7); __Pyx_INCREF(__pyx_t_1); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 522, __pyx_L1_error)
+            __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_11, __pyx_t_7); __Pyx_INCREF(__pyx_t_1); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 525, __pyx_L1_error)
             #else
-            __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_11, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 522, __pyx_L1_error)
+            __pyx_t_1 = __Pyx_PySequence_ITEM(__pyx_t_11, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 525, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_1);
             #endif
           }
@@ -16668,7 +16701,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 522, __pyx_L1_error)
+              else __PYX_ERR(0, 525, __pyx_L1_error)
             }
             break;
           }
@@ -16677,19 +16710,19 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_1);
         __pyx_t_1 = 0;
 
-        /* "smu_start.py":523
+        /* "smu_start.py":526
  *             # VAR1
  *             for i in range(num_points_VAR1):
  *                 measurement = {}             # <<<<<<<<<<<<<<
  *                 Direction = "Reverse"
  *                 VAR1_session.voltage_level = voltage_max_VAR1 - i * voltage_step_VAR1
  */
-        __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 523, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 526, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_XDECREF_SET(__pyx_v_measurement, __pyx_t_1);
         __pyx_t_1 = 0;
 
-        /* "smu_start.py":524
+        /* "smu_start.py":527
  *             for i in range(num_points_VAR1):
  *                 measurement = {}
  *                 Direction = "Reverse"             # <<<<<<<<<<<<<<
@@ -16699,111 +16732,33 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __Pyx_INCREF(__pyx_n_s_Reverse);
         __Pyx_XDECREF_SET(__pyx_v_Direction, __pyx_n_s_Reverse);
 
-        /* "smu_start.py":525
+        /* "smu_start.py":528
  *                 measurement = {}
  *                 Direction = "Reverse"
  *                 VAR1_session.voltage_level = voltage_max_VAR1 - i * voltage_step_VAR1             # <<<<<<<<<<<<<<
  *                 VAR1_session.initiate()
  *                 #  VAR1
  */
-        if (unlikely(!__pyx_v_voltage_max_VAR1)) { __Pyx_RaiseUnboundLocalError("voltage_max_VAR1"); __PYX_ERR(0, 525, __pyx_L1_error) }
-        if (unlikely(!__pyx_v_voltage_step_VAR1)) { __Pyx_RaiseUnboundLocalError("voltage_step_VAR1"); __PYX_ERR(0, 525, __pyx_L1_error) }
-        __pyx_t_1 = PyNumber_Multiply(__pyx_v_i, __pyx_v_voltage_step_VAR1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 525, __pyx_L1_error)
+        if (unlikely(!__pyx_v_voltage_max_VAR1)) { __Pyx_RaiseUnboundLocalError("voltage_max_VAR1"); __PYX_ERR(0, 528, __pyx_L1_error) }
+        if (unlikely(!__pyx_v_voltage_step_VAR1)) { __Pyx_RaiseUnboundLocalError("voltage_step_VAR1"); __PYX_ERR(0, 528, __pyx_L1_error) }
+        __pyx_t_1 = PyNumber_Multiply(__pyx_v_i, __pyx_v_voltage_step_VAR1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 528, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_10 = PyNumber_Subtract(__pyx_v_voltage_max_VAR1, __pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 525, __pyx_L1_error)
+        __pyx_t_10 = PyNumber_Subtract(__pyx_v_voltage_max_VAR1, __pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 528, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 525, __pyx_L1_error) }
-        if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level, __pyx_t_10) < 0) __PYX_ERR(0, 525, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 528, __pyx_L1_error) }
+        if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level, __pyx_t_10) < 0) __PYX_ERR(0, 528, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-        /* "smu_start.py":526
+        /* "smu_start.py":529
  *                 Direction = "Reverse"
  *                 VAR1_session.voltage_level = voltage_max_VAR1 - i * voltage_step_VAR1
  *                 VAR1_session.initiate()             # <<<<<<<<<<<<<<
  *                 #  VAR1
  *                 current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)
  */
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 526, __pyx_L1_error) }
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 526, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_4 = NULL;
-        __pyx_t_8 = 0;
-        #if CYTHON_UNPACK_METHODS
-        if (likely(PyMethod_Check(__pyx_t_1))) {
-          __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_1);
-          if (likely(__pyx_t_4)) {
-            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
-            __Pyx_INCREF(__pyx_t_4);
-            __Pyx_INCREF(function);
-            __Pyx_DECREF_SET(__pyx_t_1, function);
-            __pyx_t_8 = 1;
-          }
-        }
-        #endif
-        {
-          PyObject *__pyx_callargs[2] = {__pyx_t_4, NULL};
-          __pyx_t_10 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
-          __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 526, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_10);
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        }
-        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-
-        /* "smu_start.py":528
- *                 VAR1_session.initiate()
- *                 #  VAR1
- *                 current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)             # <<<<<<<<<<<<<<
- *                 VAR1_session.abort()
- *                 measurement = const_record(measurement)
- */
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 528, __pyx_L1_error) }
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 528, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 528, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 528, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
-        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_CURRENT); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 528, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_4);
-        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_2 = NULL;
-        __pyx_t_8 = 0;
-        #if CYTHON_UNPACK_METHODS
-        if (likely(PyMethod_Check(__pyx_t_1))) {
-          __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_1);
-          if (likely(__pyx_t_2)) {
-            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
-            __Pyx_INCREF(__pyx_t_2);
-            __Pyx_INCREF(function);
-            __Pyx_DECREF_SET(__pyx_t_1, function);
-            __pyx_t_8 = 1;
-          }
-        }
-        #endif
-        {
-          PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_t_4};
-          __pyx_t_10 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
-          __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 528, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_10);
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        }
-        __Pyx_XDECREF_SET(__pyx_v_current_value_VAR1, __pyx_t_10);
-        __pyx_t_10 = 0;
-
-        /* "smu_start.py":529
- *                 #  VAR1
- *                 current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)
- *                 VAR1_session.abort()             # <<<<<<<<<<<<<<
- *                 measurement = const_record(measurement)
- *                 #
- */
         if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 529, __pyx_L1_error) }
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 529, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 529, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __pyx_t_4 = NULL;
         __pyx_t_8 = 0;
@@ -16829,70 +16784,148 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         }
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-        /* "smu_start.py":530
+        /* "smu_start.py":531
+ *                 VAR1_session.initiate()
+ *                 #  VAR1
+ *                 current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)             # <<<<<<<<<<<<<<
+ *                 VAR1_session.abort()
+ *                 measurement = const_record(measurement)
+ */
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 531, __pyx_L1_error) }
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 531, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 531, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 531, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_CURRENT); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 531, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __pyx_t_2 = NULL;
+        __pyx_t_8 = 0;
+        #if CYTHON_UNPACK_METHODS
+        if (likely(PyMethod_Check(__pyx_t_1))) {
+          __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_1);
+          if (likely(__pyx_t_2)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+            __Pyx_INCREF(__pyx_t_2);
+            __Pyx_INCREF(function);
+            __Pyx_DECREF_SET(__pyx_t_1, function);
+            __pyx_t_8 = 1;
+          }
+        }
+        #endif
+        {
+          PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_t_4};
+          __pyx_t_10 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
+          __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 531, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_10);
+          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        }
+        __Pyx_XDECREF_SET(__pyx_v_current_value_VAR1, __pyx_t_10);
+        __pyx_t_10 = 0;
+
+        /* "smu_start.py":532
+ *                 #  VAR1
+ *                 current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)
+ *                 VAR1_session.abort()             # <<<<<<<<<<<<<<
+ *                 measurement = const_record(measurement)
+ *                 #
+ */
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 532, __pyx_L1_error) }
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 532, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __pyx_t_4 = NULL;
+        __pyx_t_8 = 0;
+        #if CYTHON_UNPACK_METHODS
+        if (likely(PyMethod_Check(__pyx_t_1))) {
+          __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_1);
+          if (likely(__pyx_t_4)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+            __Pyx_INCREF(__pyx_t_4);
+            __Pyx_INCREF(function);
+            __Pyx_DECREF_SET(__pyx_t_1, function);
+            __pyx_t_8 = 1;
+          }
+        }
+        #endif
+        {
+          PyObject *__pyx_callargs[2] = {__pyx_t_4, NULL};
+          __pyx_t_10 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
+          __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+          if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 532, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_10);
+          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        }
+        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+
+        /* "smu_start.py":533
  *                 current_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.CURRENT)
  *                 VAR1_session.abort()
  *                 measurement = const_record(measurement)             # <<<<<<<<<<<<<<
  *                 #
  *                 measurement = update_measurement(
  */
-        __pyx_t_10 = __pyx_pf_9smu_start_14smu_test_start_const_record(__pyx_v_const_record, __pyx_v_measurement); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 530, __pyx_L1_error)
+        __pyx_t_10 = __pyx_pf_9smu_start_14smu_test_start_const_record(__pyx_v_const_record, __pyx_v_measurement); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 533, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF_SET(__pyx_v_measurement, __pyx_t_10);
         __pyx_t_10 = 0;
 
-        /* "smu_start.py":532
+        /* "smu_start.py":535
  *                 measurement = const_record(measurement)
  *                 #
  *                 measurement = update_measurement(             # <<<<<<<<<<<<<<
  *                     measurement,
  *                     ('Direction', Direction),
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_update_measurement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 532, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_update_measurement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 535, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
 
-        /* "smu_start.py":534
+        /* "smu_start.py":537
  *                 measurement = update_measurement(
  *                     measurement,
  *                     ('Direction', Direction),             # <<<<<<<<<<<<<<
  *                     ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),
  *                     ('V_VAR2', 0, 'I_VAR2', 0),
  */
-        __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 534, __pyx_L1_error)
+        __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 537, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_INCREF(__pyx_n_s_Direction);
         __Pyx_GIVEREF(__pyx_n_s_Direction);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_n_s_Direction)) __PYX_ERR(0, 534, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_n_s_Direction)) __PYX_ERR(0, 537, __pyx_L1_error);
         __Pyx_INCREF(__pyx_v_Direction);
         __Pyx_GIVEREF(__pyx_v_Direction);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_Direction)) __PYX_ERR(0, 534, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_Direction)) __PYX_ERR(0, 537, __pyx_L1_error);
 
-        /* "smu_start.py":535
+        /* "smu_start.py":538
  *                     measurement,
  *                     ('Direction', Direction),
  *                     ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),             # <<<<<<<<<<<<<<
  *                     ('V_VAR2', 0, 'I_VAR2', 0),
  *                 )
  */
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 535, __pyx_L1_error) }
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 535, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 538, __pyx_L1_error) }
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 538, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_3 = PyTuple_New(4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 535, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_New(4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 538, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_INCREF(__pyx_n_s_V_VAR1);
         __Pyx_GIVEREF(__pyx_n_s_V_VAR1);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_n_s_V_VAR1)) __PYX_ERR(0, 535, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_n_s_V_VAR1)) __PYX_ERR(0, 538, __pyx_L1_error);
         __Pyx_GIVEREF(__pyx_t_2);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2)) __PYX_ERR(0, 535, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2)) __PYX_ERR(0, 538, __pyx_L1_error);
         __Pyx_INCREF(__pyx_n_s_I_VAR1);
         __Pyx_GIVEREF(__pyx_n_s_I_VAR1);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_n_s_I_VAR1)) __PYX_ERR(0, 535, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_n_s_I_VAR1)) __PYX_ERR(0, 538, __pyx_L1_error);
         __Pyx_INCREF(__pyx_v_current_value_VAR1);
         __Pyx_GIVEREF(__pyx_v_current_value_VAR1);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 3, __pyx_v_current_value_VAR1)) __PYX_ERR(0, 535, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 3, __pyx_v_current_value_VAR1)) __PYX_ERR(0, 538, __pyx_L1_error);
         __pyx_t_2 = 0;
 
-        /* "smu_start.py":536
+        /* "smu_start.py":539
  *                     ('Direction', Direction),
  *                     ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),
  *                     ('V_VAR2', 0, 'I_VAR2', 0),             # <<<<<<<<<<<<<<
@@ -16919,21 +16952,21 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 532, __pyx_L1_error)
+          if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 535, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         }
         __Pyx_DECREF_SET(__pyx_v_measurement, __pyx_t_10);
         __pyx_t_10 = 0;
 
-        /* "smu_start.py":539
+        /* "smu_start.py":542
  *                 )
  *                 #  add_measurement
  *                 measurement_manager.add_measurement(measurement)             # <<<<<<<<<<<<<<
  *                 single_point_measurement = measurement_manager.get_measurements()  #
  *                 # VAR1CONST
  */
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_add_measurement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 539, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_add_measurement); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 542, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __pyx_t_3 = NULL;
         __pyx_t_8 = 0;
@@ -16953,20 +16986,20 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_v_measurement};
           __pyx_t_10 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-          if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 539, __pyx_L1_error)
+          if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 542, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         }
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-        /* "smu_start.py":540
+        /* "smu_start.py":543
  *                 #  add_measurement
  *                 measurement_manager.add_measurement(measurement)
  *                 single_point_measurement = measurement_manager.get_measurements()  #             # <<<<<<<<<<<<<<
  *                 # VAR1CONST
  *                 print(
  */
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_get_measurements); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 540, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_get_measurements); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 543, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __pyx_t_3 = NULL;
         __pyx_t_8 = 0;
@@ -16986,21 +17019,21 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           PyObject *__pyx_callargs[2] = {__pyx_t_3, NULL};
           __pyx_t_10 = __Pyx_PyObject_FastCall(__pyx_t_1, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-          if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 540, __pyx_L1_error)
+          if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 543, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         }
         __Pyx_XDECREF_SET(__pyx_v_single_point_measurement, __pyx_t_10);
         __pyx_t_10 = 0;
 
-        /* "smu_start.py":543
+        /* "smu_start.py":546
  *                 # VAR1CONST
  *                 print(
  *                     f"Direction: 'Reverse' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")             # <<<<<<<<<<<<<<
  *             all_measurements = measurement_manager.measurements_data
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,
  */
-        __pyx_t_10 = PyTuple_New(16); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 543, __pyx_L1_error)
+        __pyx_t_10 = PyTuple_New(16); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 546, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __pyx_t_16 = 0;
         __pyx_t_19 = 127;
@@ -17008,10 +17041,10 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 30;
         __Pyx_GIVEREF(__pyx_kp_u_Direction_Reverse_V_VAR1);
         PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_kp_u_Direction_Reverse_V_VAR1);
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 543, __pyx_L1_error) }
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 543, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 546, __pyx_L1_error) }
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_voltage_level); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 546, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 543, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 546, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) : __pyx_t_19;
@@ -17023,7 +17056,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_I_VAR1_2);
         PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_kp_u_I_VAR1_2);
-        __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_current_value_VAR1, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 543, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_current_value_VAR1, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 546, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) : __pyx_t_19;
         __pyx_t_16 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_3);
@@ -17034,9 +17067,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 32;
         __Pyx_GIVEREF(__pyx_kp_u_V_VAR2_0_I_VAR2_0_V_CONST1);
         PyTuple_SET_ITEM(__pyx_t_10, 4, __pyx_kp_u_V_VAR2_0_I_VAR2_0_V_CONST1);
-        __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 543, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 546, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 543, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 546, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) : __pyx_t_19;
@@ -17048,9 +17081,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_I_CONST1_2);
         PyTuple_SET_ITEM(__pyx_t_10, 6, __pyx_kp_u_I_CONST1_2);
-        __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 543, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 546, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 543, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 546, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) : __pyx_t_19;
@@ -17062,9 +17095,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_V_CONST2_2);
         PyTuple_SET_ITEM(__pyx_t_10, 8, __pyx_kp_u_V_CONST2_2);
-        __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 543, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 546, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 543, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 546, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) : __pyx_t_19;
@@ -17076,9 +17109,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_I_CONST2_2);
         PyTuple_SET_ITEM(__pyx_t_10, 10, __pyx_kp_u_I_CONST2_2);
-        __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 543, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 546, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 543, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 546, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) : __pyx_t_19;
@@ -17090,9 +17123,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_V_CONST3_2);
         PyTuple_SET_ITEM(__pyx_t_10, 12, __pyx_kp_u_V_CONST3_2);
-        __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 543, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 546, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 543, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 546, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) : __pyx_t_19;
@@ -17104,9 +17137,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_I_CONST3_2);
         PyTuple_SET_ITEM(__pyx_t_10, 14, __pyx_kp_u_I_CONST3_2);
-        __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 543, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 546, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 543, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 546, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) : __pyx_t_19;
@@ -17114,23 +17147,23 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __Pyx_GIVEREF(__pyx_t_3);
         PyTuple_SET_ITEM(__pyx_t_10, 15, __pyx_t_3);
         __pyx_t_3 = 0;
-        __pyx_t_3 = __Pyx_PyUnicode_Join(__pyx_t_10, 16, __pyx_t_16, __pyx_t_19); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 543, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyUnicode_Join(__pyx_t_10, 16, __pyx_t_16, __pyx_t_19); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 546, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-        /* "smu_start.py":542
+        /* "smu_start.py":545
  *                 single_point_measurement = measurement_manager.get_measurements()  #
  *                 # VAR1CONST
  *                 print(             # <<<<<<<<<<<<<<
  *                     f"Direction: 'Reverse' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *             all_measurements = measurement_manager.measurements_data
  */
-        __pyx_t_10 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 542, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 545, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-        /* "smu_start.py":522
+        /* "smu_start.py":525
  *                     f"Direction: 'Forward' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *             # VAR1
  *             for i in range(num_points_VAR1):             # <<<<<<<<<<<<<<
@@ -17140,36 +17173,36 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
       }
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-      /* "smu_start.py":544
+      /* "smu_start.py":547
  *                 print(
  *                     f"Direction: 'Reverse' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *             all_measurements = measurement_manager.measurements_data             # <<<<<<<<<<<<<<
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,
  *                      CSV_NAME)
  */
-      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_measurements_data); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 544, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_measurements_data); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 547, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __pyx_v_all_measurements = __pyx_t_11;
       __pyx_t_11 = 0;
 
-      /* "smu_start.py":545
+      /* "smu_start.py":548
  *                     f"Direction: 'Reverse' ,V_VAR1: {VAR1_session.voltage_level}, I_VAR1: {current_value_VAR1}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *             all_measurements = measurement_manager.measurements_data
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,             # <<<<<<<<<<<<<<
  *                      CSV_NAME)
- *         elif IV_flag_VAR1 == 3:
+ *             return all_measurements
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_csv_make); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 545, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_csv_make); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 548, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_measurements_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 545, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_measurements_data); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 548, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
 
-      /* "smu_start.py":546
+      /* "smu_start.py":549
  *             all_measurements = measurement_manager.measurements_data
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,
  *                      CSV_NAME)             # <<<<<<<<<<<<<<
+ *             return all_measurements
  *         elif IV_flag_VAR1 == 3:
- *             for i in range(num_points_VAR1):
  */
       __pyx_t_1 = NULL;
       __pyx_t_8 = 0;
@@ -17190,51 +17223,62 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_11 = __Pyx_PyObject_FastCall(__pyx_t_10, __pyx_callargs+1-__pyx_t_8, 3+__pyx_t_8);
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 545, __pyx_L1_error)
+        if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 548, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       }
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-      /* "smu_start.py":497
+      /* "smu_start.py":550
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,
  *                      CSV_NAME)
+ *             return all_measurements             # <<<<<<<<<<<<<<
+ *         elif IV_flag_VAR1 == 3:
+ *             for i in range(num_points_VAR1):
+ */
+      __Pyx_XDECREF(__pyx_r);
+      __Pyx_INCREF(__pyx_v_all_measurements);
+      __pyx_r = __pyx_v_all_measurements;
+      goto __pyx_L0;
+
+      /* "smu_start.py":500
+ *                      CSV_NAME)
+ *             return all_measurements
  *         elif IV_flag_VAR1 == 2:             # <<<<<<<<<<<<<<
  *             # VAR1
  *             for i in range(num_points_VAR1):
  */
-      goto __pyx_L82;
     }
 
-    /* "smu_start.py":547
- *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,
+    /* "smu_start.py":551
  *                      CSV_NAME)
+ *             return all_measurements
  *         elif IV_flag_VAR1 == 3:             # <<<<<<<<<<<<<<
  *             for i in range(num_points_VAR1):
  *                 Direction = "Forward"
  */
-    if (unlikely(!__pyx_v_IV_flag_VAR1)) { __Pyx_RaiseUnboundLocalError("IV_flag_VAR1"); __PYX_ERR(0, 547, __pyx_L1_error) }
-    __pyx_t_5 = (__Pyx_PyInt_BoolEqObjC(__pyx_v_IV_flag_VAR1, __pyx_int_3, 3, 0)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 547, __pyx_L1_error)
+    if (unlikely(!__pyx_v_IV_flag_VAR1)) { __Pyx_RaiseUnboundLocalError("IV_flag_VAR1"); __PYX_ERR(0, 551, __pyx_L1_error) }
+    __pyx_t_5 = (__Pyx_PyInt_BoolEqObjC(__pyx_v_IV_flag_VAR1, __pyx_int_3, 3, 0)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 551, __pyx_L1_error)
     if (__pyx_t_5) {
 
-      /* "smu_start.py":548
- *                      CSV_NAME)
+      /* "smu_start.py":552
+ *             return all_measurements
  *         elif IV_flag_VAR1 == 3:
  *             for i in range(num_points_VAR1):             # <<<<<<<<<<<<<<
  *                 Direction = "Forward"
  *                 measurement = {}
  */
-      if (unlikely(!__pyx_v_num_points_VAR1)) { __Pyx_RaiseUnboundLocalError("num_points_VAR1"); __PYX_ERR(0, 548, __pyx_L1_error) }
-      __pyx_t_11 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 548, __pyx_L1_error)
+      if (unlikely(!__pyx_v_num_points_VAR1)) { __Pyx_RaiseUnboundLocalError("num_points_VAR1"); __PYX_ERR(0, 552, __pyx_L1_error) }
+      __pyx_t_11 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 552, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       if (likely(PyList_CheckExact(__pyx_t_11)) || PyTuple_CheckExact(__pyx_t_11)) {
         __pyx_t_10 = __pyx_t_11; __Pyx_INCREF(__pyx_t_10);
         __pyx_t_7 = 0;
         __pyx_t_15 = NULL;
       } else {
-        __pyx_t_7 = -1; __pyx_t_10 = PyObject_GetIter(__pyx_t_11); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 548, __pyx_L1_error)
+        __pyx_t_7 = -1; __pyx_t_10 = PyObject_GetIter(__pyx_t_11); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 552, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_15 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_10); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 548, __pyx_L1_error)
+        __pyx_t_15 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_10); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 552, __pyx_L1_error)
       }
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       for (;;) {
@@ -17243,28 +17287,28 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             {
               Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_10);
               #if !CYTHON_ASSUME_SAFE_MACROS
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 548, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 552, __pyx_L1_error)
               #endif
               if (__pyx_t_7 >= __pyx_temp) break;
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_11 = PyList_GET_ITEM(__pyx_t_10, __pyx_t_7); __Pyx_INCREF(__pyx_t_11); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 548, __pyx_L1_error)
+            __pyx_t_11 = PyList_GET_ITEM(__pyx_t_10, __pyx_t_7); __Pyx_INCREF(__pyx_t_11); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 552, __pyx_L1_error)
             #else
-            __pyx_t_11 = __Pyx_PySequence_ITEM(__pyx_t_10, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 548, __pyx_L1_error)
+            __pyx_t_11 = __Pyx_PySequence_ITEM(__pyx_t_10, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 552, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             #endif
           } else {
             {
               Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_10);
               #if !CYTHON_ASSUME_SAFE_MACROS
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 548, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 552, __pyx_L1_error)
               #endif
               if (__pyx_t_7 >= __pyx_temp) break;
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_11 = PyTuple_GET_ITEM(__pyx_t_10, __pyx_t_7); __Pyx_INCREF(__pyx_t_11); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 548, __pyx_L1_error)
+            __pyx_t_11 = PyTuple_GET_ITEM(__pyx_t_10, __pyx_t_7); __Pyx_INCREF(__pyx_t_11); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 552, __pyx_L1_error)
             #else
-            __pyx_t_11 = __Pyx_PySequence_ITEM(__pyx_t_10, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 548, __pyx_L1_error)
+            __pyx_t_11 = __Pyx_PySequence_ITEM(__pyx_t_10, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 552, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             #endif
           }
@@ -17274,7 +17318,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 548, __pyx_L1_error)
+              else __PYX_ERR(0, 552, __pyx_L1_error)
             }
             break;
           }
@@ -17283,7 +17327,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_11);
         __pyx_t_11 = 0;
 
-        /* "smu_start.py":549
+        /* "smu_start.py":553
  *         elif IV_flag_VAR1 == 3:
  *             for i in range(num_points_VAR1):
  *                 Direction = "Forward"             # <<<<<<<<<<<<<<
@@ -17293,45 +17337,45 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __Pyx_INCREF(__pyx_n_s_Forward);
         __Pyx_XDECREF_SET(__pyx_v_Direction, __pyx_n_s_Forward);
 
-        /* "smu_start.py":550
+        /* "smu_start.py":554
  *             for i in range(num_points_VAR1):
  *                 Direction = "Forward"
  *                 measurement = {}             # <<<<<<<<<<<<<<
  *                 VAR1_session.current_level = current_min_VAR1 + i * current_step_VAR1
  *                 VAR1_session.initiate()
  */
-        __pyx_t_11 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 550, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 554, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_XDECREF_SET(__pyx_v_measurement, __pyx_t_11);
         __pyx_t_11 = 0;
 
-        /* "smu_start.py":551
+        /* "smu_start.py":555
  *                 Direction = "Forward"
  *                 measurement = {}
  *                 VAR1_session.current_level = current_min_VAR1 + i * current_step_VAR1             # <<<<<<<<<<<<<<
  *                 VAR1_session.initiate()
  *                 #  VAR1
  */
-        if (unlikely(!__pyx_v_current_min_VAR1)) { __Pyx_RaiseUnboundLocalError("current_min_VAR1"); __PYX_ERR(0, 551, __pyx_L1_error) }
-        if (unlikely(!__pyx_v_current_step_VAR1)) { __Pyx_RaiseUnboundLocalError("current_step_VAR1"); __PYX_ERR(0, 551, __pyx_L1_error) }
-        __pyx_t_11 = PyNumber_Multiply(__pyx_v_i, __pyx_v_current_step_VAR1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 551, __pyx_L1_error)
+        if (unlikely(!__pyx_v_current_min_VAR1)) { __Pyx_RaiseUnboundLocalError("current_min_VAR1"); __PYX_ERR(0, 555, __pyx_L1_error) }
+        if (unlikely(!__pyx_v_current_step_VAR1)) { __Pyx_RaiseUnboundLocalError("current_step_VAR1"); __PYX_ERR(0, 555, __pyx_L1_error) }
+        __pyx_t_11 = PyNumber_Multiply(__pyx_v_i, __pyx_v_current_step_VAR1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 555, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_3 = PyNumber_Add(__pyx_v_current_min_VAR1, __pyx_t_11); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 551, __pyx_L1_error)
+        __pyx_t_3 = PyNumber_Add(__pyx_v_current_min_VAR1, __pyx_t_11); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 555, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 551, __pyx_L1_error) }
-        if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level, __pyx_t_3) < 0) __PYX_ERR(0, 551, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 555, __pyx_L1_error) }
+        if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level, __pyx_t_3) < 0) __PYX_ERR(0, 555, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "smu_start.py":552
+        /* "smu_start.py":556
  *                 measurement = {}
  *                 VAR1_session.current_level = current_min_VAR1 + i * current_step_VAR1
  *                 VAR1_session.initiate()             # <<<<<<<<<<<<<<
  *                 #  VAR1
  *                 voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  */
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 552, __pyx_L1_error) }
-        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 552, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 556, __pyx_L1_error) }
+        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 556, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __pyx_t_1 = NULL;
         __pyx_t_8 = 0;
@@ -17351,28 +17395,28 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           PyObject *__pyx_callargs[2] = {__pyx_t_1, NULL};
           __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_11, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
           __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-          if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 552, __pyx_L1_error)
+          if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 556, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         }
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "smu_start.py":554
+        /* "smu_start.py":558
  *                 VAR1_session.initiate()
  *                 #  VAR1
  *                 voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)             # <<<<<<<<<<<<<<
  *                 VAR1_session.abort()
  *                 measurement = const_record(measurement)
  */
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 554, __pyx_L1_error) }
-        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 554, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 558, __pyx_L1_error) }
+        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 558, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 554, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 558, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 554, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 558, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_VOLTAGE); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 554, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_VOLTAGE); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 558, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_t_4 = NULL;
@@ -17394,22 +17438,22 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_11, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 554, __pyx_L1_error)
+          if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 558, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         }
         __Pyx_XDECREF_SET(__pyx_v_voltage_value_VAR1, __pyx_t_3);
         __pyx_t_3 = 0;
 
-        /* "smu_start.py":555
+        /* "smu_start.py":559
  *                 #  VAR1
  *                 voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  *                 VAR1_session.abort()             # <<<<<<<<<<<<<<
  *                 measurement = const_record(measurement)
  *                 #
  */
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 555, __pyx_L1_error) }
-        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 555, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 559, __pyx_L1_error) }
+        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 559, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __pyx_t_1 = NULL;
         __pyx_t_8 = 0;
@@ -17429,76 +17473,76 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           PyObject *__pyx_callargs[2] = {__pyx_t_1, NULL};
           __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_11, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
           __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-          if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 555, __pyx_L1_error)
+          if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 559, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         }
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "smu_start.py":556
+        /* "smu_start.py":560
  *                 voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  *                 VAR1_session.abort()
  *                 measurement = const_record(measurement)             # <<<<<<<<<<<<<<
  *                 #
  *                 measurement = update_measurement(
  */
-        __pyx_t_3 = __pyx_pf_9smu_start_14smu_test_start_const_record(__pyx_v_const_record, __pyx_v_measurement); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 556, __pyx_L1_error)
+        __pyx_t_3 = __pyx_pf_9smu_start_14smu_test_start_const_record(__pyx_v_const_record, __pyx_v_measurement); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 560, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF_SET(__pyx_v_measurement, __pyx_t_3);
         __pyx_t_3 = 0;
 
-        /* "smu_start.py":558
+        /* "smu_start.py":562
  *                 measurement = const_record(measurement)
  *                 #
  *                 measurement = update_measurement(             # <<<<<<<<<<<<<<
  *                     measurement,
  *                     ('Direction', Direction),
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_update_measurement); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 558, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_update_measurement); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 562, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
 
-        /* "smu_start.py":560
+        /* "smu_start.py":564
  *                 measurement = update_measurement(
  *                     measurement,
  *                     ('Direction', Direction),             # <<<<<<<<<<<<<<
  *                     ('V_VAR1', voltage_value_VAR1, 'I_VAR1', VAR1_session.current_level),
  *                     ('V_VAR2', 0, 'I_VAR2', 0),
  */
-        __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 560, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 564, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_INCREF(__pyx_n_s_Direction);
         __Pyx_GIVEREF(__pyx_n_s_Direction);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_Direction)) __PYX_ERR(0, 560, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_Direction)) __PYX_ERR(0, 564, __pyx_L1_error);
         __Pyx_INCREF(__pyx_v_Direction);
         __Pyx_GIVEREF(__pyx_v_Direction);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_Direction)) __PYX_ERR(0, 560, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_Direction)) __PYX_ERR(0, 564, __pyx_L1_error);
 
-        /* "smu_start.py":561
+        /* "smu_start.py":565
  *                     measurement,
  *                     ('Direction', Direction),
  *                     ('V_VAR1', voltage_value_VAR1, 'I_VAR1', VAR1_session.current_level),             # <<<<<<<<<<<<<<
  *                     ('V_VAR2', 0, 'I_VAR2', 0),
  *                 )
  */
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 561, __pyx_L1_error) }
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 561, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 565, __pyx_L1_error) }
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 565, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_2 = PyTuple_New(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 561, __pyx_L1_error)
+        __pyx_t_2 = PyTuple_New(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 565, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_INCREF(__pyx_n_s_V_VAR1);
         __Pyx_GIVEREF(__pyx_n_s_V_VAR1);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_V_VAR1)) __PYX_ERR(0, 561, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_V_VAR1)) __PYX_ERR(0, 565, __pyx_L1_error);
         __Pyx_INCREF(__pyx_v_voltage_value_VAR1);
         __Pyx_GIVEREF(__pyx_v_voltage_value_VAR1);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_voltage_value_VAR1)) __PYX_ERR(0, 561, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_voltage_value_VAR1)) __PYX_ERR(0, 565, __pyx_L1_error);
         __Pyx_INCREF(__pyx_n_s_I_VAR1);
         __Pyx_GIVEREF(__pyx_n_s_I_VAR1);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 2, __pyx_n_s_I_VAR1)) __PYX_ERR(0, 561, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 2, __pyx_n_s_I_VAR1)) __PYX_ERR(0, 565, __pyx_L1_error);
         __Pyx_GIVEREF(__pyx_t_4);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 3, __pyx_t_4)) __PYX_ERR(0, 561, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 3, __pyx_t_4)) __PYX_ERR(0, 565, __pyx_L1_error);
         __pyx_t_4 = 0;
 
-        /* "smu_start.py":562
+        /* "smu_start.py":566
  *                     ('Direction', Direction),
  *                     ('V_VAR1', voltage_value_VAR1, 'I_VAR1', VAR1_session.current_level),
  *                     ('V_VAR2', 0, 'I_VAR2', 0),             # <<<<<<<<<<<<<<
@@ -17525,21 +17569,21 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 558, __pyx_L1_error)
+          if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 562, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         }
         __Pyx_DECREF_SET(__pyx_v_measurement, __pyx_t_3);
         __pyx_t_3 = 0;
 
-        /* "smu_start.py":565
+        /* "smu_start.py":569
  *                 )
  *                 #  add_measurement
  *                 measurement_manager.add_measurement(measurement)             # <<<<<<<<<<<<<<
  *                 single_point_measurement = measurement_manager.get_measurements()  #
  *                 print(
  */
-        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_add_measurement); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 565, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_add_measurement); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 569, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __pyx_t_2 = NULL;
         __pyx_t_8 = 0;
@@ -17559,20 +17603,20 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_v_measurement};
           __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_11, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
           __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-          if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 565, __pyx_L1_error)
+          if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 569, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         }
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "smu_start.py":566
+        /* "smu_start.py":570
  *                 #  add_measurement
  *                 measurement_manager.add_measurement(measurement)
  *                 single_point_measurement = measurement_manager.get_measurements()  #             # <<<<<<<<<<<<<<
  *                 print(
  *                     f"Direction: 'Forward' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  */
-        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_get_measurements); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 566, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_get_measurements); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 570, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __pyx_t_2 = NULL;
         __pyx_t_8 = 0;
@@ -17592,21 +17636,21 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
           __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_11, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
           __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-          if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 566, __pyx_L1_error)
+          if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 570, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         }
         __Pyx_XDECREF_SET(__pyx_v_single_point_measurement, __pyx_t_3);
         __pyx_t_3 = 0;
 
-        /* "smu_start.py":568
+        /* "smu_start.py":572
  *                 single_point_measurement = measurement_manager.get_measurements()  #
  *                 print(
  *                     f"Direction: 'Forward' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")             # <<<<<<<<<<<<<<
  *             all_measurements = measurement_manager.measurements_data
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,
  */
-        __pyx_t_3 = PyTuple_New(16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 568, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_New(16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 572, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __pyx_t_16 = 0;
         __pyx_t_19 = 127;
@@ -17614,7 +17658,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 30;
         __Pyx_GIVEREF(__pyx_kp_u_Direction_Forward_V_VAR1);
         PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_kp_u_Direction_Forward_V_VAR1);
-        __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_v_voltage_value_VAR1, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 568, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_v_voltage_value_VAR1, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 572, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) : __pyx_t_19;
         __pyx_t_16 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_11);
@@ -17625,10 +17669,10 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_I_VAR1_2);
         PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_kp_u_I_VAR1_2);
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 568, __pyx_L1_error) }
-        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 568, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 572, __pyx_L1_error) }
+        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 572, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_t_11, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 568, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_t_11, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 572, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_2) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_2) : __pyx_t_19;
@@ -17640,9 +17684,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 32;
         __Pyx_GIVEREF(__pyx_kp_u_V_VAR2_0_I_VAR2_0_V_CONST1);
         PyTuple_SET_ITEM(__pyx_t_3, 4, __pyx_kp_u_V_VAR2_0_I_VAR2_0_V_CONST1);
-        __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 568, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 572, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_t_2, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 568, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_t_2, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 572, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) : __pyx_t_19;
@@ -17654,9 +17698,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_I_CONST1_2);
         PyTuple_SET_ITEM(__pyx_t_3, 6, __pyx_kp_u_I_CONST1_2);
-        __pyx_t_11 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 568, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 572, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_t_11, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 568, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_t_11, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 572, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_2) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_2) : __pyx_t_19;
@@ -17668,9 +17712,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_V_CONST2_2);
         PyTuple_SET_ITEM(__pyx_t_3, 8, __pyx_kp_u_V_CONST2_2);
-        __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 568, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 572, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_t_2, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 568, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_t_2, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 572, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) : __pyx_t_19;
@@ -17682,9 +17726,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_I_CONST2_2);
         PyTuple_SET_ITEM(__pyx_t_3, 10, __pyx_kp_u_I_CONST2_2);
-        __pyx_t_11 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 568, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 572, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_t_11, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 568, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_t_11, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 572, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_2) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_2) : __pyx_t_19;
@@ -17696,9 +17740,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_V_CONST3_2);
         PyTuple_SET_ITEM(__pyx_t_3, 12, __pyx_kp_u_V_CONST3_2);
-        __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 568, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 572, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_t_2, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 568, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_FormatSimple(__pyx_t_2, __pyx_empty_unicode); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 572, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_11) : __pyx_t_19;
@@ -17710,9 +17754,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_I_CONST3_2);
         PyTuple_SET_ITEM(__pyx_t_3, 14, __pyx_kp_u_I_CONST3_2);
-        __pyx_t_11 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST3); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 568, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST3); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 572, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_t_11, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 568, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_t_11, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 572, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_2) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_2) : __pyx_t_19;
@@ -17720,24 +17764,24 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __Pyx_GIVEREF(__pyx_t_2);
         PyTuple_SET_ITEM(__pyx_t_3, 15, __pyx_t_2);
         __pyx_t_2 = 0;
-        __pyx_t_2 = __Pyx_PyUnicode_Join(__pyx_t_3, 16, __pyx_t_16, __pyx_t_19); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 568, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyUnicode_Join(__pyx_t_3, 16, __pyx_t_16, __pyx_t_19); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 572, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "smu_start.py":567
+        /* "smu_start.py":571
  *                 measurement_manager.add_measurement(measurement)
  *                 single_point_measurement = measurement_manager.get_measurements()  #
  *                 print(             # <<<<<<<<<<<<<<
  *                     f"Direction: 'Forward' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *             all_measurements = measurement_manager.measurements_data
  */
-        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 567, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 571, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "smu_start.py":548
- *                      CSV_NAME)
+        /* "smu_start.py":552
+ *             return all_measurements
  *         elif IV_flag_VAR1 == 3:
  *             for i in range(num_points_VAR1):             # <<<<<<<<<<<<<<
  *                 Direction = "Forward"
@@ -17746,36 +17790,36 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
       }
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-      /* "smu_start.py":569
+      /* "smu_start.py":573
  *                 print(
  *                     f"Direction: 'Forward' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *             all_measurements = measurement_manager.measurements_data             # <<<<<<<<<<<<<<
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,
  *                      CSV_NAME)
  */
-      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_measurements_data); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 569, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_measurements_data); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 573, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __pyx_v_all_measurements = __pyx_t_10;
       __pyx_t_10 = 0;
 
-      /* "smu_start.py":570
+      /* "smu_start.py":574
  *                     f"Direction: 'Forward' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *             all_measurements = measurement_manager.measurements_data
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,             # <<<<<<<<<<<<<<
  *                      CSV_NAME)
- *         elif IV_flag_VAR1 == 4:
+ *             return all_measurements
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_csv_make); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 570, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_csv_make); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 574, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_measurements_data); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 570, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_measurements_data); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 574, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
 
-      /* "smu_start.py":571
+      /* "smu_start.py":575
  *             all_measurements = measurement_manager.measurements_data
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,
  *                      CSV_NAME)             # <<<<<<<<<<<<<<
+ *             return all_measurements
  *         elif IV_flag_VAR1 == 4:
- *             # VAR1
  */
       __pyx_t_11 = NULL;
       __pyx_t_8 = 0;
@@ -17796,51 +17840,62 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_10 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 3+__pyx_t_8);
         __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 570, __pyx_L1_error)
+        if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 574, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       }
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-      /* "smu_start.py":547
+      /* "smu_start.py":576
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,
  *                      CSV_NAME)
+ *             return all_measurements             # <<<<<<<<<<<<<<
+ *         elif IV_flag_VAR1 == 4:
+ *             # VAR1
+ */
+      __Pyx_XDECREF(__pyx_r);
+      __Pyx_INCREF(__pyx_v_all_measurements);
+      __pyx_r = __pyx_v_all_measurements;
+      goto __pyx_L0;
+
+      /* "smu_start.py":551
+ *                      CSV_NAME)
+ *             return all_measurements
  *         elif IV_flag_VAR1 == 3:             # <<<<<<<<<<<<<<
  *             for i in range(num_points_VAR1):
  *                 Direction = "Forward"
  */
-      goto __pyx_L82;
     }
 
-    /* "smu_start.py":572
- *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,
+    /* "smu_start.py":577
  *                      CSV_NAME)
+ *             return all_measurements
  *         elif IV_flag_VAR1 == 4:             # <<<<<<<<<<<<<<
  *             # VAR1
  *             for i in range(num_points_VAR1):
  */
-    if (unlikely(!__pyx_v_IV_flag_VAR1)) { __Pyx_RaiseUnboundLocalError("IV_flag_VAR1"); __PYX_ERR(0, 572, __pyx_L1_error) }
-    __pyx_t_5 = (__Pyx_PyInt_BoolEqObjC(__pyx_v_IV_flag_VAR1, __pyx_int_4, 4, 0)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 572, __pyx_L1_error)
+    if (unlikely(!__pyx_v_IV_flag_VAR1)) { __Pyx_RaiseUnboundLocalError("IV_flag_VAR1"); __PYX_ERR(0, 577, __pyx_L1_error) }
+    __pyx_t_5 = (__Pyx_PyInt_BoolEqObjC(__pyx_v_IV_flag_VAR1, __pyx_int_4, 4, 0)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 577, __pyx_L1_error)
     if (__pyx_t_5) {
 
-      /* "smu_start.py":574
+      /* "smu_start.py":579
  *         elif IV_flag_VAR1 == 4:
  *             # VAR1
  *             for i in range(num_points_VAR1):             # <<<<<<<<<<<<<<
  *                 Direction = "Forward"
  *                 measurement = {}
  */
-      if (unlikely(!__pyx_v_num_points_VAR1)) { __Pyx_RaiseUnboundLocalError("num_points_VAR1"); __PYX_ERR(0, 574, __pyx_L1_error) }
-      __pyx_t_10 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 574, __pyx_L1_error)
+      if (unlikely(!__pyx_v_num_points_VAR1)) { __Pyx_RaiseUnboundLocalError("num_points_VAR1"); __PYX_ERR(0, 579, __pyx_L1_error) }
+      __pyx_t_10 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 579, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       if (likely(PyList_CheckExact(__pyx_t_10)) || PyTuple_CheckExact(__pyx_t_10)) {
         __pyx_t_3 = __pyx_t_10; __Pyx_INCREF(__pyx_t_3);
         __pyx_t_7 = 0;
         __pyx_t_15 = NULL;
       } else {
-        __pyx_t_7 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_10); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 574, __pyx_L1_error)
+        __pyx_t_7 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_10); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 579, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_15 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 574, __pyx_L1_error)
+        __pyx_t_15 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 579, __pyx_L1_error)
       }
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       for (;;) {
@@ -17849,28 +17904,28 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             {
               Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_3);
               #if !CYTHON_ASSUME_SAFE_MACROS
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 574, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 579, __pyx_L1_error)
               #endif
               if (__pyx_t_7 >= __pyx_temp) break;
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_10 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_7); __Pyx_INCREF(__pyx_t_10); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 574, __pyx_L1_error)
+            __pyx_t_10 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_7); __Pyx_INCREF(__pyx_t_10); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 579, __pyx_L1_error)
             #else
-            __pyx_t_10 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 574, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 579, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             #endif
           } else {
             {
               Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_3);
               #if !CYTHON_ASSUME_SAFE_MACROS
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 574, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 579, __pyx_L1_error)
               #endif
               if (__pyx_t_7 >= __pyx_temp) break;
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_10 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_7); __Pyx_INCREF(__pyx_t_10); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 574, __pyx_L1_error)
+            __pyx_t_10 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_7); __Pyx_INCREF(__pyx_t_10); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 579, __pyx_L1_error)
             #else
-            __pyx_t_10 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 574, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PySequence_ITEM(__pyx_t_3, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 579, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
             #endif
           }
@@ -17880,7 +17935,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 574, __pyx_L1_error)
+              else __PYX_ERR(0, 579, __pyx_L1_error)
             }
             break;
           }
@@ -17889,7 +17944,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_10);
         __pyx_t_10 = 0;
 
-        /* "smu_start.py":575
+        /* "smu_start.py":580
  *             # VAR1
  *             for i in range(num_points_VAR1):
  *                 Direction = "Forward"             # <<<<<<<<<<<<<<
@@ -17899,45 +17954,45 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __Pyx_INCREF(__pyx_n_s_Forward);
         __Pyx_XDECREF_SET(__pyx_v_Direction, __pyx_n_s_Forward);
 
-        /* "smu_start.py":576
+        /* "smu_start.py":581
  *             for i in range(num_points_VAR1):
  *                 Direction = "Forward"
  *                 measurement = {}             # <<<<<<<<<<<<<<
  *                 VAR1_session.current_level = current_min_VAR1 + i * current_step_VAR1
  *                 VAR1_session.initiate()
  */
-        __pyx_t_10 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 576, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 581, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_XDECREF_SET(__pyx_v_measurement, __pyx_t_10);
         __pyx_t_10 = 0;
 
-        /* "smu_start.py":577
+        /* "smu_start.py":582
  *                 Direction = "Forward"
  *                 measurement = {}
  *                 VAR1_session.current_level = current_min_VAR1 + i * current_step_VAR1             # <<<<<<<<<<<<<<
  *                 VAR1_session.initiate()
  *                 #  VAR1
  */
-        if (unlikely(!__pyx_v_current_min_VAR1)) { __Pyx_RaiseUnboundLocalError("current_min_VAR1"); __PYX_ERR(0, 577, __pyx_L1_error) }
-        if (unlikely(!__pyx_v_current_step_VAR1)) { __Pyx_RaiseUnboundLocalError("current_step_VAR1"); __PYX_ERR(0, 577, __pyx_L1_error) }
-        __pyx_t_10 = PyNumber_Multiply(__pyx_v_i, __pyx_v_current_step_VAR1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 577, __pyx_L1_error)
+        if (unlikely(!__pyx_v_current_min_VAR1)) { __Pyx_RaiseUnboundLocalError("current_min_VAR1"); __PYX_ERR(0, 582, __pyx_L1_error) }
+        if (unlikely(!__pyx_v_current_step_VAR1)) { __Pyx_RaiseUnboundLocalError("current_step_VAR1"); __PYX_ERR(0, 582, __pyx_L1_error) }
+        __pyx_t_10 = PyNumber_Multiply(__pyx_v_i, __pyx_v_current_step_VAR1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 582, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_2 = PyNumber_Add(__pyx_v_current_min_VAR1, __pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 577, __pyx_L1_error)
+        __pyx_t_2 = PyNumber_Add(__pyx_v_current_min_VAR1, __pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 582, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 577, __pyx_L1_error) }
-        if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level, __pyx_t_2) < 0) __PYX_ERR(0, 577, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 582, __pyx_L1_error) }
+        if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level, __pyx_t_2) < 0) __PYX_ERR(0, 582, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-        /* "smu_start.py":578
+        /* "smu_start.py":583
  *                 measurement = {}
  *                 VAR1_session.current_level = current_min_VAR1 + i * current_step_VAR1
  *                 VAR1_session.initiate()             # <<<<<<<<<<<<<<
  *                 #  VAR1
  *                 voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  */
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 578, __pyx_L1_error) }
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 578, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 583, __pyx_L1_error) }
+        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 583, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __pyx_t_11 = NULL;
         __pyx_t_8 = 0;
@@ -17957,28 +18012,28 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           PyObject *__pyx_callargs[2] = {__pyx_t_11, NULL};
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_10, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 578, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 583, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         }
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-        /* "smu_start.py":580
+        /* "smu_start.py":585
  *                 VAR1_session.initiate()
  *                 #  VAR1
  *                 voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)             # <<<<<<<<<<<<<<
  *                 VAR1_session.abort()
  *                 measurement = const_record(measurement)
  */
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 580, __pyx_L1_error) }
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 580, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 585, __pyx_L1_error) }
+        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 585, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 580, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 585, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 580, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 585, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_VOLTAGE); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 580, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_VOLTAGE); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 585, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_1 = NULL;
@@ -18000,22 +18055,22 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_10, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
           __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 580, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 585, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         }
         __Pyx_XDECREF_SET(__pyx_v_voltage_value_VAR1, __pyx_t_2);
         __pyx_t_2 = 0;
 
-        /* "smu_start.py":581
+        /* "smu_start.py":586
  *                 #  VAR1
  *                 voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  *                 VAR1_session.abort()             # <<<<<<<<<<<<<<
  *                 measurement = const_record(measurement)
  *                 #
  */
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 581, __pyx_L1_error) }
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 581, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 586, __pyx_L1_error) }
+        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 586, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __pyx_t_11 = NULL;
         __pyx_t_8 = 0;
@@ -18035,76 +18090,76 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           PyObject *__pyx_callargs[2] = {__pyx_t_11, NULL};
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_10, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 581, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 586, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         }
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-        /* "smu_start.py":582
+        /* "smu_start.py":587
  *                 voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  *                 VAR1_session.abort()
  *                 measurement = const_record(measurement)             # <<<<<<<<<<<<<<
  *                 #
  *                 measurement = update_measurement(
  */
-        __pyx_t_2 = __pyx_pf_9smu_start_14smu_test_start_const_record(__pyx_v_const_record, __pyx_v_measurement); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 582, __pyx_L1_error)
+        __pyx_t_2 = __pyx_pf_9smu_start_14smu_test_start_const_record(__pyx_v_const_record, __pyx_v_measurement); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 587, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF_SET(__pyx_v_measurement, __pyx_t_2);
         __pyx_t_2 = 0;
 
-        /* "smu_start.py":584
+        /* "smu_start.py":589
  *                 measurement = const_record(measurement)
  *                 #
  *                 measurement = update_measurement(             # <<<<<<<<<<<<<<
  *                     measurement,
  *                     ('Direction', Direction),
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_update_measurement); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 584, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_update_measurement); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 589, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
 
-        /* "smu_start.py":586
+        /* "smu_start.py":591
  *                 measurement = update_measurement(
  *                     measurement,
  *                     ('Direction', Direction),             # <<<<<<<<<<<<<<
  *                     ('V_VAR1', voltage_value_VAR1, 'I_VAR1', VAR1_session.current_level),
  *                     ('V_VAR2', 0, 'I_VAR2', 0),
  */
-        __pyx_t_11 = PyTuple_New(2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 586, __pyx_L1_error)
+        __pyx_t_11 = PyTuple_New(2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 591, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_INCREF(__pyx_n_s_Direction);
         __Pyx_GIVEREF(__pyx_n_s_Direction);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_n_s_Direction)) __PYX_ERR(0, 586, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_n_s_Direction)) __PYX_ERR(0, 591, __pyx_L1_error);
         __Pyx_INCREF(__pyx_v_Direction);
         __Pyx_GIVEREF(__pyx_v_Direction);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_v_Direction)) __PYX_ERR(0, 586, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_v_Direction)) __PYX_ERR(0, 591, __pyx_L1_error);
 
-        /* "smu_start.py":587
+        /* "smu_start.py":592
  *                     measurement,
  *                     ('Direction', Direction),
  *                     ('V_VAR1', voltage_value_VAR1, 'I_VAR1', VAR1_session.current_level),             # <<<<<<<<<<<<<<
  *                     ('V_VAR2', 0, 'I_VAR2', 0),
  *                 )
  */
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 587, __pyx_L1_error) }
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 587, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 592, __pyx_L1_error) }
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 592, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_4 = PyTuple_New(4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 587, __pyx_L1_error)
+        __pyx_t_4 = PyTuple_New(4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 592, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_INCREF(__pyx_n_s_V_VAR1);
         __Pyx_GIVEREF(__pyx_n_s_V_VAR1);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_n_s_V_VAR1)) __PYX_ERR(0, 587, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_n_s_V_VAR1)) __PYX_ERR(0, 592, __pyx_L1_error);
         __Pyx_INCREF(__pyx_v_voltage_value_VAR1);
         __Pyx_GIVEREF(__pyx_v_voltage_value_VAR1);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_voltage_value_VAR1)) __PYX_ERR(0, 587, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_voltage_value_VAR1)) __PYX_ERR(0, 592, __pyx_L1_error);
         __Pyx_INCREF(__pyx_n_s_I_VAR1);
         __Pyx_GIVEREF(__pyx_n_s_I_VAR1);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_n_s_I_VAR1)) __PYX_ERR(0, 587, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_n_s_I_VAR1)) __PYX_ERR(0, 592, __pyx_L1_error);
         __Pyx_GIVEREF(__pyx_t_1);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 3, __pyx_t_1)) __PYX_ERR(0, 587, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 3, __pyx_t_1)) __PYX_ERR(0, 592, __pyx_L1_error);
         __pyx_t_1 = 0;
 
-        /* "smu_start.py":588
+        /* "smu_start.py":593
  *                     ('Direction', Direction),
  *                     ('V_VAR1', voltage_value_VAR1, 'I_VAR1', VAR1_session.current_level),
  *                     ('V_VAR2', 0, 'I_VAR2', 0),             # <<<<<<<<<<<<<<
@@ -18131,21 +18186,21 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 584, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 589, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         }
         __Pyx_DECREF_SET(__pyx_v_measurement, __pyx_t_2);
         __pyx_t_2 = 0;
 
-        /* "smu_start.py":591
+        /* "smu_start.py":596
  *                 )
  *                 #  add_measurement
  *                 measurement_manager.add_measurement(measurement)             # <<<<<<<<<<<<<<
  *                 single_point_measurement = measurement_manager.get_measurements()  #
  *                 print(
  */
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_add_measurement); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 591, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_add_measurement); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 596, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __pyx_t_4 = NULL;
         __pyx_t_8 = 0;
@@ -18165,20 +18220,20 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_v_measurement};
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_10, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 591, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 596, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         }
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-        /* "smu_start.py":592
+        /* "smu_start.py":597
  *                 #  add_measurement
  *                 measurement_manager.add_measurement(measurement)
  *                 single_point_measurement = measurement_manager.get_measurements()  #             # <<<<<<<<<<<<<<
  *                 print(
  *                     f"Direction: 'Forward' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  */
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_get_measurements); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 592, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_get_measurements); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 597, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __pyx_t_4 = NULL;
         __pyx_t_8 = 0;
@@ -18198,21 +18253,21 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           PyObject *__pyx_callargs[2] = {__pyx_t_4, NULL};
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_10, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 592, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 597, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         }
         __Pyx_XDECREF_SET(__pyx_v_single_point_measurement, __pyx_t_2);
         __pyx_t_2 = 0;
 
-        /* "smu_start.py":594
+        /* "smu_start.py":599
  *                 single_point_measurement = measurement_manager.get_measurements()  #
  *                 print(
  *                     f"Direction: 'Forward' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")             # <<<<<<<<<<<<<<
  *             # VAR1
  *             for i in range(num_points_VAR1):
  */
-        __pyx_t_2 = PyTuple_New(16); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 594, __pyx_L1_error)
+        __pyx_t_2 = PyTuple_New(16); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 599, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __pyx_t_16 = 0;
         __pyx_t_19 = 127;
@@ -18220,7 +18275,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 30;
         __Pyx_GIVEREF(__pyx_kp_u_Direction_Forward_V_VAR1);
         PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_kp_u_Direction_Forward_V_VAR1);
-        __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_v_voltage_value_VAR1, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 594, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_v_voltage_value_VAR1, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 599, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) : __pyx_t_19;
         __pyx_t_16 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_10);
@@ -18231,10 +18286,10 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_I_VAR1_2);
         PyTuple_SET_ITEM(__pyx_t_2, 2, __pyx_kp_u_I_VAR1_2);
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 594, __pyx_L1_error) }
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 594, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 599, __pyx_L1_error) }
+        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 599, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 594, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 599, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_19;
@@ -18246,9 +18301,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 32;
         __Pyx_GIVEREF(__pyx_kp_u_V_VAR2_0_I_VAR2_0_V_CONST1);
         PyTuple_SET_ITEM(__pyx_t_2, 4, __pyx_kp_u_V_VAR2_0_I_VAR2_0_V_CONST1);
-        __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 594, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 599, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 594, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 599, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) : __pyx_t_19;
@@ -18260,9 +18315,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_I_CONST1_2);
         PyTuple_SET_ITEM(__pyx_t_2, 6, __pyx_kp_u_I_CONST1_2);
-        __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 594, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 599, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 594, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 599, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_19;
@@ -18274,9 +18329,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_V_CONST2_2);
         PyTuple_SET_ITEM(__pyx_t_2, 8, __pyx_kp_u_V_CONST2_2);
-        __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 594, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 599, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 594, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 599, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) : __pyx_t_19;
@@ -18288,9 +18343,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_I_CONST2_2);
         PyTuple_SET_ITEM(__pyx_t_2, 10, __pyx_kp_u_I_CONST2_2);
-        __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 594, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 599, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 594, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 599, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_19;
@@ -18302,9 +18357,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_V_CONST3_2);
         PyTuple_SET_ITEM(__pyx_t_2, 12, __pyx_kp_u_V_CONST3_2);
-        __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 594, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 599, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 594, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 599, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_10) : __pyx_t_19;
@@ -18316,9 +18371,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_I_CONST3_2);
         PyTuple_SET_ITEM(__pyx_t_2, 14, __pyx_kp_u_I_CONST3_2);
-        __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 594, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 599, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 594, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_10, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 599, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_19;
@@ -18326,23 +18381,23 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __Pyx_GIVEREF(__pyx_t_4);
         PyTuple_SET_ITEM(__pyx_t_2, 15, __pyx_t_4);
         __pyx_t_4 = 0;
-        __pyx_t_4 = __Pyx_PyUnicode_Join(__pyx_t_2, 16, __pyx_t_16, __pyx_t_19); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 594, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyUnicode_Join(__pyx_t_2, 16, __pyx_t_16, __pyx_t_19); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 599, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-        /* "smu_start.py":593
+        /* "smu_start.py":598
  *                 measurement_manager.add_measurement(measurement)
  *                 single_point_measurement = measurement_manager.get_measurements()  #
  *                 print(             # <<<<<<<<<<<<<<
  *                     f"Direction: 'Forward' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *             # VAR1
  */
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 593, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 598, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-        /* "smu_start.py":574
+        /* "smu_start.py":579
  *         elif IV_flag_VAR1 == 4:
  *             # VAR1
  *             for i in range(num_points_VAR1):             # <<<<<<<<<<<<<<
@@ -18352,24 +18407,24 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
       }
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "smu_start.py":596
+      /* "smu_start.py":601
  *                     f"Direction: 'Forward' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *             # VAR1
  *             for i in range(num_points_VAR1):             # <<<<<<<<<<<<<<
  *                 measurement = {}
  *                 Direction = "Reverse"
  */
-      if (unlikely(!__pyx_v_num_points_VAR1)) { __Pyx_RaiseUnboundLocalError("num_points_VAR1"); __PYX_ERR(0, 596, __pyx_L1_error) }
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 596, __pyx_L1_error)
+      if (unlikely(!__pyx_v_num_points_VAR1)) { __Pyx_RaiseUnboundLocalError("num_points_VAR1"); __PYX_ERR(0, 601, __pyx_L1_error) }
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_v_num_points_VAR1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 601, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       if (likely(PyList_CheckExact(__pyx_t_3)) || PyTuple_CheckExact(__pyx_t_3)) {
         __pyx_t_2 = __pyx_t_3; __Pyx_INCREF(__pyx_t_2);
         __pyx_t_7 = 0;
         __pyx_t_15 = NULL;
       } else {
-        __pyx_t_7 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 596, __pyx_L1_error)
+        __pyx_t_7 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 601, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_15 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 596, __pyx_L1_error)
+        __pyx_t_15 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 601, __pyx_L1_error)
       }
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       for (;;) {
@@ -18378,28 +18433,28 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             {
               Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_2);
               #if !CYTHON_ASSUME_SAFE_MACROS
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 596, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 601, __pyx_L1_error)
               #endif
               if (__pyx_t_7 >= __pyx_temp) break;
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 596, __pyx_L1_error)
+            __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 601, __pyx_L1_error)
             #else
-            __pyx_t_3 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 596, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 601, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             #endif
           } else {
             {
               Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_2);
               #if !CYTHON_ASSUME_SAFE_MACROS
-              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 596, __pyx_L1_error)
+              if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 601, __pyx_L1_error)
               #endif
               if (__pyx_t_7 >= __pyx_temp) break;
             }
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 596, __pyx_L1_error)
+            __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely((0 < 0))) __PYX_ERR(0, 601, __pyx_L1_error)
             #else
-            __pyx_t_3 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 596, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 601, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
             #endif
           }
@@ -18409,7 +18464,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 596, __pyx_L1_error)
+              else __PYX_ERR(0, 601, __pyx_L1_error)
             }
             break;
           }
@@ -18418,19 +18473,19 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_3);
         __pyx_t_3 = 0;
 
-        /* "smu_start.py":597
+        /* "smu_start.py":602
  *             # VAR1
  *             for i in range(num_points_VAR1):
  *                 measurement = {}             # <<<<<<<<<<<<<<
  *                 Direction = "Reverse"
  *                 VAR1_session.current_level = current_max_VAR1 - i * current_step_VAR1
  */
-        __pyx_t_3 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 597, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 602, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_XDECREF_SET(__pyx_v_measurement, __pyx_t_3);
         __pyx_t_3 = 0;
 
-        /* "smu_start.py":598
+        /* "smu_start.py":603
  *             for i in range(num_points_VAR1):
  *                 measurement = {}
  *                 Direction = "Reverse"             # <<<<<<<<<<<<<<
@@ -18440,33 +18495,33 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __Pyx_INCREF(__pyx_n_s_Reverse);
         __Pyx_XDECREF_SET(__pyx_v_Direction, __pyx_n_s_Reverse);
 
-        /* "smu_start.py":599
+        /* "smu_start.py":604
  *                 measurement = {}
  *                 Direction = "Reverse"
  *                 VAR1_session.current_level = current_max_VAR1 - i * current_step_VAR1             # <<<<<<<<<<<<<<
  *                 VAR1_session.initiate()
  *                 voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  */
-        if (unlikely(!__pyx_v_current_max_VAR1)) { __Pyx_RaiseUnboundLocalError("current_max_VAR1"); __PYX_ERR(0, 599, __pyx_L1_error) }
-        if (unlikely(!__pyx_v_current_step_VAR1)) { __Pyx_RaiseUnboundLocalError("current_step_VAR1"); __PYX_ERR(0, 599, __pyx_L1_error) }
-        __pyx_t_3 = PyNumber_Multiply(__pyx_v_i, __pyx_v_current_step_VAR1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 599, __pyx_L1_error)
+        if (unlikely(!__pyx_v_current_max_VAR1)) { __Pyx_RaiseUnboundLocalError("current_max_VAR1"); __PYX_ERR(0, 604, __pyx_L1_error) }
+        if (unlikely(!__pyx_v_current_step_VAR1)) { __Pyx_RaiseUnboundLocalError("current_step_VAR1"); __PYX_ERR(0, 604, __pyx_L1_error) }
+        __pyx_t_3 = PyNumber_Multiply(__pyx_v_i, __pyx_v_current_step_VAR1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 604, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_4 = PyNumber_Subtract(__pyx_v_current_max_VAR1, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 599, __pyx_L1_error)
+        __pyx_t_4 = PyNumber_Subtract(__pyx_v_current_max_VAR1, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 604, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 599, __pyx_L1_error) }
-        if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level, __pyx_t_4) < 0) __PYX_ERR(0, 599, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 604, __pyx_L1_error) }
+        if (__Pyx_PyObject_SetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level, __pyx_t_4) < 0) __PYX_ERR(0, 604, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "smu_start.py":600
+        /* "smu_start.py":605
  *                 Direction = "Reverse"
  *                 VAR1_session.current_level = current_max_VAR1 - i * current_step_VAR1
  *                 VAR1_session.initiate()             # <<<<<<<<<<<<<<
  *                 voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  *                 VAR1_session.abort()
  */
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 600, __pyx_L1_error) }
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 600, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 605, __pyx_L1_error) }
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_initiate); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 605, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __pyx_t_10 = NULL;
         __pyx_t_8 = 0;
@@ -18486,28 +18541,28 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           PyObject *__pyx_callargs[2] = {__pyx_t_10, NULL};
           __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-          if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 600, __pyx_L1_error)
+          if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 605, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         }
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "smu_start.py":601
+        /* "smu_start.py":606
  *                 VAR1_session.current_level = current_max_VAR1 - i * current_step_VAR1
  *                 VAR1_session.initiate()
  *                 voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)             # <<<<<<<<<<<<<<
  *                 VAR1_session.abort()
  *                 measurement = const_record(measurement)
  */
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 601, __pyx_L1_error) }
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 601, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 606, __pyx_L1_error) }
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_measure); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 606, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 601, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_nidcpower); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 606, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 601, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_MeasurementTypes); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 606, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_VOLTAGE); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 601, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_VOLTAGE); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 606, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         __pyx_t_11 = NULL;
@@ -18529,22 +18584,22 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-          if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 601, __pyx_L1_error)
+          if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 606, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         }
         __Pyx_XDECREF_SET(__pyx_v_voltage_value_VAR1, __pyx_t_4);
         __pyx_t_4 = 0;
 
-        /* "smu_start.py":602
+        /* "smu_start.py":607
  *                 VAR1_session.initiate()
  *                 voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  *                 VAR1_session.abort()             # <<<<<<<<<<<<<<
  *                 measurement = const_record(measurement)
  *                 #
  */
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 602, __pyx_L1_error) }
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 602, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 607, __pyx_L1_error) }
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_abort); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 607, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __pyx_t_10 = NULL;
         __pyx_t_8 = 0;
@@ -18564,76 +18619,76 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           PyObject *__pyx_callargs[2] = {__pyx_t_10, NULL};
           __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-          if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 602, __pyx_L1_error)
+          if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 607, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         }
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "smu_start.py":603
+        /* "smu_start.py":608
  *                 voltage_value_VAR1 = VAR1_session.measure(nidcpower.MeasurementTypes.VOLTAGE)
  *                 VAR1_session.abort()
  *                 measurement = const_record(measurement)             # <<<<<<<<<<<<<<
  *                 #
  *                 measurement = update_measurement(
  */
-        __pyx_t_4 = __pyx_pf_9smu_start_14smu_test_start_const_record(__pyx_v_const_record, __pyx_v_measurement); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 603, __pyx_L1_error)
+        __pyx_t_4 = __pyx_pf_9smu_start_14smu_test_start_const_record(__pyx_v_const_record, __pyx_v_measurement); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 608, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF_SET(__pyx_v_measurement, __pyx_t_4);
         __pyx_t_4 = 0;
 
-        /* "smu_start.py":605
+        /* "smu_start.py":610
  *                 measurement = const_record(measurement)
  *                 #
  *                 measurement = update_measurement(             # <<<<<<<<<<<<<<
  *                     measurement,
  *                     ('Direction', Direction),
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_update_measurement); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 605, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_update_measurement); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 610, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
 
-        /* "smu_start.py":607
+        /* "smu_start.py":612
  *                 measurement = update_measurement(
  *                     measurement,
  *                     ('Direction', Direction),             # <<<<<<<<<<<<<<
  *                     ('V_VAR1', voltage_value_VAR1, 'I_VAR1', VAR1_session.current_level),
  *                     ('V_VAR2', 0, 'I_VAR2', 0),
  */
-        __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 607, __pyx_L1_error)
+        __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 612, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_INCREF(__pyx_n_s_Direction);
         __Pyx_GIVEREF(__pyx_n_s_Direction);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_n_s_Direction)) __PYX_ERR(0, 607, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_n_s_Direction)) __PYX_ERR(0, 612, __pyx_L1_error);
         __Pyx_INCREF(__pyx_v_Direction);
         __Pyx_GIVEREF(__pyx_v_Direction);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_v_Direction)) __PYX_ERR(0, 607, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_v_Direction)) __PYX_ERR(0, 612, __pyx_L1_error);
 
-        /* "smu_start.py":608
+        /* "smu_start.py":613
  *                     measurement,
  *                     ('Direction', Direction),
  *                     ('V_VAR1', voltage_value_VAR1, 'I_VAR1', VAR1_session.current_level),             # <<<<<<<<<<<<<<
  *                     ('V_VAR2', 0, 'I_VAR2', 0),
  *                 )
  */
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 608, __pyx_L1_error) }
-        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 608, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 613, __pyx_L1_error) }
+        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 613, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_1 = PyTuple_New(4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 608, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_New(4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 613, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_INCREF(__pyx_n_s_V_VAR1);
         __Pyx_GIVEREF(__pyx_n_s_V_VAR1);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_V_VAR1)) __PYX_ERR(0, 608, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_V_VAR1)) __PYX_ERR(0, 613, __pyx_L1_error);
         __Pyx_INCREF(__pyx_v_voltage_value_VAR1);
         __Pyx_GIVEREF(__pyx_v_voltage_value_VAR1);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_voltage_value_VAR1)) __PYX_ERR(0, 608, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_voltage_value_VAR1)) __PYX_ERR(0, 613, __pyx_L1_error);
         __Pyx_INCREF(__pyx_n_s_I_VAR1);
         __Pyx_GIVEREF(__pyx_n_s_I_VAR1);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_n_s_I_VAR1)) __PYX_ERR(0, 608, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_n_s_I_VAR1)) __PYX_ERR(0, 613, __pyx_L1_error);
         __Pyx_GIVEREF(__pyx_t_11);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 3, __pyx_t_11)) __PYX_ERR(0, 608, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 3, __pyx_t_11)) __PYX_ERR(0, 613, __pyx_L1_error);
         __pyx_t_11 = 0;
 
-        /* "smu_start.py":609
+        /* "smu_start.py":614
  *                     ('Direction', Direction),
  *                     ('V_VAR1', voltage_value_VAR1, 'I_VAR1', VAR1_session.current_level),
  *                     ('V_VAR2', 0, 'I_VAR2', 0),             # <<<<<<<<<<<<<<
@@ -18660,21 +18715,21 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 605, __pyx_L1_error)
+          if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 610, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         }
         __Pyx_DECREF_SET(__pyx_v_measurement, __pyx_t_4);
         __pyx_t_4 = 0;
 
-        /* "smu_start.py":612
+        /* "smu_start.py":617
  *                 )
  *                 #  add_measurement
  *                 measurement_manager.add_measurement(measurement)             # <<<<<<<<<<<<<<
  *                 single_point_measurement = measurement_manager.get_measurements()  #
  *                 print(
  */
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_add_measurement); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 612, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_add_measurement); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 617, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __pyx_t_1 = NULL;
         __pyx_t_8 = 0;
@@ -18694,20 +18749,20 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           PyObject *__pyx_callargs[2] = {__pyx_t_1, __pyx_v_measurement};
           __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 1+__pyx_t_8);
           __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-          if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 612, __pyx_L1_error)
+          if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 617, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         }
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "smu_start.py":613
+        /* "smu_start.py":618
  *                 #  add_measurement
  *                 measurement_manager.add_measurement(measurement)
  *                 single_point_measurement = measurement_manager.get_measurements()  #             # <<<<<<<<<<<<<<
  *                 print(
  *                     f"Direction: 'Reverse' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  */
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_get_measurements); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 613, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_get_measurements); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 618, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __pyx_t_1 = NULL;
         __pyx_t_8 = 0;
@@ -18727,21 +18782,21 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
           PyObject *__pyx_callargs[2] = {__pyx_t_1, NULL};
           __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
           __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-          if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 613, __pyx_L1_error)
+          if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 618, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         }
         __Pyx_XDECREF_SET(__pyx_v_single_point_measurement, __pyx_t_4);
         __pyx_t_4 = 0;
 
-        /* "smu_start.py":615
+        /* "smu_start.py":620
  *                 single_point_measurement = measurement_manager.get_measurements()  #
  *                 print(
  *                     f"Direction: 'Reverse' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")             # <<<<<<<<<<<<<<
  *             all_measurements = measurement_manager.measurements_data
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,
  */
-        __pyx_t_4 = PyTuple_New(16); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 615, __pyx_L1_error)
+        __pyx_t_4 = PyTuple_New(16); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 620, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __pyx_t_16 = 0;
         __pyx_t_19 = 127;
@@ -18749,7 +18804,7 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 30;
         __Pyx_GIVEREF(__pyx_kp_u_Direction_Reverse_V_VAR1);
         PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_kp_u_Direction_Reverse_V_VAR1);
-        __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_voltage_value_VAR1, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 615, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v_voltage_value_VAR1, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 620, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) : __pyx_t_19;
         __pyx_t_16 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_3);
@@ -18760,10 +18815,10 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_I_VAR1_2);
         PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_kp_u_I_VAR1_2);
-        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 615, __pyx_L1_error) }
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 615, __pyx_L1_error)
+        if (unlikely(!__pyx_v_VAR1_session)) { __Pyx_RaiseUnboundLocalError("VAR1_session"); __PYX_ERR(0, 620, __pyx_L1_error) }
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_VAR1_session, __pyx_n_s_current_level); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 620, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 615, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 620, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) : __pyx_t_19;
@@ -18775,9 +18830,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 32;
         __Pyx_GIVEREF(__pyx_kp_u_V_VAR2_0_I_VAR2_0_V_CONST1);
         PyTuple_SET_ITEM(__pyx_t_4, 4, __pyx_kp_u_V_VAR2_0_I_VAR2_0_V_CONST1);
-        __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 615, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 620, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 615, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 620, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) : __pyx_t_19;
@@ -18789,9 +18844,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_I_CONST1_2);
         PyTuple_SET_ITEM(__pyx_t_4, 6, __pyx_kp_u_I_CONST1_2);
-        __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 615, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 620, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 615, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 620, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) : __pyx_t_19;
@@ -18803,9 +18858,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_V_CONST2_2);
         PyTuple_SET_ITEM(__pyx_t_4, 8, __pyx_kp_u_V_CONST2_2);
-        __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 615, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 620, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 615, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 620, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) : __pyx_t_19;
@@ -18817,9 +18872,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_I_CONST2_2);
         PyTuple_SET_ITEM(__pyx_t_4, 10, __pyx_kp_u_I_CONST2_2);
-        __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 615, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 620, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 615, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 620, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) : __pyx_t_19;
@@ -18831,9 +18886,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_V_CONST3_2);
         PyTuple_SET_ITEM(__pyx_t_4, 12, __pyx_kp_u_V_CONST3_2);
-        __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 615, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_V_CONST3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 620, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 615, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_t_1, __pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 620, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) : __pyx_t_19;
@@ -18845,9 +18900,9 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_16 += 10;
         __Pyx_GIVEREF(__pyx_kp_u_I_CONST3_2);
         PyTuple_SET_ITEM(__pyx_t_4, 14, __pyx_kp_u_I_CONST3_2);
-        __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 615, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_v_single_point_measurement, __pyx_n_s_I_CONST3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 620, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 615, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_t_3, __pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 620, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_19 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) > __pyx_t_19) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) : __pyx_t_19;
@@ -18855,23 +18910,23 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __Pyx_GIVEREF(__pyx_t_1);
         PyTuple_SET_ITEM(__pyx_t_4, 15, __pyx_t_1);
         __pyx_t_1 = 0;
-        __pyx_t_1 = __Pyx_PyUnicode_Join(__pyx_t_4, 16, __pyx_t_16, __pyx_t_19); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 615, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyUnicode_Join(__pyx_t_4, 16, __pyx_t_16, __pyx_t_19); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 620, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "smu_start.py":614
+        /* "smu_start.py":619
  *                 measurement_manager.add_measurement(measurement)
  *                 single_point_measurement = measurement_manager.get_measurements()  #
  *                 print(             # <<<<<<<<<<<<<<
  *                     f"Direction: 'Reverse' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *             all_measurements = measurement_manager.measurements_data
  */
-        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 614, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 619, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "smu_start.py":596
+        /* "smu_start.py":601
  *                     f"Direction: 'Forward' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *             # VAR1
  *             for i in range(num_points_VAR1):             # <<<<<<<<<<<<<<
@@ -18881,35 +18936,36 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "smu_start.py":616
+      /* "smu_start.py":621
  *                 print(
  *                     f"Direction: 'Reverse' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *             all_measurements = measurement_manager.measurements_data             # <<<<<<<<<<<<<<
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,
  *                      CSV_NAME)
  */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_measurements_data); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 616, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_measurements_data); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 621, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_v_all_measurements = __pyx_t_2;
       __pyx_t_2 = 0;
 
-      /* "smu_start.py":617
+      /* "smu_start.py":622
  *                     f"Direction: 'Reverse' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: 0, I_VAR2: 0,V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
  *             all_measurements = measurement_manager.measurements_data
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,             # <<<<<<<<<<<<<<
  *                      CSV_NAME)
- *     return all_measurements
+ *             return all_measurements
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_csv_make); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 617, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_csv_make); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 622, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_measurements_data); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 617, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_measurement_manager, __pyx_n_s_measurements_data); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 622, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
 
-      /* "smu_start.py":618
+      /* "smu_start.py":623
  *             all_measurements = measurement_manager.measurements_data
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,
  *                      CSV_NAME)             # <<<<<<<<<<<<<<
- *     return all_measurements
+ *             return all_measurements
+ * 
  */
       __pyx_t_3 = NULL;
       __pyx_t_8 = 0;
@@ -18930,42 +18986,41 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
         __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 3+__pyx_t_8);
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 617, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 622, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "smu_start.py":572
+      /* "smu_start.py":624
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,
  *                      CSV_NAME)
+ *             return all_measurements             # <<<<<<<<<<<<<<
+ * 
+ */
+      __Pyx_XDECREF(__pyx_r);
+      __Pyx_INCREF(__pyx_v_all_measurements);
+      __pyx_r = __pyx_v_all_measurements;
+      goto __pyx_L0;
+
+      /* "smu_start.py":577
+ *                      CSV_NAME)
+ *             return all_measurements
  *         elif IV_flag_VAR1 == 4:             # <<<<<<<<<<<<<<
  *             # VAR1
  *             for i in range(num_points_VAR1):
  */
     }
-    __pyx_L82:;
 
-    /* "smu_start.py":468
- *             all_measurements = measurement_manager.measurements_data
+    /* "smu_start.py":470
  *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH, CSV_NAME)
+ *             return all_measurements
  *     elif 0 == VAR2_flag:  # VAR2             # <<<<<<<<<<<<<<
  *         #
  *         measurement_manager = MeasurementManager()
  */
   }
   __pyx_L36:;
-
-  /* "smu_start.py":619
- *             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,
- *                      CSV_NAME)
- *     return all_measurements             # <<<<<<<<<<<<<<
- */
-  __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_all_measurements)) { __Pyx_RaiseUnboundLocalError("all_measurements"); __PYX_ERR(0, 619, __pyx_L1_error) }
-  __Pyx_INCREF(__pyx_v_all_measurements);
-  __pyx_r = __pyx_v_all_measurements;
-  goto __pyx_L0;
 
   /* "smu_start.py":20
  * 
@@ -18976,6 +19031,8 @@ static PyObject *__pyx_pf_9smu_start_smu_test_start(CYTHON_UNUSED PyObject *__py
  */
 
   /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
@@ -19560,14 +19617,14 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__6);
   __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_smu_start_py, __pyx_n_s_const_record, 86, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(0, 86, __pyx_L1_error)
 
-  /* "smu_start.py":485
+  /* "smu_start.py":487
  *                     ('Direction', Direction),
  *                     ('V_VAR1', VAR1_session.voltage_level, 'I_VAR1', current_value_VAR1),
  *                     ('V_VAR2', 0, 'I_VAR2', 0),             # <<<<<<<<<<<<<<
  *                 )
  *                 measurement = const_record(measurement)
  */
-  __pyx_tuple__8 = PyTuple_Pack(4, __pyx_n_s_V_VAR2, __pyx_int_0, __pyx_n_s_I_VAR2, __pyx_int_0); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 485, __pyx_L1_error)
+  __pyx_tuple__8 = PyTuple_Pack(4, __pyx_n_s_V_VAR2, __pyx_int_0, __pyx_n_s_I_VAR2, __pyx_int_0); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 487, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 

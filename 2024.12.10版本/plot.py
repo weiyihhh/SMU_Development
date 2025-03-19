@@ -81,20 +81,20 @@ plt.ion()
 
 # 模拟实时数据更新并绘图
 def simulate_measurement():
-    for i, (Vg, Id, Is) in enumerate(zip(Vg_values, Id_values, Is_values)):
+    for i, (Vg, Id) in enumerate(zip(Vg_values, Id_values)):
         # 更新数据
         x_data.append(Vg)
         y_data_id.append(Id)
-        y_data_is.append(Is)
+        #y_data_is.append(Is)
 
         # 更新图形数据
         line_id.set_data(x_data, y_data_id)  # 更新Id线
-        line_is.set_data(x_data, y_data_is)  # 更新Is线
+        #line_is.set_data(x_data, y_data_is)  # 更新Is线
 
         # 动态调整X轴和Y轴范围
         ax.set_xlim(min(Vg_values), max(Vg_values))  # 保证X轴显示整个范围
         ax.set_ylim(min(y_data_id) * 1.1, max(y_data_id) * 1.1)  # 动态调整左侧y轴范围
-        ax2.set_ylim(min(y_data_is) * 1.1, max(y_data_is) * 1.1)  # 动态调整右侧y轴范围
+        #ax2.set_ylim(min(y_data_is) * 1.1, max(y_data_is) * 1.1)  # 动态调整右侧y轴范围
 
         # 刷新图形
         plt.draw()

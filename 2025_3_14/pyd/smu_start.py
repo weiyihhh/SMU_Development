@@ -304,6 +304,7 @@ def smu_test_start(csv_save_path, csv_name, smu1_config_dict=None, smu2_config_d
             # 获取所有测量数据
             all_measurements = measurement_manager.measurements_data
             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH, CSV_NAME)
+            return all_measurements
             #print(all_measurements)
         elif mode_VAR2 == 'I':
             measurement_manager = MeasurementManager()
@@ -465,6 +466,7 @@ def smu_test_start(csv_save_path, csv_name, smu1_config_dict=None, smu2_config_d
                             f"Direction: 'Reverse' ,V_VAR1: {voltage_value_VAR1}, I_VAR1: {VAR1_session.current_level}, V_VAR2: {voltage_value_VAR2}, I_VAR2: {VAR2_session.current_level},V_CONST1:{single_point_measurement['V_CONST1']},I_CONST1:{single_point_measurement['I_CONST1']},V_CONST2:{single_point_measurement['V_CONST2']},I_CONST2:{single_point_measurement['I_CONST2']},V_CONST3:{single_point_measurement['V_CONST3']},I_CONST3:{single_point_measurement['I_CONST3']}")
             all_measurements = measurement_manager.measurements_data
             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH, CSV_NAME)
+            return all_measurements
     elif 0 == VAR2_flag:  # 表明未启用VAR2
         # 示例使用
         measurement_manager = MeasurementManager()
@@ -494,6 +496,7 @@ def smu_test_start(csv_save_path, csv_name, smu1_config_dict=None, smu2_config_d
             all_measurements = measurement_manager.measurements_data
             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,
                      CSV_NAME)
+            return all_measurements
         elif IV_flag_VAR1 == 2:
             # VAR1正向扫描
             for i in range(num_points_VAR1):
@@ -544,6 +547,7 @@ def smu_test_start(csv_save_path, csv_name, smu1_config_dict=None, smu2_config_d
             all_measurements = measurement_manager.measurements_data
             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,
                      CSV_NAME)
+            return all_measurements
         elif IV_flag_VAR1 == 3:
             for i in range(num_points_VAR1):
                 Direction = "Forward"
@@ -569,6 +573,7 @@ def smu_test_start(csv_save_path, csv_name, smu1_config_dict=None, smu2_config_d
             all_measurements = measurement_manager.measurements_data
             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,
                      CSV_NAME)
+            return all_measurements
         elif IV_flag_VAR1 == 4:
             # VAR1正向扫描
             for i in range(num_points_VAR1):
@@ -616,4 +621,5 @@ def smu_test_start(csv_save_path, csv_name, smu1_config_dict=None, smu2_config_d
             all_measurements = measurement_manager.measurements_data
             csv_make(measurement_manager.measurements_data, CSV_SAVE_PATH,
                      CSV_NAME)
-    return all_measurements
+            return all_measurements
+
