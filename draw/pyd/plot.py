@@ -43,35 +43,49 @@ def extract_v_i(measurement_data):
 
     return V_VAR1_values, I_VAR1_values, V_VAR2_values, I_VAR2_values, V_CONST1_values, I_CONST1_values, V_CONST2_values, I_CONST2_values, V_CONST3_values, I_CONST3_values
 
-
-
-
-
-def smu_plot(x_values, y_values):
-
-    # 设置图形窗口
-    fig, ax = plt.subplots(figsize=(20, 12), facecolor='lightgray')  # 背景色为浅灰色
+def plot_fig():
+    # 如果没有传入fig和ax，创建一个新的图形窗口
+    fig, ax = plt.subplots(figsize=(20, 12), facecolor='lightgray')
     ax.set_title("SMU Test Curve", fontsize=20, fontweight='bold')
     ax.set_xlabel("-----x-------", fontsize=14)
     ax.set_ylabel("-----y-------", fontsize=14)
-
-    # 创建右侧y轴
-    ax2 = ax.twinx()
 
     # 设置网格和坐标轴样式
     ax.grid(True, which='both', axis='both', color='lightgray', linestyle='-', linewidth=0.7)  # 密集网格
     ax.set_facecolor('white')  # 背景为白色
     ax.tick_params(axis='both', which='major', labelsize=12)
-    ax2.tick_params(axis='both', which='major', labelsize=12)
+    return fig, ax
+
+
+def line_color(line_nums, ax):
+    # 使用 'viridis' 颜色映射，根据线条数量生成对应数量的颜色
+    colors = plt.cm.viridis(np.linspace(0, 1, line_nums))  # 使用 'viridis' 颜色映射
+
+    # 创建空的线条对象
+    line_ids = []  # 用于存储每条线的 id
+    for idx in range(line_nums):
+        # 为每条线分配不同的颜色，并创建一个空的线条（没有数据）
+        line_id, = ax.plot([], [], linestyle='-', color=colors[idx], linewidth=1.5, label=f"Line {idx + 1}")
+        line_ids.append(line_id)
+
+    return line_ids, colors  # 返回所有线条的 id 和颜色
+
+def smu_plot(x_values, y_values, line_id, ax, fig):
 
     # 初始化数据
-    x_data = []
-    y_data = []  # 用于Id数据
+    x_data = []  # x轴数据
+    y_data = []  # y轴数据
 
+    # 更新数据
+    line_id.set_data(x_values, y_values)  # 更新电流数据的线条
 
-    # 初始化图形线条，颜色改为橘色和绿色
-    line_id, = ax.plot([], [], linestyle='-', color='orange', linewidth=1.5, label="Drain Current (Id)")  # Id的橘色线条
-    line_is, = ax2.plot([], [], linestyle='-', color='blue', linewidth=1.5, label="Source Current (Is)")  # Is的蓝色线条
+    # 动态调整X轴和Y轴范围
+    ax.set_xlim(min(x_values), max(x_values))  # 保证X轴显示整个范围
+    ax.set_ylim(min(y_values) * 1.1, max(y_values) * 1.1)  # 动态调整左侧y轴范围
+
+    # 刷新图形
+    plt.draw()
+    plt.pause(0.1)
 
     # 启动交互式绘图
     plt.ion()
@@ -96,10 +110,19 @@ def smu_plot(x_values, y_values):
 
         # 添加图例
         ax.legend(loc='upper left')
-        ax2.legend(loc='upper right')
 
     simulate_measurement()
 
     # 关闭交互模式
     plt.ioff()
     plt.show()
+
+    return fig, ax  # 返回fig和ax以便后续使用
+
+"""# 示例调用：
+# 初次调用，创建图形
+fig, ax = smu_plot(x_values, y_values)
+
+# 后续调用，更新图形
+fig, ax = smu_plot(new_x_values, new_y_values, fig, ax)
+"""

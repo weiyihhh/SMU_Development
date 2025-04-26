@@ -12,12 +12,12 @@ smu1 = smu_dict_set(
     num_points_VAR1=11,
     current_limit_range_VAR1=0.1,
     current_limit_VAR1=0.1,
-    VAR1_PLC=5,
+    VAR1_PLC=1,
     sweep_mode="single"
 )
 
 smu2 = smu_dict_set(
-    resource_name="PXI1Slot4/1",
+    resource_name="PXI1Slot4/2",
     mode="V",
     function="VAR2",
     v_name="V2",
@@ -31,12 +31,12 @@ smu2 = smu_dict_set(
 )
 
 smu3 = smu_dict_set(
-    resource_name="PXI1Slot4/2",
+    resource_name="PXI1Slot4/1",
     mode="V",
     function="CONST1",
     v_name="V3",
     i_name="I3",
-    voltage_CONST1=1,
+    voltage_CONST1=0,
     CONST1_PLC=1,
     current_limit_range_CONST1=0.1,
     current_limit_CONST1=0.05
@@ -54,5 +54,5 @@ smu4 = smu_dict_set(
     current_limit_CONST2=0.1
 )
 
-excel = smu_start.smu_test_start(smu1_config_dict=smu1, smu2_config_dict=smu2, smu3_config_dict=None, smu4_config_dict=None, csv_save_path='D:/user文件/mac备份/qq123/工作安排/第二十周/二代smu测试数据',csv_name='2')
-print(excel)
+excel = smu_start.smu_test_start(smu1_config_dict=smu1, smu2_config_dict=smu3, smu3_config_dict=None, smu4_config_dict=None, csv_save_path='D:/user文件/mac备份/qq123/工作安排/第二十三周',csv_name='4140电阻测试')
+#print(excel)
